@@ -24,3 +24,7 @@ default:
       main: "/Volumes/shlab/Projects/CGT/CGT_study2"
       raw: "/Volumes/shlab/Projects/CGT/CGT_study2/rawdata_study2"
       processed: "/Volumes/shlab/Projects/CGT/CGT_study2/processeddata_study2"
+    data: 
+      main: "/Volumes/shlab/Projects/GPR/data/"
+      raw: "/Volumes/shlab/Projects/GPR/data/raw/"
+      processed: "/Volumes/shlab/Projects/GPR/data/preprocessed/"
