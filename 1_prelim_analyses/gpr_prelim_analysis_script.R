@@ -130,3 +130,62 @@ abline(v = quantile(probs = 0.9, final_earnings_actual$actualearnings), col = rg
 
 prcntles = c(0.1, 0.2, 0.3, 0.5, 0.7, 0.8, 0.9)
 gpr_possible_percentiles = cbind(prcntles,quantile(probs = prcntles,final_earnings_actual$actualearnings))
+
+
+# Simulate Earnings ################################################
+# Calculate possible earnings & percentiles related to them. 
+
+nSim = 10000; # number of simulations to do per person
+
+final_earnings_simulated = as.data.frame(array(data = NA, dim = c(number_of_gpr_prelim_subjects * nSim, 2)))
+colnames(final_earnings_simulated) <- c('subjectnumber',
+                                        'simearnings')
+
+cat(sprintf('Progress: 000%%'))
+for (s in 1:number_of_gpr_prelim_subjects){
+  # Extract this participant's data
+  tmp_data = gpr_prelim_data[gpr_prelim_data$subjectnumber == gpr_prelim_subjnumbers[s],];
+  
+  # Set up the sim_earnings object to be empty & ready
+  sim_earnings = array(data = NA, dim = c(nSim,2));
+  sim_earnings[,1] = gpr_prelim_subjnumbers[s];
+  
+  # Loop
+  for (i in 1:nSim){ # for each simulation... 
+    sim_otcs = array(data = NA, dim = 50); # Create empty outcome vector
+    rand_otcs = runif(50) > 0.5; # Randomly simulate wins/losses (T = win, F = lose)
+    risky_wins = is.finite(tmp_data$choice) & (tmp_data$choice == 1) & rand_otcs # indices of risky wins
+    risky_losses = is.finite(tmp_data$choice) & (tmp_data$choice == 1) & !rand_otcs # indices of risky losses
+    
+    # Fill in the outcome vector
+    sim_otcs = tmp_data$safe; # Assume safe choices
+    sim_otcs[risky_wins] = tmp_data$riskyopt1[risky_wins]        # If risky and WON
+    sim_otcs[risky_losses] = tmp_data$riskyopt2[risky_losses]    # If risky and LOST
+
+    # Calculate cumulative earnings, given outcomes
+    sim_earnings[i,2] = sum(sim_otcs, na.rm = T)
+  }
+  
+  final_sim_row_ind = ((s-1)*nSim + 1):(s*nSim) # Get the right indices for this person's simulations
+  final_earnings_simulated[final_sim_row_ind,] = sim_earnings; # chuck 'em in
+  cat(sprintf('\b\b\b\b%03.f%%',s/number_of_gpr_prelim_subjects*100))
+}
+cat(sprintf('\n'))
+
+# Plot the results
+hist(final_earnings_simulated$simearnings, 
+     breaks = 20,
+     xlab = 'Earnings ($)', ylab = 'Number of Subjects', 
+     main = sprintf('Simulated Final Earnings in CGT, CGE, and EDI studies (N = %i)',number_of_gpr_prelim_subjects * nSim))
+abline(v = quantile(probs = 0.5, final_earnings_simulated$simearnings), col = 'black', lty = 'dashed', lwd = 5) # 50% (median)
+abline(v = quantile(probs = 0.1, final_earnings_simulated$simearnings), col = rgb(1,0,0), lwd = 5) 
+abline(v = quantile(probs = 0.2, final_earnings_simulated$simearnings), col = rgb(.8,0,0), lwd = 5)
+abline(v = quantile(probs = 0.3, final_earnings_simulated$simearnings), col = rgb(.6,0,0), lwd = 5)
+abline(v = quantile(probs = 0.7, final_earnings_simulated$simearnings), col = rgb(0,0,.6), lwd = 5)
+abline(v = quantile(probs = 0.8, final_earnings_simulated$simearnings), col = rgb(0,0,.8), lwd = 5)
+abline(v = quantile(probs = 0.9, final_earnings_simulated$simearnings), col = rgb(0,0,1), lwd = 5)
+
+prcntles = c(0.1, 0.2, 0.3, 0.5, 0.7, 0.8, 0.9)
+gpr_possible_percentiles = cbind(prcntles,quantile(probs = prcntles,final_earnings_simulated$simearnings))
+
+
