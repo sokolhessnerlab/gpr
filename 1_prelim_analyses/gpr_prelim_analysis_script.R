@@ -134,6 +134,12 @@ gpr_possible_percentiles = cbind(prcntles,quantile(probs = prcntles,final_earnin
 
 # Simulate Earnings ################################################
 # Calculate possible earnings & percentiles related to them. 
+# The approach here relies on brute force simulation of new random outcomes, given
+# the exact same set of choices as occurred in real life. That is, these are simulations
+# of earnings given choices, not simulations of choices. 
+#
+# An alternate approach would simply calculate expected value of each person's choices
+# which would produce a similar graph. 
 
 nSim = 10000; # number of simulations to do per person
 
