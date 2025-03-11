@@ -147,6 +147,16 @@ final_earnings_simulated = as.data.frame(array(data = NA, dim = c(number_of_gpr_
 colnames(final_earnings_simulated) <- c('subjectnumber',
                                         'simearnings')
 
+preposttrial_counts_simulated = as.data.frame(array(data = NA, 
+                                                    dim = c(number_of_gpr_prelim_subjects * nSim, 3)))
+colnames(preposttrial_counts_simulated) <- c('subjectnumber',
+                                        'pretrials',
+                                        'posttrials')
+# sim_goal = 448.07; # 80th percentile as simulated 3/10/2025
+# sim_goal = 384.49; # 30th percentile as simulated 3/10/2025
+sim_goal = 349.90; # 10th percentile as simulated 3/10/2025
+
+
 cat(sprintf('Progress: 000%%'))
 for (s in 1:number_of_gpr_prelim_subjects){
   # Extract this participant's data
@@ -155,6 +165,10 @@ for (s in 1:number_of_gpr_prelim_subjects){
   # Set up the sim_earnings object to be empty & ready
   sim_earnings = array(data = NA, dim = c(nSim,2));
   sim_earnings[,1] = gpr_prelim_subjnumbers[s];
+  
+  # Set up the trial counts object to be empty and ready
+  sim_counts = array(data = NA, dim = c(nSim, 3));
+  sim_counts[,1] = gpr_prelim_subjnumbers[s];
   
   # Loop
   for (i in 1:nSim){ # for each simulation... 
@@ -170,15 +184,22 @@ for (s in 1:number_of_gpr_prelim_subjects){
 
     # Calculate cumulative earnings, given outcomes
     sim_earnings[i,2] = sum(sim_otcs, na.rm = T)
+    
+    # calculate trial counts
+    sim_counts[i,2] = sum(cumsum(sim_otcs[is.finite(sim_otcs)]) < sim_goal) # trials BEFORE the goal
+    sim_counts[i,3] = sum(cumsum(sim_otcs[is.finite(sim_otcs)]) >= sim_goal) # trials AT and AFTER the goal
   }
   
   final_sim_row_ind = ((s-1)*nSim + 1):(s*nSim) # Get the right indices for this person's simulations
   final_earnings_simulated[final_sim_row_ind,] = sim_earnings; # chuck 'em in
+  
+  preposttrial_counts_simulated[final_sim_row_ind,] = sim_counts; # chuck in the trial counts
+  
   cat(sprintf('\b\b\b\b%03.f%%',s/number_of_gpr_prelim_subjects*100))
 }
 cat(sprintf('\n'))
 
-# Plot the results
+# Plot the earnings results
 hist(final_earnings_simulated$simearnings, 
      breaks = 20,
      xlab = 'Earnings ($)', ylab = 'Number of Subjects', 
@@ -194,4 +215,16 @@ abline(v = quantile(probs = 0.9, final_earnings_simulated$simearnings), col = rg
 prcntles = c(0.1, 0.2, 0.3, 0.5, 0.7, 0.8, 0.9)
 gpr_possible_percentiles = cbind(prcntles,quantile(probs = prcntles,final_earnings_simulated$simearnings))
 
+
+hist(preposttrial_counts_simulated$pretrials,
+     xlab = 'Number of trials', ylab = 'Simulated participants',
+     main = sprintf('Trials BEFORE the goal (Med = %i; p(>5) = %.1f)',
+                    median(preposttrial_counts_simulated$pretrials),
+                    sum(preposttrial_counts_simulated$pretrials > 5)/(length(preposttrial_counts_simulated$pretrials))))
+
+hist(preposttrial_counts_simulated$posttrials,
+     xlab = 'Number of trials', ylab = 'Simulated participants',
+     main = sprintf('Trials AFTER the goal (Med = %i; p(>5) = %.2f)',
+                    median(preposttrial_counts_simulated$posttrials),
+                    sum(preposttrial_counts_simulated$posttrials > 5)/(length(preposttrial_counts_simulated$posttrials))))
 
