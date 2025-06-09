@@ -128,7 +128,7 @@ abline(v = quantile(probs = 0.7, final_earnings_actual$actualearnings), col = rg
 abline(v = quantile(probs = 0.8, final_earnings_actual$actualearnings), col = rgb(0,0,.8), lwd = 5)
 abline(v = quantile(probs = 0.9, final_earnings_actual$actualearnings), col = rgb(0,0,1), lwd = 5)
 
-prcntles = c(0.1, 0.2, 0.3, 0.5, 0.7, 0.8, 0.9)
+prcntles = c(0.1, 0.2, 0.3, 0.5, 0.6, 0.7, 0.8, 0.9)
 gpr_actual_percentiles = cbind(prcntles,quantile(probs = prcntles,final_earnings_actual$actualearnings))
 
 
@@ -156,7 +156,7 @@ colnames(preposttrial_counts_simulated) <- c('subjectnumber',
 # sim_goal = 384.49; # 30th percentile as simulated 3/10/2025
 # sim_goal = 349.90; # 10th percentile as simulated 3/10/2025
 sim_goal = 397.16; # 40th percentile as simulated 6/4/2025
-
+# sim_goal = 413.474; # 60th percentile (get 15% of folks with more than 5 trials after goal)
 
 cat(sprintf('Progress: 000%%'))
 for (s in 1:number_of_gpr_prelim_subjects){
@@ -233,5 +233,5 @@ prcntles_all = seq(from = 0.01, to = 1, by = 0.01);
 gpr_possible_percentiles_all = cbind(prcntles_all*100, quantile(probs = prcntles_all, final_earnings_simulated$simearnings))
 colnames(gpr_possible_percentiles_all) <- c('percentile','earnings')
 
-setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
-write.csv(gpr_possible_percentiles_all, file = 'gpr_percentiles.csv', row.names = F)
+# setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
+# write.csv(gpr_possible_percentiles_all, file = 'gpr_percentiles.csv', row.names = F)
