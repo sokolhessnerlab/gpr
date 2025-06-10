@@ -1,0 +1,3 @@
+,subID,riskyGain,riskyLoss,safe,RT,loc,response,choice,outcome,iti,itiExtra,evLevel,evInd,runSize,strategy,stimDispStart,choiceTimeStart,isiStart,outcomeDispStart,itiStart,trial,roundRDM,roundColor
+1,005,54.62,0.0,23.31,NaN,1,,NaN,NaN,1.0,0,25.0,3.0,5.0,0,0.011081749995355494,3.5368088340037502,7.042450791996089,7.547679333991255,8.548781666992,1,1,0
+2,005,47.12,0.0,27.36,NaN,1,,NaN,NaN,1.0,0,25.0,3.0,5.0,0,10.530655666996608,16.92577000000165,20.431759958999464,20.936886166993645,21.938012667000294,2,1,0
