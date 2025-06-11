@@ -270,7 +270,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
         round2Prep = visual.TextStim(
             win,
-            text='You are halfway through the gambling portion of the experiment! \n\nYou will now do ROUND 2 which will be marked with a different color from the previous round.\n\nRemember that ROUND 2 is independent from round 1. \n\nTreat this round as a fresh start!\n\n\nPress ‘enter’ to continue.',
+            text='You have completed the this round, and will start the next, new round momentarily. \n\nMoving ahead to the next round, do your best to let the outcomes of the previous round go. \n\nFocus instead on the new goal and bonus. Rounds are independent from one another, making each round a new start. \n\nThe outcomes of any given round have no effect on subsequent rounds. \n\nBefore advancing, take a moment to get ready if you need.',
             pos = (0,0),
             color=[1,1,1],
             height=textHeight,
@@ -368,7 +368,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         # CONTROL INSTRUCTIONS (FIRST TIME AROUND)
         controlInst1 = visual.TextStim(
             win,
-            text='In this round of the task, please make your choices however you normally would, considering all factors that you naturally would notice or think about. \n\nPrevious research has found that people use all kinds of information to make choices in risky contexts. \n\n\nPress ‘enter’ to continue.',
+            text='In this round, your goal is $X. \n\nYour bonus in this round is HIGH/LOW ($Y). \n\nTake a moment if you need before beginning the task. \n\nPress "V" or "N" when you are ready to begin.',
             pos = (0,0),
             color=[1,1,1],
             height=textHeight,
@@ -376,56 +376,56 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             alignText="left"
         )
         
-        controlInst2 = visual.TextStim(
-            win,
-            text='Knowing how the task works, don’t try to control your thoughts any more than you would normally, and take as much of a natural approach to your decisions as you can, whatever that might mean for you. \n\nMake your choices in a way that makes sense to you, given any goals, rules of thumb, or factors you think or feel are important. \n\n\nPress ‘enter’ to continue.',
-            pos = (0,0),
-            color=[1,1,1],
-            height=textHeight,
-            wrapWidth=wrap,
-            alignText="left"
-        )
+        #controlInst2 = visual.TextStim(
+           # win,
+           # text='Knowing how the task works, don’t try to control your thoughts any more than you would normally, and take as much of a natural approach to your decisions as you can, whatever that might mean for you. \n\nMake your choices in a way that makes sense to you, given any goals, rules of thumb, or factors you think or feel are important. \n\n\nPress ‘enter’ to continue.',
+           # pos = (0,0),
+           # color=[1,1,1],
+           # height=textHeight,
+           # wrapWidth=wrap,
+           # alignText="left"
+        #)
         
-        controlInst3 = visual.TextStim(
-            win,
-            text='For this round, focus on the task itself, and the events, options, and actions that you would naturally consider, and how you feel about them. \n\nIf you select the gamble, you have an equal chance of receiving either amount and if you select the safe option, that will be the outcome for that trial.\n\nYou will complete many trials in this round.\n\n\nPress ‘enter’ to continue.',
-            pos = (0,0),
-            color=[1,1,1],
-            height=textHeight,
-            wrapWidth=wrap,
-            alignText="left"
-        )
+        #controlInst3 = visual.TextStim(
+           # win,
+           # text='For this round, focus on the task itself, and the events, options, and actions that you would naturally consider, and how you feel about them. \n\nIf you select the gamble, you have an equal chance of receiving either amount and if you select the safe option, that will be the outcome for that trial.\n\nYou will complete many trials in this round.\n\n\nPress ‘enter’ to continue.',
+           # pos = (0,0),
+           # color=[1,1,1],
+           # height=textHeight,
+           # wrapWidth=wrap,
+           # alignText="left"
+        #)
         
-        controlInst4 = visual.TextStim(
-            win,
-            text='On each trial, let your thoughts, feelings, impulses, and goals guide your decision-making as naturally as possible, without trying to change, eliminate, or emphasize them beyond how you might otherwise naturally. \n\nRemember that you will be paid the outcome of one randomly selected trial, and simply try to make the best choices you can. \n\nFor this round, approach the task and evaluate your choice options as you would naturally, without trying to control or change your approach. \n\n\nPress ‘enter’ to continue.',
-            pos = (0,0),
-            color=[1,1,1],
-            height=textHeight,
-            wrapWidth=wrap,
-            alignText="left"
-        )
+        #controlInst4 = visual.TextStim(
+           # win,
+           # text='On each trial, let your thoughts, feelings, impulses, and goals guide your decision-making as naturally as possible, without trying to change, eliminate, or emphasize them beyond how you might otherwise naturally. \n\nRemember that you will be paid the outcome of one randomly selected trial, and simply try to make the best choices you can. \n\nFor this round, approach the task and evaluate your choice options as you would naturally, without trying to control or change your approach. \n\n\nPress ‘enter’ to continue.',
+           # pos = (0,0),
+           # color=[1,1,1],
+           # height=textHeight,
+           # wrapWidth=wrap,
+           # alignText="left"
+        #)
         
         
-        controlReminder1  = visual.TextStim(
-            win,
-            text='As a reminder, in this round of the task, please make your choices however you normally would.\n\nOn each trial, let your thoughts, feelings, impulses, and goals guide your decision-making as naturally as possible, without trying to change, eliminate, or emphasize them beyond how you might otherwise naturally. \n\n\nPress ‘enter’ to continue.',
-            pos = (0,0),
-            color=[1,1,1],
-            height=textHeight,
-            wrapWidth=wrap,
-            alignText="left"
-        )
+        #controlReminder1  = visual.TextStim(
+           # win,
+           # text='As a reminder, in this round of the task, please make your choices however you normally would.\n\nOn each trial, let your thoughts, feelings, impulses, and goals guide your decision-making as naturally as possible, without trying to change, eliminate, or emphasize them beyond how you might otherwise naturally. \n\n\nPress ‘enter’ to continue.',
+           # pos = (0,0),
+           # color=[1,1,1],
+           # height=textHeight,
+           # wrapWidth=wrap,
+           # alignText="left"
+        #)
         
-        controlReminder2 = visual.TextStim(
-            win,
-            text='Simply try to make the best choices you can.\n\nFor this round, approach the task and evaluate your choice options as you would naturally, without trying to control or change your approach.\n\n\nPress ‘enter’ to continue.',
-            pos = (0,0),
-            color=[1,1,1],
-            height=textHeight,
-            wrapWidth=wrap,
-            alignText="left"
-        )
+        #controlReminder2 = visual.TextStim(
+           # win,
+           # text='Simply try to make the best choices you can.\n\nFor this round, approach the task and evaluate your choice options as you would naturally, without trying to control or change your approach.\n\n\nPress ‘enter’ to continue.',
+           # pos = (0,0),
+           # color=[1,1,1],
+           # height=textHeight,
+           # wrapWidth=wrap,
+           # alignText="left"
+        #)
         
         
         # STRATEGY INSTRUCTIONS (FIRST TIME AROUND)
@@ -1241,15 +1241,15 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
                     if strategy == 0: # if the condition is control
                         instructPG1 = controlInst1
-                        instructPG2 = controlInst2
-                        instructPG3 = controlInst3
-                        instructPG4 = controlInst4
+                        #instructPG2 = controlInst2
+                        #instructPG3 = controlInst3
+                        #instructPG4 = controlInst4
                         
-                    elif strategy == 1: # if the condition is strategy
-                        instructPG1 = stratInst1
-                        instructPG2 = stratInst2
-                        instructPG3 = stratInst3
-                        instructPG4 = stratInst4
+                    #elif strategy == 1: # if the condition is strategy
+                        #instructPG1 = stratInst1
+                        #instructPG2 = stratInst2
+                        #instructPG3 = stratInst3
+                        #instructPG4 = stratInst4
         
         
                     #show page 1 + forced viewing
@@ -1275,81 +1275,81 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press 
                     
                     #show page 2 + forced viewing
-                    borderBox.draw() # draw the large color box
-                    blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+                    #borderBox.draw() # draw the large color box
+                    #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                     
-                    instructPG2.draw()
-                    instructCount.text=text="screen 2/4"
-                    instructCount.draw()
+                    #instructPG2.draw()
+                    #instructCount.text=text="screen 2/4"
+                    #instructCount.draw()
         
-                    win.flip()
-                    core.wait(forcedInstrWaitTime)
+                    #win.flip()
+                    #core.wait(forcedInstrWaitTime)
                     
                     
                     # show page 2 + repsonse collection
-                    borderBox.draw() # draw the large color box
-                    blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+                    #borderBox.draw() # draw the large color box
+                    #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                     
-                    instructPG2.draw()
-                    instructCount.text=text="screen 2/4"
-                    instructCount.draw()
+                    #instructPG2.draw()
+                    #instructCount.text=text="screen 2/4"
+                    #instructCount.draw()
         
-                    win.flip()
-                    event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press 
+                    #win.flip()
+                    #event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press 
                     
                     
                     #show page 3 + forced viewing
-                    borderBox.draw() # draw the large color box
-                    blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+                    #borderBox.draw() # draw the large color box
+                    #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                     
-                    instructPG3.draw()
-                    instructCount.text=text="screen 3/4"
-                    instructCount.draw()
+                    #instructPG3.draw()
+                    #instructCount.text=text="screen 3/4"
+                    #instructCount.draw()
         
-                    win.flip()
-                    core.wait(forcedInstrWaitTime)
+                    #win.flip()
+                    #core.wait(forcedInstrWaitTime)
                     
                     # show page 3 + repsonse collection
-                    borderBox.draw() # draw the large color box
-                    blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+                    #borderBox.draw() # draw the large color box
+                    #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                     
-                    instructPG3.draw()
-                    instructCount.text=text="screen 3/4"
-                    instructCount.draw()
+                    #instructPG3.draw()
+                    #instructCount.text=text="screen 3/4"
+                    #instructCount.draw()
         
-                    win.flip()
-                    event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press 
+                    #win.flip()
+                    #event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press 
                     
                     #show page 4 + forced viewing
-                    borderBox.draw() # draw the large color box
-                    blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+                    #borderBox.draw() # draw the large color box
+                    #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                     
-                    instructPG4.draw()
-                    instructCount.text=text="screen 4/4"
-                    instructCount.draw()
+                    #instructPG4.draw()
+                    #instructCount.text=text="screen 4/4"
+                    #instructCount.draw()
         
-                    win.flip()
-                    core.wait(forcedInstrWaitTime)
+                    #win.flip()
+                    #core.wait(forcedInstrWaitTime)
                     
                     #show page 4 + response collection
-                    borderBox.draw() # draw the large color box
-                    blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+                    #borderBox.draw() # draw the large color box
+                    #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                     
-                    instructPG4.draw()
-                    instructCount.text=text="screen 4/4"
-                    instructCount.draw()
+                    #instructPG4.draw()
+                    #instructCount.text=text="screen 4/4"
+                    #instructCount.draw()
         
-                    win.flip()
-                    event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press 
+                    #win.flip()
+                    #event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press 
                 
-                elif r==1 and strategy==cond[r-1]: # if round 2 and repeting condition (two instead of 4 pages)
-                    if  strategy ==0: # if control condition
-                        instructPG1 = controlReminder1
-                        instructPG2 = controlReminder2
+                #elif r==1 and strategy==cond[r-1]: # if round 2 and repeting condition (two instead of 4 pages)
+                   # if  strategy ==0: # if control condition
+                       # instructPG1 = controlReminder1
+                       # instructPG2 = controlReminder2
                         
-                    elif strategy ==1: # if strategy condition
-                        instructPG1 = strategyReminder1
-                        instructPG2 = strategyReminder2
+                   # elif strategy ==1: # if strategy condition
+                       # instructPG1 = strategyReminder1
+                       # instructPG2 = strategyReminder2
         
                     #show page 1 + forced viewing
                     borderBox.draw() # draw the large color box
@@ -1378,23 +1378,23 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     borderBox.draw() # draw the large color box
                     blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                      
-                    instructPG2.draw()
-                    instructCount.text=text="screen 2/2"
-                    instructCount.draw()
+                    #instructPG2.draw()
+                    #instructCount.text=text="screen 2/2"
+                    #instructCount.draw()
         
-                    win.flip()
-                    core.wait(forcedInstrWaitTime)
+                    #win.flip()
+                    #core.wait(forcedInstrWaitTime)
 
                     #show page 2 + response collection
                     borderBox.draw() # draw the large color box
                     blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                      
-                    instructPG2.draw()
-                    instructCount.text=text="screen 2/2"
-                    instructCount.draw()
+                    #instructPG2.draw()
+                    #instructCount.text=text="screen 2/2"
+                    #instructCount.draw()
         
-                    win.flip()
-                    event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press 
+                    #win.flip()
+                    #event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press 
          
         
         
@@ -1935,20 +1935,20 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         outcomeForPay = np.random.choice(finalOutcomesToSelect);
         scaledOC = outcomeForPay/2
         
-        ocSelect.text = text = "The computer will now randomly select 1 of the 2 randomly selected outcomes from the gambling tasks. \n\nOutcome from ROUND 1: $%.2f \n\nOutcome from ROUND 2: $%.2f \n\n\nPress 'enter' to view your payment." % (finalOutcomesToSelect[0],finalOutcomesToSelect[1])
+        ocSelect.text = text = "Across the four rounds of today's study, you earned $Z bonus. \n\nPlease push the white button to call the experimenter now."
         
-        ocSelect.draw()
-        win.flip()
-        event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press 
+        #ocSelect.draw()
+        #win.flip()
+        #event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press 
     
     
-        ocSelect.text = text = "Randomly selected outcome: $%.2f. \n\nYou will receive $%.2f as your bonus payment.\n\n\nPress the white button to call the experimenter." % (outcomeForPay, scaledOC)
-        ocSelect.draw()
-        win.flip()
-        event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press 
+        #ocSelect.text = text = "Randomly selected outcome: $%.2f. \n\nYou will receive $%.2f as your bonus payment.\n\n\nPress the white button to call the experimenter." % (outcomeForPay, scaledOC)
+        #ocSelect.draw()
+        #win.flip()
+        #event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press 
         
-        trialOutcome.append([outcomeForPay]) # save outcome payment.
-        trialOutcome.append([scaledOC])
+        #trialOutcome.append([outcomeForPay]) # save outcome payment.
+        #trialOutcome.append([scaledOC])
         
     finally: # this should save the data even if something in "try" fails
         win.close()
