@@ -228,6 +228,38 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         )
         
         # SEPARATION THEATRICS FOR SEPARATING ROUNDS
+
+        explainRounds1 = visual.TextStim(
+            win, 
+            text = "You are about to do two rounds of the task. \n\nThese rounds are completely independent. \n\nEach round will be marked with a different color (purple or green).\n\nTreat each round of the task as independent.\n\n\nPress 'enter' to continue.",
+            pos = (0,0),
+            color=[1,1,1],
+            height = textHeight,
+            wrapWidth = wrap,
+            alignText="left"
+        )
+        
+       # explainGPRRounds1 = visual.TextStim(
+           # win,
+           # text = "Today you will be completing four rounds of the task. \n\nThese rounds are completely independent. \n\nEach round will be marked with a different color (purple, green, blue, or yellow). \n\nEach round will also have different goals and bonuses associated with them. \n\n\nPress 'space' to continue.",
+           # pos = (0,0),
+           # color = [1,1,1],
+           # height = textHeight,
+           # wrapWidth = wrap,
+           # alighText = "left"
+        #)
+
+
+
+
+
+
+
+
+
+
+
+
         explainRounds1 = visual.TextStim(
             win, 
             text = "You are about to do two rounds of the task. \n\nThese rounds are completely independent. \n\nEach round will be marked with a different color (purple or green).\n\nTreat each round of the task as independent.\n\n\nPress 'enter' to continue.",
@@ -270,7 +302,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
         round2Prep = visual.TextStim(
             win,
-            text='You have completed the this round, and will start the next, new round momentarily. \n\nMoving ahead to the next round, do your best to let the outcomes of the previous round go. \n\nFocus instead on the new goal and bonus. Rounds are independent from one another, making each round a new start. \n\nThe outcomes of any given round have no effect on subsequent rounds. \n\nBefore advancing, take a moment to get ready if you need.',
+            text='You have completed this round, and will start the next, new round momentarily. \n\nMoving ahead to the next round, do your best to let the outcomes of the previous round go. \n\nFocus instead on the new goal and bonus. Rounds are independent from one another, making each round a new start. \n\nThe outcomes of any given round have no effect on subsequent rounds. \n\nBefore advancing, take a moment to get ready if you need.',
             pos = (0,0),
             color=[1,1,1],
             height=textHeight,
@@ -773,15 +805,15 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
         mes2.draw()
         win.flip()
-        event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press or until max time allowed
+        event.waitKeys(keyList = ['q'], timeStamped = False) # waiting for key press or until max time allowed
         
         inst1.draw()
         win.flip()
-        event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press or until max time allowed
+        event.waitKeys(keyList = ['q'], timeStamped = False) # waiting for key press or until max time allowed
         
         inst2.draw()
         win.flip()
-        event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press or until max time allowed
+        event.waitKeys(keyList = ['q'], timeStamped = False) # waiting for key press or until max time allowed
         
         inst3.draw()
         win.flip()
@@ -1028,7 +1060,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         postPrac.draw()
         win.flip()
         print("Practice trials complete!")
-        event.waitKeys(keyList = ['return', 'space'], timeStamped = False) # waiting for return or space key press or until max time allowed
+        event.waitKeys(keyList = ['return', 'q'], timeStamped = False) # waiting for return or space key press or until max time allowed
     
     
     #practiceData = pd.DataFrame(practiceData) #convert data into pandas dataframe
@@ -1162,7 +1194,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 win.flip()
                 core.wait(1)
             
-            elif r== 1:
+            elif r > 0:
                 round2Prep.draw()
                 win.flip()
                 core.wait(forcedInstrWaitTime)
@@ -1926,7 +1958,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             if r == 0:
                 callExperimenter.draw()
                 win.flip()
-                event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press 
+                event.waitKeys(keyList = ['q'], timeStamped = False) # waiting for key press 
     
             
         #RANDOMLY SELECT OUTCOME FROM BOTH ROUNDS FOR PAYMENT
