@@ -1062,7 +1062,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         postPrac.draw()
         win.flip()
         print("Practice trials complete!")
-        event.waitKeys(keyList = ['return', 'q'], timeStamped = False) # waiting for return or space key press or until max time allowed
+        event.waitKeys(keyList = ['space', 'q'], timeStamped = False) # waiting for return or space key press or until max time allowed
     
     
     #practiceData = pd.DataFrame(practiceData) #convert data into pandas dataframe
@@ -1170,7 +1170,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 
                 explainRounds1.draw()
                 win.flip()
-                event.waitKeys(keyList = ['return'], timeStamped=False)
+                event.waitKeys(keyList = ['space'], timeStamped=False)
                 
                 #explainRounds2.draw()
                 #win.flip()
@@ -1440,7 +1440,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 win.flip()
                 
                 
-                keys = event.waitKeys(keyList = ['space','r'], timeStamped = False) # waiting for key press
+                keys = event.waitKeys(keyList = ['return','r'], timeStamped = False) # waiting for key press
                 #print(keys)
                 
                 #print(keys[0] == 'return')
