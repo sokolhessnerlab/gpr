@@ -1190,7 +1190,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 
                 readyForRound1.draw()
                 win.flip()
-                event.waitKeys(keyList = ['return'], timeStamped=False)
+                event.waitKeys(keyList = ['space'], timeStamped=False)
                 
                 startingRound1.draw()
                 win.flip()
@@ -1203,11 +1203,11 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
 
                 round2Prep.draw()
                 win.flip()
-                event.waitKeys(keyList = ['return'], timeStamped=False)
+                event.waitKeys(keyList = ['space'], timeStamped=False)
                 
                 readyForRound2.draw()
                 win.flip()
-                event.waitKeys(keyList = ['return'], timeStamped=False)
+                event.waitKeys(keyList = ['space'], timeStamped=False)
                 
                 #startingRound2.draw()
                 #win.flip()
@@ -1250,7 +1250,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 prepForConditionRound2_pg1Switching.draw() 
                 
             win.flip()
-            event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press
+            event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press
             
             #if r==1: # round 2 has a second page of prep instructions
                 # set up border color
@@ -1306,7 +1306,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     instructCount.draw()
         
                     win.flip()
-                    event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press 
+                    event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press 
                     
                     #show page 2 + forced viewing
                     #borderBox.draw() # draw the large color box
@@ -1406,7 +1406,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     instructCount.draw()
                     
                     win.flip()
-                    event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press 
+                    event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press 
                      
                     #show page 2 + forced viewing
                     borderBox.draw() # draw the large color box
@@ -1440,7 +1440,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 win.flip()
                 
                 
-                keys = event.waitKeys(keyList = ['return','r'], timeStamped = False) # waiting for key press
+                keys = event.waitKeys(keyList = ['space','r'], timeStamped = False) # waiting for key press
                 #print(keys)
                 
                 #print(keys[0] == 'return')
@@ -1756,7 +1756,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             blackBox.draw() # draw smaller black box on top of our color rect to create border effect
             ocSelect.draw() #"You will receive ..."
             win.flip()
-            event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press 
+            event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press 
             
             # ----------------------
             # COMMENTED OUT POST TASK QUESTIONS FOR NO -- COULD BE REINSTATED OR DELETED ENTIRELY
