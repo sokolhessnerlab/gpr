@@ -89,8 +89,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         earned_bonus = 0
         
         # BONUS values are represented as a dollar amount
-        LOW_BONUS = 4
-        HIGH_BONUS = 12
+        LOW_BONUS = 2
+        HIGH_BONUS = 10
         
         # GOAL is represented as a percentile amount of the amount to hit, the dollar amount is calculatred from CSV data from that percentile
         LOW_GOAL = 10
@@ -171,13 +171,13 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         # Prepare instructions and other task stimuli
         forcedInstrWaitTime = 1.5 # participants can't moved forward during instructions until 1.5s have passed
 
-        mes1 = visual.TextStim(
-            win, 
-            text='Setting up...', 
-            pos = (0,0),
-            color=[1,1,1], 
-            height=40
-        )
+        #mes1 = visual.TextStim(
+           # win, 
+           # text='Setting up...', 
+           # pos = (0,0),
+           # color=[1,1,1], 
+           # height=40
+        #)
         
         mes2 = visual.TextStim(
             win, 
@@ -199,7 +199,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
         inst2 = visual.TextStim(
             win, 
-            text='Next up are 5 practice trials. \n\nWhat questions do you have for the experimenter? \n\nPlease ask the experimenter now.', 
+            text='Next up are 5 practice trials. \n\nDo you have any questions for the experimenter? \n\nPlease ask the experimenter now.', 
             pos = (0,0),
             color=[1,1,1],
             height = textHeight,
@@ -207,6 +207,17 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             alignText="left"
         )
         
+        #instGPR2 = visual.TextStim(
+           # win,
+           # text = "Next, you will complete 5 practice trials. These trials DO NOT count, \n\nand the goal and bonus are for EXAMPLE ONLY. \n\nIf you have any questions for the experimenter \n\nask them now.",
+           # pos = (0,0),
+           # color = [1,1,1],
+           # height = textHeight,
+           # wrapWidth = wrap,
+           # alignText = "left"
+        #)
+
+        #Change to instGPR_
         inst3 = visual.TextStim(
             win, 
             text='Press "V" or "N" when you are ready to begin the practice.', 
@@ -219,7 +230,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
         postPrac = visual.TextStim(
             win, 
-            text='Practice complete! \n\nWhat questions do you have for the experimenter? \n\nPlease ask the experimenter now.', 
+            text='Practice complete! \n\nDo you have any questions for the experimenter? \n\nPlease ask the experimenter now.', 
             pos = (0,0),
             color=[1,1,1],
             height = textHeight,
@@ -227,6 +238,16 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             alignText="left"
         )
         
+        #postPracGPR = visual.TextStim(
+           # win,
+           # text = "Practice complete! \n\nDo you have any questions for the experimenter? \n\nAsk them now.",
+           # pos = (0,0),
+           # color = [1,1,1],
+           # height = textHeight,
+           # wrapWidth = wrap,
+           # alightText = "left"
+        #)
+
         # SEPARATION THEATRICS FOR SEPARATING ROUNDS
 
         explainRounds1 = visual.TextStim(
@@ -249,46 +270,26 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
            # alighText = "left"
         #)
 
-
-
-
-
-
-
-
-
-
-
-
-        explainRounds1 = visual.TextStim(
-            win, 
-            text = "You are about to do two rounds of the task. \n\nThese rounds are completely independent. \n\nEach round will be marked with a different color (purple or green).\n\nTreat each round of the task as independent.\n\n\nPress 'enter' to continue.",
-            pos = (0,0),
-            color=[1,1,1],
-            height = textHeight,
-            wrapWidth = wrap,
-            alignText="left"
-        )
+        # Don't think we need explainRounds2 or explainRounds3 in GPR
+        #explainRounds2 = visual.TextStim(
+           # win, 
+           # text = "Prior to each round, you will read an additional set of instructions.\n\nAfteward, the experimenter will ask for a short, verbal summary of the instructions.\n\nThe experimenter will leave the room prior to each round of the task. \n\nPress 'enter' to continue.",
+           # pos = (0,0),
+           # color=[1,1,1],
+           # height = textHeight,
+           # wrapWidth = wrap,
+           # alignText="left"
+        #)
         
-        explainRounds2 = visual.TextStim(
-            win, 
-            text = "Prior to each round, you will read an additional set of instructions.\n\nAfteward, the experimenter will ask for a short, verbal summary of the instructions.\n\nThe experimenter will leave the room prior to each round of the task. \n\nPress 'enter' to continue.",
-            pos = (0,0),
-            color=[1,1,1],
-            height = textHeight,
-            wrapWidth = wrap,
-            alignText="left"
-        )
-        
-        explainRounds3 = visual.TextStim(
-            win, 
-            text = "After each round of the gambling task, you will be asked two short questions.\n\nThe computer will tell you when you should press the white button to call the experimenter back into the room.\n\n\nPress 'enter' to continue.",
-            pos = (0,0),
-            color=[1,1,1],
-            height = textHeight,
-            wrapWidth = wrap,
-            alignText="left"
-        )
+        #explainRounds3 = visual.TextStim(
+           # win, 
+           # text = "After each round of the gambling task, you will be asked two short questions.\n\nThe computer will tell you when you should press the white button to call the experimenter back into the room.\n\n\nPress 'enter' to continue.",
+           # pos = (0,0),
+           # color=[1,1,1],
+           # height = textHeight,
+           # wrapWidth = wrap,
+           # alignText="left"
+        #)
         
         readyForRound1 = visual.TextStim(
             win,
@@ -331,15 +332,15 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         )
         
         
-        startingRound2 = visual.TextStim(
-            win,
-            text='Setting up ROUND 2...',
-            pos = (0,0),
-            color=[1,1,1],
-            height=textHeight,
-            wrapWidth=wrap,
-            alignText="left"
-        )
+        #startingRound2 = visual.TextStim(
+           # win,
+           # text='Setting up ROUND 2...',
+           # pos = (0,0),
+           # color=[1,1,1],
+           # height=textHeight,
+           # wrapWidth=wrap,
+           # alignText="left"
+        #)
         
         #   PREPARING FOR THE FIRST ROUND INSTRUCTIONS
         prepForConditionRound1 = visual.TextStim(
@@ -398,7 +399,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
         
         # CONTROL INSTRUCTIONS (FIRST TIME AROUND)
-        controlInst1 = visual.TextStim(
+        controlInstGPR1 = visual.TextStim(
             win,
             text='In this round, your goal is $X. \n\nYour bonus in this round is HIGH/LOW ($Y). \n\nTake a moment if you need before beginning the task. \n\nPress "V" or "N" when you are ready to begin.',
             pos = (0,0),
@@ -462,65 +463,65 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
         # STRATEGY INSTRUCTIONS (FIRST TIME AROUND)
         
-        stratInst1 = visual.TextStim(
-            win,
-            text='In this round of the task, please make your choices in isolation from any context, considering each choice solely on its own merits. \n\nIn our previous studies involving this gambling task, we have found that participants’ choices to accept the gamble were influenced not only by the options on the current trial but also depended on what happened earlier in the task.\n\n\nPress ‘enter’ to continue.',
-            pos = (0,0),
-            color=[1,1,1],
-            height=textHeight,
-            wrapWidth=wrap,
-            alignText="left"
-        )
+        #stratInst1 = visual.TextStim(
+           # win,
+           # text='In this round of the task, please make your choices in isolation from any context, considering each choice solely on its own merits. \n\nIn our previous studies involving this gambling task, we have found that participants’ choices to accept the gamble were influenced not only by the options on the current trial but also depended on what happened earlier in the task.\n\n\nPress ‘enter’ to continue.',
+           # pos = (0,0),
+           # color=[1,1,1],
+           # height=textHeight,
+           # wrapWidth=wrap,
+           # alignText="left"
+        #)
         
-        stratInst2 = visual.TextStim(
-            win,
-            text='Each trial in this task is unrelated to previous trials. \n\nThe values and outcomes of previous trials do not influence the outcome of the current trial. \n\nAllowing previous values and outcomes to influence your current choice may lead to a lower payoff, and thus not maximize the money you receive.\n\n\nPress ‘enter’ to continue.',
-            pos = (0,0),
-            color=[1,1,1],
-            height=textHeight,
-            wrapWidth=wrap,
-            alignText="left"
-        )
+        #stratInst2 = visual.TextStim(
+           # win,
+           # text='Each trial in this task is unrelated to previous trials. \n\nThe values and outcomes of previous trials do not influence the outcome of the current trial. \n\nAllowing previous values and outcomes to influence your current choice may lead to a lower payoff, and thus not maximize the money you receive.\n\n\nPress ‘enter’ to continue.',
+           # pos = (0,0),
+           # color=[1,1,1],
+           # height=textHeight,
+           # wrapWidth=wrap,
+           # alignText="left"
+        #)
         
-        stratInst3 = visual.TextStim(
-            win,
-            text='For each decision in this round, focus on the monetary values on the screen, the probability of receiving each of those options, and how you feel about them. \n\nForget about the previous values, choices, and outcomes and simply focus on the current trial. \n\nIf you select the gamble, you have an equal chance of receiving either amount and if you select the safe option, that will be the outcome for that trial. \n\nThis is true regardless of what has happened earlier in the task. \n\n\nPress ‘enter’ to continue.',
-            pos = (0,0),
-            color=[1,1,1],
-            height=textHeight,
-            wrapWidth=wrap,
-            alignText="left"
-        )
+        #stratInst3 = visual.TextStim(
+           # win,
+           # text='For each decision in this round, focus on the monetary values on the screen, the probability of receiving each of those options, and how you feel about them. \n\nForget about the previous values, choices, and outcomes and simply focus on the current trial. \n\nIf you select the gamble, you have an equal chance of receiving either amount and if you select the safe option, that will be the outcome for that trial. \n\nThis is true regardless of what has happened earlier in the task. \n\n\nPress ‘enter’ to continue.',
+           # pos = (0,0),
+           # color=[1,1,1],
+           # height=textHeight,
+           # wrapWidth=wrap,
+           # alignText="left"
+        #)
         
-        stratInst4 = visual.TextStim(
-            win,
-            text='Remember that you will be paid the outcome of one randomly selected trial.\n\nOn each trial, think about how you would feel if the outcome on this trial was randomly selected as your cash payment.\n\nFor this round, approach the task and evaluate your choice options with a focus on only that choice, in isolation from any context.\n\n\nPress ‘enter’ to continue.',
-            pos = (0,0),
-            color=[1,1,1],
-            height=textHeight,
-            wrapWidth=wrap,
-            alignText="left"
-        )
+        #stratInst4 = visual.TextStim(
+           # win,
+           # text='Remember that you will be paid the outcome of one randomly selected trial.\n\nOn each trial, think about how you would feel if the outcome on this trial was randomly selected as your cash payment.\n\nFor this round, approach the task and evaluate your choice options with a focus on only that choice, in isolation from any context.\n\n\nPress ‘enter’ to continue.',
+           # pos = (0,0),
+           # color=[1,1,1],
+           # height=textHeight,
+           # wrapWidth=wrap,
+           # alignText="left"
+        #)
         
-        strategyReminder1  = visual.TextStim(
-            win,
-            text='As a reminder, in this round of the task, please make your choices in isolation from any context, considering each choice solely on its own merits.\n\nOn each trial, focus on the monetary values on the screen, the probability of receiving each of those options, and how you feel about them.\n\n\nPress ‘enter’ to continue.',
-            pos = (0,0),
-            color=[1,1,1],
-            height=textHeight,
-            wrapWidth=wrap,
-            alignText="left"
-        )
+        #strategyReminder1  = visual.TextStim(
+           # win,
+           # text='As a reminder, in this round of the task, please make your choices in isolation from any context, considering each choice solely on its own merits.\n\nOn each trial, focus on the monetary values on the screen, the probability of receiving each of those options, and how you feel about them.\n\n\nPress ‘enter’ to continue.',
+           # pos = (0,0),
+           # color=[1,1,1],
+           # height=textHeight,
+           # wrapWidth=wrap,
+           # alignText="left"
+        #)
         
-        strategyReminder2 = visual.TextStim(
-            win,
-            text='Forget about the previous values, choices, and outcomes and simply focus on the current trial.\n\nThink about how you would feel if the outcome on this trial was randomly selected as your cash payment.\n\nFor this round, approach the task and evaluate your choice options with a focus on only that choice, in isolation from any context.\n\n\nPress ‘enter’ to continue.',
-            pos = (0,0),
-            color=[1,1,1],
-            height=textHeight,
-            wrapWidth=wrap,
-            alignText="left"
-        )
+        #strategyReminder2 = visual.TextStim(
+           # win,
+           # text='Forget about the previous values, choices, and outcomes and simply focus on the current trial.\n\nThink about how you would feel if the outcome on this trial was randomly selected as your cash payment.\n\nFor this round, approach the task and evaluate your choice options with a focus on only that choice, in isolation from any context.\n\n\nPress ‘enter’ to continue.',
+           # pos = (0,0),
+           # color=[1,1,1],
+           # height=textHeight,
+           # wrapWidth=wrap,
+           # alignText="left"
+        #)
         
         # screen count for instructions
         instructCount = visual.TextStim(
@@ -543,26 +544,27 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             alignText="left"
         )
         
-        startTaskRound1 = visual.TextStim(
-            win, 
-            text='The experimenter will now leave the room.\n\nOnce the experimenter leaves the room, you may begin ROUND 1 of the gambling task. \n\nPress "V" or "N" to begin the task.', 
-            pos = (0,0),
-            color=[1,1,1],
-            height = textHeight,
-            wrapWidth =wrap,
-            alignText="left"
-        )
+        # I don't think I'm going to be leaving the room for GPR in any of the rounds
+        #startTaskRound1 = visual.TextStim(
+           # win, 
+           # text='The experimenter will now leave the room.\n\nOnce the experimenter leaves the room, you may begin ROUND 1 of the gambling task. \n\nPress "V" or "N" to begin the task.', 
+           # pos = (0,0),
+           # color=[1,1,1],
+           # height = textHeight,
+           # wrapWidth =wrap,
+           # alignText="left"
+        #)
         
         
-        startTaskRound2 = visual.TextStim(
-            win, 
-            text='The experimenter will now leave the room.\n\nOnce the experimenter leaves the room, you may begin ROUND 2 of the gambling task. \n\nPress "V" or "N" to begin the task.', 
-            pos = (0,0),
-            color=[1,1,1],
-            height = textHeight,
-            wrapWidth = wrap,
-            alignText="left"
-        )
+        #startTaskRound2 = visual.TextStim(
+           # win, 
+           # text='The experimenter will now leave the room.\n\nOnce the experimenter leaves the room, you may begin ROUND 2 of the gambling task. \n\nPress "V" or "N" to begin the task.', 
+           # pos = (0,0),
+           # color=[1,1,1],
+           # height = textHeight,
+           # wrapWidth = wrap,
+           # alignText="left"
+        #)
         
         postTask1 = visual.TextStim(
             win, 
@@ -799,9 +801,9 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
         
         # ---- START INSTRUCTIONS + PRACTICE ---- #
-        mes1.draw()
-        win.flip()
-        core.wait(1)
+        #mes1.draw()
+        #win.flip()
+        #core.wait(1)
         
         mes2.draw()
         win.flip()
@@ -1170,21 +1172,21 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 win.flip()
                 event.waitKeys(keyList = ['return'], timeStamped=False)
                 
-                explainRounds2.draw()
-                win.flip()
-                core.wait(forcedInstrWaitTime)
+                #explainRounds2.draw()
+                #win.flip()
+                #core.wait(forcedInstrWaitTime)
                 
-                explainRounds2.draw()
-                win.flip()
-                event.waitKeys(keyList = ['return'], timeStamped=False)
+                #explainRounds2.draw()
+                #win.flip()
+                #event.waitKeys(keyList = ['return'], timeStamped=False)
                 
-                explainRounds3.draw()
-                win.flip()
-                core.wait(forcedInstrWaitTime)
+                #explainRounds3.draw()
+                #win.flip()
+                #core.wait(forcedInstrWaitTime)
                 
-                explainRounds3.draw()
-                win.flip()
-                event.waitKeys(keyList = ['return'], timeStamped=False)
+                #explainRounds3.draw()
+                #win.flip()
+                #event.waitKeys(keyList = ['return'], timeStamped=False)
                 
                 readyForRound1.draw()
                 win.flip()
@@ -1207,9 +1209,9 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 win.flip()
                 event.waitKeys(keyList = ['return'], timeStamped=False)
                 
-                startingRound2.draw()
-                win.flip()
-                core.wait(1)
+                #startingRound2.draw()
+                #win.flip()
+                #core.wait(1)
             
                 
     
@@ -1272,7 +1274,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 if r == 0 or r==1 and strategy!=cond[r-1]: # round 1 or switiching in round 2, we show the full control or strategy instructions
         
                     if strategy == 0: # if the condition is control
-                        instructPG1 = controlInst1
+                        instructPG1 = controlInstGPR1
                         #instructPG2 = controlInst2
                         #instructPG3 = controlInst3
                         #instructPG4 = controlInst4
@@ -1289,7 +1291,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                     
                     instructPG1.draw()
-                    instructCount.text=text="screen 1/4"
+                    #instructCount.text=text="screen 1/4"
                     instructCount.draw()
         
                     win.flip()
@@ -1300,7 +1302,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                     
                     instructPG1.draw()
-                    instructCount.text=text="screen 1/4"
+                    #instructCount.text=text="screen 1/4"
                     instructCount.draw()
         
                     win.flip()
@@ -1388,7 +1390,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                      
                     instructPG1.draw()
-                    instructCount.text=text="screen 1/2"
+                    #instructCount.text=text="screen 1/2"
                     instructCount.draw()
                     
                     win.flip()
@@ -1400,7 +1402,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                      
                     instructPG1.draw()
-                    instructCount.text=text="screen 1/2"
+                    #instructCount.text=text="screen 1/2"
                     instructCount.draw()
                     
                     win.flip()
@@ -1453,10 +1455,10 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             blackBox.draw() # draw smaller black box on top of our color rect to create border effect
             
             # depending on round of task, show slightly different start screen
-            if r==0:
-                startTaskRound1.draw()
-            elif r==1:
-                startTaskRound2.draw()
+            #if r==0:
+               # startTaskRound1.draw()
+            #elif r==1:
+               # startTaskRound2.draw()
                 
             win.flip()
             event.waitKeys(keyList = ['v', 'n'], timeStamped = False) # waiting for key press or until max time allowed
