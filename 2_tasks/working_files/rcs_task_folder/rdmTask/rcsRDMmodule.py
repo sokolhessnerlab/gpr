@@ -1440,12 +1440,12 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 win.flip()
                 
                 
-                keys = event.waitKeys(keyList = ['return','r'], timeStamped = False) # waiting for key press
+                keys = event.waitKeys(keyList = ['space','r'], timeStamped = False) # waiting for key press
                 #print(keys)
                 
                 #print(keys[0] == 'return')
                 
-                if keys[0] == 'return':
+                if keys[0] == 'space':
                     keepLoopGoing=False # end loop, start task
                 else:
                     keepLoopGoing=True
