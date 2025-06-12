@@ -252,7 +252,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
 
         explainRounds1 = visual.TextStim(
             win, 
-            text = "You are about to do two rounds of the task. \n\nThese rounds are completely independent. \n\nEach round will be marked with a different color (purple or green).\n\nTreat each round of the task as independent.\n\n\nPress 'enter' to continue.",
+            text = "You are about to do two rounds of the task. \n\nThese rounds are completely independent. \n\nEach round will be marked with a different color (purple or green).\n\nTreat each round of the task as independent.\n\n\nPress 'space' to continue.",
             pos = (0,0),
             color=[1,1,1],
             height = textHeight,
@@ -293,7 +293,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
         readyForRound1 = visual.TextStim(
             win,
-            text='Are you ready for ROUND 1 of the task?\n\n\n\nPress ‘enter’ to continue.',
+            text='Are you ready for ROUND 1 of the task?\n\n\n\nPress ‘space’ to continue.',
             pos = (0,0),
             color=[1,1,1],
             height=textHeight,
@@ -313,7 +313,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
         readyForRound2 = visual.TextStim(
             win,
-            text='Are you ready for ROUND 2 of the task?\n\n\n\nPress ‘enter’ to continue.',
+            text='Are you ready for ROUND 2 of the task?\n\n\n\nPress ‘space’ to continue.',
             pos = (0,0),
             color=[1,1,1],
             height=textHeight,
@@ -345,7 +345,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         #   PREPARING FOR THE FIRST ROUND INSTRUCTIONS
         prepForConditionRound1 = visual.TextStim(
             win,
-            text='Before we begin ROUND 1 of the gambling task, you will be asked to read some additional task instructions.\n\nPlease pay close attention to the instructions as you read them.\n\n\n\nPress ‘enter’ to continue.',
+            text='Before we begin ROUND 1 of the gambling task, you will be asked to read some additional task instructions.\n\nPlease pay close attention to the instructions as you read them.\n\n\n\nPress ‘space’ to continue.',
             pos = (0,0),
             color=[1,1,1],
             height=textHeight,
@@ -369,7 +369,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         # if participant is switching conditions from round 1:
         prepForConditionRound2_pg1Switching = visual.TextStim(
             win,
-            text='Before we begin ROUND 2 of the gambling task, you will be asked to read additional task instructions that are different from round 1. \n\nThe mechanics of the task will be the exact same but the instructions will ask you to think differently than you did in round 1. \n\nPlease pay close attention to the instructions as you read them.\n\nTry your best to forget the instructions from round 1 and follow these new instructions. \n\n\n\nPress ‘enter’ to continue.',
+            text='Before we begin ROUND 2 of the gambling task, you will be asked to read additional task instructions that are different from round 1. \n\nThe mechanics of the task will be the exact same but the instructions will ask you to think differently than you did in round 1. \n\nPlease pay close attention to the instructions as you read them.\n\nTry your best to forget the instructions from round 1 and follow these new instructions. \n\n\n\nPress ‘space’ to continue.',
             pos = (0,0),
             color=[1,1,1],
             height=textHeight,
@@ -379,7 +379,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
         prepForConditionRound2_pg1Repeating= visual.TextStim(
             win,
-            text='Before we begin ROUND 2 of the gambling task, you will be asked to read a brief reminder of the instructions that were given in round 1.\n\n\n\nPress ‘enter’ to continue.',
+            text='Before we begin ROUND 2 of the gambling task, you will be asked to read a brief reminder of the instructions that were given in round 1.\n\n\n\nPress ‘space’ to continue.',
             pos = (0,0),
             color=[1,1,1],
             height=textHeight,
@@ -389,7 +389,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
         prepForConditionRound2_pg2forAllSubs = visual.TextStim(
             win,
-            text='Please let the experimenter know when you are done reading the instructions.\n\n\n\nPress ‘enter’ to continue.',
+            text='Please let the experimenter know when you are done reading the instructions.\n\n\n\nPress ‘space’ to continue.',
             pos = (0,0),
             color=[1,1,1],
             height=textHeight,
@@ -1734,24 +1734,24 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             
             if r==0:
                 if overall_outcome >= curr_goal:
-                    ocSelect.text= text='ROUND 1\n\nYou earned $%d over the span of the trials.\n\nThis met the goal of $%d \n\nYou will gain this rounds bonus of $%d\n\nPress ‘enter’ to continue.' % (overall_outcome, curr_goal, curr_bonus)
+                    ocSelect.text= text='ROUND 1\n\nYou earned $%d over the span of the trials.\n\nThis met the goal of $%d \n\nYou will gain this rounds bonus of $%d\n\nPress ‘space’ to continue.' % (overall_outcome, curr_goal, curr_bonus)
                 else:
-                    ocSelect.text= text='ROUND 1\n\nYou earned $%d over the span of the trials.\n\nThis did not meet the goal of $%d \n\nYou will not gain this rounds bonus of $%d \n\nPress ‘enter’ to continue.' % (overall_outcome,curr_goal, curr_bonus)
+                    ocSelect.text= text='ROUND 1\n\nYou earned $%d over the span of the trials.\n\nThis did not meet the goal of $%d \n\nYou will not gain this rounds bonus of $%d \n\nPress ‘space’ to continue.' % (overall_outcome,curr_goal, curr_bonus)
             elif r==1:
                 if overall_outcome >= curr_goal:
-                    ocSelect.text= text='ROUND 2\n\nYou earned $%d over the span of the trials.\n\nThis met the goal of $%d \n\nYou will gain this rounds bonus of $%d\n\nPress ‘enter’ to continue.' % (overall_outcome, curr_goal, curr_bonus)
+                    ocSelect.text= text='ROUND 2\n\nYou earned $%d over the span of the trials.\n\nThis met the goal of $%d \n\nYou will gain this rounds bonus of $%d\n\nPress ‘space’ to continue.' % (overall_outcome, curr_goal, curr_bonus)
                 else:
-                    ocSelect.text= text='ROUND 2\n\nYou earned $%d over the span of the trials.\n\nThis did not meet the goal of $%d \n\nYou will not gain this rounds bonus of $%d \n\nPress ‘enter’ to continue.' % (overall_outcome,curr_goal, curr_bonus)
+                    ocSelect.text= text='ROUND 2\n\nYou earned $%d over the span of the trials.\n\nThis did not meet the goal of $%d \n\nYou will not gain this rounds bonus of $%d \n\nPress ‘space’ to continue.' % (overall_outcome,curr_goal, curr_bonus)
             elif r==2:
                 if overall_outcome >= curr_goal:
-                    ocSelect.text= text='ROUND 3\n\nYou earned $%d over the span of the trials.\n\nThis met the goal of $%d \n\nYou will gain this rounds bonus of $%d\n\nPress ‘enter’ to continue.' % (overall_outcome, curr_goal, curr_bonus)
+                    ocSelect.text= text='ROUND 3\n\nYou earned $%d over the span of the trials.\n\nThis met the goal of $%d \n\nYou will gain this rounds bonus of $%d\n\nPress ‘space’ to continue.' % (overall_outcome, curr_goal, curr_bonus)
                 else:
-                    ocSelect.text= text='ROUND 3\n\nYou earned $%d over the span of the trials.\n\nThis did not meet the goal of $%d \n\nYou will not gain this rounds bonus of $%d \n\nPress ‘enter’ to continue.' % (overall_outcome,curr_goal, curr_bonus)
+                    ocSelect.text= text='ROUND 3\n\nYou earned $%d over the span of the trials.\n\nThis did not meet the goal of $%d \n\nYou will not gain this rounds bonus of $%d \n\nPress ‘space’ to continue.' % (overall_outcome,curr_goal, curr_bonus)
             elif r==3:
                 if overall_outcome >= curr_goal:
-                    ocSelect.text= text='ROUND 4\n\nYou earned $%d over the span of the trials.\n\nThis met the goal of $%d \n\nYou will gain this rounds bonus of $%d\n\nPress ‘enter’ to continue.' % (overall_outcome, curr_goal, curr_bonus)
+                    ocSelect.text= text='ROUND 4\n\nYou earned $%d over the span of the trials.\n\nThis met the goal of $%d \n\nYou will gain this rounds bonus of $%d\n\nPress ‘space’ to continue.' % (overall_outcome, curr_goal, curr_bonus)
                 else:
-                    ocSelect.text= text='ROUND 4\n\nYou earned $%d over the span of the trials.\n\nThis did not meet the goal of $%d \n\nYou will not gain this rounds bonus of $%d \n\nPress ‘enter’ to continue.' % (overall_outcome,curr_goal, curr_bonus)
+                    ocSelect.text= text='ROUND 4\n\nYou earned $%d over the span of the trials.\n\nThis did not meet the goal of $%d \n\nYou will not gain this rounds bonus of $%d \n\nPress ‘space’ to continue.' % (overall_outcome,curr_goal, curr_bonus)
             borderBox.draw() # draw the large color box
             blackBox.draw() # draw smaller black box on top of our color rect to create border effect
             ocSelect.draw() #"You will receive ..."
