@@ -1290,20 +1290,20 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     borderBox.draw() # draw the large color box
                     blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                     
-                    instructPG1.draw()
+                    #instructPG1.draw()
                     #instructCount.text=text="screen 1/4"
-                    instructCount.draw()
+                    #instructCount.draw()
         
-                    win.flip()
-                    core.wait(forcedInstrWaitTime)
+                    #win.flip()
+                    #core.wait(forcedInstrWaitTime)
 
                     # show page 1 + repsonse collection
                     borderBox.draw() # draw the large color box
                     blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                     
-                    #instructPG1.draw()
+                    instructPG1.draw()
                     #instructCount.text=text="screen 1/4"
-                    #instructCount.draw()
+                    instructCount.draw()
         
                     win.flip()
                     event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press 
