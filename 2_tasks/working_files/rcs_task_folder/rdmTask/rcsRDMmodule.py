@@ -1457,8 +1457,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 borderBox.draw() # draw the large color box
                 blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                 
-                summarizeInst.draw()
-                win.flip()
+                #summarizeInst.draw()
+                #win.flip()
                 
                 
                 keys = event.waitKeys(keyList = ['space','r'], timeStamped = False) # waiting for key press
