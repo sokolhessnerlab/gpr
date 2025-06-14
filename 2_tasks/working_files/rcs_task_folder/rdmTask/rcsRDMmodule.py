@@ -321,6 +321,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             alignText="left"
         )               
         
+        #This should be set up to say this for rounds 3 and 4 as well for GPR.
         readyForRound2 = visual.TextStim(
             win,
             text='Are you ready for ROUND 2 of the task?\n\n\n\nPress ‘space’ to continue.',
@@ -330,7 +331,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             wrapWidth=wrap,
             alignText="left"
         )
-         
+
+        #Don't think we really need this for GPR. 
         startingRound1 = visual.TextStim(
             win,
             text='Setting up ROUND 1...',
@@ -362,6 +364,16 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             wrapWidth=wrap,
             alignText="left"
         )
+
+        #prepForConditionRound1GPR = visual.TextStim(
+           # win,
+           # text = "If you have any questions, please ask the experimenter now. \n\nWhen you are ready, you may press 'v' or 'n' to begin the task.",
+           # pos = (0,0),
+           # color = [1,1,1],
+           # height = textHeight,
+           # wrapWidth = wrap,
+           # alignText = "left"
+        #)
         
         # Call experimenter
         callExperimenter = visual.TextStim(
