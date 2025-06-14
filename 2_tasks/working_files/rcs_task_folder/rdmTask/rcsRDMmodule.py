@@ -300,6 +300,16 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             wrapWidth=wrap,
             alignText="left"
         )
+
+        #readyForRound1GPR = visual.TextStim(
+           # win,
+           # text = "You'll now begin the real rounds of the task. \n\nRemember, if you reach the goal, you will win the bonus for the round. \n\nEach round is independent of one another, meaning your performance in each round will not impact the results of any of the following rounds. \n\nPress 'space' to continue.",
+           # pos = (0,0);
+           # color = [1,1,1],
+           # height = textHeight,
+           # wrapWidth = wrap,
+           # alignText = "left"
+        #)
         
         round2Prep = visual.TextStim(
             win,
