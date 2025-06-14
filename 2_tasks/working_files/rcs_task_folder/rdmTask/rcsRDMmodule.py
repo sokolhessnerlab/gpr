@@ -189,7 +189,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
         inst1 = visual.TextStim(
             win, 
-            text='As discussed, in this task you will choose between a gamble and a guaranteed alternative. \n\n\n\nPress "V" to choose the left option and "N" to choose the right option.', 
+            text="As discussed, in this task you will choose between a gamble and a guaranteed alternative. \n\n\n\nPress 'V' to choose the left option and 'N' to choose the right option.", 
             pos = (0,0),
             color=[1,1,1],
             height = textHeight,
@@ -220,7 +220,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         #Change to instGPR_
         inst3 = visual.TextStim(
             win, 
-            text='Press "V" or "N" when you are ready to begin the practice.', 
+            text="Press 'V' or 'N' when you are ready to begin the practice.", 
             pos = (0,0),
             color=[1,1,1],
             height = textHeight,
@@ -364,10 +364,10 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             wrapWidth=wrap,
             alignText="left"
         )
-
+        #This should be called before the slide when participants see the goal and the bonus GPR.
         #prepForConditionRound1GPR = visual.TextStim(
            # win,
-           # text = "If you have any questions, please ask the experimenter now. \n\nWhen you are ready, you may press 'v' or 'n' to begin the task.",
+           # text = "If you have any questions, please ask the experimenter now. \n\nWhen you are ready, you may press 'space' to continue.",
            # pos = (0,0),
            # color = [1,1,1],
            # height = textHeight,
@@ -423,7 +423,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         # CONTROL INSTRUCTIONS (FIRST TIME AROUND)
         controlInstGPR1 = visual.TextStim(
             win,
-            text='In this round, your goal is $X. \n\nYour bonus in this round is HIGH/LOW ($Y). \n\nTake a moment if you need before beginning the task. \n\nPress "V" or "N" when you are ready to begin.',
+            text="In this round, your goal is $X. \n\nYour bonus in this round is HIGH/LOW ($Y). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin.",
             pos = (0,0),
             color=[1,1,1],
             height=textHeight,
@@ -556,15 +556,15 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         ) 
         
         
-        summarizeInst = visual.TextStim(
-            win,
-            text='Please let the experimenter know that you are done reading the instructions. \n\nIf you wish to read the instructions again, press "R".',
-            pos = (0,0),
-            color=[1,1,1],
-            height=textHeight,
-            wrapWidth=wrap,
-            alignText="left"
-        )
+        #summarizeInst = visual.TextStim(
+           # win,
+           # text='Please let the experimenter know that you are done reading the instructions. \n\nIf you wish to read the instructions again, press "R".',
+           # pos = (0,0),
+           # color=[1,1,1],
+           # height=textHeight,
+           # wrapWidth=wrap,
+           # alignText="left"
+        #)
         
         # I don't think I'm going to be leaving the room for GPR in any of the rounds
         #startTaskRound1 = visual.TextStim(
@@ -1325,8 +1325,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     
                     instructPG1.draw()
                     #instructCount.text=text="screen 1/4"
-                    instructCount.draw()
-        
+                    instructCount.draw()                    
                     win.flip()
                     event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press 
                     
