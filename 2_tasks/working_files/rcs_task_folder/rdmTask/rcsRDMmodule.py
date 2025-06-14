@@ -355,25 +355,25 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         #)
         
         #   PREPARING FOR THE FIRST ROUND INSTRUCTIONS
-        prepForConditionRound1 = visual.TextStim(
-            win,
-            text='Before we begin ROUND 1 of the gambling task, you will be asked to read some additional task instructions.\n\nPlease pay close attention to the instructions as you read them.\n\n\n\nPress ‘space’ to continue.',
-            pos = (0,0),
-            color=[1,1,1],
-            height=textHeight,
-            wrapWidth=wrap,
-            alignText="left"
-        )
-        #This should be called before the slide when participants see the goal and the bonus GPR.
-        #prepForConditionRound1GPR = visual.TextStim(
+        #prepForConditionRound1 = visual.TextStim(
            # win,
-           # text = "If you have any questions, please ask the experimenter now. \n\nWhen you are ready, you may press 'space' to continue.",
+           # text='Before we begin ROUND 1 of the gambling task, you will be asked to read some additional task instructions.\n\nPlease pay close attention to the instructions as you read them.\n\n\n\nPress ‘space’ to continue.',
            # pos = (0,0),
-           # color = [1,1,1],
-           # height = textHeight,
-           # wrapWidth = wrap,
-           # alignText = "left"
+           # color=[1,1,1],
+           # height=textHeight,
+           # wrapWidth=wrap,
+           # alignText="left"
         #)
+        #This should be called before the slide when participants see the goal and the bonus GPR.
+        prepForConditionRound1GPR = visual.TextStim(
+            win,
+            text = "If you have any questions, please ask the experimenter now. \n\nWhen you are ready, you may press 'space' to continue.",
+            pos = (0,0),
+            color = [1,1,1],
+            height = textHeight,
+            wrapWidth = wrap,
+            alignText = "left"
+        )
         
         # Call experimenter
         callExperimenter = visual.TextStim(
@@ -1264,7 +1264,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             # the first screen in the series of instructions gives the participant a heads up 
             # that instructions are coming up.
             if r == 0:
-                prepForConditionRound1.draw() #"Before we begin ROUND 1..."
+                prepForConditionRound1GPR.draw() #"Before we begin ROUND 1..."
                 # this is the same for all participants, just one screen
             elif r==1 and cond[r] == cond[r-1]: # if we are in the second round and participant is repeating conditions
                 prepForConditionRound2_pg1Repeating.draw() #"Before we begin ROUND 2..." first page of instructions in round 1
