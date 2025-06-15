@@ -250,25 +250,25 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
 
         # SEPARATION THEATRICS FOR SEPARATING ROUNDS
 
-        explainRounds1 = visual.TextStim(
-            win, 
-            text = "You are about to do two rounds of the task. \n\nThese rounds are completely independent. \n\nEach round will be marked with a different color (purple or green).\n\nTreat each round of the task as independent.\n\n\nPress 'space' to continue.",
-            pos = (0,0),
-            color=[1,1,1],
-            height = textHeight,
-            wrapWidth = wrap,
-            alignText="left"
-        )
-        
-       # explainGPRRounds1 = visual.TextStim(
-           # win,
-           # text = "Today you will be completing four rounds of the task. \n\nThese rounds are completely independent. \n\nEach round will be marked with a different color (purple, green, blue, or yellow). \n\nEach round will also have different goals and bonuses associated with them. \n\n\nPress 'space' to continue.",
+        #explainRounds1 = visual.TextStim(
+           # win, 
+           # text = "You are about to do two rounds of the task. \n\nThese rounds are completely independent. \n\nEach round will be marked with a different color (purple or green).\n\nTreat each round of the task as independent.\n\n\nPress 'space' to continue.",
            # pos = (0,0),
-           # color = [1,1,1],
+           # color=[1,1,1],
            # height = textHeight,
            # wrapWidth = wrap,
-           # alighText = "left"
+           # alignText="left"
         #)
+        
+        explainGPRRounds1 = visual.TextStim(
+            win,
+            text = "Today you will be completing four rounds of the task. \n\nThese rounds are completely independent. \n\nEach round will be marked with a different color (purple, green, blue, or yellow). \n\nEach round will also have different goals and bonuses associated with them. \n\n\nPress 'space' to continue.",
+            pos = (0,0),
+            color = [1,1,1],
+            height = textHeight,
+            wrapWidth = wrap,
+            alighText = "left"
+        )
 
         # Don't think we need explainRounds2 or explainRounds3 in GPR
         #explainRounds2 = visual.TextStim(
@@ -1186,11 +1186,11 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
     
             # show our round separation theatric stuff (include forced viewing period when appropriate)
             if r == 0: 
-                explainRounds1.draw()
+                explainGPRRounds1.draw()
                 win.flip()
                 core.wait(forcedInstrWaitTime)
                 
-                explainRounds1.draw()
+                explainGPRRounds1.draw()
                 win.flip()
                 event.waitKeys(keyList = ['space'], timeStamped=False)
                 
