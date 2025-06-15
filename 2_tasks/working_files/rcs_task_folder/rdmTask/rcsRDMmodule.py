@@ -333,15 +333,15 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         )
 
         #Don't think we really need this for GPR. 
-        startingRound1 = visual.TextStim(
-            win,
-            text='Setting up ROUND 1...',
-            pos = (0,0),
-            color=[1,1,1],
-            height=textHeight,
-            wrapWidth=wrap,
-            alignText="left"
-        )
+        #startingRound1 = visual.TextStim(
+           # win,
+           # text='Setting up ROUND 1...',
+           # pos = (0,0),
+           # color=[1,1,1],
+           # height=textHeight,
+           # wrapWidth=wrap,
+           # alignText="left"
+        #)
         
         
         #startingRound2 = visual.TextStim(
@@ -1084,7 +1084,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         postPrac.draw()
         win.flip()
         print("Practice trials complete!")
-        event.waitKeys(keyList = ['space', 'q'], timeStamped = False) # waiting for return or space key press or until max time allowed
+        event.waitKeys(keyList = ['space', 'q'], timeStamped = False) # waiting for q or space key press or until max time allowed
     
     
     #practiceData = pd.DataFrame(practiceData) #convert data into pandas dataframe
