@@ -142,7 +142,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         win = visual.Window(
             size=scrnsize,
             units="pix",
-            fullscr=True,
+            fullscr= False, #For FULLSCREEN, type TRUE
             color=[-1, -1, -1], #black screen
             screen=1 # on second screen
         )
@@ -1293,14 +1293,16 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             keepLoopGoing = True
             while keepLoopGoing:  
             
-                if r == 0 or r==1 and strategy!=cond[r-1]: # round 1 or switiching in round 2, we show the full control or strategy instructions
+                #if r == 0 or r==1 and strategy!=cond[r-1]: # round 1 or switiching in round 2, we show the full control or strategy instructions
         
-                    if strategy == 0: # if the condition is control
-                        instructPG1 = controlInstGPR1
+                    #if strategy == 0: # if the condition is control
+                        #instructPG1 = controlInstGPR1
                         #instructPG2 = controlInst2
                         #instructPG3 = controlInst3
                         #instructPG4 = controlInst4
-                        
+                    
+                    # CHECK TO SEE IF THIS WORKS
+                    instructPG1 = controlInstGPR1        
                     #elif strategy == 1: # if the condition is strategy
                         #instructPG1 = stratInst1
                         #instructPG2 = stratInst2
@@ -1454,22 +1456,22 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
         
                 # Now the rest is mostly the same for all participants/conditions/switching show the summarize prompt
-                borderBox.draw() # draw the large color box
-                blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+            borderBox.draw() # draw the large color box
+            blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                 
                 #summarizeInst.draw()
                 #win.flip()
                 
                 
-                keys = event.waitKeys(keyList = ['space','r'], timeStamped = False) # waiting for key press
+            keys = event.waitKeys(keyList = ['space','r'], timeStamped = False) # waiting for key press
                 #print(keys)
                 
                 #print(keys[0] == 'return')
                 
-                if keys[0] == 'space':
-                    keepLoopGoing=False # end loop, start task
-                else:
-                    keepLoopGoing=True
+            if keys[0] == 'space':
+                keepLoopGoing=False # end loop, start task
+            else:
+                keepLoopGoing=True
             
             print(f'Round {r} color: {curr_color}')
             borderBox.draw() # draw the large color box
