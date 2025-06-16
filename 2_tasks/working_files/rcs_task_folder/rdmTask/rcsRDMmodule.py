@@ -267,7 +267,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             color = [1,1,1],
             height = textHeight,
             wrapWidth = wrap,
-            alighText = "left"
+            alignText = "left"
         )
 
         # Don't think we need explainRounds2 or explainRounds3 in GPR
@@ -1302,7 +1302,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                         #instructPG4 = controlInst4
                     
                     # CHECK TO SEE IF THIS WORKS
-                    instructPG1 = controlInstGPR1        
+                instructPG1 = controlInstGPR1        
                     #elif strategy == 1: # if the condition is strategy
                         #instructPG1 = stratInst1
                         #instructPG2 = stratInst2
@@ -1311,8 +1311,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
         
                     #show page 1 + forced viewing
-                    borderBox.draw() # draw the large color box
-                    blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+                borderBox.draw() # draw the large color box
+                blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                     
                     #instructPG1.draw()
                     #instructCount.text=text="screen 1/4"
@@ -1322,15 +1322,15 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     #core.wait(forcedInstrWaitTime)
 
                     # show page 1 + repsonse collection
-                    borderBox.draw() # draw the large color box
-                    blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+                borderBox.draw() # draw the large color box
+                blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                     
-                    instructPG1.draw()
+                instructPG1.draw()
                     #instructCount.text=text="screen 1/4"
-                    instructCount.draw()                    
-                    win.flip()
+                instructCount.draw()                    
+                win.flip()
                     #event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press 
-                    event.waitKeys(keyList = ['v', 'n'], timeStamped = False)
+                event.waitKeys(keyList = ['v', 'n'], timeStamped = False)
 
                     #show page 2 + forced viewing
                     #borderBox.draw() # draw the large color box
