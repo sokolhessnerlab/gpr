@@ -142,7 +142,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         win = visual.Window(
             size=scrnsize,
             units="pix",
-            fullscr= True, #For FULLSCREEN, type TRUE
+            fullscr= True, #For FULLSCREEN, type True, for WINDOW type False
             color=[-1, -1, -1], #black screen
             screen=1 # on second screen
         )
