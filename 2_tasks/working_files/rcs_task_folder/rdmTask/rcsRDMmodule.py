@@ -1329,8 +1329,9 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     #instructCount.text=text="screen 1/4"
                     instructCount.draw()                    
                     win.flip()
-                    event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press 
-                    
+                    #event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press 
+                    event.waitKeys(keyList = ['v', 'n'], timeStamped = False)
+
                     #show page 2 + forced viewing
                     #borderBox.draw() # draw the large color box
                     #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
@@ -1409,31 +1410,31 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                        # instructPG2 = strategyReminder2
         
                     #show page 1 + forced viewing
-                    borderBox.draw() # draw the large color box
-                    blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+                   # borderBox.draw() # draw the large color box
+                   # blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                      
-                    instructPG1.draw()
+                   # instructPG1.draw()
                     #instructCount.text=text="screen 1/2"
-                    instructCount.draw()
+                   # instructCount.draw()
                     
-                    win.flip()
-                    core.wait(forcedInstrWaitTime)
+                   # win.flip()
+                   # core.wait(forcedInstrWaitTime)
                     
                     
                     #show page 1 + response collection
-                    borderBox.draw() # draw the large color box
-                    blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+                   # borderBox.draw() # draw the large color box
+                   # blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                      
-                    instructPG1.draw()
+                   # instructPG1.draw()
                     #instructCount.text=text="screen 1/2"
-                    instructCount.draw()
+                   # instructCount.draw()
                     
-                    win.flip()
-                    event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press 
+                   # win.flip()
+                   # event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press 
                      
                     #show page 2 + forced viewing
-                    borderBox.draw() # draw the large color box
-                    blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+                   # borderBox.draw() # draw the large color box
+                   # blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                      
                     #instructPG2.draw()
                     #instructCount.text=text="screen 2/2"
@@ -1443,8 +1444,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     #core.wait(forcedInstrWaitTime)
 
                     #show page 2 + response collection
-                    borderBox.draw() # draw the large color box
-                    blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+                   # borderBox.draw() # draw the large color box
+                   # blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                      
                     #instructPG2.draw()
                     #instructCount.text=text="screen 2/2"
