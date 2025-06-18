@@ -1227,6 +1227,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 win.flip()
                 event.waitKeys(keyList = ['space'], timeStamped=False)
                 
+                #This needs to be changed so that when preparing for the next rounds the people see rounds 2,3,4 and not just round 2
                 readyForRound2.draw()
                 win.flip()
                 event.waitKeys(keyList = ['space'], timeStamped=False)
