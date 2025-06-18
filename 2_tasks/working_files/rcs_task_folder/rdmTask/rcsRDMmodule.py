@@ -1219,21 +1219,17 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                # core.wait(1)
             
             elif r > 0:
-                controlInstGPR.draw()
+                round2Prep.draw()
                 win.flip()
-                event.waitKeys(keyList = ['v','n'], timeStamped=False)
-                
-                #round2Prep.draw()
-                #win.flip()
-                #core.wait(forcedInstrWaitTime)
+                core.wait(forcedInstrWaitTime)
 
-                #round2Prep.draw()
-                #win.flip()
-                #event.waitKeys(keyList = ['space'], timeStamped=False)
+                round2Prep.draw()
+                win.flip()
+                event.waitKeys(keyList = ['space'], timeStamped=False)
                 
-                #readyForRound2.draw()
-                #win.flip()
-                #event.waitKeys(keyList = ['space'], timeStamped=False)
+                readyForRound2.draw()
+                win.flip()
+                event.waitKeys(keyList = ['space'], timeStamped=False)
                 
                 #startingRound2.draw()
                 #win.flip()
@@ -1268,18 +1264,21 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             # the first screen in the series of instructions gives the participant a heads up 
             # that instructions are coming up.
             
+            if r > 0:
+                controlInstGPR.draw()
+                win.flip()
+                event.waitKeys(keyList = ['v','n'], timeStamped=False)
 
-
-            if r == 0:
-                prepForConditionRound1GPR.draw() #"Before we begin ROUND 1..."
+            #if r == 0:
+               # prepForConditionRound1GPR.draw() #"Before we begin ROUND 1..."
                 # this is the same for all participants, just one screen
-            elif r==1 and cond[r] == cond[r-1]: # if we are in the second round and participant is repeating conditions
-                prepForConditionRound2_pg1Repeating.draw() #"Before we begin ROUND 2..." first page of instructions in round 1
-            elif r==1 and cond[r] != cond[r-1]: # if we are in the second round and participant is switching conditions
-                prepForConditionRound2_pg1Switching.draw() 
+            #elif r==1 and cond[r] == cond[r-1]: # if we are in the second round and participant is repeating conditions
+               # prepForConditionRound2_pg1Repeating.draw() #"Before we begin ROUND 2..." first page of instructions in round 1
+            #elif r==1 and cond[r] != cond[r-1]: # if we are in the second round and participant is switching conditions
+               # prepForConditionRound2_pg1Switching.draw() 
                 
-            win.flip()
-            event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press
+            #win.flip()
+            #event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press
             
             #if r==1: # round 2 has a second page of prep instructions
                 # set up border color
@@ -1309,7 +1308,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                         #instructPG4 = controlInst4
                     
                     # CHECK TO SEE IF THIS WORKS
-            instructPG1 = controlInstGPR        
+            #instructPG1 = controlInstGPR        
                     #elif strategy == 1: # if the condition is strategy
                         #instructPG1 = stratInst1
                         #instructPG2 = stratInst2
@@ -1332,7 +1331,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             borderBox.draw() # draw the large color box
             blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                     
-            instructPG1.draw()
+            #instructPG1.draw()
                     #instructCount.text=text="screen 1/4"
             instructCount.draw()                    
             win.flip()
