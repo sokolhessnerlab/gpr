@@ -421,7 +421,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
         
         # CONTROL INSTRUCTIONS (FIRST TIME AROUND)
-        controlInstGPR1 = visual.TextStim(
+        controlInstGPR = visual.TextStim(
             win,
             text="In this round, your goal is $X. \n\nYour bonus in this round is HIGH/LOW ($Y). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin.",
             pos = (0,0),
@@ -1296,13 +1296,13 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 #if r == 0 or r==1 and strategy!=cond[r-1]: # round 1 or switiching in round 2, we show the full control or strategy instructions
         
                     #if strategy == 0: # if the condition is control
-                        #instructPG1 = controlInstGPR1
+                        #instructPG1 = controlInstGPR
                         #instructPG2 = controlInst2
                         #instructPG3 = controlInst3
                         #instructPG4 = controlInst4
                     
                     # CHECK TO SEE IF THIS WORKS
-            instructPG1 = controlInstGPR1        
+            instructPG1 = controlInstGPR        
                     #elif strategy == 1: # if the condition is strategy
                         #instructPG1 = stratInst1
                         #instructPG2 = stratInst2
