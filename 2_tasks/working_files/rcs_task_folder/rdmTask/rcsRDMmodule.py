@@ -1219,17 +1219,21 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                # core.wait(1)
             
             elif r > 0:
-                round2Prep.draw()
+                controlInstGPR.draw()
                 win.flip()
-                core.wait(forcedInstrWaitTime)
-
-                round2Prep.draw()
-                win.flip()
-                event.waitKeys(keyList = ['space'], timeStamped=False)
+                event.waitKeys(keyList = ['v','n'], timeStamped=False)
                 
-                readyForRound2.draw()
-                win.flip()
-                event.waitKeys(keyList = ['space'], timeStamped=False)
+                #round2Prep.draw()
+                #win.flip()
+                #core.wait(forcedInstrWaitTime)
+
+                #round2Prep.draw()
+                #win.flip()
+                #event.waitKeys(keyList = ['space'], timeStamped=False)
+                
+                #readyForRound2.draw()
+                #win.flip()
+                #event.waitKeys(keyList = ['space'], timeStamped=False)
                 
                 #startingRound2.draw()
                 #win.flip()
@@ -1263,6 +1267,9 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
     
             # the first screen in the series of instructions gives the participant a heads up 
             # that instructions are coming up.
+            
+
+
             if r == 0:
                 prepForConditionRound1GPR.draw() #"Before we begin ROUND 1..."
                 # this is the same for all participants, just one screen
