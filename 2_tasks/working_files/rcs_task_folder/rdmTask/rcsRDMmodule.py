@@ -1339,8 +1339,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     #core.wait(forcedInstrWaitTime)
 
                     # show page 1 + repsonse collection
-            borderBox.draw() # draw the large color box
-            blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+            #borderBox.draw() # draw the large color box
+            #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                     
             instructPG1.draw()
                     #instructCount.text=text="screen 1/4"
@@ -1474,26 +1474,26 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
         
                 # Now the rest is mostly the same for all participants/conditions/switching show the summarize prompt
-            borderBox.draw() # draw the large color box
-            blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+            #borderBox.draw() # draw the large color box
+            #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                 
                 #summarizeInst.draw()
                 #win.flip()
                 
                 
-            keys = event.waitKeys(keyList = ['space','r'], timeStamped = False) # waiting for key press
+            #keys = event.waitKeys(keyList = ['space','r'], timeStamped = False) # waiting for key press
                 #print(keys)
                 
                 #print(keys[0] == 'return')
                 
-            if keys[0] == 'space':
-                keepLoopGoing=False # end loop, start task
-            else:
-                keepLoopGoing=True
+            #if keys[0] == 'space':
+                #keepLoopGoing=False # end loop, start task
+            #else:
+                #keepLoopGoing=True
             
-            print(f'Round {r} color: {curr_color}')
-            borderBox.draw() # draw the large color box
-            blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+            #print(f'Round {r} color: {curr_color}')
+            #borderBox.draw() # draw the large color box
+            #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
             
             # depending on round of task, show slightly different start screen
             #if r==0:
@@ -1501,8 +1501,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             #elif r==1:
                # startTaskRound2.draw()
                 
-            win.flip()
-            event.waitKeys(keyList = ['v', 'n'], timeStamped = False) # waiting for key press or until max time allowed
+            #win.flip()
+            #event.waitKeys(keyList = ['v', 'n'], timeStamped = False) # waiting for key press or until max time allowed
             # experimenter leaves the room, participant starts round 1 of the study
             
             rdmStart = core.Clock() # starts clock for rdm task 
