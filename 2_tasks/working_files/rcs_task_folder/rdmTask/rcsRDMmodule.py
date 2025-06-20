@@ -1344,7 +1344,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     
             instructPG1.draw()
                     #instructCount.text=text="screen 1/4"
-            instructCount.draw()                    
+            #instructCount.draw()                    
             win.flip()
                     #event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press 
             event.waitKeys(keyList = ['v', 'n'], timeStamped = False)
