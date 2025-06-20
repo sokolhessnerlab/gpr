@@ -332,16 +332,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             alignText="left"
         )
 
-        #readyForRoundOther = visual.TextStim(
-           # win,
-           # text = f'Are you ready for ROUND {r+1} of the task?\n\n\n\nPress ‘space’ to continue.',
-           # pos = (0,0),
-           # color=[1,1,1],
-           # height=textHeight,
-           # wrapWidth=wrap,
-           # alignText="left"
-        #)
-
         #Don't think we really need this for GPR. 
         #startingRound1 = visual.TextStim(
            # win,
