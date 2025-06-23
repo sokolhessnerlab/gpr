@@ -1284,6 +1284,10 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             # the first screen in the series of instructions gives the participant a heads up 
             # that instructions are coming up.
             
+            strategy = cond[r]; # store strategy value (0/1/2/3)  
+            curr_bonus = condition_levels[strategy][0]
+            curr_goal = condition_levels[strategy][1]
+
             if r > 0:
                 #controlInstGPR.draw()
                 #win.flip()
@@ -1311,9 +1315,9 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 #event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press
     
         # Determine the condition specific instructions    
-                strategy = cond[r]; # store strategy value (0/1/2/3)  
-                curr_bonus = condition_levels[strategy][0]
-                curr_goal = condition_levels[strategy][1] 
+                # strategy = cond[r]; # store strategy value (0/1/2/3)  
+                # curr_bonus = condition_levels[strategy][0]
+                # curr_goal = condition_levels[strategy][1] 
                 
                 #Offer participants the option to re-read the instructions where they can pres 'R' after page 4
                 keepLoopGoing = True
