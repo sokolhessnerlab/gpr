@@ -332,6 +332,26 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             alignText="left"
         )
 
+        readyForRound3 = visual.TextStim(
+            win,
+            text='Are you ready for ROUND 3 of the task?\n\n\n\nPress ‘space’ to continue.',
+            pos = (0,0),
+            color=[1,1,1],
+            height=textHeight,
+            wrapWidth=wrap,
+            alignText="left"
+        )
+
+        readyForRound4 = visual.TextStim(
+            win,
+            text='Are you ready for ROUND 4 of the task?\n\n\n\nPress ‘space’ to continue.',
+            pos = (0,0),
+            color=[1,1,1],
+            height=textHeight,
+            wrapWidth=wrap,
+            alignText="left"
+        )
+
         #Don't think we really need this for GPR. 
         #startingRound1 = visual.TextStim(
            # win,
@@ -423,7 +443,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         # CONTROL INSTRUCTIONS (FIRST TIME AROUND)
         controlInstGPR = visual.TextStim(
             win,
-            text="In this round, your goal is $%d. \n\nYour bonus in this round is %d ($%d). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin.",
             pos = (0,0),
             color=[1,1,1],
             height=textHeight,
@@ -1309,6 +1328,15 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                         #instructPG4 = controlInst4
                     
                     # CHECK TO SEE IF THIS WORKS
+            if r==0:
+                controlInstGPR.text = text="In this round, your goal is $%d. \n\nYour bonus in this round is %d ($%d). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, curr_bonus)
+            elif r==1:
+                controlInstGPR.text = text="In this round, your goal is $%d. \n\nYour bonus in this round is %d ($%d). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, curr_bonus)
+            elif r==2:
+                controlInstGPR.text = text="In this round, your goal is $%d. \n\nYour bonus in this round is %d ($%d). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, curr_bonus)
+            elif r==3:
+                controlInstGPR.text = text="In this round, your goal is $%d. \n\nYour bonus in this round is %d ($%d). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, curr_bonus)
+
             instructPG1 = controlInstGPR        
                     #elif strategy == 1: # if the condition is strategy
                         #instructPG1 = stratInst1
