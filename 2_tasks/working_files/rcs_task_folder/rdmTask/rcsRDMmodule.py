@@ -1329,13 +1329,13 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     
                     # CHECK TO SEE IF THIS WORKS
             if r==0:
-                controlInstGPR.text = text="In this round, your goal is $%d. \n\nYour bonus in this round is %d ($%d). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, curr_bonus)
+                controlInstGPR.text = text="In this round, your goal is $%d. \n\nYour bonus in this round is HIGH/LOW ($%d). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, curr_bonus)
             elif r==1:
-                controlInstGPR.text = text="In this round, your goal is $%d. \n\nYour bonus in this round is %d ($%d). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, curr_bonus)
+                controlInstGPR.text = text="In this round, your goal is $%d. \n\nYour bonus in this round is HIGH/LOW ($%d). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, curr_bonus)
             elif r==2:
-                controlInstGPR.text = text="In this round, your goal is $%d. \n\nYour bonus in this round is %d ($%d). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, curr_bonus)
+                controlInstGPR.text = text="In this round, your goal is $%d. \n\nYour bonus in this round is HIGH/LOW ($%d). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, curr_bonus)
             elif r==3:
-                controlInstGPR.text = text="In this round, your goal is $%d. \n\nYour bonus in this round is %d ($%d). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, curr_bonus)
+                controlInstGPR.text = text="In this round, your goal is $%d. \n\nYour bonus in this round is HIGH/LOW ($%d). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, curr_bonus)
 
             instructPG1 = controlInstGPR        
                     #elif strategy == 1: # if the condition is strategy
