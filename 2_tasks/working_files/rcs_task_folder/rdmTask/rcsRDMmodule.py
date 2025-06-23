@@ -1229,6 +1229,9 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 #win.flip()
                 #event.waitKeys(keyList = ['return'], timeStamped=False)
                 
+                borderBox.draw() # draw the large color box
+                blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+
                 readyForRound1.draw()
                 win.flip()
                 core.wait(forcedInstrWaitTime)
@@ -1255,7 +1258,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 #startingRound2.draw()
                 #win.flip()
                 #core.wait(1)
-            
+
                 
     
             """
@@ -1278,8 +1281,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             """
             
             # set up border color
-            borderBox.draw() # draw the large color box
-            blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+            #borderBox.draw() # draw the large color box
+            #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
             
     
             # the first screen in the series of instructions gives the participant a heads up 
