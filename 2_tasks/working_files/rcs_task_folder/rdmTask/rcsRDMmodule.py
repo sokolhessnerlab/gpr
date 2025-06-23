@@ -1523,8 +1523,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 #event.waitKeys(keyList = ['v', 'n'], timeStamped = False) # waiting for key press or until max time allowed
                 # experimenter leaves the room, participant starts round 1 of the study
                 
-                rdmStart = core.Clock() # starts clock for rdm task 
-                overall_outcome = 0
+            rdmStart = core.Clock() # starts clock for rdm task 
+            overall_outcome = 0
                 
             for t in range(nT):
                 
