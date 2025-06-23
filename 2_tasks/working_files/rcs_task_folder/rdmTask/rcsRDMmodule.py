@@ -1288,245 +1288,245 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             curr_bonus = condition_levels[strategy][0]
             curr_goal = condition_levels[strategy][1]
 
-            if r > 0:
-                #controlInstGPR.draw()
-                #win.flip()
-                #event.waitKeys(keyList = ['v','n'], timeStamped=False)
+            # if r >= 0:
+            #controlInstGPR.draw()
+            #win.flip()
+            #event.waitKeys(keyList = ['v','n'], timeStamped=False)
 
-            #if r == 0:
-               # prepForConditionRound1GPR.draw() #"Before we begin ROUND 1..."
-                # this is the same for all participants, just one screen
-            #elif r==1 and cond[r] == cond[r-1]: # if we are in the second round and participant is repeating conditions
-               # prepForConditionRound2_pg1Repeating.draw() #"Before we begin ROUND 2..." first page of instructions in round 1
-            #elif r==1 and cond[r] != cond[r-1]: # if we are in the second round and participant is switching conditions
-               # prepForConditionRound2_pg1Switching.draw() 
+        #if r == 0:
+            # prepForConditionRound1GPR.draw() #"Before we begin ROUND 1..."
+            # this is the same for all participants, just one screen
+        #elif r==1 and cond[r] == cond[r-1]: # if we are in the second round and participant is repeating conditions
+            # prepForConditionRound2_pg1Repeating.draw() #"Before we begin ROUND 2..." first page of instructions in round 1
+        #elif r==1 and cond[r] != cond[r-1]: # if we are in the second round and participant is switching conditions
+            # prepForConditionRound2_pg1Switching.draw() 
+            
+        #win.flip()
+        #event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press
+        
+        #if r==1: # round 2 has a second page of prep instructions
+            # set up border color
+            #borderBox.draw() # draw the large color box
+            #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+            
+            # draw and show page 2, wait for response
+            #prepForConditionRound2_pg2forAllSubs.draw()
+            #win.flip()
+            #event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press
+
+    # Determine the condition specific instructions    
+            # strategy = cond[r]; # store strategy value (0/1/2/3)  
+            # curr_bonus = condition_levels[strategy][0]
+            # curr_goal = condition_levels[strategy][1] 
+            
+            #Offer participants the option to re-read the instructions where they can pres 'R' after page 4
+            keepLoopGoing = True
+            #while keepLoopGoing:  
+            
+                #if r == 0 or r==1 and strategy!=cond[r-1]: # round 1 or switiching in round 2, we show the full control or strategy instructions
+        
+                    #if strategy == 0: # if the condition is control
+                        #instructPG1 = controlInstGPR
+                        #instructPG2 = controlInst2
+                        #instructPG3 = controlInst3
+                        #instructPG4 = controlInst4
+                    
+                    # CHECK TO SEE IF THIS WORKS
+            if r==0:
+                controlInstGPR.text = text="In this round, your goal is $%d. \n\nYour bonus in this round is HIGH/LOW ($%d). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, curr_bonus)
+            elif r==1:
+                controlInstGPR.text = text="In this round, your goal is $%d. \n\nYour bonus in this round is HIGH/LOW ($%d). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, curr_bonus)
+            elif r==2:
+                controlInstGPR.text = text="In this round, your goal is $%d. \n\nYour bonus in this round is HIGH/LOW ($%d). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, curr_bonus)
+            elif r==3:
+                controlInstGPR.text = text="In this round, your goal is $%d. \n\nYour bonus in this round is HIGH/LOW ($%d). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, curr_bonus)
+
+            instructPG1 = controlInstGPR        
+                    #elif strategy == 1: # if the condition is strategy
+                        #instructPG1 = stratInst1
+                        #instructPG2 = stratInst2
+                        #instructPG3 = stratInst3
+                        #instructPG4 = stratInst4
+        
+        
+                    #show page 1 + forced viewing
+            borderBox.draw() # draw the large color box
+            blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+                    
+                    #instructPG1.draw()
+                    #instructCount.text=text="screen 1/4"
+                    #instructCount.draw()
+        
+                    #win.flip()
+                    #core.wait(forcedInstrWaitTime)
+
+                    # show page 1 + repsonse collection
+            #borderBox.draw() # draw the large color box
+            #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+                    
+            instructPG1.draw()
+                    #instructCount.text=text="screen 1/4"
+            #instructCount.draw()                    
+            win.flip()
+                    #event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press 
+            event.waitKeys(keyList = ['v', 'n'], timeStamped = False)
+
+                    #show page 2 + forced viewing
+                    #borderBox.draw() # draw the large color box
+                    #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+                    
+                    #instructPG2.draw()
+                    #instructCount.text=text="screen 2/4"
+                    #instructCount.draw()
+        
+                    #win.flip()
+                    #core.wait(forcedInstrWaitTime)
+                    
+                    
+                    # show page 2 + repsonse collection
+                    #borderBox.draw() # draw the large color box
+                    #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+                    
+                    #instructPG2.draw()
+                    #instructCount.text=text="screen 2/4"
+                    #instructCount.draw()
+        
+                    #win.flip()
+                    #event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press 
+                    
+                    
+                    #show page 3 + forced viewing
+                    #borderBox.draw() # draw the large color box
+                    #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+                    
+                    #instructPG3.draw()
+                    #instructCount.text=text="screen 3/4"
+                    #instructCount.draw()
+        
+                    #win.flip()
+                    #core.wait(forcedInstrWaitTime)
+                    
+                    # show page 3 + repsonse collection
+                    #borderBox.draw() # draw the large color box
+                    #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+                    
+                    #instructPG3.draw()
+                    #instructCount.text=text="screen 3/4"
+                    #instructCount.draw()
+        
+                    #win.flip()
+                    #event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press 
+                    
+                    #show page 4 + forced viewing
+                    #borderBox.draw() # draw the large color box
+                    #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+                    
+                    #instructPG4.draw()
+                    #instructCount.text=text="screen 4/4"
+                    #instructCount.draw()
+        
+                    #win.flip()
+                    #core.wait(forcedInstrWaitTime)
+                    
+                    #show page 4 + response collection
+                    #borderBox.draw() # draw the large color box
+                    #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+                    
+                    #instructPG4.draw()
+                    #instructCount.text=text="screen 4/4"
+                    #instructCount.draw()
+        
+                    #win.flip()
+                    #event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press 
+                
+                #elif r==1 and strategy==cond[r-1]: # if round 2 and repeting condition (two instead of 4 pages)
+                # if  strategy ==0: # if control condition
+                    # instructPG1 = controlReminder1
+                    # instructPG2 = controlReminder2
+                        
+                # elif strategy ==1: # if strategy condition
+                    # instructPG1 = strategyReminder1
+                    # instructPG2 = strategyReminder2
+        
+                    #show page 1 + forced viewing
+                # borderBox.draw() # draw the large color box
+                # blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+                    
+                # instructPG1.draw()
+                    #instructCount.text=text="screen 1/2"
+                # instructCount.draw()
+                    
+                # win.flip()
+                # core.wait(forcedInstrWaitTime)
+                    
+                    
+                    #show page 1 + response collection
+                # borderBox.draw() # draw the large color box
+                # blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+                    
+                # instructPG1.draw()
+                    #instructCount.text=text="screen 1/2"
+                # instructCount.draw()
+                    
+                # win.flip()
+                # event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press 
+                    
+                    #show page 2 + forced viewing
+                # borderBox.draw() # draw the large color box
+                # blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+                    
+                    #instructPG2.draw()
+                    #instructCount.text=text="screen 2/2"
+                    #instructCount.draw()
+        
+                    #win.flip()
+                    #core.wait(forcedInstrWaitTime)
+
+                    #show page 2 + response collection
+                # borderBox.draw() # draw the large color box
+                # blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+                    
+                    #instructPG2.draw()
+                    #instructCount.text=text="screen 2/2"
+                    #instructCount.draw()
+        
+                    #win.flip()
+                    #event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press 
+        
+        
+        
+                # Now the rest is mostly the same for all participants/conditions/switching show the summarize prompt
+            #borderBox.draw() # draw the large color box
+            #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+                
+                #summarizeInst.draw()
+                #win.flip()
+                
+                
+            #keys = event.waitKeys(keyList = ['space','r'], timeStamped = False) # waiting for key press
+                #print(keys)
+                
+                #print(keys[0] == 'return')
+                
+            #if keys[0] == 'space':
+                #keepLoopGoing=False # end loop, start task
+            #else:
+                #keepLoopGoing=True
+            
+            #print(f'Round {r} color: {curr_color}')
+            #borderBox.draw() # draw the large color box
+            #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+            
+            # depending on round of task, show slightly different start screen
+            #if r==0:
+            # startTaskRound1.draw()
+            #elif r==1:
+            # startTaskRound2.draw()
                 
             #win.flip()
-            #event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press
+            #event.waitKeys(keyList = ['v', 'n'], timeStamped = False) # waiting for key press or until max time allowed
+            # experimenter leaves the room, participant starts round 1 of the study
             
-            #if r==1: # round 2 has a second page of prep instructions
-                # set up border color
-                #borderBox.draw() # draw the large color box
-                #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-                
-                # draw and show page 2, wait for response
-                #prepForConditionRound2_pg2forAllSubs.draw()
-                #win.flip()
-                #event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press
-    
-        # Determine the condition specific instructions    
-                # strategy = cond[r]; # store strategy value (0/1/2/3)  
-                # curr_bonus = condition_levels[strategy][0]
-                # curr_goal = condition_levels[strategy][1] 
-                
-                #Offer participants the option to re-read the instructions where they can pres 'R' after page 4
-                keepLoopGoing = True
-                #while keepLoopGoing:  
-                
-                    #if r == 0 or r==1 and strategy!=cond[r-1]: # round 1 or switiching in round 2, we show the full control or strategy instructions
-            
-                        #if strategy == 0: # if the condition is control
-                            #instructPG1 = controlInstGPR
-                            #instructPG2 = controlInst2
-                            #instructPG3 = controlInst3
-                            #instructPG4 = controlInst4
-                        
-                        # CHECK TO SEE IF THIS WORKS
-                if r==0:
-                    controlInstGPR.text = text="In this round, your goal is $%d. \n\nYour bonus in this round is HIGH/LOW ($%d). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, curr_bonus)
-                elif r==1:
-                    controlInstGPR.text = text="In this round, your goal is $%d. \n\nYour bonus in this round is HIGH/LOW ($%d). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, curr_bonus)
-                elif r==2:
-                    controlInstGPR.text = text="In this round, your goal is $%d. \n\nYour bonus in this round is HIGH/LOW ($%d). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, curr_bonus)
-                elif r==3:
-                    controlInstGPR.text = text="In this round, your goal is $%d. \n\nYour bonus in this round is HIGH/LOW ($%d). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, curr_bonus)
-
-                instructPG1 = controlInstGPR        
-                        #elif strategy == 1: # if the condition is strategy
-                            #instructPG1 = stratInst1
-                            #instructPG2 = stratInst2
-                            #instructPG3 = stratInst3
-                            #instructPG4 = stratInst4
-            
-            
-                        #show page 1 + forced viewing
-                borderBox.draw() # draw the large color box
-                blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-                        
-                        #instructPG1.draw()
-                        #instructCount.text=text="screen 1/4"
-                        #instructCount.draw()
-            
-                        #win.flip()
-                        #core.wait(forcedInstrWaitTime)
-
-                        # show page 1 + repsonse collection
-                #borderBox.draw() # draw the large color box
-                #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-                        
-                instructPG1.draw()
-                        #instructCount.text=text="screen 1/4"
-                #instructCount.draw()                    
-                win.flip()
-                        #event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press 
-                event.waitKeys(keyList = ['v', 'n'], timeStamped = False)
-
-                        #show page 2 + forced viewing
-                        #borderBox.draw() # draw the large color box
-                        #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-                        
-                        #instructPG2.draw()
-                        #instructCount.text=text="screen 2/4"
-                        #instructCount.draw()
-            
-                        #win.flip()
-                        #core.wait(forcedInstrWaitTime)
-                        
-                        
-                        # show page 2 + repsonse collection
-                        #borderBox.draw() # draw the large color box
-                        #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-                        
-                        #instructPG2.draw()
-                        #instructCount.text=text="screen 2/4"
-                        #instructCount.draw()
-            
-                        #win.flip()
-                        #event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press 
-                        
-                        
-                        #show page 3 + forced viewing
-                        #borderBox.draw() # draw the large color box
-                        #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-                        
-                        #instructPG3.draw()
-                        #instructCount.text=text="screen 3/4"
-                        #instructCount.draw()
-            
-                        #win.flip()
-                        #core.wait(forcedInstrWaitTime)
-                        
-                        # show page 3 + repsonse collection
-                        #borderBox.draw() # draw the large color box
-                        #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-                        
-                        #instructPG3.draw()
-                        #instructCount.text=text="screen 3/4"
-                        #instructCount.draw()
-            
-                        #win.flip()
-                        #event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press 
-                        
-                        #show page 4 + forced viewing
-                        #borderBox.draw() # draw the large color box
-                        #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-                        
-                        #instructPG4.draw()
-                        #instructCount.text=text="screen 4/4"
-                        #instructCount.draw()
-            
-                        #win.flip()
-                        #core.wait(forcedInstrWaitTime)
-                        
-                        #show page 4 + response collection
-                        #borderBox.draw() # draw the large color box
-                        #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-                        
-                        #instructPG4.draw()
-                        #instructCount.text=text="screen 4/4"
-                        #instructCount.draw()
-            
-                        #win.flip()
-                        #event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press 
-                    
-                    #elif r==1 and strategy==cond[r-1]: # if round 2 and repeting condition (two instead of 4 pages)
-                    # if  strategy ==0: # if control condition
-                        # instructPG1 = controlReminder1
-                        # instructPG2 = controlReminder2
-                            
-                    # elif strategy ==1: # if strategy condition
-                        # instructPG1 = strategyReminder1
-                        # instructPG2 = strategyReminder2
-            
-                        #show page 1 + forced viewing
-                    # borderBox.draw() # draw the large color box
-                    # blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-                        
-                    # instructPG1.draw()
-                        #instructCount.text=text="screen 1/2"
-                    # instructCount.draw()
-                        
-                    # win.flip()
-                    # core.wait(forcedInstrWaitTime)
-                        
-                        
-                        #show page 1 + response collection
-                    # borderBox.draw() # draw the large color box
-                    # blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-                        
-                    # instructPG1.draw()
-                        #instructCount.text=text="screen 1/2"
-                    # instructCount.draw()
-                        
-                    # win.flip()
-                    # event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press 
-                        
-                        #show page 2 + forced viewing
-                    # borderBox.draw() # draw the large color box
-                    # blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-                        
-                        #instructPG2.draw()
-                        #instructCount.text=text="screen 2/2"
-                        #instructCount.draw()
-            
-                        #win.flip()
-                        #core.wait(forcedInstrWaitTime)
-
-                        #show page 2 + response collection
-                    # borderBox.draw() # draw the large color box
-                    # blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-                        
-                        #instructPG2.draw()
-                        #instructCount.text=text="screen 2/2"
-                        #instructCount.draw()
-            
-                        #win.flip()
-                        #event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press 
-            
-            
-            
-                    # Now the rest is mostly the same for all participants/conditions/switching show the summarize prompt
-                #borderBox.draw() # draw the large color box
-                #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-                    
-                    #summarizeInst.draw()
-                    #win.flip()
-                    
-                    
-                #keys = event.waitKeys(keyList = ['space','r'], timeStamped = False) # waiting for key press
-                    #print(keys)
-                    
-                    #print(keys[0] == 'return')
-                    
-                #if keys[0] == 'space':
-                    #keepLoopGoing=False # end loop, start task
-                #else:
-                    #keepLoopGoing=True
-                
-                #print(f'Round {r} color: {curr_color}')
-                #borderBox.draw() # draw the large color box
-                #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-                
-                # depending on round of task, show slightly different start screen
-                #if r==0:
-                # startTaskRound1.draw()
-                #elif r==1:
-                # startTaskRound2.draw()
-                    
-                #win.flip()
-                #event.waitKeys(keyList = ['v', 'n'], timeStamped = False) # waiting for key press or until max time allowed
-                # experimenter leaves the room, participant starts round 1 of the study
-                
             rdmStart = core.Clock() # starts clock for rdm task 
             overall_outcome = 0
                 
