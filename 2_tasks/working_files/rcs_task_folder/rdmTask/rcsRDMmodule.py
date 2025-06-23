@@ -1231,6 +1231,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 
                 readyForRound1.draw()
                 win.flip()
+                core.wait(forcedInstrWaitTime)
                 event.waitKeys(keyList = ['space'], timeStamped=False)
                 
                # startingRound1.draw()
@@ -1330,7 +1331,22 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                         #instructPG2 = controlInst2
                         #instructPG3 = controlInst3
                         #instructPG4 = controlInst4
-                    
+            if r == 1:
+                readyForRound2.draw()
+                win.flip()
+                core.wait(forcedInstrWaitTime)
+                event.waitKeys(keyList = ['space'], timeStamped=False)
+            elif r == 2:
+                readyForRound3.draw()
+                win.flip()
+                core.wait(forcedInstrWaitTime)
+                event.waitKeys(keyList = ['space'], timeStamped=False)
+            elif r == 3:
+                readyForRound4.draw()
+                win.flip()
+                core.wait(forcedInstrWaitTime)
+                event.waitKeys(keyList = ['space'], timeStamped=False)
+
                     # CHECK TO SEE IF THIS WORKS
             if r==0:
                 controlInstGPR.text = text="In this round, your goal is $%d. \n\nYour bonus in this round is HIGH/LOW ($%d). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, curr_bonus)
