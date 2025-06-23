@@ -2039,6 +2039,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             # ----------------------
     
             #press white button for experimenter to come back in the room - it only happens in this spot following round 1
+            
+            # Make this show up for rounds 2, 3, and 4 also
             if r == 0:
                 callExperimenter.draw()
                 win.flip()
