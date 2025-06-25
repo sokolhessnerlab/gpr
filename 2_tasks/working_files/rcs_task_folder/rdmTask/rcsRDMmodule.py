@@ -1089,8 +1089,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 if outcome == gainPract[p] or outcome == lossPract[p]:
                     rect.draw()
         
-            # pracBorderBox.draw()
-            # blackBox.draw()
+            pracBorderBox.draw()
+            blackBox.draw()
             progressTxt.draw() # draws the message to the window, but only during the loop
             progBarOutline.draw()
             progBar.draw()   
