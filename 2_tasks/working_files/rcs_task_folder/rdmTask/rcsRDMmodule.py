@@ -262,7 +262,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
         explainGPRRounds1 = visual.TextStim(
             win,
-            text = "Today you will be completing four (4) rounds of the task. \n\nThese rounds are completely independent. \n\nEach round will be marked with a different color - purple, green, blue, or yellow - Not necessarily in that order. \n\nEach round will also have different goals and bonuses associated with them. \n\n\nPress 'space' to continue.",
+            text = "Today you will be completing four (4) rounds of the task. \n\nThese rounds are completely independent. \n\nEach round will be marked with a different color - purple, green, blue, or yellow - Not necessarily in that order. \n\nEach round will also have different goals and bonuses associated with them. These goals and bonuses will be explained prior to each round. \n\n\nPress 'space' to continue.",
             pos = (0,0),
             color = [1,1,1],
             height = textHeight,
