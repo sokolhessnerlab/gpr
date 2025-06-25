@@ -320,7 +320,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
            # alignText = "left"
         #)
         
-        round2Prep = visual.TextStim(
+        postRoundCheck = visual.TextStim(
             win,
             text="You have completed this round, and will start the next, new round momentarily. \n\nMoving ahead to the next round, do your best to let the outcomes of the previous round go. \n\nFocus instead on the new goal and bonus. Rounds are independent from one another, making each round a new start. \n\nThe outcomes of any given round have no effect on subsequent rounds. \n\nBefore advancing, take a moment to get ready if you need, \n\nand press 'space' when you're ready to continue.",
             pos = (0,0),
@@ -895,6 +895,9 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
         # Participants do the practice trials once.
         
+        # pracBorderBox.draw()
+        # blackBox.draw()
+
         #nPract=3 # number of practice trials
         itiPract = 1, 1.5, 1, 2, 1 
         
@@ -930,12 +933,11 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         # define variable that is used to change the size of the progress bar
         changeInBar = int((progBarStart[0]/nPract)*-1)*2 # double it because it needs to go across the entire screen (not just half)
         
+        # pracBorderBox.draw()
+        # blackBox.draw()
         
         pracStart = core.Clock() # starts clock for practice 
         #pracStart.reset() # resets the clock
-
-        pracBorderBox.draw()
-        blackBox.draw()
 
         for p in range(nPract):
             
@@ -1089,8 +1091,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 if outcome == gainPract[p] or outcome == lossPract[p]:
                     rect.draw()
         
-            pracBorderBox.draw()
-            blackBox.draw()
+            # pracBorderBox.draw()
+            # blackBox.draw()
             progressTxt.draw() # draws the message to the window, but only during the loop
             progBarOutline.draw()
             progBar.draw()   
@@ -1293,11 +1295,11 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             
             #Make this more clear for GPR --> This is true for all rounds after 0 (Round 1)
             elif r > 0:
-                round2Prep.draw()
+                postRoundCheck.draw()
                 win.flip()
                 core.wait(forcedInstrWaitTime)
 
-                round2Prep.draw()
+                postRoundCheck.draw()
                 win.flip()
                 event.waitKeys(keyList = ['space'], timeStamped=False)
                 
