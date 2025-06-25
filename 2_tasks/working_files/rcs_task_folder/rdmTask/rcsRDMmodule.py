@@ -607,6 +607,17 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
            # alignText="left"
         #)
         
+        #PRACTICE SEQUENCE
+        postPracOutcome = visual.TextStim(
+            win, 
+            text='Practice complete! \n\nDetermining outcomes...', 
+            pos = (0,0),
+            color=[1,1,1],
+            height = textHeight,
+            wrapWidth = wrap,
+            alignText="left"
+        )
+        
         postTask1 = visual.TextStim(
             win, 
             text='ROUND 1 of the task is complete! \n\nDetermining outcomes...', 
@@ -1107,6 +1118,14 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 ]
             )
         
+        #PRACTICE SEQUENCE
+        postPracOutcome.draw()
+        core.wait(2)
+        
+        if overall_outcome >= curr_goal:
+            ocSelect.text= text='PRACTICE ROUND\n\nYou earned $%d over the span of the trials.\n\nThis met the goal of $60 \n\nYou will gain this rounds bonus of $5\n\nPress ‘space’ to continue.' % (overall_outcome)
+        else:
+            ocSelect.text= text='PRACTICE ROUND\n\nYou earned $%d over the span of the trials.\n\nThis did not meet the goal of $60 \n\nYou will not gain this rounds bonus of $5 \n\nPress ‘space’ to continue.' % (overall_outcome)
         
         postPrac.draw()
         win.flip()
