@@ -993,13 +993,15 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             line.lineWidth= 5
         
         #draw the stuff
-        
+            pracBorderBox.draw() # draw the large color box
+            blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+            progressTxt.draw() # draws the message to the window, but only during the loop
+            progBarOutline.draw()
+            progBar.draw()
         
             for side in [-1, 1]:
                 circle.pos= [centerL[0]*side,100]
                 circle.draw() #draw two circles
-            pracBorderBox.draw()
-            blackBox.draw()
             line.draw()
             orTxt.draw()
             altTxt.draw()
@@ -1017,7 +1019,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             response = event.waitKeys(maxWait = stimTime, keyList = ['v', 'n'], timeStamped = rtClock) # waiting for key press
             
             if response is None:
-                
+                pracBorderBox.draw()
+                blackBox.draw()
                 progressTxt.draw() 
                 progBarOutline.draw()
                 progBar.draw()        
@@ -1027,8 +1030,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     circle.pos= [centerL[0]*side,100]
                     circle.draw() #draw two circles
 
-                pracBorderBox.draw()
-                blackBox.draw()
+                
                 line.draw()
                 orTxt.draw()
                 altTxt.draw()
@@ -1094,6 +1096,9 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             core.wait(isi)
         
             #DO THE OUTCOME
+            pracBorderBox.draw()
+            blackBox.draw()
+            
             if outcome == 'NaN':
                 ocTxt = noRespTxt
             else:
@@ -1103,8 +1108,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     rect.draw()
                 #overall_outcome += outcome
         
-            pracBorderBox.draw()
-            blackBox.draw()
+            
             progressTxt.draw() # draws the message to the window, but only during the loop
             progBarOutline.draw()
             progBar.draw()   
