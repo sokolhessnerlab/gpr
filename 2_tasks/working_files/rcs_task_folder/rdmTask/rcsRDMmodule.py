@@ -167,6 +167,15 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             fillColor=curr_color #green
         )
         
+        #PRACTICE SEQUENCE
+        pracBorderBox = visual.Rect(
+            win,
+            width=scrnsize[0],
+            height=scrnsize[1],
+            units='pix',
+            pos = [0,0],
+            fillColor='white'
+        )
         
         # Prepare instructions and other task stimuli
         forcedInstrWaitTime = 1.5 # participants can't moved forward during instructions until 1.5s have passed
@@ -1077,6 +1086,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 if outcome == gainPract[p] or outcome == lossPract[p]:
                     rect.draw()
         
+            pracBorderBox.draw()
+            blackBox.draw()
             progressTxt.draw() # draws the message to the window, but only during the loop
             progBarOutline.draw()
             progBar.draw()   
@@ -1130,7 +1141,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             ocSelect.text= text='PRACTICE ROUND\n\nYou earned $%d over the span of the trials.\n\nThis met the goal of $60 \n\nYou will gain this rounds bonus of $5\n\nPress ‘space’ to continue.' % (overall_outcome)
         else:
             ocSelect.text= text='PRACTICE ROUND\n\nYou earned $%d over the span of the trials.\n\nThis did not meet the goal of $60 \n\nYou will not gain this rounds bonus of $5 \n\nPress ‘space’ to continue.' % (overall_outcome)
-        # borderBox.draw() # draw the large color box
+        # pracBorderBox.draw() # draw the large color box
         # blackBox.draw() # draw smaller black box on top of our color rect to create border effect
         ocSelect.draw() #"You will receive ..."
         win.flip()
@@ -1277,6 +1288,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                # win.flip()
                # core.wait(1)
             
+            #Make this more clear for GPR --> This is true for all rounds after 0 (Round 1)
             elif r > 0:
                 round2Prep.draw()
                 win.flip()
