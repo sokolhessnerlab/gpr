@@ -887,6 +887,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         event.waitKeys(keyList = ['q'], timeStamped = False) # waiting for key press or until max time allowed
         
         inst3.draw()
+        pracBorderBox.draw()
+        blackBox.draw()
         win.flip()
         event.waitKeys(keyList = ['v', 'n'], timeStamped = False) # waiting for key press or until max time allowed
         
@@ -895,8 +897,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
         # Participants do the practice trials once.
         
-        # pracBorderBox.draw()
-        # blackBox.draw()
 
         #nPract=3 # number of practice trials
         itiPract = 1, 1.5, 1, 2, 1 
@@ -933,8 +933,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         # define variable that is used to change the size of the progress bar
         changeInBar = int((progBarStart[0]/nPract)*-1)*2 # double it because it needs to go across the entire screen (not just half)
         
-        # pracBorderBox.draw()
-        # blackBox.draw()
         
         pracStart = core.Clock() # starts clock for practice 
         #pracStart.reset() # resets the clock
@@ -950,6 +948,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             progBar.end += [changeInBar,00] # update end point of progress bar
             progressTxt.text = text= "Trial %d/%d " % (t,nPract)
             
+            pracBorderBox.draw()
+            blackBox.draw()
             progressTxt.draw() # draws the message to the window, but only during the loop
             progBarOutline.draw()
             progBar.draw()
@@ -1143,10 +1143,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         postPracOutcome.draw()
         win.flip()
         core.wait(2)
-        
-        #overall_outcome = outcome
-
-        #overall_outcome += outcome      
+           
 
     #if --> How is practice defined here in terms of r
         if overall_outcome >= 60:
