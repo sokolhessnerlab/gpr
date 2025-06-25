@@ -717,7 +717,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             text = 'Goal: $',
             color = [1,1,1],
             font = "Helvetica",
-            height = moneyTextHeight
+            height = textHeight * 1.2
         )
         
         bonusTxt = visual.TextStim(
