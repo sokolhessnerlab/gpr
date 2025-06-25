@@ -711,6 +711,14 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             height = textHeight * 1.2,
             pos = topL
         )
+
+        goalTxt = visual.TextStim(
+            win=win,
+            text = 'Goal: $',
+            color = [1,1,1],
+            font = "Helvetica",
+            height = moneyTextHeight
+        )
         
         bonusTxt = visual.TextStim(
             win=win,
@@ -1563,6 +1571,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 lossTxt.text = text='$%d' % riskyLoss[t]
                 altTxt.text = text='$%.2f' % safe[t]
                 earningsTxt.text = text='Earnings: $%.2f' % overall_outcome
+                goalTxt.text = text = 'Goal: $%.2f' % curr_goal
                 bonusTxt.text = text='Bonus: $%.2f' % curr_bonus
         
             
@@ -1593,6 +1602,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             #now that we know the location of gamble, where will the text go?:
                 gainTxt.pos = gainpos
                 earningsTxt.pos = [centerR[0],scrnsize[1]*.4]
+                goalTxt.pos = [center[0],scrnsize[1]*.4]
                 bonusTxt.pos = [centerL[0],scrnsize[1]*.4]
                 lossTxt.pos = losspos
                 altTxt.pos = altpos
@@ -1619,6 +1629,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 altTxt.draw()
                 gainTxt.draw()
                 earningsTxt.draw()
+                goalTxt.draw()
                 bonusTxt.draw()
                 lossTxt.draw()
                 stimDispStart = rdmStart.getTime()
@@ -1649,6 +1660,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     altTxt.draw()
                     gainTxt.draw()
                     earningsTxt.draw()
+                    goalTxt.draw()
                     bonusTxt.draw()
                     lossTxt.draw()
                     vTxt.draw()
@@ -1703,6 +1715,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 progBarOutline.draw()
                 progBar.draw()
                 earningsTxt.draw()
+                goalTxt.draw()
                 bonusTxt.draw()
 
                 isiStim.draw()
@@ -1728,6 +1741,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 
                 ocTxt.draw()
                 earningsTxt.draw()
+                goalTxt.draw()
                 bonusTxt.draw()
                 win.flip() # show it
                 outcomeDispStart = rdmStart.getTime()
@@ -1741,6 +1755,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     progressTxt.draw() # draws the message to the window, but only during the loop
                     progBarOutline.draw()
                     earningsTxt.draw()
+                    goalTxt.draw()
                     bonusTxt.draw()
                     progBar.draw()
                     itiStim.draw()
