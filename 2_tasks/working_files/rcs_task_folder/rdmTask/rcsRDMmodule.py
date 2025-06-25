@@ -939,6 +939,9 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         pracStart = core.Clock() # starts clock for practice 
         #pracStart.reset() # resets the clock
 
+
+        overall_outcome = 0
+
         for p in range(nPract):
             
             t = p+1 # to make t (trial) = 1 since python starts at 0
@@ -1052,6 +1055,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 elif loc==1 and response[0][0] == 'n' or loc==2 and response[0][0] =='v': #they took safe
                     choice = 0
                     outcome = safePract[p]
+                overall_outcome += outcome
     
     
         
@@ -1090,6 +1094,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 ocTxt.draw()
                 if outcome == gainPract[p] or outcome == lossPract[p]:
                     rect.draw()
+                #overall_outcome += outcome
         
             # pracBorderBox.draw()
             # blackBox.draw()
@@ -1139,7 +1144,9 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         win.flip()
         core.wait(2)
         
-        overall_outcome = outcome
+        #overall_outcome = outcome
+
+        #overall_outcome += outcome      
 
     #if --> How is practice defined here in terms of r
         if overall_outcome >= 60:
