@@ -1123,8 +1123,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         core.wait(2)
         
         overall_outcome = 0
-        
-        if overall_outcome >= curr_goal:
+
+        if overall_outcome >= 60:
             ocSelect.text= text='PRACTICE ROUND\n\nYou earned $%d over the span of the trials.\n\nThis met the goal of $60 \n\nYou will gain this rounds bonus of $5\n\nPress ‘space’ to continue.' % (overall_outcome)
         else:
             ocSelect.text= text='PRACTICE ROUND\n\nYou earned $%d over the span of the trials.\n\nThis did not meet the goal of $60 \n\nYou will not gain this rounds bonus of $5 \n\nPress ‘space’ to continue.' % (overall_outcome)
