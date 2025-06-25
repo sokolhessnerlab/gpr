@@ -933,7 +933,10 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
         pracStart = core.Clock() # starts clock for practice 
         #pracStart.reset() # resets the clock
-            
+
+        pracBorderBox.draw()
+        blackBox.draw()
+
         for p in range(nPract):
             
             t = p+1 # to make t (trial) = 1 since python starts at 0
@@ -1086,8 +1089,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 if outcome == gainPract[p] or outcome == lossPract[p]:
                     rect.draw()
         
-            pracBorderBox.draw()
-            blackBox.draw()
+            # pracBorderBox.draw()
+            # blackBox.draw()
             progressTxt.draw() # draws the message to the window, but only during the loop
             progBarOutline.draw()
             progBar.draw()   
