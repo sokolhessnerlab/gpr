@@ -998,6 +998,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             for side in [-1, 1]:
                 circle.pos= [centerL[0]*side,100]
                 circle.draw() #draw two circles
+            pracBorderBox.draw()
+            blackBox.draw()
             line.draw()
             orTxt.draw()
             altTxt.draw()
@@ -1015,6 +1017,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             response = event.waitKeys(maxWait = stimTime, keyList = ['v', 'n'], timeStamped = rtClock) # waiting for key press
             
             if response is None:
+                pracBorderBox.draw()
+                blackBox.draw()
                 progressTxt.draw() 
                 progBarOutline.draw()
                 progBar.draw()        
@@ -1077,6 +1081,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
         
             #DO THE ISI
+            pracBorderBox.draw()
+            blackBox.draw()
             progressTxt.draw() # draws the message to the window, but only during the loop
             progBarOutline.draw()
             progBar.draw()   
@@ -1096,8 +1102,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     rect.draw()
                 #overall_outcome += outcome
         
-            # pracBorderBox.draw()
-            # blackBox.draw()
+            pracBorderBox.draw()
+            blackBox.draw()
             progressTxt.draw() # draws the message to the window, but only during the loop
             progBarOutline.draw()
             progBar.draw()   
@@ -1110,6 +1116,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             itiStart = pracStart.getTime()
             while pracStart.getTime() < t*(stimTime + choiceTime + isi + outcomeTime) + sum(itiPract[0:t]):
                 
+                pracBorderBox.draw()
+                blackBox.draw()
                 progressTxt.draw() # draws the message to the window, but only during the loop
                 progBarOutline.draw()
                 progBar.draw()   
@@ -1152,6 +1160,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             ocSelect.text= text='PRACTICE ROUND\n\nYou earned $%d over the span of the trials.\n\nThis did not meet the goal of $60 \n\nYou will not gain this rounds bonus of $5 \n\nPress ‘space’ to continue.' % (overall_outcome)
         # pracBorderBox.draw() # draw the large color box
         # blackBox.draw() # draw smaller black box on top of our color rect to create border effect
+        pracBorderBox.draw()
+        blackBox.draw()
         ocSelect.draw() #"You will receive ..."
         win.flip()
         event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press     
