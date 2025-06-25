@@ -1017,8 +1017,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             response = event.waitKeys(maxWait = stimTime, keyList = ['v', 'n'], timeStamped = rtClock) # waiting for key press
             
             if response is None:
-                pracBorderBox.draw()
-                blackBox.draw()
+                
                 progressTxt.draw() 
                 progBarOutline.draw()
                 progBar.draw()        
@@ -1026,6 +1025,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 # draw stimuli again with v and n displayed
                 for side in [-1, 1]:
                     circle.pos= [centerL[0]*side,100]
+                    pracBorderBox.draw()
+                    blackBox.draw()
                     circle.draw() #draw two circles
             
                 line.draw()
