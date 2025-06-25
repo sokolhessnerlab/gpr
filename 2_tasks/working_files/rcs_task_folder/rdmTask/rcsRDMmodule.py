@@ -1123,7 +1123,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         win.flip()
         core.wait(2)
         
-        overall_outcome = 0
+        overall_outcome = outcome
 
     #if --> How is practice defined here in terms of r
         if overall_outcome >= 60:
