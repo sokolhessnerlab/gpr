@@ -1025,10 +1025,10 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 # draw stimuli again with v and n displayed
                 for side in [-1, 1]:
                     circle.pos= [centerL[0]*side,100]
-                    pracBorderBox.draw()
-                    blackBox.draw()
                     circle.draw() #draw two circles
-            
+
+                pracBorderBox.draw()
+                blackBox.draw()
                 line.draw()
                 orTxt.draw()
                 altTxt.draw()
