@@ -1137,6 +1137,10 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             progBarOutline.draw()
             progBar.draw()   
             ocTxt.draw()
+            #ADD TOP TEXT
+            earningsTxt.draw()
+            goalTxt.draw()
+            bonusTxt.draw()
             win.flip() # show it
             outcomeDispStart = pracStart.getTime()
             core.wait(outcomeTime)
