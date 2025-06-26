@@ -1054,6 +1054,10 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 line.draw()
                 orTxt.draw()
                 altTxt.draw()
+                #ADD TOP TEXT
+                earningsTxt.draw()
+                goalTxt.draw()
+                bonusTxt.draw()
                 gainTxt.draw()
                 lossTxt.draw()
                 vTxt.draw()
