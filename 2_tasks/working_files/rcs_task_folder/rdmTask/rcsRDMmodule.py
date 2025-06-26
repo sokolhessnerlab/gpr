@@ -229,7 +229,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         #Change to instGPR_
         inst3 = visual.TextStim(
             win, 
-            text="Press 'V' or 'N' when you are ready to begin the practice.", 
+            text="In this round, your goal is $60. \n\nYour bonus in this round is $5. \n\nTake a moment if you need before beginning the practice. \n\nPress 'V' or 'N' when you are ready to begin.", 
             pos = (0,0),
             color=[1,1,1],
             height = textHeight,
