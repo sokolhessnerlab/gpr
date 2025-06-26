@@ -271,7 +271,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
         explainGPRRounds1 = visual.TextStim(
             win,
-            text = "Today you will be completing four (4) rounds of the task. \n\nThese rounds are completely independent. \n\nEach round will be marked with a different color - purple, green, blue, or yellow - Not necessarily in that order. \n\nEach round will also have different goals and bonuses associated with them. These goals and bonuses will be explained prior to each round. \n\n\nPress 'space' to continue.",
+            text = "Today you will be completing four (4) rounds of the task. \n\nThese rounds are completely independent. \n\nEach round will be marked with a different color - purple, green, blue, or yellow - not necessarily in that order. \n\nEach round will also have different goals and bonuses associated with them. These goals and bonuses will be explained prior to each round. \n\n\nPress 'space' to continue.",
             pos = (0,0),
             color = [1,1,1],
             height = textHeight,
@@ -2180,15 +2180,15 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         outcomeForPay = np.random.choice(finalOutcomesToSelect);
         scaledOC = outcomeForPay/2
         
-        total_outcome = 0
+        # total_outcome = 0
 
-        total_outcome += overall_outcome
-        #TOTAL EARNINGS PAGE $Z
-        ocSelect.text = text = "Across the four rounds of today's study, you earned $%.2f bonus. \n\nPlease push the white button to call the experimenter now." % (total_outcome)
+        # total_outcome += overall_outcome
+        # #TOTAL EARNINGS PAGE $Z
+        # ocSelect.text = text = "Across the four (4) rounds of today's study, you earned $%.2f bonus. \n\nPlease push the white button to call the experimenter now." % (total_outcome)
         
-        ocSelect.draw()
-        win.flip()
-        event.waitKeys(keyList = ['q'], timeStamped = False) # waiting for key press 
+        # ocSelect.draw()
+        # win.flip()
+        # event.waitKeys(keyList = ['q'], timeStamped = False) # waiting for key press 
     
     
         #ocSelect.text = text = "Randomly selected outcome: $%.2f. \n\nYou will receive $%.2f as your bonus payment.\n\n\nPress the white button to call the experimenter." % (outcomeForPay, scaledOC)
