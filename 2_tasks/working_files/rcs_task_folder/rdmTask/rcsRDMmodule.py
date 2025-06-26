@@ -729,7 +729,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             color = [1,1,1],
             font='Helvetica',
             height = textHeight * 1.2,
-            pos = (-.9, .9)
+            pos = (-0.9, 0.9)
             #pos = topL
         )
 
@@ -747,7 +747,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             color = [1,1,1],
             font='Helvetica',
             height = textHeight * 1.2,
-            pos = (.85,.8)
+            pos = (0.9,0.9)
             #pos = topR
         )
         
