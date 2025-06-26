@@ -1153,7 +1153,11 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 blackBox.draw()
                 progressTxt.draw() # draws the message to the window, but only during the loop
                 progBarOutline.draw()
-                progBar.draw()   
+                progBar.draw()
+                #ADD TOP TEXT
+                earningsTxt.draw()
+                goalTxt.draw()
+                bonusTxt.draw()  
                 itiStim.draw()
                 win.flip()
                 
