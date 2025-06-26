@@ -1018,13 +1018,14 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             for side in [-1, 1]:
                 circle.pos= [centerL[0]*side,100]
                 circle.draw() #draw two circles
-            line.draw()
-            orTxt.draw()
-            altTxt.draw()
             #ADD TOP TEXT
             earningsTxt.draw()
             goalTxt.draw()
             bonusTxt.draw()
+            line.draw()
+            orTxt.draw()
+            altTxt.draw()
+            
             gainTxt.draw()
             lossTxt.draw()
             stimDispStart = pracStart.getTime()
@@ -1051,13 +1052,14 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     circle.draw() #draw two circles
 
                 
-                line.draw()
-                orTxt.draw()
-                altTxt.draw()
                 #ADD TOP TEXT
                 earningsTxt.draw()
                 goalTxt.draw()
                 bonusTxt.draw()
+                line.draw()
+                orTxt.draw()
+                altTxt.draw()
+                
                 gainTxt.draw()
                 lossTxt.draw()
                 vTxt.draw()
@@ -1110,13 +1112,14 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             #DO THE ISI
             pracBorderBox.draw()
             blackBox.draw()
-            progressTxt.draw() # draws the message to the window, but only during the loop
-            progBarOutline.draw()
-            progBar.draw()
             #ADD TOP TEXT
             earningsTxt.draw()
             goalTxt.draw()
-            bonusTxt.draw()   
+            bonusTxt.draw()
+            progressTxt.draw() # draws the message to the window, but only during the loop
+            progBarOutline.draw()
+            progBar.draw()
+              
             
             isiStim.draw()
             win.flip() # show it
@@ -1139,12 +1142,13 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             
             progressTxt.draw() # draws the message to the window, but only during the loop
             progBarOutline.draw()
-            progBar.draw()   
-            ocTxt.draw()
             #ADD TOP TEXT
             earningsTxt.draw()
             goalTxt.draw()
             bonusTxt.draw()
+            progBar.draw()   
+            ocTxt.draw()
+            
             win.flip() # show it
             outcomeDispStart = pracStart.getTime()
             core.wait(outcomeTime)
