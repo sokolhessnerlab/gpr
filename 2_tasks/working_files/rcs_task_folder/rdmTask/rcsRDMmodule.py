@@ -208,7 +208,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
         inst2 = visual.TextStim(
             win, 
-            text='Next up are 5 practice trials. \n\nDo you have any questions for the experimenter? \n\nPlease ask the experimenter now.', 
+            text="Next up are 5 practice trials. \n\nDo you have any questions for the experimenter? \n\nPlease ask the experimenter now. \n\nPress 'space' when you are ready to contintue to the practice round.", 
             pos = (0,0),
             color=[1,1,1],
             height = textHeight,
