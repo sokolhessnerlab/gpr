@@ -889,8 +889,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         pracBorderBox.draw()
         blackBox.draw()
         inst3.draw()
-        core.wait(forcedInstrWaitTime)
         win.flip()
+        core.wait(forcedInstrWaitTime)
         event.waitKeys(keyList = ['v', 'n'], timeStamped = False) # waiting for key press or until max time allowed
         
         
