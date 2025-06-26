@@ -2127,10 +2127,11 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             #press white button for experimenter to come back in the room - it only happens in this spot following round 1
             
             # Make this show up for rounds 2, 3, and 4 also
-            if r == 0:
+            #if r==0:
+            if r in (0,1,2,3):
                 callExperimenter.draw()
                 win.flip()
-                event.waitKeys(keyList = ['q'], timeStamped = False) # waiting for key press 
+                event.waitKeys(keyList = ['q'], timeStamped = False) # waiting for key press     
     
             
         #RANDOMLY SELECT OUTCOME FROM BOTH ROUNDS FOR PAYMENT
