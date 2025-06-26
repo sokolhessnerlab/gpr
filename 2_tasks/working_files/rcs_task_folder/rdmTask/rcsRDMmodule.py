@@ -957,6 +957,11 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             progBarOutline.draw()
             progBar.draw()
         
+            #ADD TOP TEXT
+            earningsTxt.text = text='Earnings: $%.2f' % overall_outcome
+            goalTxt.text = text = 'Goal: $60.00'
+            bonusTxt.text = text='Bonus: $5.00'
+            
             gainTxt.text = text='$%.2f' % gainPract[p]
             lossTxt.text = text='$%d' % lossPract[p]
             altTxt.text = text='$%.2f' % safePract[p]
@@ -974,6 +979,10 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 altpos=altGamL
                 rectGainPos = [centerL[0], centerL[1]+(radius*.5)]
                 rectLossPos = [centerL[0], centerL[1]-(radius*.5)]
+                #ADD TOP TEXT
+                earningsTxt.pos = [centerR[0],scrnsize[1]*.4]
+                goalTxt.pos = [center[0],scrnsize[1]*.4]
+                bonusTxt.pos = [centerL[0],scrnsize[1]*.4]
             elif loc == 2:
                 lnstart=lnGamR[0]
                 lnend= lnGamR[1]
@@ -982,6 +991,10 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 altpos=altGamR
                 rectGainPos = [centerR[0], centerR[1]+(radius*.5)]
                 rectLossPos = [centerR[0], centerR[1]-(radius*.5)]
+                #ADD TOP TEXT
+                earningsTxt.pos = [centerR[0],scrnsize[1]*.4]
+                goalTxt.pos = [center[0],scrnsize[1]*.4]
+                bonusTxt.pos = [centerL[0],scrnsize[1]*.4]
         
         
         
@@ -1008,6 +1021,10 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             line.draw()
             orTxt.draw()
             altTxt.draw()
+            #ADD TOP TEXT
+            earningsTxt.draw()
+            goalTxt.draw()
+            bonusTxt.draw()
             gainTxt.draw()
             lossTxt.draw()
             stimDispStart = pracStart.getTime()
