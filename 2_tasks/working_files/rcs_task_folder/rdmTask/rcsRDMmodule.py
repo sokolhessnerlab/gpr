@@ -2180,12 +2180,15 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         outcomeForPay = np.random.choice(finalOutcomesToSelect);
         scaledOC = outcomeForPay/2
         
-        #TOTAL EARNINGS PAGE
-        ocSelect.text = text = "Across the four rounds of today's study, you earned $Z bonus. \n\nPlease push the white button to call the experimenter now."
+        total_outcome = 0
+
+        total_outcome += overall_outcome
+        #TOTAL EARNINGS PAGE $Z
+        ocSelect.text = text = "Across the four rounds of today's study, you earned $%.2f bonus. \n\nPlease push the white button to call the experimenter now." % (total_outcome)
         
-        #ocSelect.draw()
-        #win.flip()
-        #event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press 
+        ocSelect.draw()
+        win.flip()
+        event.waitKeys(keyList = ['q'], timeStamped = False) # waiting for key press 
     
     
         #ocSelect.text = text = "Randomly selected outcome: $%.2f. \n\nYou will receive $%.2f as your bonus payment.\n\n\nPress the white button to call the experimenter." % (outcomeForPay, scaledOC)
