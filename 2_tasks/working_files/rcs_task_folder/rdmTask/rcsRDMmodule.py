@@ -1945,24 +1945,24 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             
             if r==0:
                 if overall_outcome >= curr_goal:
-                    ocSelect.text= text='ROUND 1\n\nYou earned $%.2f over the span of the trials.\n\nThis met the goal of $%.2f \n\nYou will gain this rounds bonus of $%.2f\n\nPress ‘space’ to continue.' % (overall_outcome, curr_goal, curr_bonus)
+                    ocSelect.text= text="ROUND 1\n\nYou earned $%.2f over the span of the trials.\n\nThis met the goal of $%.2f. \n\nYou will gain this round's bonus of $%.2f.\n\nPress ‘space’ to continue." % (overall_outcome, curr_goal, curr_bonus)
                 else:
-                    ocSelect.text= text='ROUND 1\n\nYou earned $%.2f over the span of the trials.\n\nThis did not meet the goal of $%.2f \n\nYou will not gain this rounds bonus of $%.2f \n\nPress ‘space’ to continue.' % (overall_outcome,curr_goal, curr_bonus)
+                    ocSelect.text= text="ROUND 1\n\nYou earned $%.2f over the span of the trials.\n\nThis did not meet the goal of $%.2f. \n\nYou will not gain this round's bonus of $%.2f. \n\nPress ‘space’ to continue." % (overall_outcome,curr_goal, curr_bonus)
             elif r==1:
                 if overall_outcome >= curr_goal:
-                    ocSelect.text= text='ROUND 2\n\nYou earned $%.2f over the span of the trials.\n\nThis met the goal of $%.2f \n\nYou will gain this rounds bonus of $%.2f\n\nPress ‘space’ to continue.' % (overall_outcome, curr_goal, curr_bonus)
+                    ocSelect.text= text="ROUND 2\n\nYou earned $%.2f over the span of the trials.\n\nThis met the goal of $%.2f. \n\nYou will gain this round's bonus of $%.2f.\n\nPress ‘space’ to continue." % (overall_outcome, curr_goal, curr_bonus)
                 else:
-                    ocSelect.text= text='ROUND 2\n\nYou earned $%.2f over the span of the trials.\n\nThis did not meet the goal of $%.2f \n\nYou will not gain this rounds bonus of $%.2f \n\nPress ‘space’ to continue.' % (overall_outcome,curr_goal, curr_bonus)
+                    ocSelect.text= text="ROUND 2\n\nYou earned $%.2f over the span of the trials.\n\nThis did not meet the goal of $%.2f. \n\nYou will not gain this round's bonus of $%.2f. \n\nPress ‘space’ to continue." % (overall_outcome,curr_goal, curr_bonus)
             elif r==2:
                 if overall_outcome >= curr_goal:
-                    ocSelect.text= text='ROUND 3\n\nYou earned $%.2f over the span of the trials.\n\nThis met the goal of $%.2f \n\nYou will gain this rounds bonus of $%.2f\n\nPress ‘space’ to continue.' % (overall_outcome, curr_goal, curr_bonus)
+                    ocSelect.text= text="ROUND 3\n\nYou earned $%.2f over the span of the trials.\n\nThis met the goal of $%.2f. \n\nYou will gain this round's bonus of $%.2f.\n\nPress ‘space’ to continue." % (overall_outcome, curr_goal, curr_bonus)
                 else:
-                    ocSelect.text= text='ROUND 3\n\nYou earned $%.2f over the span of the trials.\n\nThis did not meet the goal of $%.2f \n\nYou will not gain this rounds bonus of $%.2f \n\nPress ‘space’ to continue.' % (overall_outcome,curr_goal, curr_bonus)
+                    ocSelect.text= text="ROUND 3\n\nYou earned $%.2f over the span of the trials.\n\nThis did not meet the goal of $%.2f. \n\nYou will not gain this round's bonus of $%.2f. \n\nPress ‘space’ to continue." % (overall_outcome,curr_goal, curr_bonus)
             elif r==3:
                 if overall_outcome >= curr_goal:
-                    ocSelect.text= text='ROUND 4\n\nYou earned $%.2f over the span of the trials.\n\nThis met the goal of $%.2f \n\nYou will gain this rounds bonus of $%.2f\n\nPress ‘space’ to continue.' % (overall_outcome, curr_goal, curr_bonus)
+                    ocSelect.text= text="ROUND 4\n\nYou earned $%.2f over the span of the trials.\n\nThis met the goal of $%.2f. \n\nYou will gain this round's bonus of $%.2f.\n\nPress ‘space’ to continue." % (overall_outcome, curr_goal, curr_bonus)
                 else:
-                    ocSelect.text= text='ROUND 4\n\nYou earned $%.2f over the span of the trials.\n\nThis did not meet the goal of $%.2f \n\nYou will not gain this rounds bonus of $%.2f \n\nPress ‘space’ to continue.' % (overall_outcome,curr_goal, curr_bonus)
+                    ocSelect.text= text="ROUND 4\n\nYou earned $%.2f over the span of the trials.\n\nThis did not meet the goal of $%.2f. \n\nYou will not gain this round's bonus of $%.2f. \n\nPress ‘space’ to continue." % (overall_outcome,curr_goal, curr_bonus)
             borderBox.draw() # draw the large color box
             blackBox.draw() # draw smaller black box on top of our color rect to create border effect
             ocSelect.draw() #"You will receive ..."
