@@ -89,10 +89,10 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         earned_bonus = 0
         
         # BONUS values are represented as a dollar amount
-        LOW_BONUS = 2
-        HIGH_BONUS = 10
-        #LOW_BONUS = 25
-        #HIGH_BONUS = 100
+        #LOW_BONUS = 2
+        #HIGH_BONUS = 10
+        LOW_BONUS = 25
+        HIGH_BONUS = 100
         
         # GOAL is represented as a percentile amount of the amount to hit, the dollar amount is calculatred from CSV data from that percentile
         LOW_GOAL = 10
@@ -2201,9 +2201,9 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
 #Add the overall_bonus to the overall_outcome
 
-        # ocSelect.draw()
-        # win.flip()
-        # event.waitKeys(keyList = ['q'], timeStamped = False) # waiting for key press 
+        ocSelect.draw()
+        win.flip()
+        event.waitKeys(keyList = ['q'], timeStamped = False) # waiting for key press 
     
     
         #ocSelect.text = text = "Randomly selected outcome: $%.2f. \n\nYou will receive $%.2f as your bonus payment.\n\n\nPress the white button to call the experimenter." % (outcomeForPay, scaledOC)
