@@ -91,10 +91,13 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         # BONUS values are represented as a dollar amount
         LOW_BONUS = 2
         HIGH_BONUS = 10
+        #LOW_BONUS = 25
+        #HIGH_BONUS = 100
         
         # GOAL is represented as a percentile amount of the amount to hit, the dollar amount is calculatred from CSV data from that percentile
         LOW_GOAL = 10
         HIGH_GOAL = 60
+        
         
         df = pandas.read_csv(dirName + "rdmTask/" + 'gpr_percentiles.csv', dtype={"percentile":"int"}) 
         LOW_GOAL_AMOUNT = df.iloc[LOW_GOAL-1]['earnings'] 
