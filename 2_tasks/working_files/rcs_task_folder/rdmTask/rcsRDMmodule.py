@@ -912,7 +912,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         lossPract =0,0,0,0,0
         safePract = 27.89,5.10,17.05,4.12,17.25
         
-        
+        # DATA SAVE
         practiceData = [] # create data structure with column names
         practiceData.append(
             [
@@ -1173,7 +1173,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 itiStim.draw()
                 win.flip()
                 
-            
+            #DATA SAVE
             # save data on a trial by trial basis
             practiceData.append(
                 [
@@ -1235,6 +1235,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
     #----------Start the task---------#
     #try:
     
+    #DATA SAVE
         data = [] # create data structure with column names
         data.append(
             [
@@ -1873,7 +1874,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     #core.wait(iti[t])
                 
     
-            
+
+        #DATA SAVE    
             # save data on a trial by trial basis
                 data.append(
                     [
@@ -2212,6 +2214,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
       
         datetime = time.strftime("%Y%m%d-%H%M%S"); # save date and time
         
+        #DATA SAVE
         if 'data' in locals(): 
             if not isinstance(data, pd.DataFrame):
                 data = pd.DataFrame(data)
@@ -2220,7 +2223,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             filenameRDM = dataDirectoryPath + "rcsRDM_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
             data.to_csv(filenameRDM)
         
-            
+
+        #DATA SAVE    
         if 'trialOutcome' in locals(): 
             if not isinstance(trialOutcome, pd.DataFrame):
                 trialOutcome = pd.DataFrame(trialOutcome) #convert data into pandas dataframe
@@ -2228,7 +2232,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 trialOutcome = trialOutcome.iloc[1: , :] # drop the first row which are the variable trialOutcome.iloc[1: , :] # drop the first row which are the variable names
             filenameTrialOutcome = dataDirectoryPath + "rcsTrialOutcome_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
             trialOutcome.to_csv(filenameTrialOutcome)
-                
+
+        #DATA SAVE        
         if 'practiceData' in locals(): 
             if not isinstance(practiceData, pd.DataFrame):
                 practiceData = pd.DataFrame(practiceData) #convert data into pandas dataframe
