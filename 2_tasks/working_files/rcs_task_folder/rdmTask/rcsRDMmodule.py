@@ -935,7 +935,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             ]
         )
             
-        
+        # overall_outcome added above
+
         # define variable that is used to change the size of the progress bar
         changeInBar = int((progBarStart[0]/nPract)*-1)*2 # double it because it needs to go across the entire screen (not just half)
         
@@ -1180,9 +1181,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     gainPract[p], 
                     lossPract[p], 
                     safePract[p], 
-                    RT,
-                    #overall_outcome,
-                    #overall_outcome[p], 
+                    RT, 
                     loc, 
                     response, 
                     choice,
@@ -2173,7 +2172,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             
             # Make this show up for rounds 2, 3, and 4 also
             #if r==0:
-            if r in (0,1,2,3):
+            if r in (0,3):
                 callExperimenter.draw()
                 win.flip()
                 event.waitKeys(keyList = ['q'], timeStamped = False) # waiting for key press     
