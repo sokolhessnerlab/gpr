@@ -325,7 +325,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
         postRoundCheck = visual.TextStim(
             win,
-            text="You have completed this round, and will start the next, new round momentarily. \n\nMoving ahead to the next round, do your best to let the outcomes of the previous round go. \n\nFocus instead on the new goal and bonus. Rounds are independent from one another, making each round a new start. \n\nThe outcomes of any given round have no effect on subsequent rounds. \n\nBefore advancing, take a moment to get ready if you need, \n\nand press 'space' when you're ready to continue.",
+            text="Moving ahead to the next round, do your best to let the outcomes of the previous round go! \n\nFocus instead on the NEW GOAL and BONUS. Rounds are independent from one another, making each round a NEW START. \n\nThe outcomes of any given round have NO EFFECT on subsequent rounds. \n\nBefore advancing, take a moment to get ready, if you need, \n\nand press 'space' when you're ready to continue.",
             pos = (0,0),
             color=[1,1,1],
             height=textHeight,
