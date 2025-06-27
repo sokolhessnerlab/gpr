@@ -2190,6 +2190,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         outcomeForPay = np.random.choice(finalOutcomesToSelect);
         scaledOC = outcomeForPay/2
         
+        #Addition for total outcome and earnings, make sure to scale by 0.009 or 0.9%
         total_outcome = 0
         bonus_outcome = 0
 
