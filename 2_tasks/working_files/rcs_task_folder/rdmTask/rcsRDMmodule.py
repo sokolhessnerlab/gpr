@@ -1944,24 +1944,30 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             win.flip()
             core.wait(2)
             
+            overall_bonus = 0
+
             if r==0:
                 if overall_outcome >= curr_goal:
                     ocSelect.text= text="ROUND 1\n\nYou earned $%.2f over the span of the trials.\n\nThis met the goal of $%.2f. \n\nYou will gain this round's bonus of $%.2f.\n\nPress ‘space’ to continue." % (overall_outcome, curr_goal, curr_bonus)
+                    overall_bonus += curr_bonus
                 else:
                     ocSelect.text= text="ROUND 1\n\nYou earned $%.2f over the span of the trials.\n\nThis did not meet the goal of $%.2f. \n\nYou will not gain this round's bonus of $%.2f. \n\nPress ‘space’ to continue." % (overall_outcome,curr_goal, curr_bonus)
             elif r==1:
                 if overall_outcome >= curr_goal:
                     ocSelect.text= text="ROUND 2\n\nYou earned $%.2f over the span of the trials.\n\nThis met the goal of $%.2f. \n\nYou will gain this round's bonus of $%.2f.\n\nPress ‘space’ to continue." % (overall_outcome, curr_goal, curr_bonus)
+                    overall_bonus += curr_bonus
                 else:
                     ocSelect.text= text="ROUND 2\n\nYou earned $%.2f over the span of the trials.\n\nThis did not meet the goal of $%.2f. \n\nYou will not gain this round's bonus of $%.2f. \n\nPress ‘space’ to continue." % (overall_outcome,curr_goal, curr_bonus)
             elif r==2:
                 if overall_outcome >= curr_goal:
                     ocSelect.text= text="ROUND 3\n\nYou earned $%.2f over the span of the trials.\n\nThis met the goal of $%.2f. \n\nYou will gain this round's bonus of $%.2f.\n\nPress ‘space’ to continue." % (overall_outcome, curr_goal, curr_bonus)
+                    overall_bonus += curr_bonus
                 else:
                     ocSelect.text= text="ROUND 3\n\nYou earned $%.2f over the span of the trials.\n\nThis did not meet the goal of $%.2f. \n\nYou will not gain this round's bonus of $%.2f. \n\nPress ‘space’ to continue." % (overall_outcome,curr_goal, curr_bonus)
             elif r==3:
                 if overall_outcome >= curr_goal:
                     ocSelect.text= text="ROUND 4\n\nYou earned $%.2f over the span of the trials.\n\nThis met the goal of $%.2f. \n\nYou will gain this round's bonus of $%.2f.\n\nPress ‘space’ to continue." % (overall_outcome, curr_goal, curr_bonus)
+                    overall_bonus += curr_bonus
                 else:
                     ocSelect.text= text="ROUND 4\n\nYou earned $%.2f over the span of the trials.\n\nThis did not meet the goal of $%.2f. \n\nYou will not gain this round's bonus of $%.2f. \n\nPress ‘space’ to continue." % (overall_outcome,curr_goal, curr_bonus)
             borderBox.draw() # draw the large color box
@@ -2184,12 +2190,17 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         outcomeForPay = np.random.choice(finalOutcomesToSelect);
         scaledOC = outcomeForPay/2
         
-        # total_outcome = 0
+        total_outcome = 0
+        bonus_outcome = 0
 
-        # total_outcome += overall_outcome
-        # #TOTAL EARNINGS PAGE $Z
-        # ocSelect.text = text = "Across the four (4) rounds of today's study, you earned $%.2f." % (total_outcome)
+        total_outcome += overall_outcome
+        bonus_outcome += overall_bonus
+        studyEarnings = total_outcome + bonus_outcome
+        #TOTAL EARNINGS PAGE $Z
+        ocSelect.text = text = "Across the four (4) rounds of today's study, you earned a total of $%.2f." % (studyEarnings)
         
+#Add the overall_bonus to the overall_outcome
+
         # ocSelect.draw()
         # win.flip()
         # event.waitKeys(keyList = ['q'], timeStamped = False) # waiting for key press 
