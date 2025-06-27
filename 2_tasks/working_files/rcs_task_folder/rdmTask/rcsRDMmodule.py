@@ -2188,7 +2188,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
 
         # total_outcome += overall_outcome
         # #TOTAL EARNINGS PAGE $Z
-        # ocSelect.text = text = "Across the four (4) rounds of today's study, you earned a $%.2f bonus. \n\nPlease push the white button to call the experimenter now." % (total_outcome)
+        # ocSelect.text = text = "Across the four (4) rounds of today's study, you earned $%.2f." % (total_outcome)
         
         # ocSelect.draw()
         # win.flip()
