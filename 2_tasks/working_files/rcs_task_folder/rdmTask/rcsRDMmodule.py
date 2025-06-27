@@ -2199,7 +2199,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         #TOTAL EARNINGS PAGE $Z
         ocSelect.text = text = "Across the four (4) rounds of today's study, you earned a total of $%.2f." % (studyEarnings)
         
-#Add the overall_bonus to the overall_outcome
+#Add the overall_bonus to the overall_outcome --> The current code only counts what happens in the last round of the task. Also make sure not to include the overall_outcome from the practice rounds.
 
         ocSelect.draw()
         win.flip()
