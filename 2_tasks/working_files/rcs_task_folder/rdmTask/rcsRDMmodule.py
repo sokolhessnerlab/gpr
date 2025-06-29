@@ -1118,7 +1118,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             #DO THE ISI
             pracBorderBox.draw()
             blackBox.draw()
-            #ADD TOP TEXT
             earningsTxt.draw()
             goalTxt.draw()
             bonusTxt.draw()
