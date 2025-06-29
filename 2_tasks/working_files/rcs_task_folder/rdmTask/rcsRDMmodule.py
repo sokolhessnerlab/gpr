@@ -1411,12 +1411,12 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             curr_bonus = condition_levels[strategy][0]
             curr_goal = condition_levels[strategy][1]
 
-        #%S%S
-        level = "HIGH", "LOW"
-        if curr_goal == HIGH_GOAL_AMOUNT:
-            level = "HIGH"
-        else:
-            level = "LOW"
+            #%S%S
+            level = "HIGH", "LOW"
+            if curr_goal == HIGH_GOAL_AMOUNT:
+                level = "HIGH"
+            else:
+                level = "LOW"
 
         
         # level = "HIGH", "LOW"
