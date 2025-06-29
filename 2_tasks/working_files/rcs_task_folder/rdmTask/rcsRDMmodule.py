@@ -71,11 +71,12 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         # Screen dimensions and drawing stuff
         #scrnsize= [800,800] #how large the screen will be
         scrnsize=[1280,1024] # CORRECT DIMENSIONS FOR REAL TASK
-        #scrnsize = [1024,819.2] # 80% of correct size for mac laptop
+        #scrnsize = [1024,819.2] # 80% of correct size for mac laptop --> MAC LAPTOP CORRECT SIZE
         center = [0,100]
         centerR = [scrnsize[0]/4,100]
         centerL = [scrnsize[0]/-4,100]
-        topR = [scrnsize[0]/4, scrnsize[1]/2]
+        #topR = [scrnsize[0]/4, scrnsize[1]/2]
+        topR = [scrnsize[0]/3, scrnsize[1]] #CHANGE FOR TOP RIGHT SCREEN POSITION
         topL = [scrnsize[0]/-4, scrnsize[1]/2]
         radius = scrnsize[0]/5.5
         rectHeight = radius +2 #rectangle used to cover up half the circle when outcome is gain or loss
