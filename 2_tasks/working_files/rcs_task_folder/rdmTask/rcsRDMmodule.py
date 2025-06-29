@@ -1411,7 +1411,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             curr_bonus = condition_levels[strategy][0]
             curr_goal = condition_levels[strategy][1]
 
-            #%S%S
+            #Attempting to change the HIGH/LOW variable with each condition as needed
             level = "HIGH", "LOW"
             if curr_goal == HIGH_GOAL_AMOUNT:
                 level = "HIGH"
@@ -1488,15 +1488,15 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 core.wait(forcedInstrWaitTime)
                 event.waitKeys(keyList = ['space'], timeStamped=False)
 
-                    # CHECK TO SEE IF THIS WORKS
+                    # HIGH/LOW variable change
             if r==0:
-                controlInstGPR.text = text="In this round, your goal is $%.2f. \n\nYour bonus in this round is {level} ($%.2f). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, curr_bonus)
+                controlInstGPR.text = text="In this round, your goal is $%.2f. \n\nYour bonus in this round is {level} ($%.2f). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, level, curr_bonus)
             elif r==1:
-                controlInstGPR.text = text="In this round, your goal is $%.2f. \n\nYour bonus in this round is {level} ($%.2f). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, curr_bonus)
+                controlInstGPR.text = text="In this round, your goal is $%.2f. \n\nYour bonus in this round is {level} ($%.2f). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, level, curr_bonus)
             elif r==2:
-                controlInstGPR.text = text="In this round, your goal is $%.2f. \n\nYour bonus in this round is {level} ($%.2f). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, curr_bonus)
+                controlInstGPR.text = text="In this round, your goal is $%.2f. \n\nYour bonus in this round is {level} ($%.2f). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, level, curr_bonus)
             elif r==3:
-                controlInstGPR.text = text="In this round, your goal is $%.2f. \n\nYour bonus in this round is {level} ($%.2f). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, curr_bonus)
+                controlInstGPR.text = text="In this round, your goal is $%.2f. \n\nYour bonus in this round is {level} ($%.2f). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, level, curr_bonus)
 
             instructPG1 = controlInstGPR        
                     #elif strategy == 1: # if the condition is strategy
