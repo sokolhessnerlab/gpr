@@ -76,7 +76,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         centerR = [scrnsize[0]/4,100]
         centerL = [scrnsize[0]/-4,100]
         #topR = [scrnsize[0]/4, scrnsize[1]/2]
-        topR = [scrnsize[0]/3, scrnsize[1]] #CHANGE FOR TOP RIGHT SCREEN POSITION
+        topR = [scrnsize[0]/2, scrnsize[1]] #CHANGE FOR TOP RIGHT SCREEN POSITION
         topL = [scrnsize[0]/-4, scrnsize[1]/2]
         radius = scrnsize[0]/5.5
         rectHeight = radius +2 #rectangle used to cover up half the circle when outcome is gain or loss
