@@ -1412,7 +1412,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             curr_goal = condition_levels[strategy][1]
 
             #Attempting to change the HIGH/LOW variable with each condition as needed
-            level = "HIGH", "LOW"
+            #level = "HIGH", "LOW"
             if curr_goal == HIGH_GOAL_AMOUNT:
                 level = "HIGH"
             else:
