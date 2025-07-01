@@ -1418,16 +1418,16 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             # the first screen in the series of instructions gives the participant a heads up 
             # that instructions are coming up.
             
-            strategy = cond[r]; # store strategy value (0/1/2/3)  
-            curr_bonus = condition_levels[strategy][0]
-            curr_goal = condition_levels[strategy][1]
+            # round_val = cond[r]; # store strategy value (0/1/2/3)  
+            curr_bonus = condition_levels[cond[r]][0]
+            curr_goal = condition_levels[cond[r]][1]
 
             #Attempting to change the HIGH/LOW variable with each condition as needed
             #level = "HIGH", "LOW"
             if curr_goal == HIGH_GOAL_AMOUNT:
-                level = "HIGH"
+                goal_level_txt = "HIGH"
             else:
-                level = "LOW"
+                goal_level_txt = "LOW"
 
         
         # level = "HIGH", "LOW"
@@ -1499,17 +1499,10 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 core.wait(forcedInstrWaitTime)
                 event.waitKeys(keyList = ['space'], timeStamped=False)
 
-                    # HIGH/LOW variable change
-            if r==0:
-                controlInstGPR.text = text="In this round, your goal is $%.2f. \n\nYour bonus in this round is %s ($%.2f). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, level, curr_bonus)
-            elif r==1:
-                controlInstGPR.text = text="In this round, your goal is $%.2f. \n\nYour bonus in this round is %s ($%.2f). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, level, curr_bonus)
-            elif r==2:
-                controlInstGPR.text = text="In this round, your goal is $%.2f. \n\nYour bonus in this round is %s ($%.2f). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, level, curr_bonus)
-            elif r==3:
-                controlInstGPR.text = text="In this round, your goal is $%.2f. \n\nYour bonus in this round is %s ($%.2f). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, level, curr_bonus)
+            # HIGH/LOW variable change
+            controlInstGPR.text = "In this round, your goal is $%.2f. \n\nYour bonus in this round is %s ($%.2f). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, goal_level_txt, curr_bonus)
 
-            instructPG1 = controlInstGPR        
+            # instructPG1 = controlInstGPR        
                     #elif strategy == 1: # if the condition is strategy
                         #instructPG1 = stratInst1
                         #instructPG2 = stratInst2
@@ -1532,7 +1525,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             #borderBox.draw() # draw the large color box
             #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                     
-            instructPG1.draw()
+            controlInstGPR.draw()
                     #instructCount.text=text="screen 1/4"
             #instructCount.draw()                    
             win.flip()
