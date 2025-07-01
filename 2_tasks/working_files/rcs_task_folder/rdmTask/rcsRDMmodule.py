@@ -119,7 +119,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             nT = 2 #for testing purposes
             nPract = 2
     
-        
+        all_round_earnings = [0,0,0,0]
+        all_round_bonuses = [0,0,0,0]
         
         #Locations for drawing line and dollar amounts:
         
@@ -692,7 +693,16 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             wrapWidth=wrap,
             alignText="left"
         )
-        
+
+        earnings_txt = visual.TextStim(
+            win,  
+            pos = (0,0),
+            color=[1,1,1],
+            height =textHeight,
+            wrapWidth=wrap,
+            alignText="left"
+        )
+       
         #GET STIMULI READY FOR ENTIRE TASK
         # prep stuff for choice display
         circle = visual.Circle(
@@ -1968,15 +1978,17 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             win.flip()
             core.wait(2)
             
-            overall_bonus = 0
+            round_bonus = 0
 
 
             if round_earnings >= curr_goal:
                 ocSelect.text= text="ROUND %i\n\nYou earned $%.2f over the span of the trials.\n\nThis met the goal of $%.2f. \n\nYou will gain this round's bonus of $%.2f.\n\nPress ‘space’ to continue." % (r+1, round_earnings, curr_goal, curr_bonus)
+                round_bonus += curr_bonus
             else:
-                overall_bonus += curr_bonus
                 ocSelect.text= text="ROUND %i\n\nYou earned $%.2f over the span of the trials.\n\nThis did not meet the goal of $%.2f. \n\nYou will not gain this round's bonus of $%.2f. \n\nPress ‘space’ to continue." % (r+1, round_earnings,curr_goal, curr_bonus)
             
+            all_round_bonuses[r] = round_bonus
+            all_round_earnings[r] = round_earnings
 
             borderBox.draw() # draw the large color box
             blackBox.draw() # draw smaller black box on top of our color rect to create border effect
@@ -2199,18 +2211,25 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         scaledOC = outcomeForPay/2
         
         #Addition for total outcome and earnings, make sure to scale by 0.009 or 0.9%
-        total_outcome = 0
-        bonus_outcome = 0
+        total_earnings = sum(all_round_earnings)
+        total_bonuses = sum(all_round_bonuses)
+        total_compensation = total_earnings + total_bonuses
 
-        total_outcome += round_earnings
-        bonus_outcome += overall_bonus
-        studyEarnings = total_outcome + bonus_outcome
-        #TOTAL EARNINGS PAGE $Z
-        ocSelect.text = text = "Across the four (4) rounds of today's study, you earned a total of $%.2f." % (studyEarnings)
+        scale_factor = 0.009
+
+        final_dollar_compensation = total_compensation * scale_factor
+
+        earnings_txt.text = ""
+        for r in range(RDMrounds):
+            earnings_txt.text = earnings_txt.text + "Round %i: earnings: $%.2f, bonus: $%.2f\n" % (r, all_round_earnings[r], all_round_bonuses[r])
+        earnings_txt.text = earnings_txt.text + "TOTAL EARNED: $%.2f\n\n" % total_compensation + "After scaling by %g%, real dollars earned = $%.2f" % (scale_factor*100, final_dollar_compensation)
+
+        # #TOTAL EARNINGS PAGE $Z
+        # ocSelect.text = text = "Across the four (4) rounds of today's study, you earned a total of $%.2f." % (studyEarnings)
         
 #Add the overall_bonus to the round_earnings --> The current code only counts what happens in the last round of the task. Also make sure not to include the round_earnings from the practice rounds.
 
-        ocSelect.draw()
+        earnings_txt.draw()
         win.flip()
         event.waitKeys(keyList = ['q'], timeStamped = False) # waiting for key press 
     
