@@ -1275,7 +1275,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 "itiStart",
                 "trial",
                 "roundRDM",
-                "roundColor"
+                "roundColor",
+                "ischecktrial"
             ]
         )
         
@@ -1928,7 +1929,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                         itiStart,
                         t,
                         r+1,
-                        colorOrder[r]
+                        colorOrder[r],
+                        ischecktrial[t]
                     ]
                 )
 
@@ -2255,7 +2257,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 data = pd.DataFrame(data)
                 # data.columns = ["subID","riskyGain", "riskyLoss","safe", "RT", "loc", "response", "choice","outcome","itiStatic","itiExtra","evLevel","evInd","runSize","strategy","stimDispStart","choiceTimeStart","isiStart","outcomeDispStart","itiStart","trial","roundRDM","roundColor"]
                 data.columns = ["subID","riskyGain", 
-                "riskyLoss", "safe", "RT", "overall_outcome","curr_goal","curr_bonus","loc", "response", "choice", "outcome", "iti", "itiExtra", "cond", "stimDispStart", "choiceTimeStart", "isiStart", "outcomeDispStart", "itiStart", "trial", "roundRDM", "roundColor"]
+                "riskyLoss", "safe", "RT", "overall_outcome","curr_goal","curr_bonus","loc", "response", "choice", "outcome", "iti", "itiExtra", "cond", "stimDispStart", "choiceTimeStart", "isiStart", "outcomeDispStart", "itiStart", "trial", "roundRDM", "roundColor","ischecktrial"]
                 data = data.iloc[1: , :] # drop the first row which are the variable names
             filenameRDM = dataDirectoryPath + "rcsRDM_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
             data.to_csv(filenameRDM)
