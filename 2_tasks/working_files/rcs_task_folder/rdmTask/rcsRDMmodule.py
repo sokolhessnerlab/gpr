@@ -1220,9 +1220,9 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
 
     #if --> How is practice defined here in terms of r
         if overall_outcome >= goalPract:
-            ocSelect.text= text='PRACTICE ROUND\n\nYou earned $%.2f over the span of the trials.\n\nThis met the goal of $%.2f. \n\nYou will gain this rounds bonus of $%.2f.\n\nPress ‘space’ to continue.' % (overall_outcome, goalPract, bonusPract)
+            ocSelect.text= text='PRACTICE ROUND\n\nYou earned $%.2f over the span of the trials.\n\nThis met the goal of $%.2f. \n\nYou will gain this round‘s bonus of $%.2f.\n\nPress ‘space’ to continue.' % (overall_outcome, goalPract, bonusPract)
         else:
-            ocSelect.text= text='PRACTICE ROUND\n\nYou earned $%.2f over the span of the trials.\n\nThis did not meet the goal of $%.2f. \n\nYou will not gain this rounds bonus of $%.2f. \n\nPress ‘space’ to continue.' % (overall_outcome, goalPract, bonusPract)
+            ocSelect.text= text='PRACTICE ROUND\n\nYou earned $%.2f over the span of the trials.\n\nThis did not meet the goal of $%.2f. \n\nYou will not gain this round‘s bonus of $%.2f. \n\nPress ‘space’ to continue.' % (overall_outcome, goalPract, bonusPract)
         # pracBorderBox.draw() # draw the large color box
         # blackBox.draw() # draw smaller black box on top of our color rect to create border effect
         pracBorderBox.draw()
