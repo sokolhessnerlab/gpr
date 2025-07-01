@@ -755,7 +755,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             font='Helvetica',
             height = textHeight * 1.2,
             #pos = (-0.9, 0.9)
-            pos = topL
+            pos = topL,
+            alignText = 'right'
         )
 
         goalTxt = visual.TextStim(
@@ -773,7 +774,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             font='Helvetica',
             height = textHeight * 1.2,
             #pos = (0.9, 0.9)
-            pos = topR
+            pos = topR,
+            alignText = 'left'
         )
         
         lossTxt = visual.TextStim(
