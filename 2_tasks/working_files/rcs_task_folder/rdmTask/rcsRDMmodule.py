@@ -993,7 +993,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             bonusTxt.text = text='Bonus: $%.2f' % bonusPract
             
             gainTxt.text = text='$%.2f' % gainPract[p]
-            lossTxt.text = text='$%d' % lossPract[p]
+            lossTxt.text = text='$%.2f' % lossPract[p]
             altTxt.text = text='$%.2f' % safePract[p]
 
         # randomly choose location of gamble on screen
@@ -1119,7 +1119,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     choice = 0
                     outcome = safePract[p]
                 round_earnings += outcome
-            earningsTxt.text = text='Earnings: $%.2f' % round_earnings
     
         
        
@@ -1158,6 +1157,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             #DO THE OUTCOME
             pracBorderBox.draw()
             blackBox.draw()
+            earningsTxt.text = text='Earnings: $%.2f' % round_earnings
             
             if outcome == 'NaN':
                 ocTxt = noRespTxt
