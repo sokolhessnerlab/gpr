@@ -103,7 +103,10 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         # GOAL is represented as a percentile amount of the amount to hit, the dollar amount is calculatred from CSV data from that percentile
         LOW_GOAL = 10
         HIGH_GOAL = 60
-        
+
+        # Practice goal & bonus definition
+        goalPract = 75.20
+        bonusPract = 5
         
         df = pandas.read_csv(dirName + "rdmTask/" + 'gpr_percentiles.csv', dtype={"percentile":"int"}) 
         LOW_GOAL_AMOUNT = df.iloc[LOW_GOAL-1]['earnings'] 
@@ -245,7 +248,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         #Change to instGPR_
         inst3 = visual.TextStim(
             win, 
-            text="In this round, your goal is $60.00. \n\nYour bonus in this round is $5.00. \n\nTake a moment if you need before beginning the practice. \n\n*REMEMBER, this practice round DOES NOT count toward any actual bonuses. It is meant for explanation and practice purposes ONLY.* \n\nPress 'V' or 'N' when you are ready to begin.", 
+            text="In this round, your goal is $%.2f. \n\nYour bonus in this round is $%.2f. \n\nTake a moment if you need before beginning the practice. \n\n*REMEMBER, this practice round DOES NOT count toward any actual bonuses. It is meant for explanation and practice purposes ONLY.* \n\nPress 'V' or 'N' when you are ready to begin." % (goalPract, bonusPract), 
             pos = (0,0),
             color=[1,1,1],
             height = textHeight,
@@ -925,8 +928,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         lossPract =0, 0, 0, 0, 0
         safePract = 27.89, 5.10, 17.05, 4.12, 17.25
 
-        goalPract = 75.20
-        
         # DATA SAVE
         practiceData = [] # create data structure with column names
         practiceData.append(
@@ -979,7 +980,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             #ADD TOP TEXT
             earningsTxt.text = text='Earnings: $%.2f' % overall_outcome
             goalTxt.text = text = 'Goal: $%.2f' % goalPract
-            bonusTxt.text = text='Bonus: $5.00'
+            bonusTxt.text = text='Bonus: $%.2f' % bonusPract
             
             gainTxt.text = text='$%.2f' % gainPract[p]
             lossTxt.text = text='$%d' % lossPract[p]
@@ -1219,9 +1220,9 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
 
     #if --> How is practice defined here in terms of r
         if overall_outcome >= goalPract:
-            ocSelect.text= text='PRACTICE ROUND\n\nYou earned $%.2f over the span of the trials.\n\nThis met the goal of $%.2f. \n\nYou will gain this rounds bonus of $5.00.\n\nPress ‘space’ to continue.' % (overall_outcome, goalPract)
+            ocSelect.text= text='PRACTICE ROUND\n\nYou earned $%.2f over the span of the trials.\n\nThis met the goal of $%.2f. \n\nYou will gain this rounds bonus of $%.2f.\n\nPress ‘space’ to continue.' % (overall_outcome, goalPract, bonusPract)
         else:
-            ocSelect.text= text='PRACTICE ROUND\n\nYou earned $%.2f over the span of the trials.\n\nThis did not meet the goal of $%.2f. \n\nYou will not gain this rounds bonus of $5.00. \n\nPress ‘space’ to continue.' % (overall_outcome, goalPract)
+            ocSelect.text= text='PRACTICE ROUND\n\nYou earned $%.2f over the span of the trials.\n\nThis did not meet the goal of $%.2f. \n\nYou will not gain this rounds bonus of $%.2f. \n\nPress ‘space’ to continue.' % (overall_outcome, goalPract, bonusPract)
         # pracBorderBox.draw() # draw the large color box
         # blackBox.draw() # draw smaller black box on top of our color rect to create border effect
         pracBorderBox.draw()
