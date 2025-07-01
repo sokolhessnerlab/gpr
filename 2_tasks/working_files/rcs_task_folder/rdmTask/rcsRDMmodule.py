@@ -59,7 +59,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
 
         # df = pandas.read_csv(dirName + "rdmTask/" + 'gprRDMstatic.csv', dtype={"percentile":"int"}) 
 
-        staticDF = pd.read_csv(dirName + "rdmTask/" + "ediRDMstatic.csv") 
+        staticDF = pd.read_csv(dirName + "rdmTask/" + "gprRDMstatic.csv") 
     
         # Define rounds of risky decision-making task
         RDMrounds=4; 
