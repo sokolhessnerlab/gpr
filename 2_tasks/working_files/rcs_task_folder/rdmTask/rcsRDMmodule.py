@@ -1426,10 +1426,10 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
 
             #Attempting to change the HIGH/LOW variable with each condition as needed
             #level = "HIGH", "LOW"
-            if curr_goal == HIGH_GOAL_AMOUNT:
-                goal_level_txt = "HIGH"
+            if curr_bonus == HIGH_BONUS:
+                bonus_level_txt = "HIGH"
             else:
-                goal_level_txt = "LOW"
+                bonus_level_txt = "LOW"
 
         
         # level = "HIGH", "LOW"
@@ -1502,7 +1502,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 event.waitKeys(keyList = ['space'], timeStamped=False)
 
             # HIGH/LOW variable change
-            controlInstGPR.text = "In this round, your goal is $%.2f. \n\nYour bonus in this round is %s ($%.2f). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, goal_level_txt, curr_bonus)
+            controlInstGPR.text = "In this round, your goal is $%.2f. \n\nYour bonus in this round is %s ($%.2f). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, bonus_level_txt, curr_bonus)
 
             # instructPG1 = controlInstGPR        
                     #elif strategy == 1: # if the condition is strategy
