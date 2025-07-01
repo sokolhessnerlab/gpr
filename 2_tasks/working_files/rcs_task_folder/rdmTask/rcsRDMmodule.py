@@ -56,7 +56,11 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         sys.path.append(os.path.dirname(__file__))
         sys.path.append(os.path.join(os.path.dirname(__file__), 'rdmTask'))
         import rcsRDMChoiceSet
-        
+
+        # df = pandas.read_csv(dirName + "rdmTask/" + 'gprRDMstatic.csv', dtype={"percentile":"int"}) 
+
+        staticDF = pd.read_csv(dirName + "rdmTask/" + "ediRDMstatic.csv") 
+    
         # Define rounds of risky decision-making task
         RDMrounds=4; 
         
@@ -142,7 +146,14 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         # mon.setSizePix([1280,1024])
         # mon.save()
         
-        
+        # random iti time of 3 or 3.5 sec for each of the trials in the static and dynamic
+        def shuffle(array):
+            currentIndex = len(array)
+            while currentIndex != 0:
+                randomIndex = random.randint(0, currentIndex - 1)
+                currentIndex -= 1
+                array[currentIndex], array[randomIndex] = array[randomIndex], array[currentIndex]
+
         # Set up the window
         win = visual.Window(
             size=scrnsize,
@@ -1244,16 +1255,16 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 "riskyLoss", 
                 "safe", 
                 "RT", 
+                "overall_outcome",
+                "curr_goal",
+                "curr_bonus",
                 "loc", 
                 "response", 
                 "choice",
                 "outcome",
                 "iti",
                 "itiExtra",
-                "evLevel",
-                "evInd",
-                "runSize",
-                "strategy",
+                "cond",
                 "stimDispStart",
                 "choiceTimeStart",
                 "isiStart",
@@ -1296,31 +1307,31 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             curr_color = colors[colorOrder[r]] # get the color for the current round
             borderBox.fillColor = curr_color # set the border color for the current round
 
-            # generate the choiceset on each round and save the choice set
-            rcsCS = rcsRDMChoiceSet.rcsRDMChoiceSet()
+            # randomize trials 
+            staticDF = staticDF.sample(frac = 1).reset_index(drop = True) # use pandas to take all the rows and randomize them
+
+            # # generate the choiceset on each round and save the choice set
+            # rcsCS = rcsRDMChoiceSet.rcsRDMChoiceSet()
             
-            # save the choice set for each round of the task
-            rcsCSdf = pd.DataFrame(rcsCS)
-    
-            # save file
-            datetime = time.strftime("%Y%m%d-%H%M%S"); # save date and time
-            filenameRDMchoiceset = dataDirectoryPath + "rcsRDM_choiceSet_round" + str(r) + "_sub" + subID + "_" + datetime + ".csv"; # make filename
-            rcsCSdf.to_csv(filenameRDMchoiceset)
+            # # save the choice set for each round of the task
+            # rcsCSdf = pd.DataFrame(rcsCS)
+
+            # # save file
+            # datetime = time.strftime("%Y%m%d-%H%M%S"); # save date and time
+            # filenameRDMchoiceset = dataDirectoryPath + "rcsRDM_choiceSet_round" + str(r) + "_sub" + subID + "_" + datetime + ".csv"; # make filename
+            # rcsCSdf.to_csv(filenameRDMchoiceset)
                 
-           
             # store some of the choice set features in new variables
-            riskyGain = rcsCS['riskyGain']
-            riskyLoss = rcsCS['riskyLoss']
-            safe = rcsCS['alternative']
-            evLevel = rcsCS['evLevel']
-            evInd = rcsCS['evInd']
-            runSize = rcsCS['runSize']
+            riskyGain = staticDF['riskyoption1']
+            riskyLoss = staticDF['riskyoption2']
+            safe = staticDF['safeoption']
+            ischecktrial = staticDF['ischecktrial']
+
+            itiStatic = [] # intertrial interval
+            itiStatic = [0.75, 1.25] * 25 # jittered between 0.75 and 1.25 seconds for all 50 trials (BUT THERE'S ITIEXTRA!)
+            shuffle(itiStatic)
+
         
-        
-            #ITIs change as a function of choiceset
-            iti = rcsCS['iti']
-        
-    
             # show our round separation theatric stuff (include forced viewing period when appropriate)
             if r == 0: 
                 explainGPRRounds1.draw()
@@ -1879,7 +1890,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             
                 #ITI 
                 itiStart = rdmStart.getTime()
-                while rdmStart.getTime() < s*(stimTime + choiceTime + isi + outcomeTime) + sum(iti[0:s]):
+                while rdmStart.getTime() < s*(stimTime + choiceTime + isi + outcomeTime) + sum(itiStatic[0:s]):
                     borderBox.draw() # draw the large color box
                     blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                     progressTxt.draw() # draws the message to the window, but only during the loop
@@ -1903,26 +1914,22 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                         riskyLoss[t], 
                         safe[t], 
                         RT,
-                        #overall_outcome,
-                        #overall_outcome[t],
-                        #curr_goal[r],
-                        #curr_bonus[r], 
+                        overall_outcome,
+                        curr_goal,
+                        curr_bonus, 
                         loc, 
                         response, 
                         choice,
                         outcome,
-                        iti[t],
+                        itiStatic[t],
                         itiExtra,
-                        evLevel[t],
-                        evInd[t],
-                        runSize[t],
                         cond[r],
                         stimDispStart,
                         choiceTimeStart,
                         isiStart,
                         outcomeDispStart,
                         itiStart,
-                        s,
+                        t,
                         r+1,
                         colorOrder[r]
                     ]
@@ -2249,7 +2256,9 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         if 'data' in locals(): 
             if not isinstance(data, pd.DataFrame):
                 data = pd.DataFrame(data)
-                data.columns = ["subID","riskyGain", "riskyLoss","safe", "RT", "loc", "response", "choice","outcome","iti","itiExtra","evLevel","evInd","runSize","strategy","stimDispStart","choiceTimeStart","isiStart","outcomeDispStart","itiStart","trial","roundRDM","roundColor"]
+                # data.columns = ["subID","riskyGain", "riskyLoss","safe", "RT", "loc", "response", "choice","outcome","itiStatic","itiExtra","evLevel","evInd","runSize","strategy","stimDispStart","choiceTimeStart","isiStart","outcomeDispStart","itiStart","trial","roundRDM","roundColor"]
+                data.columns = ["subID","riskyGain", 
+                "riskyLoss", "safe", "RT", "overall_outcome","curr_goal","curr_bonus","loc", "response", "choice", "outcome", "iti", "itiExtra", "cond", "stimDispStart", "choiceTimeStart", "isiStart", "outcomeDispStart", "itiStart", "trial", "roundRDM", "roundColor"]
                 data = data.iloc[1: , :] # drop the first row which are the variable names
             filenameRDM = dataDirectoryPath + "rcsRDM_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
             data.to_csv(filenameRDM)
