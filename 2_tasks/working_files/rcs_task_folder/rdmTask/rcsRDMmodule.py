@@ -1106,7 +1106,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     choice = 0
                     outcome = safePract[p]
                 overall_outcome += outcome
-    
+            earningsTxt.text = text='Earnings: $%.2f' % overall_outcome
     
         
        
