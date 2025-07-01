@@ -921,9 +921,11 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         itiPract = 1, 1.5, 1, 2, 1 
         
         #practice values (same for all participants):
-        gainPract = 53.17,6.45, 28.16, 8.50,30.54
-        lossPract =0,0,0,0,0
-        safePract = 27.89,5.10,17.05,4.12,17.25
+        gainPract = 53.17, 6.45, 28.16, 8.50, 30.54
+        lossPract =0, 0, 0, 0, 0
+        safePract = 27.89, 5.10, 17.05, 4.12, 17.25
+
+        goalPract = 75.20
         
         # DATA SAVE
         practiceData = [] # create data structure with column names
@@ -976,7 +978,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
             #ADD TOP TEXT
             earningsTxt.text = text='Earnings: $%.2f' % overall_outcome
-            goalTxt.text = text = 'Goal: $60.00'
+            goalTxt.text = text = 'Goal: $%.2f' % goalPract
             bonusTxt.text = text='Bonus: $5.00'
             
             gainTxt.text = text='$%.2f' % gainPract[p]
@@ -1216,10 +1218,10 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
            
 
     #if --> How is practice defined here in terms of r
-        if overall_outcome >= 60:
-            ocSelect.text= text='PRACTICE ROUND\n\nYou earned $%.2f over the span of the trials.\n\nThis met the goal of $60.00. \n\nYou will gain this rounds bonus of $5.00.\n\nPress ‘space’ to continue.' % (overall_outcome)
+        if overall_outcome >= goalPract:
+            ocSelect.text= text='PRACTICE ROUND\n\nYou earned $%.2f over the span of the trials.\n\nThis met the goal of $%.2f. \n\nYou will gain this rounds bonus of $5.00.\n\nPress ‘space’ to continue.' % (overall_outcome, goalPract)
         else:
-            ocSelect.text= text='PRACTICE ROUND\n\nYou earned $%.2f over the span of the trials.\n\nThis did not meet the goal of $60.00. \n\nYou will not gain this rounds bonus of $5.00. \n\nPress ‘space’ to continue.' % (overall_outcome)
+            ocSelect.text= text='PRACTICE ROUND\n\nYou earned $%.2f over the span of the trials.\n\nThis did not meet the goal of $%.2f. \n\nYou will not gain this rounds bonus of $5.00. \n\nPress ‘space’ to continue.' % (overall_outcome, goalPract)
         # pracBorderBox.draw() # draw the large color box
         # blackBox.draw() # draw smaller black box on top of our color rect to create border effect
         pracBorderBox.draw()
