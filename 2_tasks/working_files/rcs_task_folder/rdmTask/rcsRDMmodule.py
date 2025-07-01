@@ -1716,7 +1716,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 
                 
                 gainTxt.text = text='$%.2f' % riskyGain[t]
-                lossTxt.text = text='$%d' % riskyLoss[t]
+                lossTxt.text = text='$%.2f' % riskyLoss[t]
                 altTxt.text = text='$%.2f' % safe[t]
                 earningsTxt.text = text='Earnings: $%.2f' % round_earnings
                 goalTxt.text = text = 'Goal: $%.2f' % curr_goal
@@ -1838,7 +1838,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                         choice = 0
                         outcome = safe[t]
                     round_earnings += outcome
-                earningsTxt.text = text='Earnings: $%.2f' % round_earnings
 
     
                 if choice == 1:
@@ -1873,6 +1872,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 core.wait(isi)
             
                 #DO THE OUTCOME
+                earningsTxt.text = text='Earnings: $%.2f' % round_earnings
                 borderBox.draw() # draw the large color box
                 blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                 progressTxt.draw() # draws the message to the window, but only during the loop
