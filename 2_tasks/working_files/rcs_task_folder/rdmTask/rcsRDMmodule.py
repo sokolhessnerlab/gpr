@@ -17,8 +17,6 @@ Risky decision-making for HRB dissertation project: Risk, context and strategy.
 # notes: the screen dimensions are going to shift when we put on lab computer, so will the stimuli
 
 
-import pandas
-
 
 def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color, cond4color, isReal, dirName, dataDirName):
     
@@ -108,7 +106,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         goalPract = 75.20
         bonusPract = 5
         
-        df = pandas.read_csv(dirName + "rdmTask/" + 'gpr_percentiles.csv', dtype={"percentile":"int"}) 
+        df = pd.read_csv(dirName + "rdmTask/" + 'gpr_percentiles.csv', dtype={"percentile":"int"}) 
         LOW_GOAL_AMOUNT = df.iloc[LOW_GOAL-1]['earnings'] 
         HIGH_GOAL_AMOUNT = df.iloc[HIGH_GOAL-1]['earnings']
         
@@ -951,7 +949,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             ]
         )
             
-        # overall_outcome added above
+        # round_earnings added above
 
         # define variable that is used to change the size of the progress bar
         changeInBar = int((progBarStart[0]/nPract)*-1)*2 # double it because it needs to go across the entire screen (not just half)
@@ -961,7 +959,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         #pracStart.reset() # resets the clock
 
 
-        overall_outcome = 0
+        round_earnings = 0
 
         for p in range(nPract):
             
@@ -978,7 +976,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             progBar.draw()
         
             #ADD TOP TEXT
-            earningsTxt.text = text='Earnings: $%.2f' % overall_outcome
+            earningsTxt.text = text='Earnings: $%.2f' % round_earnings
             goalTxt.text = text = 'Goal: $%.2f' % goalPract
             bonusTxt.text = text='Bonus: $%.2f' % bonusPract
             
@@ -1108,8 +1106,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 elif loc==1 and response[0][0] == 'n' or loc==2 and response[0][0] =='v': #they took safe
                     choice = 0
                     outcome = safePract[p]
-                overall_outcome += outcome
-            earningsTxt.text = text='Earnings: $%.2f' % overall_outcome
+                round_earnings += outcome
+            earningsTxt.text = text='Earnings: $%.2f' % round_earnings
     
         
        
@@ -1156,7 +1154,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 ocTxt.draw()
                 if outcome == gainPract[p] or outcome == lossPract[p]:
                     rect.draw()
-                #overall_outcome += outcome
+                #round_earnings += outcome
         
             
             progressTxt.draw() # draws the message to the window, but only during the loop
@@ -1219,10 +1217,10 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
            
 
     #if --> How is practice defined here in terms of r
-        if overall_outcome >= goalPract:
-            ocSelect.text= text='PRACTICE ROUND\n\nYou earned $%.2f over the span of the trials.\n\nThis met the goal of $%.2f. \n\nYou will gain this round‘s bonus of $%.2f.\n\nPress ‘space’ to continue.' % (overall_outcome, goalPract, bonusPract)
+        if round_earnings >= goalPract:
+            ocSelect.text= text='PRACTICE ROUND\n\nYou earned $%.2f over the span of the trials.\n\nThis met the goal of $%.2f. \n\nYou will gain this round‘s bonus of $%.2f.\n\nPress ‘space’ to continue.' % (round_earnings, goalPract, bonusPract)
         else:
-            ocSelect.text= text='PRACTICE ROUND\n\nYou earned $%.2f over the span of the trials.\n\nThis did not meet the goal of $%.2f. \n\nYou will not gain this round‘s bonus of $%.2f. \n\nPress ‘space’ to continue.' % (overall_outcome, goalPract, bonusPract)
+            ocSelect.text= text='PRACTICE ROUND\n\nYou earned $%.2f over the span of the trials.\n\nThis did not meet the goal of $%.2f. \n\nYou will not gain this round‘s bonus of $%.2f. \n\nPress ‘space’ to continue.' % (round_earnings, goalPract, bonusPract)
         # pracBorderBox.draw() # draw the large color box
         # blackBox.draw() # draw smaller black box on top of our color rect to create border effect
         pracBorderBox.draw()
@@ -1258,7 +1256,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 "riskyLoss", 
                 "safe", 
                 "RT", 
-                "overall_outcome",
+                "round_earnings",
                 "curr_goal",
                 "curr_bonus",
                 "loc", 
@@ -1693,7 +1691,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             # experimenter leaves the room, participant starts round 1 of the study
             
             rdmStart = core.Clock() # starts clock for rdm task 
-            overall_outcome = 0
+            round_earnings = 0
                 
             for t in range(nT):
                 
@@ -1708,7 +1706,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 gainTxt.text = text='$%.2f' % riskyGain[t]
                 lossTxt.text = text='$%d' % riskyLoss[t]
                 altTxt.text = text='$%.2f' % safe[t]
-                earningsTxt.text = text='Earnings: $%.2f' % overall_outcome
+                earningsTxt.text = text='Earnings: $%.2f' % round_earnings
                 goalTxt.text = text = 'Goal: $%.2f' % curr_goal
                 bonusTxt.text = text='Bonus: $%.2f' % curr_bonus
         
@@ -1827,8 +1825,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     elif loc==1 and response[0][0] == 'n' or loc==2 and response[0][0] =='v': #they took safe
                         choice = 0
                         outcome = safe[t]
-                    overall_outcome += outcome
-                earningsTxt.text = text='Earnings: $%.2f' % overall_outcome
+                    round_earnings += outcome
+                earningsTxt.text = text='Earnings: $%.2f' % round_earnings
 
     
                 if choice == 1:
@@ -1912,7 +1910,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                         riskyLoss[t], 
                         safe[t], 
                         RT,
-                        overall_outcome,
+                        round_earnings,
                         curr_goal,
                         curr_bonus, 
                         loc, 
@@ -1972,30 +1970,14 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             
             overall_bonus = 0
 
-            if r==0:
-                if overall_outcome >= curr_goal:
-                    ocSelect.text= text="ROUND 1\n\nYou earned $%.2f over the span of the trials.\n\nThis met the goal of $%.2f. \n\nYou will gain this round's bonus of $%.2f.\n\nPress ‘space’ to continue." % (overall_outcome, curr_goal, curr_bonus)
-                    overall_bonus += curr_bonus
-                else:
-                    ocSelect.text= text="ROUND 1\n\nYou earned $%.2f over the span of the trials.\n\nThis did not meet the goal of $%.2f. \n\nYou will not gain this round's bonus of $%.2f. \n\nPress ‘space’ to continue." % (overall_outcome,curr_goal, curr_bonus)
-            elif r==1:
-                if overall_outcome >= curr_goal:
-                    ocSelect.text= text="ROUND 2\n\nYou earned $%.2f over the span of the trials.\n\nThis met the goal of $%.2f. \n\nYou will gain this round's bonus of $%.2f.\n\nPress ‘space’ to continue." % (overall_outcome, curr_goal, curr_bonus)
-                    overall_bonus += curr_bonus
-                else:
-                    ocSelect.text= text="ROUND 2\n\nYou earned $%.2f over the span of the trials.\n\nThis did not meet the goal of $%.2f. \n\nYou will not gain this round's bonus of $%.2f. \n\nPress ‘space’ to continue." % (overall_outcome,curr_goal, curr_bonus)
-            elif r==2:
-                if overall_outcome >= curr_goal:
-                    ocSelect.text= text="ROUND 3\n\nYou earned $%.2f over the span of the trials.\n\nThis met the goal of $%.2f. \n\nYou will gain this round's bonus of $%.2f.\n\nPress ‘space’ to continue." % (overall_outcome, curr_goal, curr_bonus)
-                    overall_bonus += curr_bonus
-                else:
-                    ocSelect.text= text="ROUND 3\n\nYou earned $%.2f over the span of the trials.\n\nThis did not meet the goal of $%.2f. \n\nYou will not gain this round's bonus of $%.2f. \n\nPress ‘space’ to continue." % (overall_outcome,curr_goal, curr_bonus)
-            elif r==3:
-                if overall_outcome >= curr_goal:
-                    ocSelect.text= text="ROUND 4\n\nYou earned $%.2f over the span of the trials.\n\nThis met the goal of $%.2f. \n\nYou will gain this round's bonus of $%.2f.\n\nPress ‘space’ to continue." % (overall_outcome, curr_goal, curr_bonus)
-                    overall_bonus += curr_bonus
-                else:
-                    ocSelect.text= text="ROUND 4\n\nYou earned $%.2f over the span of the trials.\n\nThis did not meet the goal of $%.2f. \n\nYou will not gain this round's bonus of $%.2f. \n\nPress ‘space’ to continue." % (overall_outcome,curr_goal, curr_bonus)
+
+            if round_earnings >= curr_goal:
+                ocSelect.text= text="ROUND %i\n\nYou earned $%.2f over the span of the trials.\n\nThis met the goal of $%.2f. \n\nYou will gain this round's bonus of $%.2f.\n\nPress ‘space’ to continue." % (r+1, round_earnings, curr_goal, curr_bonus)
+            else:
+                overall_bonus += curr_bonus
+                ocSelect.text= text="ROUND %i\n\nYou earned $%.2f over the span of the trials.\n\nThis did not meet the goal of $%.2f. \n\nYou will not gain this round's bonus of $%.2f. \n\nPress ‘space’ to continue." % (r+1, round_earnings,curr_goal, curr_bonus)
+            
+
             borderBox.draw() # draw the large color box
             blackBox.draw() # draw smaller black box on top of our color rect to create border effect
             ocSelect.draw() #"You will receive ..."
@@ -2220,13 +2202,13 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         total_outcome = 0
         bonus_outcome = 0
 
-        total_outcome += overall_outcome
+        total_outcome += round_earnings
         bonus_outcome += overall_bonus
         studyEarnings = total_outcome + bonus_outcome
         #TOTAL EARNINGS PAGE $Z
         ocSelect.text = text = "Across the four (4) rounds of today's study, you earned a total of $%.2f." % (studyEarnings)
         
-#Add the overall_bonus to the overall_outcome --> The current code only counts what happens in the last round of the task. Also make sure not to include the overall_outcome from the practice rounds.
+#Add the overall_bonus to the round_earnings --> The current code only counts what happens in the last round of the task. Also make sure not to include the round_earnings from the practice rounds.
 
         ocSelect.draw()
         win.flip()
@@ -2257,7 +2239,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 data = pd.DataFrame(data)
                 # data.columns = ["subID","riskyGain", "riskyLoss","safe", "RT", "loc", "response", "choice","outcome","itiStatic","itiExtra","evLevel","evInd","runSize","strategy","stimDispStart","choiceTimeStart","isiStart","outcomeDispStart","itiStart","trial","roundRDM","roundColor"]
                 data.columns = ["subID","riskyGain", 
-                "riskyLoss", "safe", "RT", "overall_outcome","curr_goal","curr_bonus","loc", "response", "choice", "outcome", "iti", "itiExtra", "cond", "stimDispStart", "choiceTimeStart", "isiStart", "outcomeDispStart", "itiStart", "trial", "roundRDM", "roundColor","ischecktrial"]
+                "riskyLoss", "safe", "RT", "round_earnings","curr_goal","curr_bonus","loc", "response", "choice", "outcome", "iti", "itiExtra", "cond", "stimDispStart", "choiceTimeStart", "isiStart", "outcomeDispStart", "itiStart", "trial", "roundRDM", "roundColor","ischecktrial"]
                 data = data.iloc[1: , :] # drop the first row which are the variable names
             filenameRDM = dataDirectoryPath + "rcsRDM_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
             data.to_csv(filenameRDM)
