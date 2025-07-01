@@ -77,10 +77,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         center = [0,100]
         centerR = [scrnsize[0]/4,100]
         centerL = [scrnsize[0]/-4,100]
-        topR = [scrnsize[0]/4, scrnsize[1]/2]
-        #topR = [scrnsize[0]/2, scrnsize[1]] #CHANGE FOR TOP RIGHT SCREEN POSITION
-        topL = [scrnsize[0]/-4, scrnsize[1]/2]
-        #topL = [scrnsize[0]/-2, scrnsize[1]]
+        topR = [scrnsize[0]/5, scrnsize[1]/2]
+        topL = [scrnsize[0]/-5, scrnsize[1]/2]
         radius = scrnsize[0]/5.5
         rectHeight = radius +2 #rectangle used to cover up half the circle when outcome is gain or loss
         rectWidth = radius*2+2
@@ -757,8 +755,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             font='Helvetica',
             height = textHeight * 1.2,
             #pos = (-0.9, 0.9)
-            pos = topL,
-            anchorHoriz = 'left'
+            pos = topL
         )
 
         goalTxt = visual.TextStim(
@@ -776,8 +773,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             font='Helvetica',
             height = textHeight * 1.2,
             #pos = (0.9, 0.9)
-            pos = topR,
-            anchorHoriz = 'right'
+            pos = topR
         )
         
         lossTxt = visual.TextStim(
