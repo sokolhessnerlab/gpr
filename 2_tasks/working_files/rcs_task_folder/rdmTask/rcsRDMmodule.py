@@ -1830,17 +1830,18 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 earningsTxt.text = text='Earnings: $%.2f' % overall_outcome
 
     
-                if outcome == riskyGain[t]:
-                    rect = rect4win
-                    rect.pos = rectLossPos
-                    ocCircle.pos = [gainpos[0],100] #draw the circle on the side where gamble was displayed
-                    ocTxt = gainTxt
-                elif outcome == riskyLoss[t]:
-                    rect = rect4loss
-                    rect.pos= rectGainPos
-                    ocCircle.pos = [gainpos[0],100] # draw the circle on the side where gamble was displayed
-                    ocTxt = lossTxt
-                elif outcome == safe[t]:
+                if choice == 1:
+                    if outcome == riskyGain[t]:
+                        rect = rect4win
+                        rect.pos = rectLossPos
+                        ocCircle.pos = [gainpos[0],100] #draw the circle on the side where gamble was displayed
+                        ocTxt = gainTxt
+                    elif outcome == riskyLoss[t]:
+                        rect = rect4loss
+                        rect.pos= rectGainPos
+                        ocCircle.pos = [gainpos[0],100] # draw the circle on the side where gamble was displayed
+                        ocTxt = lossTxt
+                elif choice == 0:
                     ocCircle.pos = [altpos[0],100] #draw circle on the side that safe option was displayed
                     ocTxt = altTxt
             
@@ -1872,7 +1873,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 else:
                     ocCircle.draw()
                     ocTxt.draw()
-                    if outcome == riskyGain[t] or outcome == riskyLoss[t]:
+                    if choice == 1: # if it was a risky choice & outcome
                         rect.draw()
                      
                 
