@@ -2223,7 +2223,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
 
         earnings_txt.text = ""
         for r in range(RDMrounds):
-            earnings_txt.text = earnings_txt.text + "Round %i: earnings: $%.2f, bonus: $%.2f\n" % (r+1, all_round_earnings[r], all_round_bonuses[r])
+            earnings_txt.text = earnings_txt.text + "Round %i: Earnings: $%.2f, Bonus: $%.2f\n" % (r+1, all_round_earnings[r], all_round_bonuses[r])
         earnings_txt.text = earnings_txt.text + "\nTOTAL EARNED: $%.2f\n\nAfter scaling by %.1f%%, real dollars earned = $%.2f" % (total_compensation, scale_factor*100, final_dollar_compensation)
 
         # #TOTAL EARNINGS PAGE $Z
