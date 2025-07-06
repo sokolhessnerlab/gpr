@@ -1543,6 +1543,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             #instructCount.draw()                    
             win.flip()
                     #event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press 
+            core.wait(2)
             event.waitKeys(keyList = ['v', 'n'], timeStamped = False)
 
                     #show page 2 + forced viewing
