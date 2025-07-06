@@ -1289,24 +1289,24 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             ]
         )
         
-        postQdata=[]
-        postQdata.append(
-            [
-                "subID",
-                "difficulty",
-                "howOften"
-            ]
-        )
+        # postQdata=[]
+        # postQdata.append(
+        #     [
+        #         "subID",
+        #         "difficulty",
+        #         "howOften"
+        #     ]
+        # )
     
-        trialOutcome = []
-        trialOutcome.append(
-            [
-                "subID",
-                "trial",
-                "outcome"
+        # trialOutcome = []
+        # trialOutcome.append(
+        #     [
+        #         "subID",
+        #         "trial",
+        #         "outcome"
             
-            ]
-        )
+        #     ]
+        # )
         
         # define the increment for increasing progress bar based on number of trials 
         changeInBar = int((progBarStart[0]/nT)*-1)*2 # double it because it needs to go across the entire screen (not just half)
@@ -1957,13 +1957,13 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             ocSelected = ocSelected.iat[0] # this removes the extra information like float, name, etc.
             
             #data.append([ocChosen])
-            trialOutcome.append(
-                [
-                    subID,
-                    trialSelected,
-                    ocSelected
-                ]
-            )
+            # trialOutcome.append(
+            #     [
+            #         subID,
+            #         trialSelected,
+            #         ocSelected
+            #     ]
+            # )
             
             borderBox.draw() # draw the large color box
             blackBox.draw() # draw smaller black box on top of our color rect to create border effect
