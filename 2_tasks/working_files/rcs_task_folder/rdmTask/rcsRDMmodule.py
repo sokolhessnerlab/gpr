@@ -2266,6 +2266,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             data.to_csv(filenameRDM)
         
 
+        #This is the data that is saving below, but we want the above data to be saving. Is there a reason this is the case? Is is the placement of where the data.append statement is?
         #DATA SAVE    
         if 'trialOutcome' in locals(): 
             if not isinstance(trialOutcome, pd.DataFrame):
