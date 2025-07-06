@@ -2211,6 +2211,9 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         # finalOutcomesToSelect = [trialOutcomeDF[2][1], trialOutcomeDF[2][2]]
         # outcomeForPay = np.random.choice(finalOutcomesToSelect);
         # scaledOC = outcomeForPay/2
+
+        # Attempting to fix data saving so that it saves data and not trialOutcome
+        dataDF = pd.DataFrame(data)
         
         #Addition for total outcome and earnings, make sure to scale by 0.009 or 0.9%
         total_earnings = sum(all_round_earnings)
