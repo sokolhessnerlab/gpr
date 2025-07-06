@@ -2200,7 +2200,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             
             # Make this show up for rounds 2, 3, and 4 also
             #if r==0:
-            if r in (3):
+            if r == 3:
                 callExperimenter.draw()
                 win.flip()
                 event.waitKeys(keyList = ['q'], timeStamped = False) # waiting for key press     
