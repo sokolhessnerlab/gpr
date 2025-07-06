@@ -2267,13 +2267,13 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
 
         #DATA SAVE    
-        # if 'trialOutcome' in locals(): 
-        #     if not isinstance(trialOutcome, pd.DataFrame):
-        #         trialOutcome = pd.DataFrame(trialOutcome) #convert data into pandas dataframe
-        #         trialOutcome.columns=["subID","trial","outcome"] # add column names
-        #         trialOutcome = trialOutcome.iloc[1: , :] # drop the first row which are the variable trialOutcome.iloc[1: , :] # drop the first row which are the variable names
-        #     filenameTrialOutcome = dataDirectoryPath + "rcsTrialOutcome_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
-        #     trialOutcome.to_csv(filenameTrialOutcome)
+        if 'trialOutcome' in locals(): 
+            if not isinstance(trialOutcome, pd.DataFrame):
+                trialOutcome = pd.DataFrame(trialOutcome) #convert data into pandas dataframe
+                trialOutcome.columns=["subID","trial","outcome"] # add column names
+                trialOutcome = trialOutcome.iloc[1: , :] # drop the first row which are the variable trialOutcome.iloc[1: , :] # drop the first row which are the variable names
+            filenameTrialOutcome = dataDirectoryPath + "rcsTrialOutcome_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
+            trialOutcome.to_csv(filenameTrialOutcome)
 
         #DATA SAVE        
         if 'practiceData' in locals(): 
