@@ -2207,10 +2207,10 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
     
             
         #RANDOMLY SELECT OUTCOME FROM BOTH ROUNDS FOR PAYMENT
-        trialOutcomeDF = pd.DataFrame(trialOutcome)
-        finalOutcomesToSelect = [trialOutcomeDF[2][1], trialOutcomeDF[2][2]]
-        outcomeForPay = np.random.choice(finalOutcomesToSelect);
-        scaledOC = outcomeForPay/2
+        # trialOutcomeDF = pd.DataFrame(trialOutcome)
+        # finalOutcomesToSelect = [trialOutcomeDF[2][1], trialOutcomeDF[2][2]]
+        # outcomeForPay = np.random.choice(finalOutcomesToSelect);
+        # scaledOC = outcomeForPay/2
         
         #Addition for total outcome and earnings, make sure to scale by 0.009 or 0.9%
         total_earnings = sum(all_round_earnings)
@@ -2268,13 +2268,13 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
 
         #This is the data that is saving below, but we want the above data to be saving. Is there a reason this is the case? Is is the placement of where the data.append statement is?
         #DATA SAVE    
-        if 'trialOutcome' in locals(): 
-            if not isinstance(trialOutcome, pd.DataFrame):
-                trialOutcome = pd.DataFrame(trialOutcome) #convert data into pandas dataframe
-                trialOutcome.columns=["subID","trial","outcome"] # add column names
-                trialOutcome = trialOutcome.iloc[1: , :] # drop the first row which are the variable trialOutcome.iloc[1: , :] # drop the first row which are the variable names
-            filenameTrialOutcome = dataDirectoryPath + "rcsTrialOutcome_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
-            trialOutcome.to_csv(filenameTrialOutcome)
+        # if 'trialOutcome' in locals(): 
+        #     if not isinstance(trialOutcome, pd.DataFrame):
+        #         trialOutcome = pd.DataFrame(trialOutcome) #convert data into pandas dataframe
+        #         trialOutcome.columns=["subID","trial","outcome"] # add column names
+        #         trialOutcome = trialOutcome.iloc[1: , :] # drop the first row which are the variable trialOutcome.iloc[1: , :] # drop the first row which are the variable names
+        #     filenameTrialOutcome = dataDirectoryPath + "rcsTrialOutcome_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
+        #     trialOutcome.to_csv(filenameTrialOutcome)
 
         #DATA SAVE        
         if 'practiceData' in locals(): 
