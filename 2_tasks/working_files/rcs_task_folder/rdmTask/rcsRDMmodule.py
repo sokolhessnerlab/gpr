@@ -2229,6 +2229,41 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             earnings_txt.text = earnings_txt.text + "Round %i: Earnings: $%.2f, Bonus: $%.2f\n" % (r+1, all_round_earnings[r], all_round_bonuses[r])
         earnings_txt.text = earnings_txt.text + "\nTOTAL EARNED: $%.2f\n\nAfter scaling by %.1f%%, real dollars earned = $%.2f" % (total_compensation, scale_factor*100, final_dollar_compensation)
 
+        compensation = [] # create data structure with column names
+        compensation.append(
+            [
+                "roundearnings",
+                "roundbonus", 
+                "totalcompensation", 
+                "finaldollarcompensation"
+            ]
+        )
+        for r in range(RDMrounds):
+            compensation.append(
+                [
+                    all_round_earnings[r],
+                    all_round_bonuses[r],
+                    [],
+                    []
+                ]
+            )
+        compensation.append(
+            [
+                [],
+                [],
+                total_compensation,
+                final_dollar_compensation
+            ]
+        )
+        compensation = pd.DataFrame(compensation)
+        compensation.columns = ["roundearnings",
+                "roundbonus", 
+                "totalcompensation", 
+                "finaldollarcompensation"]
+        compensation = compensation.iloc[1: , :] # drop the first row which are the variable names
+        filenameGPRcomp = dataDirectoryPath + "gprBonusCompensation_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
+        compensation.to_csv(filenameGPRcomp)
+        
         # #TOTAL EARNINGS PAGE $Z
         # ocSelect.text = text = "Across the four (4) rounds of today's study, you earned a total of $%.2f." % (studyEarnings)
         
