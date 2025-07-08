@@ -2324,8 +2324,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                         "totalcompensation", 
                         "finaldollarcompensation"]
                 compensation = compensation.iloc[1: , :] # drop the first row which are the variable names
-        filenameGPRcomp = dataDirectoryPath + "gprBonusCompensation_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
-        compensation.to_csv(filenameGPRcomp)
+            filenameGPRcomp = dataDirectoryPath + "gprBonusCompensation_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
+            compensation.to_csv(filenameGPRcomp)
 
     
     
