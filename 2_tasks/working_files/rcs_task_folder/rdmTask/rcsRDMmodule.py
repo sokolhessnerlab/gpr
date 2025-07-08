@@ -1311,7 +1311,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         # define the increment for increasing progress bar based on number of trials 
         changeInBar = int((progBarStart[0]/nT)*-1)*2 # double it because it needs to go across the entire screen (not just half)
         
-        rdmStart = core.Clock() # starts clock for rdm task 
         for r in range(RDMrounds):
             #reset the progress bar end point at the start of each round
             progBar.end = progBarEnd 
@@ -1702,7 +1701,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             #event.waitKeys(keyList = ['v', 'n'], timeStamped = False) # waiting for key press or until max time allowed
             # experimenter leaves the room, participant starts round 1 of the study
             
-            # rdmStart = core.Clock() # starts clock for rdm task 
+            rdmStart = core.Clock() # starts clock for rdm task 
             round_earnings = 0
                 
             for t in range(nT):
