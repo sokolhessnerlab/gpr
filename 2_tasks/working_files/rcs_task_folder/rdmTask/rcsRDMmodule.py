@@ -2255,15 +2255,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 final_dollar_compensation
             ]
         )
-        compensation = pd.DataFrame(compensation)
-        compensation.columns = ["roundearnings",
-                "roundbonus", 
-                "totalcompensation", 
-                "finaldollarcompensation"]
-        compensation = compensation.iloc[1: , :] # drop the first row which are the variable names
-        filenameGPRcomp = dataDirectoryPath + "gprBonusCompensation_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
-        compensation.to_csv(filenameGPRcomp)
-        
         # #TOTAL EARNINGS PAGE $Z
         # ocSelect.text = text = "Across the four (4) rounds of today's study, you earned a total of $%.2f." % (studyEarnings)
         
@@ -2303,6 +2294,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             filenameRDM = dataDirectoryPath + "rcsRDM_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
             data.to_csv(filenameRDM)
         
+        
+
 
         #This is the data that is saving below, but we want the above data to be saving. Is there a reason this is the case? Is is the placement of where the data.append statement is?
         #DATA SAVE    
@@ -2323,12 +2316,17 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             filenamePrac = dataDirectoryPath + "rcsRDMpractice_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
             practiceData.to_csv(filenamePrac)
     
-        
-        
-    
-       
-    
-    
+        if 'compensation' in locals():
+            if not isinstance(compensation, pd.DataFrame):
+                compensation = pd.DataFrame(compensation)
+                compensation.columns = ["roundearnings",
+                        "roundbonus", 
+                        "totalcompensation", 
+                        "finaldollarcompensation"]
+                compensation = compensation.iloc[1: , :] # drop the first row which are the variable names
+        filenameGPRcomp = dataDirectoryPath + "gprBonusCompensation_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
+        compensation.to_csv(filenameGPRcomp)
+
     
     
     
