@@ -56,7 +56,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         #from rcsRDMChoiceSet import *
         sys.path.append(os.path.dirname(__file__))
         sys.path.append(os.path.join(os.path.dirname(__file__), 'rdmTask'))
-        import rcsRDMChoiceSet
+        import gprRDMChoiceSet
 
         # df = pandas.read_csv(dirName + "rdmTask/" + 'gprRDMstatic.csv', dtype={"percentile":"int"}) 
 
