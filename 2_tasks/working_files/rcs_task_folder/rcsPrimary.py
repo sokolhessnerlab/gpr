@@ -11,6 +11,11 @@ Primary script for HRB's dissertation project RCS
 This script does some set up for the experiment and calls all required scripts to run the risky decision-making and cognitive control tasks
 """
 
+#import os
+#os.chdir('/Users/justinblake/Documents/GitHub/gpr/2_tasks/working_files/rcs_task_folder')
+#import rcsPrimary
+#rcsPrimary.rcsPrimary("xxx", x, x)
+
 def rcsPrimary(subID, isReal, computerNumber): # define the function and specify the argument(s)
 
     #isReal = 0 for testing, 1 for real
