@@ -85,7 +85,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         radius = scrnsize[0]/5.5
         rectHeight = radius +2 #rectangle used to cover up half the circle when outcome is gain or loss
         rectWidth = radius*2+2
-        #textHeight = radius/2.1
         textHeight = 40
         moneyTextHeight= textHeight*2
         wrap = scrnsize[0]*.9 # text wrapping
@@ -94,8 +93,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         earned_bonus = 0
         
         # BONUS values are represented as a dollar amount
-        #LOW_BONUS = 2
-        #HIGH_BONUS = 10
         LOW_BONUS = 25
         HIGH_BONUS = 100
         
@@ -142,12 +139,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         choiceTime = 2 # time to make a choice after the keys are displayed again
         outcomeTime = 1
         isi = .5
-        # ITIs are 1, 1.5, or 2s
-        
-        # set up monitor in lab on mahimahi
-        # mon = monitors.Monitor("DELL 1908FP")
-        # mon.setSizePix([1280,1024])
-        # mon.save()
         
         # random iti time of 3 or 3.5 sec for each of the trials in the static and dynamic
         def shuffle(array):
@@ -199,14 +190,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         # Prepare instructions and other task stimuli
         forcedInstrWaitTime = 1.5 # participants can't moved forward during instructions until 1.5s have passed
 
-        #mes1 = visual.TextStim(
-           # win, 
-           # text='Setting up...', 
-           # pos = (0,0),
-           # color=[1,1,1], 
-           # height=40
-        #)
-        
         mes2 = visual.TextStim(
             win, 
             text='Waiting for experimenter', 
@@ -235,17 +218,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             alignText="left"
         )
         
-        #instGPR2 = visual.TextStim(
-           # win,
-           # text = "Next, you will complete 5 practice trials. These trials DO NOT count, \n\nand the goal and bonus are for EXAMPLE ONLY. \n\nIf you have any questions for the experimenter \n\nask them now.",
-           # pos = (0,0),
-           # color = [1,1,1],
-           # height = textHeight,
-           # wrapWidth = wrap,
-           # alignText = "left"
-        #)
-
-        #Change to instGPR_
         inst3 = visual.TextStim(
             win, 
             text="In this round, your goal is $%.2f. \n\nYour bonus in this round is $%.2f. \n\nTake a moment if you need before beginning the practice. \n\n*REMEMBER, this practice round DOES NOT count toward any actual bonuses. It is meant for explanation and practice purposes ONLY.* \n\nPress 'V' or 'N' when you are ready to begin." % (goalPract, bonusPract), 
@@ -266,28 +238,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             alignText="left"
         )
         
-        #postPracGPR = visual.TextStim(
-           # win,
-           # text = "Practice complete! \n\nDo you have any questions for the experimenter? \n\nAsk them now.",
-           # pos = (0,0),
-           # color = [1,1,1],
-           # height = textHeight,
-           # wrapWidth = wrap,
-           # alightText = "left"
-        #)
-
-        # SEPARATION THEATRICS FOR SEPARATING ROUNDS
-
-        #explainRounds1 = visual.TextStim(
-           # win, 
-           # text = "You are about to do two rounds of the task. \n\nThese rounds are completely independent. \n\nEach round will be marked with a different color (purple or green).\n\nTreat each round of the task as independent.\n\n\nPress 'space' to continue.",
-           # pos = (0,0),
-           # color=[1,1,1],
-           # height = textHeight,
-           # wrapWidth = wrap,
-           # alignText="left"
-        #)
-        
         explainGPRRounds1 = visual.TextStim(
             win,
             text = "Today you will be completing four (4) rounds of the task. \n\nThese rounds are completely independent. \n\nEach round will be marked with a different color - purple, green, blue, or yellow - not necessarily in that order. \n\nEach round will also have different goals and bonuses associated with them. These goals and bonuses will be explained prior to each round. \n\n\nPress 'space' to continue.",
@@ -298,27 +248,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             alignText = "left"
         )
 
-        # Don't think we need explainRounds2 or explainRounds3 in GPR
-        #explainRounds2 = visual.TextStim(
-           # win, 
-           # text = "Prior to each round, you will read an additional set of instructions.\n\nAfteward, the experimenter will ask for a short, verbal summary of the instructions.\n\nThe experimenter will leave the room prior to each round of the task. \n\nPress 'enter' to continue.",
-           # pos = (0,0),
-           # color=[1,1,1],
-           # height = textHeight,
-           # wrapWidth = wrap,
-           # alignText="left"
-        #)
-        
-        #explainRounds3 = visual.TextStim(
-           # win, 
-           # text = "After each round of the gambling task, you will be asked two short questions.\n\nThe computer will tell you when you should press the white button to call the experimenter back into the room.\n\n\nPress 'enter' to continue.",
-           # pos = (0,0),
-           # color=[1,1,1],
-           # height = textHeight,
-           # wrapWidth = wrap,
-           # alignText="left"
-        #)
-        
         readyForRound1 = visual.TextStim(
             win,
             text='Are you ready for ROUND 1 of the task?\n\n\n\nPress ‘space’ to continue.',
@@ -329,16 +258,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             alignText="left"
         )
 
-        #readyForRound1GPR = visual.TextStim(
-           # win,
-           # text = "You'll now begin the real rounds of the task. \n\nRemember, if you reach the goal, you will win the bonus for the round. \n\nEach round is independent of one another, meaning your performance in each round will not impact the results of any of the following rounds. \n\nPress 'space' to continue.",
-           # pos = (0,0);
-           # color = [1,1,1],
-           # height = textHeight,
-           # wrapWidth = wrap,
-           # alignText = "left"
-        #)
-        
         postRoundCheck = visual.TextStim(
             win,
             text="Moving ahead to the next round, do your best to let the outcomes of the previous round go! \n\nFocus instead on the NEW GOAL and BONUS. Rounds are independent from one another, making each round a NEW START. \n\nThe outcomes of any given round have NO EFFECT on subsequent rounds. \n\nBefore advancing, take a moment to get ready if you need, \n\nand press 'space' when you're ready to continue.",
@@ -349,7 +268,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             alignText="left"
         )               
         
-        #This should be set up to say this for rounds 3 and 4 as well for GPR.
         readyForRound2 = visual.TextStim(
             win,
             text='Are you ready for ROUND 2 of the task?\n\n\n\nPress ‘space’ to continue.',
@@ -380,39 +298,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             alignText="left"
         )
 
-        #Don't think we really need this for GPR. 
-        #startingRound1 = visual.TextStim(
-           # win,
-           # text='Setting up ROUND 1...',
-           # pos = (0,0),
-           # color=[1,1,1],
-           # height=textHeight,
-           # wrapWidth=wrap,
-           # alignText="left"
-        #)
-        
-        
-        #startingRound2 = visual.TextStim(
-           # win,
-           # text='Setting up ROUND 2...',
-           # pos = (0,0),
-           # color=[1,1,1],
-           # height=textHeight,
-           # wrapWidth=wrap,
-           # alignText="left"
-        #)
-        
-        #   PREPARING FOR THE FIRST ROUND INSTRUCTIONS
-        #prepForConditionRound1 = visual.TextStim(
-           # win,
-           # text='Before we begin ROUND 1 of the gambling task, you will be asked to read some additional task instructions.\n\nPlease pay close attention to the instructions as you read them.\n\n\n\nPress ‘space’ to continue.',
-           # pos = (0,0),
-           # color=[1,1,1],
-           # height=textHeight,
-           # wrapWidth=wrap,
-           # alignText="left"
-        #)
-        #This should be called before the slide when participants see the goal and the bonus GPR.
         prepForConditionRound1GPR = visual.TextStim(
             win,
             text = "If you have any questions, please ask the experimenter now. \n\nWhen you are ready, you may press 'space' to continue.",
@@ -434,40 +319,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             alignText="left"
         )
         
-        
-        # PREPARING FOR THE SECOND ROUND OF INSTRUCTIONS
-        # if participant is switching conditions from round 1:
-        prepForConditionRound2_pg1Switching = visual.TextStim(
-            win,
-            text='Before we begin ROUND 2 of the gambling task, you will be asked to read additional task instructions that are different from round 1. \n\nThe mechanics of the task will be the exact same but the instructions will ask you to think differently than you did in round 1. \n\nPlease pay close attention to the instructions as you read them.\n\nTry your best to forget the instructions from round 1 and follow these new instructions. \n\n\n\nPress ‘space’ to continue.',
-            pos = (0,0),
-            color=[1,1,1],
-            height=textHeight,
-            wrapWidth=wrap,
-            alignText="left"
-        )
-        
-        prepForConditionRound2_pg1Repeating= visual.TextStim(
-            win,
-            text='Before we begin ROUND 2 of the gambling task, you will be asked to read a brief reminder of the instructions that were given in round 1.\n\n\n\nPress ‘space’ to continue.',
-            pos = (0,0),
-            color=[1,1,1],
-            height=textHeight,
-            wrapWidth=wrap,
-            alignText="left"
-        )
-        
-        prepForConditionRound2_pg2forAllSubs = visual.TextStim(
-            win,
-            text='Please let the experimenter know when you are done reading the instructions.\n\n\n\nPress ‘space’ to continue.',
-            pos = (0,0),
-            color=[1,1,1],
-            height=textHeight,
-            wrapWidth=wrap,
-            alignText="left"
-        )
-        
-        
         # CONTROL INSTRUCTIONS (FIRST TIME AROUND)
         controlInstGPR = visual.TextStim(
             win,
@@ -478,120 +329,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             alignText="left"
         )
         
-        #controlInst2 = visual.TextStim(
-           # win,
-           # text='Knowing how the task works, don’t try to control your thoughts any more than you would normally, and take as much of a natural approach to your decisions as you can, whatever that might mean for you. \n\nMake your choices in a way that makes sense to you, given any goals, rules of thumb, or factors you think or feel are important. \n\n\nPress ‘enter’ to continue.',
-           # pos = (0,0),
-           # color=[1,1,1],
-           # height=textHeight,
-           # wrapWidth=wrap,
-           # alignText="left"
-        #)
-        
-        #controlInst3 = visual.TextStim(
-           # win,
-           # text='For this round, focus on the task itself, and the events, options, and actions that you would naturally consider, and how you feel about them. \n\nIf you select the gamble, you have an equal chance of receiving either amount and if you select the safe option, that will be the outcome for that trial.\n\nYou will complete many trials in this round.\n\n\nPress ‘enter’ to continue.',
-           # pos = (0,0),
-           # color=[1,1,1],
-           # height=textHeight,
-           # wrapWidth=wrap,
-           # alignText="left"
-        #)
-        
-        #controlInst4 = visual.TextStim(
-           # win,
-           # text='On each trial, let your thoughts, feelings, impulses, and goals guide your decision-making as naturally as possible, without trying to change, eliminate, or emphasize them beyond how you might otherwise naturally. \n\nRemember that you will be paid the outcome of one randomly selected trial, and simply try to make the best choices you can. \n\nFor this round, approach the task and evaluate your choice options as you would naturally, without trying to control or change your approach. \n\n\nPress ‘enter’ to continue.',
-           # pos = (0,0),
-           # color=[1,1,1],
-           # height=textHeight,
-           # wrapWidth=wrap,
-           # alignText="left"
-        #)
-        
-        
-        #controlReminder1  = visual.TextStim(
-           # win,
-           # text='As a reminder, in this round of the task, please make your choices however you normally would.\n\nOn each trial, let your thoughts, feelings, impulses, and goals guide your decision-making as naturally as possible, without trying to change, eliminate, or emphasize them beyond how you might otherwise naturally. \n\n\nPress ‘enter’ to continue.',
-           # pos = (0,0),
-           # color=[1,1,1],
-           # height=textHeight,
-           # wrapWidth=wrap,
-           # alignText="left"
-        #)
-        
-        #controlReminder2 = visual.TextStim(
-           # win,
-           # text='Simply try to make the best choices you can.\n\nFor this round, approach the task and evaluate your choice options as you would naturally, without trying to control or change your approach.\n\n\nPress ‘enter’ to continue.',
-           # pos = (0,0),
-           # color=[1,1,1],
-           # height=textHeight,
-           # wrapWidth=wrap,
-           # alignText="left"
-        #)
-        
-        
-        # STRATEGY INSTRUCTIONS (FIRST TIME AROUND)
-        
-        #stratInst1 = visual.TextStim(
-           # win,
-           # text='In this round of the task, please make your choices in isolation from any context, considering each choice solely on its own merits. \n\nIn our previous studies involving this gambling task, we have found that participants’ choices to accept the gamble were influenced not only by the options on the current trial but also depended on what happened earlier in the task.\n\n\nPress ‘enter’ to continue.',
-           # pos = (0,0),
-           # color=[1,1,1],
-           # height=textHeight,
-           # wrapWidth=wrap,
-           # alignText="left"
-        #)
-        
-        #stratInst2 = visual.TextStim(
-           # win,
-           # text='Each trial in this task is unrelated to previous trials. \n\nThe values and outcomes of previous trials do not influence the outcome of the current trial. \n\nAllowing previous values and outcomes to influence your current choice may lead to a lower payoff, and thus not maximize the money you receive.\n\n\nPress ‘enter’ to continue.',
-           # pos = (0,0),
-           # color=[1,1,1],
-           # height=textHeight,
-           # wrapWidth=wrap,
-           # alignText="left"
-        #)
-        
-        #stratInst3 = visual.TextStim(
-           # win,
-           # text='For each decision in this round, focus on the monetary values on the screen, the probability of receiving each of those options, and how you feel about them. \n\nForget about the previous values, choices, and outcomes and simply focus on the current trial. \n\nIf you select the gamble, you have an equal chance of receiving either amount and if you select the safe option, that will be the outcome for that trial. \n\nThis is true regardless of what has happened earlier in the task. \n\n\nPress ‘enter’ to continue.',
-           # pos = (0,0),
-           # color=[1,1,1],
-           # height=textHeight,
-           # wrapWidth=wrap,
-           # alignText="left"
-        #)
-        
-        #stratInst4 = visual.TextStim(
-           # win,
-           # text='Remember that you will be paid the outcome of one randomly selected trial.\n\nOn each trial, think about how you would feel if the outcome on this trial was randomly selected as your cash payment.\n\nFor this round, approach the task and evaluate your choice options with a focus on only that choice, in isolation from any context.\n\n\nPress ‘enter’ to continue.',
-           # pos = (0,0),
-           # color=[1,1,1],
-           # height=textHeight,
-           # wrapWidth=wrap,
-           # alignText="left"
-        #)
-        
-        #strategyReminder1  = visual.TextStim(
-           # win,
-           # text='As a reminder, in this round of the task, please make your choices in isolation from any context, considering each choice solely on its own merits.\n\nOn each trial, focus on the monetary values on the screen, the probability of receiving each of those options, and how you feel about them.\n\n\nPress ‘enter’ to continue.',
-           # pos = (0,0),
-           # color=[1,1,1],
-           # height=textHeight,
-           # wrapWidth=wrap,
-           # alignText="left"
-        #)
-        
-        #strategyReminder2 = visual.TextStim(
-           # win,
-           # text='Forget about the previous values, choices, and outcomes and simply focus on the current trial.\n\nThink about how you would feel if the outcome on this trial was randomly selected as your cash payment.\n\nFor this round, approach the task and evaluate your choice options with a focus on only that choice, in isolation from any context.\n\n\nPress ‘enter’ to continue.',
-           # pos = (0,0),
-           # color=[1,1,1],
-           # height=textHeight,
-           # wrapWidth=wrap,
-           # alignText="left"
-        #)
-        
         # screen count for instructions
         instructCount = visual.TextStim(
             win,
@@ -601,39 +338,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             wrapWidth=wrap,
             alignText="left"
         ) 
-        
-        
-        #summarizeInst = visual.TextStim(
-           # win,
-           # text='Please let the experimenter know that you are done reading the instructions. \n\nIf you wish to read the instructions again, press "R".',
-           # pos = (0,0),
-           # color=[1,1,1],
-           # height=textHeight,
-           # wrapWidth=wrap,
-           # alignText="left"
-        #)
-        
-        # I don't think I'm going to be leaving the room for GPR in any of the rounds
-        #startTaskRound1 = visual.TextStim(
-           # win, 
-           # text='The experimenter will now leave the room.\n\nOnce the experimenter leaves the room, you may begin ROUND 1 of the gambling task. \n\nPress "V" or "N" to begin the task.', 
-           # pos = (0,0),
-           # color=[1,1,1],
-           # height = textHeight,
-           # wrapWidth =wrap,
-           # alignText="left"
-        #)
-        
-        
-        #startTaskRound2 = visual.TextStim(
-           # win, 
-           # text='The experimenter will now leave the room.\n\nOnce the experimenter leaves the room, you may begin ROUND 2 of the gambling task. \n\nPress "V" or "N" to begin the task.', 
-           # pos = (0,0),
-           # color=[1,1,1],
-           # height = textHeight,
-           # wrapWidth = wrap,
-           # alignText="left"
-        #)
         
         #PRACTICE SEQUENCE
         postPracOutcome = visual.TextStim(
@@ -804,17 +508,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             height =textHeight
         )
         
-        #ISI STIMULI (iti will use same stimuli):
-        # isiStim = visual.Circle(
-        #     win=win,
-        #     units="pix",
-        #     pos=center,
-        #     radius=1.5,
-        #     fillColor=[1, 1, 1],
-        #     lineColor=[1, 1, 1],
-        #     edges =128 #make the circle smoother
-        # )
-        
+        #ISI STIMULI
         isiStim = visual.TextStim(
             win = win,
             units = "pix",
@@ -898,13 +592,7 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         ) 
         
         
-    
-        
-        
         # ---- START INSTRUCTIONS + PRACTICE ---- #
-        #mes1.draw()
-        #win.flip()
-        #core.wait(1)
         
         mes2.draw()
         win.flip()
@@ -969,7 +657,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
         
         pracStart = core.Clock() # starts clock for practice 
-        #pracStart.reset() # resets the clock
 
 
         round_earnings = 0
@@ -1229,13 +916,10 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         core.wait(2)
            
 
-    #if --> How is practice defined here in terms of r
         if round_earnings >= goalPract:
             ocSelect.text= text='PRACTICE ROUND\n\nYou earned $%.2f over the span of the trials.\n\nThis met the goal of $%.2f. \n\nYou will gain this round‘s bonus of $%.2f.\n\nPress ‘space’ to continue.' % (round_earnings, goalPract, bonusPract)
         else:
             ocSelect.text= text='PRACTICE ROUND\n\nYou earned $%.2f over the span of the trials.\n\nThis did not meet the goal of $%.2f. \n\nYou will not gain this round‘s bonus of $%.2f. \n\nPress ‘space’ to continue.' % (round_earnings, goalPract, bonusPract)
-        # pracBorderBox.draw() # draw the large color box
-        # blackBox.draw() # draw smaller black box on top of our color rect to create border effect
         pracBorderBox.draw()
         blackBox.draw()
         ocSelect.draw() #"You will receive ..."
@@ -1248,16 +932,8 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         print("Practice trials complete!")
         event.waitKeys(keyList = ['space', 'q'], timeStamped = False) # waiting for q or space key press or until max time allowed
     
-    
-    #practiceData = pd.DataFrame(practiceData) #convert data into pandas dataframe
-    
-    
-    # save practice file
-    #datetime = time.strftime("%Y%m%d-%H%M%S"); # save date and time
-    #filename = "rcsRDMpractice_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
-    #practiceData.to_csv(filename)
-    
-    
+
+
     #----------Start the task---------#
     #try:
     
@@ -1292,24 +968,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             ]
         )
         
-        # postQdata=[]
-        # postQdata.append(
-        #     [
-        #         "subID",
-        #         "difficulty",
-        #         "howOften"
-        #     ]
-        # )
-    
-        # trialOutcome = []
-        # trialOutcome.append(
-        #     [
-        #         "subID",
-        #         "trial",
-        #         "outcome"
-            
-        #     ]
-        # )
         
         # define the increment for increasing progress bar based on number of trials 
         changeInBar = int((progBarStart[0]/nT)*-1)*2 # double it because it needs to go across the entire screen (not just half)
@@ -1324,17 +982,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
 
             # randomize trials 
             staticDF = staticDF.sample(frac = 1).reset_index(drop = True) # use pandas to take all the rows and randomize them
-
-            # # generate the choiceset on each round and save the choice set
-            # rcsCS = rcsRDMChoiceSet.rcsRDMChoiceSet()
-            
-            # # save the choice set for each round of the task
-            # rcsCSdf = pd.DataFrame(rcsCS)
-
-            # # save file
-            # datetime = time.strftime("%Y%m%d-%H%M%S"); # save date and time
-            # filenameRDMchoiceset = dataDirectoryPath + "rcsRDM_choiceSet_round" + str(r) + "_sub" + subID + "_" + datetime + ".csv"; # make filename
-            # rcsCSdf.to_csv(filenameRDMchoiceset)
                 
             # store some of the choice set features in new variables
             riskyGain = staticDF['riskyoption1']
@@ -1356,36 +1003,12 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 explainGPRRounds1.draw()
                 win.flip()
                 event.waitKeys(keyList = ['space'], timeStamped=False)
-                
-                #explainRounds2.draw()
-                #win.flip()
-                #core.wait(forcedInstrWaitTime)
-                
-                #explainRounds2.draw()
-                #win.flip()
-                #event.waitKeys(keyList = ['return'], timeStamped=False)
-                
-                #explainRounds3.draw()
-                #win.flip()
-                #core.wait(forcedInstrWaitTime)
-                
-                #explainRounds3.draw()
-                #win.flip()
-                #event.waitKeys(keyList = ['return'], timeStamped=False)
-                
-                #borderBox.draw() # draw the large color box
-                #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
 
                 readyForRound1.draw()
                 win.flip()
                 core.wait(forcedInstrWaitTime)
                 event.waitKeys(keyList = ['space'], timeStamped=False)
                 
-               # startingRound1.draw()
-               # win.flip()
-               # core.wait(1)
-            
-            #Make this more clear for GPR --> This is true for all rounds after 0 (Round 1)
             elif r > 0:
                 postRoundCheck.draw()
                 win.flip()
@@ -1394,15 +1017,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 postRoundCheck.draw()
                 win.flip()
                 event.waitKeys(keyList = ['space'], timeStamped=False)
-                
-                #This needs to be changed so that when preparing for the next rounds the people see rounds 2,3,4 and not just round 2
-                #readyForRoundOther.draw()
-                #win.flip()
-                #event.waitKeys(keyList = ['space'], timeStamped=False)
-                
-                #startingRound2.draw()
-                #win.flip()
-                #core.wait(1)
 
                 
     
@@ -1425,13 +1039,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             or condition or switching/repeating.
             """
             
-            # set up border color
-            #borderBox.draw() # draw the large color box
-            #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-            
-    
-            # the first screen in the series of instructions gives the participant a heads up 
-            # that instructions are coming up.
             
             # round_val = cond[r]; # store strategy value (0/1/2/3)  
             curr_bonus = condition_levels[cond[r]][0]
@@ -1444,60 +1051,9 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             else:
                 bonus_level_txt = "LOW"
 
-        
-        # level = "HIGH", "LOW"
-        # if condition_levels == (LOW_BONUS, LOW_GOAL_AMOUNT):
-        #     print("LOW")
-        # elif condition_levels == (LOW_BONUS, HIGH_GOAL_AMOUNT):
-        #     print("HIGH")
-        # elif condition_levels == (HIGH_BONUS, LOW_GOAL_AMOUNT):
-        #     print("LOW")
-        # elif condition_levels == (HIGH_BONUS, HIGH_GOAL_AMOUNT):
-        #     print("HIGH")
 
-
-            # if r >= 0:
-            #controlInstGPR.draw()
-            #win.flip()
-            #event.waitKeys(keyList = ['v','n'], timeStamped=False)
-
-        #if r == 0:
-            # prepForConditionRound1GPR.draw() #"Before we begin ROUND 1..."
-            # this is the same for all participants, just one screen
-        #elif r==1 and cond[r] == cond[r-1]: # if we are in the second round and participant is repeating conditions
-            # prepForConditionRound2_pg1Repeating.draw() #"Before we begin ROUND 2..." first page of instructions in round 1
-        #elif r==1 and cond[r] != cond[r-1]: # if we are in the second round and participant is switching conditions
-            # prepForConditionRound2_pg1Switching.draw() 
-            
-        #win.flip()
-        #event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press
-        
-        #if r==1: # round 2 has a second page of prep instructions
-            # set up border color
-            #borderBox.draw() # draw the large color box
-            #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-            
-            # draw and show page 2, wait for response
-            #prepForConditionRound2_pg2forAllSubs.draw()
-            #win.flip()
-            #event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press
-
-    # Determine the condition specific instructions    
-            # strategy = cond[r]; # store strategy value (0/1/2/3)  
-            # curr_bonus = condition_levels[strategy][0]
-            # curr_goal = condition_levels[strategy][1] 
-            
-            #Offer participants the option to re-read the instructions where they can pres 'R' after page 4
             keepLoopGoing = True
-            #while keepLoopGoing:  
             
-                #if r == 0 or r==1 and strategy!=cond[r-1]: # round 1 or switiching in round 2, we show the full control or strategy instructions
-        
-                    #if strategy == 0: # if the condition is control
-                        #instructPG1 = controlInstGPR
-                        #instructPG2 = controlInst2
-                        #instructPG3 = controlInst3
-                        #instructPG4 = controlInst4
             if r == 1:
                 readyForRound2.draw()
                 win.flip()
@@ -1517,192 +1073,14 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             # HIGH/LOW variable change
             controlInstGPR.text = "In this round, your goal is $%.2f. \n\nYour bonus in this round is %s ($%.2f). \n\nTake a moment if you need before beginning the task. \n\nPress 'V' or 'N' when you are ready to begin." % (curr_goal, bonus_level_txt, curr_bonus)
 
-            # instructPG1 = controlInstGPR        
-                    #elif strategy == 1: # if the condition is strategy
-                        #instructPG1 = stratInst1
-                        #instructPG2 = stratInst2
-                        #instructPG3 = stratInst3
-                        #instructPG4 = stratInst4
-        
-        
-                    #show page 1 + forced viewing
             borderBox.draw() # draw the large color box
             blackBox.draw() # draw smaller black box on top of our color rect to create border effect
                     
-                    #instructPG1.draw()
-                    #instructCount.text=text="screen 1/4"
-                    #instructCount.draw()
-        
-                    #win.flip()
-                    #core.wait(forcedInstrWaitTime)
-
-                    # show page 1 + repsonse collection
-            #borderBox.draw() # draw the large color box
-            #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-                    
-            controlInstGPR.draw()
-                    #instructCount.text=text="screen 1/4"
-            #instructCount.draw()                    
+            controlInstGPR.draw()                           
             win.flip()
-                    #event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press 
             core.wait(2)
             event.waitKeys(keyList = ['v', 'n'], timeStamped = False)
 
-                    #show page 2 + forced viewing
-                    #borderBox.draw() # draw the large color box
-                    #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-                    
-                    #instructPG2.draw()
-                    #instructCount.text=text="screen 2/4"
-                    #instructCount.draw()
-        
-                    #win.flip()
-                    #core.wait(forcedInstrWaitTime)
-                    
-                    
-                    # show page 2 + repsonse collection
-                    #borderBox.draw() # draw the large color box
-                    #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-                    
-                    #instructPG2.draw()
-                    #instructCount.text=text="screen 2/4"
-                    #instructCount.draw()
-        
-                    #win.flip()
-                    #event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press 
-                    
-                    
-                    #show page 3 + forced viewing
-                    #borderBox.draw() # draw the large color box
-                    #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-                    
-                    #instructPG3.draw()
-                    #instructCount.text=text="screen 3/4"
-                    #instructCount.draw()
-        
-                    #win.flip()
-                    #core.wait(forcedInstrWaitTime)
-                    
-                    # show page 3 + repsonse collection
-                    #borderBox.draw() # draw the large color box
-                    #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-                    
-                    #instructPG3.draw()
-                    #instructCount.text=text="screen 3/4"
-                    #instructCount.draw()
-        
-                    #win.flip()
-                    #event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press 
-                    
-                    #show page 4 + forced viewing
-                    #borderBox.draw() # draw the large color box
-                    #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-                    
-                    #instructPG4.draw()
-                    #instructCount.text=text="screen 4/4"
-                    #instructCount.draw()
-        
-                    #win.flip()
-                    #core.wait(forcedInstrWaitTime)
-                    
-                    #show page 4 + response collection
-                    #borderBox.draw() # draw the large color box
-                    #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-                    
-                    #instructPG4.draw()
-                    #instructCount.text=text="screen 4/4"
-                    #instructCount.draw()
-        
-                    #win.flip()
-                    #event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press 
-                
-                #elif r==1 and strategy==cond[r-1]: # if round 2 and repeting condition (two instead of 4 pages)
-                # if  strategy ==0: # if control condition
-                    # instructPG1 = controlReminder1
-                    # instructPG2 = controlReminder2
-                        
-                # elif strategy ==1: # if strategy condition
-                    # instructPG1 = strategyReminder1
-                    # instructPG2 = strategyReminder2
-        
-                    #show page 1 + forced viewing
-                # borderBox.draw() # draw the large color box
-                # blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-                    
-                # instructPG1.draw()
-                    #instructCount.text=text="screen 1/2"
-                # instructCount.draw()
-                    
-                # win.flip()
-                # core.wait(forcedInstrWaitTime)
-                    
-                    
-                    #show page 1 + response collection
-                # borderBox.draw() # draw the large color box
-                # blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-                    
-                # instructPG1.draw()
-                    #instructCount.text=text="screen 1/2"
-                # instructCount.draw()
-                    
-                # win.flip()
-                # event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press 
-                    
-                    #show page 2 + forced viewing
-                # borderBox.draw() # draw the large color box
-                # blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-                    
-                    #instructPG2.draw()
-                    #instructCount.text=text="screen 2/2"
-                    #instructCount.draw()
-        
-                    #win.flip()
-                    #core.wait(forcedInstrWaitTime)
-
-                    #show page 2 + response collection
-                # borderBox.draw() # draw the large color box
-                # blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-                    
-                    #instructPG2.draw()
-                    #instructCount.text=text="screen 2/2"
-                    #instructCount.draw()
-        
-                    #win.flip()
-                    #event.waitKeys(keyList = ['return'], timeStamped = False) # waiting for key press 
-        
-        
-        
-                # Now the rest is mostly the same for all participants/conditions/switching show the summarize prompt
-            #borderBox.draw() # draw the large color box
-            #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-                
-                #summarizeInst.draw()
-                #win.flip()
-                
-                
-            #keys = event.waitKeys(keyList = ['space','r'], timeStamped = False) # waiting for key press
-                #print(keys)
-                
-                #print(keys[0] == 'return')
-                
-            #if keys[0] == 'space':
-                #keepLoopGoing=False # end loop, start task
-            #else:
-                #keepLoopGoing=True
-            
-            #print(f'Round {r} color: {curr_color}')
-            #borderBox.draw() # draw the large color box
-            #blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-            
-            # depending on round of task, show slightly different start screen
-            #if r==0:
-            # startTaskRound1.draw()
-            #elif r==1:
-            # startTaskRound2.draw()
-                
-            #win.flip()
-            #event.waitKeys(keyList = ['v', 'n'], timeStamped = False) # waiting for key press or until max time allowed
-            # experimenter leaves the room, participant starts round 1 of the study
             
             rdmStart = core.Clock() # starts clock for rdm task 
             round_earnings = 0
@@ -1746,8 +1124,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     altpos=altGamR
                     rectGainPos = [centerR[0], centerR[1]+(radius*.5)]
                     rectLossPos = [centerR[0], centerR[1]-(radius*.5)]
-            
-            
             
             #now that we know the location of gamble, where will the text go?:
                 gainTxt.pos = gainpos
@@ -1959,14 +1335,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             ocSelected = realOutcomes['outcome'][realOutcomes['trial']==trialSelected] # pull out outcome based on randomly selected trial
             ocSelected = ocSelected.iat[0] # this removes the extra information like float, name, etc.
             
-            #data.append([ocChosen])
-            # trialOutcome.append(
-            #     [
-            #         subID,
-            #         trialSelected,
-            #         ocSelected
-            #     ]
-            # )
             
             borderBox.draw() # draw the large color box
             blackBox.draw() # draw smaller black box on top of our color rect to create border effect
@@ -2001,221 +1369,12 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             core.wait(2)
             event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press 
             
-            # ----------------------
-            # COMMENTED OUT POST TASK QUESTIONS FOR NO -- COULD BE REINSTATED OR DELETED ENTIRELY
-            # # 2 post-task questions
-            # taskRound = r+1 # change the round  to 1 or 2 (versus python's 0 or 1)
-            
-            
-            # # set color of marker and repsonse recorded text
-            # sliderColor = [1,1,1] # default color for everything is white
-            # curr = colorOrder[r] # current color order for this round
-            # if curr == 0:
-            #     sliderColor=[0,.6,0] # green
-            #     sliderLockPostQ.color=[0,.6,0] 
-            # elif curr ==1:
-            #     sliderColor=[.5,0,.5] # purple
-            #     sliderLockPostQ.color=[.5,0,.5]
-            # elif curr == 2:
-            #     sliderColor=[0,.7,.9] # blue
-            #     sliderLockPostQ.color=[0,.7,.9]
-            # elif curr == 3:
-            #     sliderColor=[.9,.6,0] # orange
-            #     sliderLockPostQ.color=[.9,.6,0]
-            
-            
-            # # Question 1: DIFFICULTY
-            # if strategy ==0: # control condition
-            #     promptPostQ.text=text="\n\nQuestion 1/2 \n\nFor ROUND %d, you were asked to make your choices as you would naturally, without trying to control or change your approach. \n\n\nUse the slider to rate how DIFFICULT this was. \n\nHover the mouse over the slider to move the marker. Click the mouse when you are done." % taskRound
-     
-            # elif strategy ==1:
-            #     promptPostQ.text=text="\n\nQuestion 1/2 \n\nFor ROUND %d, you were asked to make your choices in isolation from any context, considering each choice solely on its own merits. \n\n\nUse the slider to rate how DIFFICULT this was. \n\nHover the mouse over the slider to move the marker. Click the mouse when you are done." % taskRound
-    
-        
-            # # For some reason, slider.labels is not showing up dynamically, so we reset it here to make labels fit the question
-            # print("SliderColor:", sliderColor)
-            # slider = visual.Slider(
-            #     win, 
-            #     size=(scrnsize[0]*.8, 50), 
-            #     pos=(0, scrnsize[1]*-.25),
-            #     labels = ['Very \neasy', 'Very \ndifficult'],
-            #     ticks = [1,100],
-            #     granularity=0, 
-            #     style=['rating'],
-            #     color=sliderColor, 
-            #     font='Helvetica',
-            #     labelHeight=30,
-            # )
-    
-    
-        
-            
-            # slider_width = slider.size[0]
-            # #slider_height = slider.size[1]
-            # slider_height = slider.size[1]*3
-            # slider_orientation = 0
-            # slider_ticks = [0,100]
-    
-    
-    
-            # slider_shape = visual.Rect(
-            #     win=win, 
-            #     name='slider_shape',
-            #     width=(slider_width, slider_height)[0], 
-            #     height=(slider_width, slider_height)[1],
-            #     ori=0, 
-            #     pos=slider.pos,
-            #     lineWidth=1, 
-            #     lineColor='black', 
-            #     lineColorSpace='rgb',
-            #     fillColor='black', 
-            #     fillColorSpace='rgb',
-            #     opacity=1, 
-            #     depth=-2.0, 
-            #     interpolate=True
-            # )
-    
-             
-            # slider.markerPos = 50
-            # slider.marker.color = sliderColor
-            
-            # slider_shape.draw()
-            # borderBox.fillColor = sliderColor # change the border color to match the slider color
-            # borderBox.draw()
-            # blackBox.draw()
-            # promptPostQ.draw()
-            # slider.draw()
-    
-            # win.flip()
-    
-            # mouse = event.Mouse(visible = True, win = win) 
-            # mouseRec=mouse.getPos()
-    
-    
-    
-            # continueRout=True
-            # while continueRout:
-            #     if slider.markerPos and mouse.isPressedIn(slider_shape):
-            #         continueRout = False
-            #     elif slider_shape.contains(mouse) and mouse.getPos()[slider_orientation] != mouseRec[slider_orientation]:
-            #         mouseRec=mouse.getPos()
-            #         slider.markerPos=mouseRec[slider_orientation]/slider_width*(slider_ticks[-1]-slider_ticks[0])+(slider_ticks[0]+slider_ticks[-1])/2
-            #         slider_shape.draw()
-            #         borderBox.draw()
-            #         blackBox.draw()
-            #         promptPostQ.draw()
-            #         slider.draw()
-            #         win.flip()
-    
-    
-                    
-            # difficultyRating = slider.markerPos# store rating
-            # slider_shape.draw()
-            # borderBox.draw() # draw the large color box
-            # blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-            # sliderLockPostQ.draw() #"rating recorded"
-            # promptPostQ.draw()
-            # slider.draw()
-            # win.flip()
-            # core.wait(2)
-                            
-            
-            # # Question 2: HOW OFTEN 
-            # if strategy ==0: # control condition
-            #     promptPostQ.text=text="\n\nQuestion 2/2 \n\nFor ROUND %d, you were asked to make your choices as you would naturally, without trying to control or change your approach. \n\n\nUse the slider to rate HOW OFTEN you were able to do that. \n\nHover the mouse over the slider to move the marker. Click the mouse when you are done." % taskRound
-     
-            # elif strategy ==1:
-            #     promptPostQ.text=text="\n\nQuestion 2/2 \n\nFor ROUND %d, you were asked to make your choices in isolation from any context, considering each choice solely on its own merits. \n\n\nUse the slider to rate HOW OFTEN you were able to do that.\n\nHover the mouse over the slider to move the marker. Click the mouse when you are done." % taskRound
-                
-                
-                    
-            # # For some reason, slider.labels is not showing up dynamically, so we reset it here to make labels fit the question
-            # slider = visual.Slider(
-            #     win, 
-            #     size=(scrnsize[0]*.8, 50), 
-            #     pos=(0, scrnsize[1]*-.25),
-            #     labels = ['Never', 'Always'],
-            #     ticks = [1,100],
-            #     granularity=0, 
-            #     style=['rating'],
-            #     color=sliderColor, 
-            #     font='Helvetica',
-            #     labelHeight=30,
-            # )
-    
-    
-             
-            # slider.markerPos = 50
-            # slider.marker.color = sliderColor
-            
-            # slider_shape.draw()
-            # borderBox.draw()
-            # blackBox.draw()
-            # promptPostQ.draw()
-            # slider.draw()
-    
-            # win.flip()
-    
-            # mouse = event.Mouse(visible = True, win = win) 
-            # mouseRec=mouse.getPos()
-    
-    
-    
-            # continueRout=True
-            # while continueRout:
-                
-            #     if slider.markerPos and mouse.isPressedIn(slider_shape):
-            #         continueRout = False
-            #     elif slider_shape.contains(mouse) and mouse.getPos()[slider_orientation] != mouseRec[slider_orientation]:
-            #         mouseRec=mouse.getPos()
-            #         slider.markerPos=mouseRec[slider_orientation]/slider_width*(slider_ticks[-1]-slider_ticks[0])+(slider_ticks[0]+slider_ticks[-1])/2
-            #         slider_shape.draw()
-            #         borderBox.draw()
-            #         blackBox.draw()
-            #         promptPostQ.draw()
-            #         slider.draw()
-            #         win.flip()
-    
-    
-                    
-            # howOftenRating = slider.markerPos # store rating
-            # slider_shape.draw()
-            # borderBox.draw() # draw the large color box
-            # blackBox.draw() # draw smaller black box on top of our color rect to create border effect
-            # sliderLockPostQ.draw() #"rating recorded"
-            # promptPostQ.draw()
-            # slider.draw()
-            # win.flip()
-            # core.wait(2)
-    
-    
-              
-            # postQdata.append(
-            #     [
-            #         subID,
-            #         difficultyRating,
-            #         howOftenRating
-            #     ]
-            # )
-            # ----------------------
-    
-            #press white button for experimenter to come back in the room - it only happens in this spot following round 1
-            
-            # Make this show up for rounds 2, 3, and 4 also
-            #if r==0:
             if r == 3:
                 callExperimenter.draw()
                 win.flip()
                 event.waitKeys(keyList = ['q'], timeStamped = False) # waiting for key press     
     
             
-        #RANDOMLY SELECT OUTCOME FROM BOTH ROUNDS FOR PAYMENT
-        # trialOutcomeDF = pd.DataFrame(trialOutcome)
-        # finalOutcomesToSelect = [trialOutcomeDF[2][1], trialOutcomeDF[2][2]]
-        # outcomeForPay = np.random.choice(finalOutcomesToSelect);
-        # scaledOC = outcomeForPay/2
-
-        # Attempting to fix data saving so that it saves data and not trialOutcome
         dataDF = pd.DataFrame(data)
         
         #Addition for total outcome and earnings, make sure to scale by 0.009 or 0.9%
@@ -2258,8 +1417,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 final_dollar_compensation
             ]
         )
-        # #TOTAL EARNINGS PAGE $Z
-        # ocSelect.text = text = "Across the four (4) rounds of today's study, you earned a total of $%.2f." % (studyEarnings)
         
 #Add the overall_bonus to the round_earnings --> The current code only counts what happens in the last round of the task. Also make sure not to include the round_earnings from the practice rounds.
 
@@ -2267,22 +1424,9 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         win.flip()
         event.waitKeys(keyList = ['q'], timeStamped = False) # waiting for key press 
     
-    
-        #ocSelect.text = text = "Randomly selected outcome: $%.2f. \n\nYou will receive $%.2f as your bonus payment.\n\n\nPress the white button to call the experimenter." % (outcomeForPay, scaledOC)
-        #ocSelect.draw()
-        #win.flip()
-        #event.waitKeys(keyList = ['space'], timeStamped = False) # waiting for key press 
-        
-        #trialOutcome.append([outcomeForPay]) # save outcome payment.
-        #trialOutcome.append([scaledOC])
         
     finally: # this should save the data even if something in "try" fails
         win.close()
-        
-        
-               
-        # if data exists, reformat to pandas dataframe if it wasn't above, and save it
-        # save practice file
       
         datetime = time.strftime("%Y%m%d-%H%M%S"); # save date and time
         
@@ -2296,19 +1440,6 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 data = data.iloc[1: , :] # drop the first row which are the variable names
             filenameRDM = dataDirectoryPath + "rcsRDM_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
             data.to_csv(filenameRDM)
-        
-        
-
-
-        #This is the data that is saving below, but we want the above data to be saving. Is there a reason this is the case? Is is the placement of where the data.append statement is?
-        #DATA SAVE    
-        # if 'trialOutcome' in locals(): 
-        #     if not isinstance(trialOutcome, pd.DataFrame):
-        #         trialOutcome = pd.DataFrame(trialOutcome) #convert data into pandas dataframe
-        #         trialOutcome.columns=["subID","trial","outcome"] # add column names
-        #         trialOutcome = trialOutcome.iloc[1: , :] # drop the first row which are the variable trialOutcome.iloc[1: , :] # drop the first row which are the variable names
-        #     filenameTrialOutcome = dataDirectoryPath + "rcsTrialOutcome_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
-        #     trialOutcome.to_csv(filenameTrialOutcome)
 
         #DATA SAVE        
         if 'practiceData' in locals(): 
@@ -2330,10 +1461,5 @@ def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             filenameGPRcomp = dataDirectoryPath + "gprBonusCompensation_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
             compensation.to_csv(filenameGPRcomp)
 
-    
-    
-    
-    
-    
-    
-    
+
+
