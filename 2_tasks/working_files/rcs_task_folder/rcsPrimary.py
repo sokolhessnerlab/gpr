@@ -58,6 +58,7 @@ def rcsPrimary(subID, isReal, computerNumber): # define the function and specify
     
     # Import scripts
     from rdmTask.rcsRDMmodule import rcsRDM # risky decision-making task + condition instructions
+    #from cgt_digitSpan import digitSpan_shlab
         
     # r  d condition order from pre-existing text file which determines conditions and color for each round of RDM task
     #conditionDF = pd.read_csv(dirName + "rdmTask/rcsConditions.csv", dtype={"subID":"string"}) # specify that subID is a string
