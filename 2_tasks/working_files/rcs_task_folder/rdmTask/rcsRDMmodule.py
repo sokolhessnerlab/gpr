@@ -16,7 +16,10 @@ Risky decision-making for HRB dissertation project: Risk, context and strategy.
 
 # notes: the screen dimensions are going to shift when we put on lab computer, so will the stimuli
 
-
+#import os
+#os.chdir('/Users/justinblake/Documents/GitHub/gpr/2_tasks/working_files/rcs_task_folder')
+#import rcsPrimary
+#rcsPrimary.rcsPrimary("xxx", x, x)
 
 def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color, cond4color, isReal, dirName, dataDirName):
     
