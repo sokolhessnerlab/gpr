@@ -12,7 +12,7 @@ create choice set function for risky decision-making task
 
 
 
-def rcsRDMChoiceSet():
+def gprRDMChoiceSet():
     
         
     import numpy as np
@@ -176,20 +176,20 @@ def rcsRDMChoiceSet():
 
 
  # distribute everything to the choice set
-    rcsCS = pd.DataFrame(data=np.nan, index=np.arange(nTri), columns =["evLevel", "evInd", "runSize", "isi", "iti", "riskyGain", "riskyLoss", "alternative"])
+    gprCS = pd.DataFrame(data=np.nan, index=np.arange(nTri), columns =["evLevel", "evInd", "runSize", "isi", "iti", "riskyGain", "riskyLoss", "alternative"])
   
   
     count = 0; # start count at trial 1
     for i in range(len(EVs)):
-      rcsCS['evLevel'][count:count+runLength[i]-1] = np.repeat(realEvs.loc[i],runLength[i])
-      rcsCS['evInd'][count:count+runLength[i]-1] = np.repeat(EVs[i],runLength[i])
-      rcsCS['runSize'][count:count+runLength[i]-1] = np.repeat(runLength[i],runLength[i])
+      gprCS['evLevel'][count:count+runLength[i]-1] = np.repeat(realEvs.loc[i],runLength[i])
+      gprCS['evInd'][count:count+runLength[i]-1] = np.repeat(EVs[i],runLength[i])
+      gprCS['runSize'][count:count+runLength[i]-1] = np.repeat(runLength[i],runLength[i])
       count = count + runLength[i]; # update the count
 
 
   
-    rcsCS['isi'][:] = .5
-    rcsCS['iti'][:] = ITIs;
+    gprCS['isi'][:] = .5
+    gprCS['iti'][:] = ITIs;
 
 # add gains, safe and loss values such that we hit all the possible values for each level of EV given the number of trials in each run
     
@@ -199,7 +199,7 @@ def rcsRDMChoiceSet():
   
     for n in range(nT):
     
-      getCol = rcsCS['evInd'][n]; # column is level of EV for that trial, n
+      getCol = gprCS['evInd'][n]; # column is level of EV for that trial, n
       if getCol == 1:
           selectCol = 'level5'
       elif getCol ==2:
@@ -212,9 +212,9 @@ def rcsRDMChoiceSet():
 # select a row
     
     
-      rcsCS['riskyGain'][n] = evPointsYnoise[selectCol][selectRow];
-      rcsCS['alternative'][n]= evPointsXnoise[selectCol][selectRow];
-      rcsCS['riskyLoss'][n] = 0; #gain only task
+      gprCS['riskyGain'][n] = evPointsYnoise[selectCol][selectRow];
+      gprCS['alternative'][n]= evPointsXnoise[selectCol][selectRow];
+      gprCS['riskyLoss'][n] = 0; #gain only task
     
     
     valueInds.loc[selectRow,getCol] = np.nan; # replace with NA so we don't select this index again
@@ -233,9 +233,9 @@ def rcsRDMChoiceSet():
         selectCol='level25'
 
 
-    rcsCS['riskyGain'][nT:nTri-1] = evPointsYnoise[selectCol][last5rowInd] #, EVs[len(EVs)-1]]
-    rcsCS['alternative'][nT:nTri-1] = evPointsXnoise[selectCol][last5rowInd] #, EVs[len(EVs)-1]]
-    rcsCS['riskyLoss'][nT:nTri-1]=0;
+    gprCS['riskyGain'][nT:nTri-1] = evPointsYnoise[selectCol][last5rowInd] #, EVs[len(EVs)-1]]
+    gprCS['alternative'][nT:nTri-1] = evPointsXnoise[selectCol][last5rowInd] #, EVs[len(EVs)-1]]
+    gprCS['riskyLoss'][nT:nTri-1]=0;
 
 # Add attention checks
   # We want to add two trials where risky gain is large and safe is 0 
@@ -244,30 +244,30 @@ def rcsRDMChoiceSet():
   
   # ev level 15 (middle-value context)
   # making boolean series for ev level
-    filter1 = rcsCS["evLevel"]==15
+    filter1 = gprCS["evLevel"]==15
   
   # making boolean series for risky gain
-    filter2 = rcsCS["riskyGain"]>35
+    filter2 = gprCS["riskyGain"]>35
   
-    attnCheck15ind = rcsCS.index[filter1 & filter2];   # pull out rows where the filters apply
-    rcsCS['alternative'][resample(attnCheck15ind)] = 0; # pick one of those trials and make it zero
+    attnCheck15ind = gprCS.index[filter1 & filter2];   # pull out rows where the filters apply
+    gprCS['alternative'][resample(attnCheck15ind)] = 0; # pick one of those trials and make it zero
   
   # ev level 25 (high-value context)
-    filter1 = rcsCS["evLevel"]==25
+    filter1 = gprCS["evLevel"]==25
   
   # making boolean series for risky gain
-    filter2 = rcsCS["riskyGain"]>55
+    filter2 = gprCS["riskyGain"]>55
   
-    attnCheck25ind = rcsCS.index[filter1 & filter2];# pull out rows where the filters apply
-    rcsCS['alternative'][resample(attnCheck25ind)] = 0; # pick one of those trials and make it zero
+    attnCheck25ind = gprCS.index[filter1 & filter2];# pull out rows where the filters apply
+    gprCS['alternative'][resample(attnCheck25ind)] = 0; # pick one of those trials and make it zero
   
 
 
     # for testing purposes, plot our choice set to make sure everything worked
-    #plt.plot(rcsCS['evLevel'],'o', color="black")
-    #plt.plot(rcsCS['riskyGain'],'o', color="black")
-    #plt.plot(rcsCS['alternative'],'o', color="black")
-    #plt.plot(rcsCS['alternative'],rcsCS['riskyGain'],'o', color="black")
+    #plt.plot(gprCS['evLevel'],'o', color="black")
+    #plt.plot(gprCS['riskyGain'],'o', color="black")
+    #plt.plot(gprCS['alternative'],'o', color="black")
+    #plt.plot(gprCS['alternative'],gprCS['riskyGain'],'o', color="black")
 
 
-    return rcsCS
+    return gprCS
