@@ -17,11 +17,11 @@ Risky decision-making for HRB dissertation project: Risk, context and strategy.
 # notes: the screen dimensions are going to shift when we put on lab computer, so will the stimuli
 
 #import os
-#os.chdir('/Users/justinblake/Documents/GitHub/gpr/2_tasks/working_files/gpr_task_folder')
-#import gprPrimary
-#gprPrimary.gprPrimary("xxx", x, x)
+#os.chdir('/Users/justinblake/Documents/GitHub/gpr/2_tasks/working_files/rcs_task_folder')
+#import rcsPrimary
+#rcsPrimary.rcsPrimary("xxx", x, x)
 
-def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color, cond4color, isReal, dirName, dataDirName):
+def rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color, cond4color, isReal, dirName, dataDirName):
     
     
     #subID='001'
@@ -41,22 +41,22 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         import sys
         
         # change directory
-        #os.chdir('/Users/hayley/Documents/Github/gpr/rdmTask') # hb mac
-        #os.chdir('/Users/shlab/Documents/Github/gpr/task/rdmTask') # mahimahi
-        #os.chdir('/Users/Display/Desktop/Github/gpr/rdmTask') # tofu
+        #os.chdir('/Users/hayley/Documents/Github/rcs/rdmTask') # hb mac
+        #os.chdir('/Users/shlab/Documents/Github/rcs/task/rdmTask') # mahimahi
+        #os.chdir('/Users/Display/Desktop/Github/rcs/rdmTask') # tofu
         os.chdir(dirName + 'rdmTask')
         
         
-        #dataDirectoryPath = '/Users/shlab/Documents/Github/gpr/task/data/'
+        #dataDirectoryPath = '/Users/shlab/Documents/Github/rcs/task/data/'
         #dataDirectoryPath = dirName + 'data/'
         dataDirectoryPath = dataDirName + "rdmData/"
     
         
         # Import the choice set function
-        #from gprRDMChoiceSet import *
+        #from rcsRDMChoiceSet import *
         sys.path.append(os.path.dirname(__file__))
         sys.path.append(os.path.join(os.path.dirname(__file__), 'rdmTask'))
-        import gprRDMChoiceSet
+        import rcsRDMChoiceSet
 
         # df = pandas.read_csv(dirName + "rdmTask/" + 'gprRDMstatic.csv', dtype={"percentile":"int"}) 
 
@@ -1438,7 +1438,7 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 data.columns = ["subID","riskyGain", 
                 "riskyLoss", "safe", "RT", "round_earnings","curr_goal","curr_bonus","loc", "response", "choice", "outcome", "iti", "itiExtra", "cond", "stimDispStart", "choiceTimeStart", "isiStart", "outcomeDispStart", "itiStart", "trial", "roundRDM", "roundColor","ischecktrial"]
                 data = data.iloc[1: , :] # drop the first row which are the variable names
-            filenameRDM = dataDirectoryPath + "gprRDM_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
+            filenameRDM = dataDirectoryPath + "rcsRDM_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
             data.to_csv(filenameRDM)
 
         #DATA SAVE        
@@ -1447,7 +1447,7 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 practiceData = pd.DataFrame(practiceData) #convert data into pandas dataframe
                 practiceData.columns=["riskyGain", "riskyLoss", "safe", "RT", "loc", "response", "choice","outcome","iti","itiExtra","stimDispStart","choiceTimeStart","isiStart","outcomeDispStart","itiStart","trial"] # add column names
                 practiceData = practiceData.iloc[1: , :] # drop the first row which are the variable practiceData.iloc[1: , :] # drop the first row which are the variable names
-            filenamePrac = dataDirectoryPath + "gprRDMpractice_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
+            filenamePrac = dataDirectoryPath + "rcsRDMpractice_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
             practiceData.to_csv(filenamePrac)
     
         if 'compensation' in locals():
