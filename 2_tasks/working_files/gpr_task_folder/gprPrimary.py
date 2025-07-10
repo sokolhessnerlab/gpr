@@ -4,19 +4,20 @@
 Created on Thu May 26 12:20:06 2022
 
 @author: hayley
+ - Modification Author: Justin Blake
 """
 
 """
-Primary script for HRB's dissertation project RCS
+Primary script for HJRB's Senior Honor's Thesis Project GPR
 This script does some set up for the experiment and calls all required scripts to run the risky decision-making and cognitive control tasks
 """
 
 #import os
-#os.chdir('/Users/justinblake/Documents/GitHub/gpr/2_tasks/working_files/rcs_task_folder')
-#import rcsPrimary
-#rcsPrimary.rcsPrimary("xxx", x, x)
+#os.chdir('/Users/justinblake/Documents/GitHub/gpr/2_tasks/working_files/gpr_task_folder')
+#import gprPrimary
+#gprPrimary.gprPrimary("xxx", x, x)
 
-def rcsPrimary(subID, isReal, computerNumber): # define the function and specify the argument(s)
+def gprPrimary(subID, isReal, computerNumber): # define the function and specify the argument(s)
 
     #isReal = 0 for testing, 1 for real
     # computer numbers:
@@ -41,28 +42,28 @@ def rcsPrimary(subID, isReal, computerNumber): # define the function and specify
 
     # set working directory
     if computerNumber ==1:
-        dirName = ("/Users/justinblake/Documents/GitHub/gpr/2_tasks/working_files/rcs_task_folder/")
-        dataDirName = ("/Users/justinblake/Documents/GitHub/gpr/2_tasks/working_files/rcs_task_folder/rdmTask/data/")
+        dirName = ("/Users/justinblake/Documents/GitHub/gpr/2_tasks/working_files/gpr_task_folder/")
+        dataDirName = ("/Users/justinblake/Documents/GitHub/gpr/2_tasks/working_files/gpr_task_folder/rdmTask/data/")
     elif computerNumber ==2:
-        dirName = ("/Users/shlab/Documents/Github/rcs/task/")
-        dataDirName = ("/Users/shlab/Documents/Github/rcs/task/data")
+        dirName = ("/Users/shlab/Documents/Github/gpr/task/")
+        dataDirName = ("/Users/shlab/Documents/Github/gpr/task/data")
     elif computerNumber ==3:
-        dirName = ("/Users/Display/Desktop/Github/rcs/task/") 
-        dataDirName = ("/Users/Display/Desktop/rcsData/")
+        dirName = ("/Users/Display/Desktop/Github/gpr/task/") 
+        dataDirName = ("/Users/Display/Desktop/gprData/")
     elif computerNumber ==4:
-        dirName = ("/Users/sokolhessnerlab/Desktop/Github/rcs/task/")
-        dataDirName =("/Users/sokolhessnerlab/Desktop/rcsData/")
+        dirName = ("/Users/sokolhessnerlab/Desktop/Github/gpr/task/")
+        dataDirName =("/Users/sokolhessnerlab/Desktop/gprData/")
     
     os.chdir(dirName)
 
     
     # Import scripts
-    from rdmTask.gprRDMmodule import rcsRDM # risky decision-making task + condition instructions
+    from rdmTask.gprRDMmodule import gprRDM # risky decision-making task + condition instructions
    #from cgt_digitSpan import digitSpan_shlab
         
     # r  d condition order from pre-existing text file which determines conditions and color for each round of RDM task
-    #conditionDF = pd.read_csv(dirName + "rdmTask/rcsConditions.csv", dtype={"subID":"string"}) # specify that subID is a string
-    conditionDF = pd.read_csv(dirName + "rdmTask/rcsConditions.csv", dtype={"gprID":"string"}) # specify that subID is a string
+    #conditionDF = pd.read_csv(dirName + "rdmTask/gprConditions.csv", dtype={"subID":"string"}) # specify that subID is a string
+    conditionDF = pd.read_csv(dirName + "rdmTask/gprConditions.csv", dtype={"gprID":"string"}) # specify that subID is a string
     
     # reading the csv file above does some weird stuff to the subID column, removing the extra characters:
     #conditionDF.subID = conditionDF["subID"].str.replace("=","")
@@ -83,7 +84,7 @@ def rcsPrimary(subID, isReal, computerNumber): # define the function and specify
     cond4color = conditionDF.cond4color.iloc[gprIdx]
     
 
-    rcsRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color, cond4color, isReal, dirName, dataDirName)
+    gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color, cond4color, isReal, dirName, dataDirName)
     
     
     # simple analysis script (checks for missing trials, runs simple glm, scores span tasks, notes whether we keep the data and then adjusts the condition file)
@@ -96,7 +97,7 @@ def getNextSubID(writeToFile=False):
     from datetime import datetime
     import os
 
-    subjects_file = "2_tasks/working_files/rcs_task_folder/rcsSubjects.csv"
+    subjects_file = "2_tasks/working_files/gpr_task_folder/gprSubjects.csv"
 
     # Check if file exists, if not create with headers
     if not os.path.exists(subjects_file):
@@ -122,7 +123,7 @@ def main():
     isTesting = 0 # Set to 0 for testing, 1 for real
     subId = getNextSubID(True if isTesting == 1 else False)  # Get the next subject ID
     computerNumber = 1  # Set the computer number (1 for HB macbook, etc.)
-    rcsPrimary(subId, isTesting, computerNumber) # call the function with the arguments specified above
+    gprPrimary(subId, isTesting, computerNumber) # call the function with the arguments specified above
     
 if __name__ == "__main__":
     main()  # Run the main function when the script is executed
