@@ -15,7 +15,7 @@ This script does some set up for the experiment and calls all required scripts t
 #import os
 #os.chdir('/Users/justinblake/Documents/GitHub/gpr/2_tasks/working_files/gpr_task_folder')
 #import gprPrimary
-#gprPrimary.gprPrimary("xxx", x, x)
+#gprPrimary.gprPrimary("999", 0, 1)
 
 def gprPrimary(subID, isReal, computerNumber): # define the function and specify the argument(s)
 
