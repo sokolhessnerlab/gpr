@@ -12,10 +12,7 @@ Primary script for HJRB's Senior Honor's Thesis Project GPR
 This script does some set up for the experiment and calls all required scripts to run the risky decision-making and cognitive control tasks
 """
 
-#import os
-#os.chdir('/Users/justinblake/Documents/GitHub/gpr/2_tasks/working_files/gpr_task_folder')
-#import gprPrimary
-#gprPrimary.gprPrimary("999", 0, 1)
+#import os; os.chdir('/Users/justinblake/Documents/GitHub/gpr/2_tasks/working_files/gpr_task_folder'); import gprPrimary; gprPrimary.gprPrimary("xxx", x, x)
 
 def gprPrimary(subID, isReal, computerNumber): # define the function and specify the argument(s)
 
