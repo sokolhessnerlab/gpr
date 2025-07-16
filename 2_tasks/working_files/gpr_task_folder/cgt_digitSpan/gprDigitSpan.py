@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2022.2.1),
-    on July 16, 2025, at 13:55
+    on July 16, 2025, at 13:30
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -76,7 +76,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expNa
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath='C:\\Users\\jvonm\\Documents\\GitHub\\gpr\\2_tasks\\working_files\\gpr_task_folder\\cgt_digitSpan\\gprDigitSpan_lastrun.py',
+    originPath='C:\\Users\\jvonm\\Documents\\GitHub\\gpr\\2_tasks\\working_files\\gpr_task_folder\\cgt_digitSpan\\gprDigitSpan.py',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -90,12 +90,12 @@ frameTolerance = 0.001  # how close to onset before 'same' frame
 
 # --- Setup the Window ---
 win = visual.Window(
-    size=[1920, 1080], fullscr=True, screen=0, 
+    size=[2560, 1440], fullscr=True, screen=0, 
     winType='pyglet', allowStencil=False,
     monitor='testMonitor', color=[-1,-1,-1], colorSpace='rgb',
     blendMode='avg', useFBO=True, 
     units='height')
-win.mouseVisible = True
+win.mouseVisible = False
 # store frame rate of monitor if we can measure it
 expInfo['frameRate'] = win.getActualFrameRate()
 if expInfo['frameRate'] != None:
@@ -1053,16 +1053,13 @@ for thisTrialFSPractice in trialFSPractice:
     continueRoutine = True
     # update component parameters for each repeat
     textboxPractice.reset()
-    # Run 'Begin Routine' code from code_3practice
-    #win.mouseVisible = True
-    event.Mouse(visible=True)
     # setup some python lists for storing info about the mousePractice
     mousePractice.clicked_name = []
     gotValidClick = False  # until a click is received
     # Run 'Begin Routine' code from JScodePractice
     # translated from js
     # this is a temporary fix to allow editable textbox to be used on several trials
-    #textboxPractice.refresh()
+    textboxPractice.refresh()
     # keep track of which components have finished
     RecallPracticeComponents = [recall_txtPractice, textboxPractice, cont_buttonPractice, mousePractice]
     for thisComponent in RecallPracticeComponents:
@@ -1176,8 +1173,6 @@ for thisTrialFSPractice in trialFSPractice:
     #    digitsForTrial[r] = str(digitsForTrial[r])
     
     #digitsForTrial = ''.join(digitsForTrial)
-    
-    #win.mouseVisible = False
     
     if textboxPractice.text == str(digits):
         correct = 1

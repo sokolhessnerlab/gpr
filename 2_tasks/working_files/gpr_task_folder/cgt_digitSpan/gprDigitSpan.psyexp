@@ -23,10 +23,10 @@
     <Param val="True" valType="bool" updates="None" name="Save wide csv file"/>
     <Param val="1" valType="num" updates="None" name="Screen"/>
     <Param val="True" valType="bool" updates="None" name="Show info dlg"/>
-    <Param val="False" valType="bool" updates="None" name="Show mouse"/>
+    <Param val="True" valType="bool" updates="None" name="Show mouse"/>
     <Param val="height" valType="str" updates="None" name="Units"/>
-    <Param val="2022.2.1" valType="str" updates="None" name="Use version"/>
-    <Param val="[2560, 1440]" valType="code" updates="None" name="Window size (pixels)"/>
+    <Param val="2024.1.3" valType="str" updates="None" name="Use version"/>
+    <Param val="[1920, 1080]" valType="code" updates="None" name="Window size (pixels)"/>
     <Param val="avg" valType="str" updates="None" name="blendMode"/>
     <Param val="$[-1,-1,-1]" valType="str" updates="None" name="color"/>
     <Param val="rgb" valType="str" updates="None" name="colorSpace"/>
@@ -2734,15 +2734,15 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="new psychoJS.eventManager.Mouse({&quot;visible&quot;: true});&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="#win.mouseVisible = True&amp;#10;event.Mouse(visible=True)" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
         <Param val="if ((textboxPractice.text === digits.toString())) {&amp;#10;    correct = 1;&amp;#10;    fbTxt = &quot;Correct!&quot;;&amp;#10;} else {&amp;#10;    correct = 0;&amp;#10;    fbTxt = &quot;Incorrect&quot;;&amp;#10;}&amp;#10;psychoJS.experiment.addData(&quot;correct&quot;, correct);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
-        <Param val="#for r in range(len(digitsForTrial)):&amp;#10;#    digitsForTrial[r] = str(digitsForTrial[r])&amp;#10;&amp;#10;#digitsForTrial = ''.join(digitsForTrial)&amp;#10;&amp;#10;if textboxPractice.text == str(digits):&amp;#10;    correct = 1&amp;#10;    fbTxt = 'Correct!'&amp;#10;else:&amp;#10;    correct = 0&amp;#10;    fbTxt = 'Incorrect'&amp;#10;thisExp.addData('correct', correct)" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="#for r in range(len(digitsForTrial)):&amp;#10;#    digitsForTrial[r] = str(digitsForTrial[r])&amp;#10;&amp;#10;#digitsForTrial = ''.join(digitsForTrial)&amp;#10;&amp;#10;#win.mouseVisible = False&amp;#10;&amp;#10;if textboxPractice.text == str(digits):&amp;#10;    correct = 1&amp;#10;    fbTxt = 'Correct!'&amp;#10;else:&amp;#10;    correct = 0&amp;#10;    fbTxt = 'Incorrect'&amp;#10;thisExp.addData('correct', correct)" valType="extendedCode" updates="constant" name="End Routine"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="code_3practice" valType="code" updates="None" name="name"/>
       </CodeComponent>
@@ -2770,7 +2770,7 @@
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
         <Param val="// this is a temporary fix to allow editable textbox to be used on several trials&amp;#10;textboxPractice.refresh()" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="# translated from js&amp;#10;# this is a temporary fix to allow editable textbox to be used on several trials&amp;#10;textboxPractice.refresh()" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="# translated from js&amp;#10;# this is a temporary fix to allow editable textbox to be used on several trials&amp;#10;#textboxPractice.refresh()" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Both" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
