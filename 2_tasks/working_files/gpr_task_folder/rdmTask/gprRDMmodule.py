@@ -244,7 +244,7 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
     
     postPrac = visual.TextStim(
         win, 
-        text="Practice complete! \n\nDo you have any questions for the experimenter? \n\nPlease ask the experimenter now. \n\nWhen you are ready, press 'space' to continue.", 
+        text="Practice complete! \n\nPlease let the experimenter know you are finished.", 
         pos = (0,0),
         color=[1,1,1],
         height = textHeight,
@@ -945,7 +945,7 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
     postPrac.draw()
     win.flip()
     print("Practice trials complete!")
-    event.waitKeys(keyList = ['space', 'q'], timeStamped = False) # waiting for q or space key press or until max time allowed
+    event.waitKeys(keyList = ['q'], timeStamped = False) # waiting for q or space key press or until max time allowed
 
 
 
