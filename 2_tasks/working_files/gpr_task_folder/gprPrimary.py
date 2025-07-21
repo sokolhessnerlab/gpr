@@ -59,8 +59,8 @@ def gprPrimary(subID, isReal, computerNumber): # define the function and specify
    #from cgt_digitSpan import digitSpan_shlab
         
     # r  d condition order from pre-existing text file which determines conditions and color for each round of RDM task
-    #conditionDF = pd.read_csv(dirName + "rdmTask/gprConditions.csv", dtype={"subID":"string"}) # specify that subID is a string
-    conditionDF = pd.read_csv(dirName + "rdmTask/gprConditions.csv", dtype={"gprID":"string"}) # specify that subID is a string
+    conditionDF = pd.read_csv(dirName + "rdmTask/gprConditions.csv", dtype={"subID":"string"}) # specify that subID is a string
+    #conditionDF = pd.read_csv(dirName + "rdmTask/gprConditions.csv", dtype={"gprID":"string"}) # specify that subID is a string
     
     # reading the csv file above does some weird stuff to the subID column, removing the extra characters:
     #conditionDF.subID = conditionDF["subID"].str.replace("=","")

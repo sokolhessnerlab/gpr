@@ -68,9 +68,18 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
     # Store conditions in one structure 
     cond = [cond1, cond2, cond3, cond4] #(0= control, 1 = strategy, 2=something, 3=something else)
     colorOrder = [cond1color, cond2color, cond3color, cond4color] #(green = 0, purple = 1, blue = 2, orange = 3)
+    #colorOrder = [int(cond1color), int(cond2color), int(cond3color), int(cond4color)]
+#    import math
+#    colorOrder = [int(c) for c in [cond1color, cond2color, cond3color, cond4color] if not math.isnan(c)]
+#    index = colorOrder[0]
+#    if 0 <= index < len(colors):
+#        curr_color = colors[index]
+#    else:
+#        raise IndexError(f"Index {index} is out of range for colors list of length {len(colors)}")
+
     colors = [[0,.6,0], [.5,0,.5], [0,.7,.9], [.9,.6,0]] # green, purple, blue, orange
                 
-    curr_color = colors[int(colorOrder[0])]
+    curr_color = colors[colorOrder[0]]
     # Set up the experimental parameters that are consistent across task rounds:
     
     # Screen dimensions and drawing stuff
