@@ -764,7 +764,7 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         choiceTimeStart = []
         rtClock=core.Clock() #start the clock and wait for a response
         
-        port.setData(1)
+        #port.setData(1)
         win.flip() #show the choice options, keep stimuli on the screen
         stimDispStart = pracStart.getTime()
         response = event.waitKeys(maxWait = stimTime, keyList = ['v', 'n'], timeStamped = rtClock) # waiting for key press
@@ -850,7 +850,7 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             
         
         isiStim.draw()
-        port.setData(0)
+        #port.setData(0)
         win.flip() # show it
         isiStart = pracStart.getTime()
         core.wait(isi)
@@ -879,14 +879,14 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         progBar.draw()   
         ocTxt.draw()
         
-        port.setData(1)
+        #port.setData(1)
         win.flip() # show it
         outcomeDispStart = pracStart.getTime()
         core.wait(outcomeTime)
     
         #ITI    
         itiStart = pracStart.getTime()
-        port.setData(0)
+        #port.setData(0)
         while pracStart.getTime() < t*(stimTime + choiceTime + isi + outcomeTime) + sum(itiPract[0:t]):
             
             pracBorderBox.draw()
@@ -1160,7 +1160,7 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         
     
             stimDispStart = rdmStart.getTime()
-            port.setData(1)
+            #port.setData(1)
             win.flip() #show the choice options, keep stimuli on the screen
             response = event.waitKeys(maxWait = stimTime, keyList = ['v', 'n'], timeStamped = rtClock) # waiting for key press
             
@@ -1240,7 +1240,7 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             bonusTxt.draw()
 
             isiStim.draw()
-            port.setData(0)
+            #port.setData(0)
             win.flip() # show it
             isiStart = rdmStart.getTime()
             core.wait(isi)
@@ -1266,14 +1266,14 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             earningsTxt.draw()
             goalTxt.draw()
             bonusTxt.draw()
-            port.setData(1)
+            #port.setData(1)
             win.flip() # show it
             outcomeDispStart = rdmStart.getTime()
             core.wait(outcomeTime)
         
             #ITI 
             itiStart = rdmStart.getTime()
-            port.setData(0)
+            #port.setData(0)
             while rdmStart.getTime() < s*(stimTime + choiceTime + isi + outcomeTime) + sum(itiStatic[0:s]):
                 borderBox.draw() # draw the large color box
                 blackBox.draw() # draw smaller black box on top of our color rect to create border effect
