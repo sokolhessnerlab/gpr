@@ -139,6 +139,11 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         choiceTime = 2 # time to make a choice after the keys are displayed again
         outcomeTime = 1
         isi = .5
+
+        # Set Up the connection between PsychoPy and Biopac
+        from psychopy.parallel import ParallelPort
+        port = ParallelPort(address = 0xD010)
+        port.setData(0) # zeros it out in case it's not
         
         # random iti time of 3 or 3.5 sec for each of the trials in the static and dynamic
         def shuffle(array):
@@ -746,15 +751,14 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             
             gainTxt.draw()
             lossTxt.draw()
-            stimDispStart = pracStart.getTime()
             
-    
             response = [] # reset response variable
             choiceTimeStart = []
             rtClock=core.Clock() #start the clock and wait for a response
-        
-    
+            
+            port.setData(1)
             win.flip() #show the choice options, keep stimuli on the screen
+            stimDispStart = pracStart.getTime()
             response = event.waitKeys(maxWait = stimTime, keyList = ['v', 'n'], timeStamped = rtClock) # waiting for key press
             
             if response is None:
@@ -838,6 +842,7 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
               
             
             isiStim.draw()
+            port.setData(0)
             win.flip() # show it
             isiStart = pracStart.getTime()
             core.wait(isi)
@@ -866,12 +871,14 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             progBar.draw()   
             ocTxt.draw()
             
+            port.setData(1)
             win.flip() # show it
             outcomeDispStart = pracStart.getTime()
             core.wait(outcomeTime)
         
             #ITI    
             itiStart = pracStart.getTime()
+            port.setData(0)
             while pracStart.getTime() < t*(stimTime + choiceTime + isi + outcomeTime) + sum(itiPract[0:t]):
                 
                 pracBorderBox.draw()
@@ -1017,29 +1024,8 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 postRoundCheck.draw()
                 win.flip()
                 event.waitKeys(keyList = ['space'], timeStamped=False)
+            
 
-                
-    
-            """
-            Depending on round and whether participant is switching, we will show 
-            slightly different instructions. 
-            
-            If its round 1, participants will read the full
-            instructions for the assigned condition. 
-            
-            If its round 2 and the participant is switching conditions, 
-            they will read a screen that tells them they will be reading new 
-            instructions, then they will read the new instructions in their entirety.
-            
-            If its round 2 and the participant is repeating conditions, participants
-            will be told they will read a reminder and then they will read the reminder 
-            instructions.
-            
-            All participants will be asked to summarize the instructions no matter the round
-            or condition or switching/repeating.
-            """
-            
-            
             # round_val = cond[r]; # store strategy value (0/1/2/3)  
             curr_bonus = condition_levels[cond[r]][0]
             curr_goal = condition_levels[cond[r]][1]
@@ -1158,7 +1144,6 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 goalTxt.draw()
                 bonusTxt.draw()
                 lossTxt.draw()
-                stimDispStart = rdmStart.getTime()
                 
         
                 response = [] # reset response variable
@@ -1166,6 +1151,8 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 rtClock=core.Clock() #start the clock and wait for a response
             
         
+                stimDispStart = rdmStart.getTime()
+                port.setData(1)
                 win.flip() #show the choice options, keep stimuli on the screen
                 response = event.waitKeys(maxWait = stimTime, keyList = ['v', 'n'], timeStamped = rtClock) # waiting for key press
                 
@@ -1245,6 +1232,7 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 bonusTxt.draw()
 
                 isiStim.draw()
+                port.setData(0)
                 win.flip() # show it
                 isiStart = rdmStart.getTime()
                 core.wait(isi)
@@ -1270,12 +1258,14 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 earningsTxt.draw()
                 goalTxt.draw()
                 bonusTxt.draw()
+                port.setData(1)
                 win.flip() # show it
                 outcomeDispStart = rdmStart.getTime()
                 core.wait(outcomeTime)
             
                 #ITI 
                 itiStart = rdmStart.getTime()
+                port.setData(0)
                 while rdmStart.getTime() < s*(stimTime + choiceTime + isi + outcomeTime) + sum(itiStatic[0:s]):
                     borderBox.draw() # draw the large color box
                     blackBox.draw() # draw smaller black box on top of our color rect to create border effect
