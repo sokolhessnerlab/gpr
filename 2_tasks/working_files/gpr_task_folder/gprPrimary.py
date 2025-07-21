@@ -86,41 +86,41 @@ def gprPrimary(subID, isReal, computerNumber): # define the function and specify
     
     # simple analysis script (checks for missing trials, runs simple glm, scores span tasks, notes whether we keep the data and then adjusts the condition file)
 
-def getNextSubID(writeToFile=False):
-    """
-    Get the next subject ID from the Subjects file and write it with a timestamp.
-    """
-    import pandas as pd
-    from datetime import datetime
-    import os
+# def getNextSubID(writeToFile=False):
+#     """
+#     Get the next subject ID from the Subjects file and write it with a timestamp.
+#     """
+#     import pandas as pd
+#     from datetime import datetime
+#     import os
 
-    subjects_file = "2_tasks/working_files/gpr_task_folder/gprSubjects.csv"
+#     subjects_file = "2_tasks/working_files/gpr_task_folder/gprSubjects.csv"
 
-    # Check if file exists, if not create with headers
-    if not os.path.exists(subjects_file):
-        df = pd.DataFrame(columns=["subID", "timestamp"])
-        df.to_csv(subjects_file, index=False)
+#     # Check if file exists, if not create with headers
+#     if not os.path.exists(subjects_file):
+#         df = pd.DataFrame(columns=["subID", "timestamp"])
+#         df.to_csv(subjects_file, index=False)
 
-    conditionDF = pd.read_csv(subjects_file, dtype={"subID": "string"})
-    next_subID = conditionDF['subID'].max()  # Get the maximum subID
-    if next_subID is None or pd.isna(next_subID):
-        next_subID = 0
-    next_subID = int(next_subID) + 1  # Increment by 1 for the next participant
-    next_subID_str = str(next_subID).zfill(3)  # Zero-padded string
+#     conditionDF = pd.read_csv(subjects_file, dtype={"subID": "string"})
+#     next_subID = conditionDF['subID'].max()  # Get the maximum subID
+#     if next_subID is None or pd.isna(next_subID):
+#         next_subID = 0
+#     next_subID = int(next_subID) + 1  # Increment by 1 for the next participant
+#     next_subID_str = str(next_subID).zfill(3)  # Zero-padded string
 
-    # Write new subID and timestamp to file if we are writing to file
-    if writeToFile:
-        timestamp = datetime.now().isoformat()
-        with open(subjects_file, 'a') as f:
-            f.write(f"{next_subID_str},{timestamp}\n")
+#     # Write new subID and timestamp to file if we are writing to file
+#     if writeToFile:
+#         timestamp = datetime.now().isoformat()
+#         with open(subjects_file, 'a') as f:
+#             f.write(f"{next_subID_str},{timestamp}\n")
 
-    return next_subID_str
+#     return next_subID_str
 
-def main():
-    isTesting = 0 # Set to 0 for testing, 1 for real
-    subId = getNextSubID(True if isTesting == 1 else False)  # Get the next subject ID
-    computerNumber = 1  # Set the computer number (1 for HB macbook, etc.)
-    gprPrimary(subId, isTesting, computerNumber) # call the function with the arguments specified above
+# def main():
+#     isTesting = 0 # Set to 0 for testing, 1 for real
+#     #subId = getNextSubID(True if isTesting == 1 else False)  # Get the next subject ID
+#     computerNumber = 1  # Set the computer number (1 for HB macbook, etc.)
+#     gprPrimary(subId, isTesting, computerNumber) # call the function with the arguments specified above
     
-if __name__ == "__main__":
-    main()  # Run the main function when the script is executed
+# if __name__ == "__main__":
+#     main()  # Run the main function when the script is executed
