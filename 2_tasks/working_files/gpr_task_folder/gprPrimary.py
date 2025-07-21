@@ -42,8 +42,8 @@ def gprPrimary(subID, isReal, computerNumber): # define the function and specify
         dirName = ("/Users/justinblake/Documents/GitHub/gpr/2_tasks/working_files/gpr_task_folder/")
         dataDirName = ("/Users/justinblake/Documents/GitHub/gpr/2_tasks/working_files/gpr_task_folder/rdmTask/data/")
     elif computerNumber ==2:
-        dirName = ("/Users/shlab/Documents/Github/gpr/task/")
-        dataDirName = ("/Users/shlab/Documents/Github/gpr/task/data")
+        dirName = ("C:/Users/sokolhessnerlab/Desktop/Github/gpr/2_tasks/working_files/gpr_task_folder/")
+        dataDirName = ("C:/Users/sokolhessnerlab/Desktop/Github/gpr/2_tasks/working_files/gpr_task_folder/data/")
     elif computerNumber ==3:
         dirName = ("/Users/Display/Desktop/Github/gpr/task/") 
         dataDirName = ("/Users/Display/Desktop/gprData/")
