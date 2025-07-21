@@ -150,10 +150,10 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
     isi = .5
 
     # Set Up the connection between PsychoPy and Biopac
-    from psychopy.parallel import ParallelPort
-    port = ParallelPort(address = 0xD010)
-    port.setData(0) # zeros it out in case it's not
-    
+#    from psychopy.parallel import ParallelPort
+#    port = ParallelPort(address = 0xD010)
+#    port.setData(0) # zeros it out in case it's not
+#    
     # random iti time of 3 or 3.5 sec for each of the trials in the static and dynamic
     def shuffle(array):
         currentIndex = len(array)
@@ -626,7 +626,6 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
     win.flip()
     core.wait(forcedInstrWaitTime)
     event.waitKeys(keyList = ['v', 'n'], timeStamped = False) # waiting for key press or until max time allowed
-    
     
     #------------------PRACTICE TRIALS-----------------#
     
