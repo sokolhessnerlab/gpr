@@ -172,7 +172,7 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
     )
     
     
-    # set up stimuli to create the green and purple borders
+    # set up stimuli to create the color borders
     blackBox = visual.Rect(
         win,
         width=scrnsize[0]*.95, 
