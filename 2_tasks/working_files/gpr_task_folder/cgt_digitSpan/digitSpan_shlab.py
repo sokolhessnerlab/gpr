@@ -12,6 +12,8 @@ If you publish work using this script the most relevant publication is:
 """
 
 # --- Import packages ---
+import psychopy
+print(psychopy.__version__)
 from psychopy import locale_setup
 from psychopy import prefs
 from psychopy import plugins
