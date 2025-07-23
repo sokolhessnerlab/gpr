@@ -1371,6 +1371,7 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             callExperimenter.draw()
             win.flip()
             event.waitKeys(keyList = ['q'], timeStamped = False) # waiting for key press     
+            win.close()
 
         
     dataDF = pd.DataFrame(data)
