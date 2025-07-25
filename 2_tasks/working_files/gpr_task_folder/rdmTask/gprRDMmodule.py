@@ -44,12 +44,12 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
     #os.chdir('/Users/hayley/Documents/Github/gpr/rdmTask') # hb mac
     #os.chdir('/Users/shlab/Documents/Github/gpr/task/rdmTask') # mahimahi
     #os.chdir('/Users/Display/Desktop/Github/gpr/rdmTask') # tofu
-    os.chdir(dirName + 'rdmTask')
+    os.chdir(dirName + os.sep + 'rdmTask')
     
     
     #dataDirectoryPath = '/Users/shlab/Documents/Github/gpr/task/data/'
     #dataDirectoryPath = dirName + 'data/'
-    dataDirectoryPath = dataDirName + "rdmData/"
+    dataDirectoryPath = dataDirName + os.sep + "rdmData"
 
     
     # Import the choice set function
@@ -60,7 +60,7 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
 
     # df = pandas.read_csv(dirName + "rdmTask/" + 'gprRDMstatic.csv', dtype={"percentile":"int"}) 
 
-    staticDF = pd.read_csv(dirName + "rdmTask/" + "gprRDMstatic.csv") 
+    staticDF = pd.read_csv(dirName + os.sep + "rdmTask" + os.sep + "gprRDMstatic.csv") 
 
     # Define rounds of risky decision-making task
     RDMrounds=4; 
@@ -113,7 +113,7 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
     goalPract = 75.20
     bonusPract = 5
     
-    df = pd.read_csv(dirName + "rdmTask/" + 'gpr_percentiles.csv', dtype={"percentile":"int"}) 
+    df = pd.read_csv(dirName + os.sep + "rdmTask" + os.sep + 'gpr_percentiles.csv', dtype={"percentile":"int"}) 
     LOW_GOAL_AMOUNT = df.iloc[LOW_GOAL-1]['earnings'] 
     HIGH_GOAL_AMOUNT = df.iloc[HIGH_GOAL-1]['earnings']
     
