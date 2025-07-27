@@ -1,0 +1,1013 @@
+13.5180 	WARNING 	User requested fullscreen with size [2560 1440], but screen is actually [1440, 900]. Using actual size
+14.1434 	EXP 	Created window1 = Window(allowGUI=True, allowStencil=False, autoLog=True, backendConf=UNKNOWN, backgroundFit=<method-wrapper '__getattribute__' of attributeSetter object at 0x157043220>, backgroundImage=<method-wrapper '__getattribute__' of attributeSetter object at 0x157043280>, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([-1, -1, -1]), colorSpace='rgb', depthBits=8, fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x157043430>, gamma=None, gammaErrorPolicy='raise', lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x1592f8f10>, multiSample=False, name='window1', numSamples=2, pos=[360.0, 225.0], screen=0, size=array([2880, 1800]), stencilBits=0, stereo=False, title='PsychoPy', units='height', useFBO=True, useRetina=True, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+14.1435 	EXP 	window1: mouseVisible = True
+14.1435 	EXP 	window1: backgroundImage = None
+14.1436 	EXP 	window1: backgroundFit = 'cover'
+14.1442 	EXP 	window1: mouseVisible = False
+14.1464 	EXP 	window1: Attempting to measure frame rate of screen (0) ...
+14.1464 	EXP 	window1: recordFrameIntervals = False
+14.3092 	EXP 	window1: recordFrameIntervals = True
+14.5437 	EXP 	Screen (0) actual frame rate measured at 59.98Hz
+14.5438 	EXP 	window1: recordFrameIntervals = False
+16.7994 	EXP 	window1: mouseVisible = True
+16.8482 	EXP 	Created GenInsText = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='GenInsText', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1.6)
+16.8483 	EXP 	window1: mouseVisible = True
+16.8551 	EXP 	Created Reminder1 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='Reminder1', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1.6)
+16.8551 	EXP 	window1: mouseVisible = True
+16.8616 	EXP 	Created Reminder2 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='Reminder2', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1.6)
+16.8617 	EXP 	window1: mouseVisible = True
+16.8778 	EXP 	Created FSGenInsText = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='FSGenInsText', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1.6)
+16.8779 	EXP 	window1: mouseVisible = True
+16.8797 	EXP 	Created fixation_2 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='fixation_2', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=UNKNOWN, text='+', units='height', win=Window(...), wrapWidth=1)
+16.8797 	EXP 	window1: mouseVisible = True
+16.8805 	EXP 	Created pres_text_practice = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='pres_text_practice', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+16.8806 	EXP 	window1: mouseVisible = True
+16.8823 	EXP 	Created recall_txtPractice = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='recall_txtPractice', opacity=1.0, ori=0, pos=array([0.  , 0.25]), rgb=UNKNOWN, text='Recall', units='height', win=Window(...), wrapWidth=1)
+16.8825 	EXP 	window1: mouseVisible = True
+16.8826 	EXP 	window1: mouseVisible = True
+16.8830 	EXP 	window1: mouseVisible = True
+16.8833 	EXP 	window1: mouseVisible = True
+16.8883 	EXP 	window1: mouseVisible = True
+16.8884 	EXP 	window1: mouseVisible = True
+16.8887 	EXP 	window1: mouseVisible = True
+16.8890 	EXP 	window1: mouseVisible = True
+16.9251 	EXP 	window1: mouseVisible = True
+16.9477 	EXP 	Created cont_buttonPractice = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, draggable=False, flipHoriz=False, flipVert=False, image='continue.png', interpolate=True, mask=None, maskParams=None, name='cont_buttonPractice', opacity=1.0, ori=0.0, pos=array([ 0. , -0.4]), size=array([0.3 , 0.07]), texRes=128.0, units='height', win=Window(...))
+16.9478 	EXP 	window1: mouseVisible = True
+16.9478 	EXP 	window1: mouseVisible = True
+16.9486 	EXP 	Created feedbac_textPractice = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='feedbac_textPractice', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+16.9487 	EXP 	window1: mouseVisible = True
+16.9574 	EXP 	Created praccomplete = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='praccomplete', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1.6)
+16.9575 	EXP 	window1: mouseVisible = True
+16.9589 	EXP 	Created fixation = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='fixation', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=UNKNOWN, text='+', units='height', win=Window(...), wrapWidth=1)
+16.9589 	EXP 	window1: mouseVisible = True
+16.9596 	EXP 	Created presentation_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='presentation_text', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+16.9596 	EXP 	window1: mouseVisible = True
+16.9612 	EXP 	Created recall_txt = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='recall_txt', opacity=1.0, ori=0, pos=array([0.  , 0.25]), rgb=UNKNOWN, text='Recall', units='height', win=Window(...), wrapWidth=1)
+16.9613 	EXP 	window1: mouseVisible = True
+16.9614 	EXP 	window1: mouseVisible = True
+16.9618 	EXP 	window1: mouseVisible = True
+16.9621 	EXP 	window1: mouseVisible = True
+16.9654 	EXP 	window1: mouseVisible = True
+16.9654 	EXP 	window1: mouseVisible = True
+16.9658 	EXP 	window1: mouseVisible = True
+16.9661 	EXP 	window1: mouseVisible = True
+16.9694 	EXP 	window1: mouseVisible = True
+16.9768 	EXP 	Created cont_button = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, draggable=False, flipHoriz=False, flipVert=False, image='continue.png', interpolate=True, mask=None, maskParams=None, name='cont_button', opacity=1.0, ori=0.0, pos=array([ 0. , -0.4]), size=array([0.3 , 0.07]), texRes=128.0, units='height', win=Window(...))
+16.9768 	EXP 	window1: mouseVisible = True
+16.9769 	EXP 	window1: mouseVisible = True
+16.9776 	EXP 	Created feedback_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='feedback_text', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+16.9777 	EXP 	window1: mouseVisible = True
+16.9847 	EXP 	Created roundTransition = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='roundTransition', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+16.9848 	EXP 	window1: mouseVisible = True
+17.0079 	EXP 	Created BSGenInsText = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='BSGenInsText', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1.6)
+17.0080 	EXP 	window1: mouseVisible = True
+17.0103 	EXP 	Created fixation_3 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='fixation_3', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=UNKNOWN, text='+', units='height', win=Window(...), wrapWidth=1)
+17.0104 	EXP 	window1: mouseVisible = True
+17.0111 	EXP 	Created pres_text_practice_2 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='pres_text_practice_2', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+17.0111 	EXP 	window1: mouseVisible = True
+17.0128 	EXP 	Created recall_txtPractice_2 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='recall_txtPractice_2', opacity=1.0, ori=0, pos=array([0.  , 0.25]), rgb=UNKNOWN, text='Recall', units='height', win=Window(...), wrapWidth=1)
+17.0130 	EXP 	window1: mouseVisible = True
+17.0131 	EXP 	window1: mouseVisible = True
+17.0134 	EXP 	window1: mouseVisible = True
+17.0138 	EXP 	window1: mouseVisible = True
+17.0170 	EXP 	window1: mouseVisible = True
+17.0171 	EXP 	window1: mouseVisible = True
+17.0175 	EXP 	window1: mouseVisible = True
+17.0178 	EXP 	window1: mouseVisible = True
+17.0206 	EXP 	window1: mouseVisible = True
+17.0282 	EXP 	Created cont_buttonPractice_2 = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, draggable=False, flipHoriz=False, flipVert=False, image='continue.png', interpolate=True, mask=None, maskParams=None, name='cont_buttonPractice_2', opacity=1.0, ori=0.0, pos=array([ 0. , -0.4]), size=array([0.3 , 0.07]), texRes=128.0, units='height', win=Window(...))
+17.0282 	EXP 	window1: mouseVisible = True
+17.0283 	EXP 	window1: mouseVisible = True
+17.0290 	EXP 	Created feedbac_textPractice_2 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='feedbac_textPractice_2', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+17.0291 	EXP 	window1: mouseVisible = True
+17.0380 	EXP 	Created praccompleteBS = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='praccompleteBS', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1.6)
+17.0381 	EXP 	window1: mouseVisible = True
+17.0395 	EXP 	Created fixationBS = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='fixationBS', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=UNKNOWN, text='+', units='height', win=Window(...), wrapWidth=1)
+17.0395 	EXP 	window1: mouseVisible = True
+17.0402 	EXP 	Created presentation_textBS = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='presentation_textBS', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+17.0403 	EXP 	window1: mouseVisible = True
+17.0418 	EXP 	Created recall_txtBS = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='recall_txtBS', opacity=1.0, ori=0, pos=array([0.  , 0.25]), rgb=UNKNOWN, text='Recall', units='height', win=Window(...), wrapWidth=1)
+17.0419 	EXP 	window1: mouseVisible = True
+17.0420 	EXP 	window1: mouseVisible = True
+17.0424 	EXP 	window1: mouseVisible = True
+17.0427 	EXP 	window1: mouseVisible = True
+17.0459 	EXP 	window1: mouseVisible = True
+17.0460 	EXP 	window1: mouseVisible = True
+17.0464 	EXP 	window1: mouseVisible = True
+17.0467 	EXP 	window1: mouseVisible = True
+17.0495 	EXP 	window1: mouseVisible = True
+17.0565 	EXP 	Created cont_buttonBS = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, draggable=False, flipHoriz=False, flipVert=False, image='continue.png', interpolate=True, mask=None, maskParams=None, name='cont_buttonBS', opacity=1.0, ori=0.0, pos=array([ 0. , -0.4]), size=array([0.3 , 0.07]), texRes=128.0, units='height', win=Window(...))
+17.0565 	EXP 	window1: mouseVisible = True
+17.0566 	EXP 	window1: mouseVisible = True
+17.0573 	EXP 	Created feedback_textBS = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='feedback_textBS', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+17.0574 	EXP 	window1: mouseVisible = True
+17.0620 	EXP 	Created ThankYou = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='ThankYou', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1.6)
+17.0763 	EXP 	textboxPractice: autoLog = True
+17.0763 	EXP 	textbox: autoLog = True
+17.0763 	EXP 	textboxPractice_2: autoLog = True
+17.0763 	EXP 	textboxBS: autoLog = True
+17.0763 	EXP 	GenInsText: autoDraw = True
+17.7960 	DATA 	Keypress: return
+17.8006 	EXP 	GenInsText: autoDraw = False
+17.8006 	EXP 	Reminder1: autoDraw = True
+17.9121 	DATA 	Keypress: return
+17.9260 	EXP 	Reminder1: autoDraw = False
+17.9260 	EXP 	Reminder2: autoDraw = True
+18.0797 	DATA 	Keypress: return
+18.0924 	EXP 	Reminder2: autoDraw = False
+18.0924 	EXP 	FSGenInsText: autoDraw = True
+18.2179 	EXP 	Imported digitSpanPractice.xlsx as conditions, 2 conditions, 3 params
+18.2188 	EXP 	Created sequence: sequential, trialTypes=2, nReps=1, seed=None
+18.2191 	EXP 	New trial (rep=0, index=0): {'digitSpan': 3, 'digits': 342, 'digitsReverse': 243}
+18.2193 	EXP 	Created sequence: sequential, trialTypes=1, nReps=3, seed=None
+18.2194 	EXP 	New trial (rep=0, index=0): None
+18.2245 	DATA 	Keypress: return
+18.2285 	EXP 	FSGenInsText: autoDraw = False
+18.2285 	EXP 	pres_text_practice: height = 0.1
+18.2285 	EXP 	pres_text_practice: height = 0.1
+18.2285 	EXP 	pres_text_practice: height = 0.1
+18.2285 	EXP 	pres_text_practice: text = '3'
+18.2285 	EXP 	fixation_2: autoDraw = True
+18.3279 	DATA 	Keypress: return
+19.2093 	EXP 	pres_text_practice: autoDraw = True
+19.2426 	EXP 	fixation_2: autoDraw = False
+20.1932 	EXP 	New trial (rep=1, index=0): None
+20.2091 	EXP 	pres_text_practice: autoDraw = False
+20.2091 	EXP 	fixation_2: autoDraw = False
+20.2091 	EXP 	pres_text_practice: autoDraw = False
+20.2091 	EXP 	pres_text_practice: height = 0.1
+20.2091 	EXP 	pres_text_practice: height = 0.1
+20.2091 	EXP 	pres_text_practice: height = 0.1
+20.2091 	EXP 	pres_text_practice: text = '4'
+20.2260 	EXP 	fixation_2: autoDraw = True
+21.2092 	EXP 	pres_text_practice: autoDraw = True
+21.2258 	EXP 	fixation_2: autoDraw = False
+22.1933 	EXP 	New trial (rep=2, index=0): None
+22.2094 	EXP 	pres_text_practice: autoDraw = False
+22.2094 	EXP 	fixation_2: autoDraw = False
+22.2094 	EXP 	pres_text_practice: autoDraw = False
+22.2094 	EXP 	pres_text_practice: height = 0.1
+22.2094 	EXP 	pres_text_practice: height = 0.1
+22.2094 	EXP 	pres_text_practice: height = 0.1
+22.2094 	EXP 	pres_text_practice: text = '2'
+22.2094 	EXP 	fixation_2: autoDraw = True
+23.2100 	EXP 	fixation_2: autoDraw = False
+23.2100 	EXP 	pres_text_practice: autoDraw = True
+24.2092 	EXP 	pres_text_practice: autoDraw = False
+24.2092 	EXP 	fixation_2: autoDraw = False
+24.2092 	EXP 	pres_text_practice: autoDraw = False
+24.2092 	EXP 	recall_txtPractice: autoDraw = True
+24.2092 	EXP 	textboxPractice: autoDraw = True
+24.2092 	EXP 	cont_buttonPractice: autoDraw = True
+31.0711 	DATA 	Keypress: 3
+31.1538 	DATA 	Keypress: 4
+31.2041 	DATA 	Keypress: 2
+31.6108 	DATA 	Keypress: return
+32.9779 	DATA 	Keypress: backspace
+33.7600 	DATA 	Mouse: Left button down, pos=(689,99)
+33.7765 	EXP 	recall_txtPractice: autoDraw = False
+33.7765 	EXP 	textboxPractice: autoDraw = False
+33.7765 	EXP 	cont_buttonPractice: autoDraw = False
+33.7765 	EXP 	feedbac_textPractice: height = 0.04
+33.7765 	EXP 	feedbac_textPractice: height = 0.04
+33.7765 	EXP 	feedbac_textPractice: height = 0.04
+33.7765 	EXP 	feedbac_textPractice: text = 'Correct!'
+33.7765 	EXP 	feedbac_textPractice: autoDraw = True
+33.8442 	DATA 	Mouse:  Left button up, pos=(688,98)
+34.7607 	EXP 	New trial (rep=0, index=1): {'digitSpan': 3, 'digits': 937, 'digitsReverse': 739}
+34.7611 	EXP 	Created sequence: sequential, trialTypes=1, nReps=3, seed=None
+34.7612 	EXP 	New trial (rep=0, index=0): None
+34.7774 	EXP 	feedbac_textPractice: autoDraw = False
+34.7774 	EXP 	feedbac_textPractice: autoDraw = False
+34.7774 	EXP 	pres_text_practice: height = 0.1
+34.7774 	EXP 	pres_text_practice: height = 0.1
+34.7774 	EXP 	pres_text_practice: height = 0.1
+34.7774 	EXP 	pres_text_practice: text = '9'
+34.7774 	EXP 	fixation_2: autoDraw = True
+35.7764 	EXP 	fixation_2: autoDraw = False
+35.7764 	EXP 	pres_text_practice: autoDraw = True
+36.7605 	EXP 	New trial (rep=1, index=0): None
+36.7765 	EXP 	pres_text_practice: autoDraw = False
+36.7765 	EXP 	fixation_2: autoDraw = False
+36.7765 	EXP 	pres_text_practice: autoDraw = False
+36.7765 	EXP 	pres_text_practice: height = 0.1
+36.7765 	EXP 	pres_text_practice: height = 0.1
+36.7765 	EXP 	pres_text_practice: height = 0.1
+36.7765 	EXP 	pres_text_practice: text = '3'
+36.7765 	EXP 	fixation_2: autoDraw = True
+37.7766 	EXP 	fixation_2: autoDraw = False
+37.7766 	EXP 	pres_text_practice: autoDraw = True
+38.7610 	EXP 	New trial (rep=2, index=0): None
+38.7767 	EXP 	pres_text_practice: autoDraw = False
+38.7767 	EXP 	fixation_2: autoDraw = False
+38.7767 	EXP 	pres_text_practice: autoDraw = False
+38.7767 	EXP 	pres_text_practice: height = 0.1
+38.7767 	EXP 	pres_text_practice: height = 0.1
+38.7767 	EXP 	pres_text_practice: height = 0.1
+38.7767 	EXP 	pres_text_practice: text = '7'
+38.7767 	EXP 	fixation_2: autoDraw = True
+39.7768 	EXP 	fixation_2: autoDraw = False
+39.7768 	EXP 	pres_text_practice: autoDraw = True
+40.7768 	EXP 	pres_text_practice: autoDraw = False
+40.7768 	EXP 	fixation_2: autoDraw = False
+40.7768 	EXP 	pres_text_practice: autoDraw = False
+40.7768 	EXP 	recall_txtPractice: autoDraw = True
+40.7768 	EXP 	textboxPractice: autoDraw = True
+40.7768 	EXP 	cont_buttonPractice: autoDraw = True
+41.7715 	DATA 	Keypress: 9
+42.0114 	DATA 	Keypress: 3
+42.1372 	DATA 	Keypress: 7
+42.6618 	DATA 	Keypress: return
+43.7635 	DATA 	Keypress: backspace
+44.5106 	DATA 	Mouse: Left button down, pos=(717,91)
+44.5268 	EXP 	recall_txtPractice: autoDraw = False
+44.5268 	EXP 	textboxPractice: autoDraw = False
+44.5268 	EXP 	cont_buttonPractice: autoDraw = False
+44.5268 	EXP 	feedbac_textPractice: text = 'Correct!'
+44.5268 	EXP 	feedbac_textPractice: autoDraw = True
+44.5781 	DATA 	Mouse:  Left button up, pos=(718,91)
+45.5267 	EXP 	feedbac_textPractice: autoDraw = False
+45.5267 	EXP 	feedbac_textPractice: autoDraw = False
+45.5267 	EXP 	praccomplete: autoDraw = True
+92.9202 	EXP 	Imported digitSpanTrialNumber.xlsx as conditions, 14 conditions, 1 params
+92.9208 	EXP 	Created sequence: sequential, trialTypes=14, nReps=1, seed=None
+92.9211 	EXP 	New trial (rep=0, index=0): {'trialNumber': 1}
+92.9224 	EXP 	Created sequence: random, trialTypes=1, nReps=3, seed=None
+92.9225 	EXP 	New trial (rep=0, index=0): None
+92.9286 	DATA 	Keypress: return
+92.9331 	EXP 	praccomplete: autoDraw = False
+92.9331 	EXP 	presentation_text: height = 0.1
+92.9331 	EXP 	presentation_text: height = 0.1
+92.9331 	EXP 	presentation_text: height = 0.1
+92.9331 	EXP 	presentation_text: text = 8
+92.9331 	EXP 	fixation: autoDraw = True
+93.9288 	EXP 	presentation_text: autoDraw = True
+93.9457 	EXP 	fixation: autoDraw = False
+94.9130 	EXP 	New trial (rep=1, index=0): None
+94.9290 	EXP 	presentation_text: autoDraw = False
+94.9290 	EXP 	fixation: autoDraw = False
+94.9290 	EXP 	presentation_text: autoDraw = False
+94.9290 	EXP 	presentation_text: height = 0.1
+94.9290 	EXP 	presentation_text: height = 0.1
+94.9290 	EXP 	presentation_text: height = 0.1
+94.9290 	EXP 	presentation_text: text = 4
+94.9290 	EXP 	fixation: autoDraw = True
+95.9298 	EXP 	fixation: autoDraw = False
+95.9298 	EXP 	presentation_text: autoDraw = True
+96.9133 	EXP 	New trial (rep=2, index=0): None
+96.9288 	EXP 	presentation_text: autoDraw = False
+96.9288 	EXP 	fixation: autoDraw = False
+96.9288 	EXP 	presentation_text: autoDraw = False
+96.9288 	EXP 	presentation_text: height = 0.1
+96.9288 	EXP 	presentation_text: height = 0.1
+96.9288 	EXP 	presentation_text: height = 0.1
+96.9288 	EXP 	presentation_text: text = 6
+96.9288 	EXP 	fixation: autoDraw = True
+97.9294 	EXP 	fixation: autoDraw = False
+97.9294 	EXP 	presentation_text: autoDraw = True
+98.9289 	EXP 	presentation_text: autoDraw = False
+98.9289 	EXP 	fixation: autoDraw = False
+98.9289 	EXP 	presentation_text: autoDraw = False
+98.9289 	EXP 	recall_txt: autoDraw = True
+98.9289 	EXP 	textbox: autoDraw = True
+98.9289 	EXP 	cont_button: autoDraw = True
+101.6981 	DATA 	Keypress: 4
+101.7139 	DATA 	Keypress: 3
+101.7397 	DATA 	Keypress: 5
+102.0474 	DATA 	Keypress: return
+102.8968 	DATA 	Keypress: backspace
+103.6961 	DATA 	Mouse: Left button down, pos=(734,117)
+103.7125 	EXP 	recall_txt: autoDraw = False
+103.7125 	EXP 	textbox: autoDraw = False
+103.7125 	EXP 	cont_button: autoDraw = False
+103.7125 	EXP 	feedback_text: height = 0.04
+103.7125 	EXP 	feedback_text: height = 0.04
+103.7125 	EXP 	feedback_text: height = 0.04
+103.7125 	EXP 	feedback_text: text = 'Incorrect'
+103.7125 	EXP 	feedback_text: autoDraw = True
+103.7467 	DATA 	Mouse:  Left button up, pos=(734,116)
+104.6966 	EXP 	New trial (rep=0, index=1): {'trialNumber': 2}
+104.6973 	EXP 	Created sequence: random, trialTypes=1, nReps=3, seed=None
+104.6975 	EXP 	New trial (rep=0, index=0): None
+104.7126 	EXP 	feedback_text: autoDraw = False
+104.7126 	EXP 	feedback_text: autoDraw = False
+104.7126 	EXP 	presentation_text: height = 0.1
+104.7126 	EXP 	presentation_text: height = 0.1
+104.7126 	EXP 	presentation_text: height = 0.1
+104.7126 	EXP 	presentation_text: text = 9
+104.7126 	EXP 	fixation: autoDraw = True
+105.6960 	EXP 	presentation_text: autoDraw = True
+105.7127 	EXP 	fixation: autoDraw = False
+106.6802 	EXP 	New trial (rep=1, index=0): None
+106.6974 	EXP 	presentation_text: autoDraw = False
+106.6974 	EXP 	fixation: autoDraw = False
+106.6974 	EXP 	presentation_text: autoDraw = False
+106.6974 	EXP 	presentation_text: height = 0.1
+106.6974 	EXP 	presentation_text: height = 0.1
+106.6974 	EXP 	presentation_text: height = 0.1
+106.6974 	EXP 	presentation_text: text = 1
+106.6974 	EXP 	fixation: autoDraw = True
+107.6961 	EXP 	presentation_text: autoDraw = True
+107.7129 	EXP 	fixation: autoDraw = False
+108.6803 	EXP 	New trial (rep=2, index=0): None
+108.6962 	EXP 	presentation_text: autoDraw = False
+108.6962 	EXP 	fixation: autoDraw = False
+108.6962 	EXP 	presentation_text: autoDraw = False
+108.6962 	EXP 	presentation_text: height = 0.1
+108.6962 	EXP 	presentation_text: height = 0.1
+108.6962 	EXP 	presentation_text: height = 0.1
+108.6962 	EXP 	presentation_text: text = 3
+108.6962 	EXP 	fixation: autoDraw = True
+109.6966 	EXP 	fixation: autoDraw = False
+109.6966 	EXP 	presentation_text: autoDraw = True
+110.6959 	EXP 	presentation_text: autoDraw = False
+110.6959 	EXP 	fixation: autoDraw = False
+110.6959 	EXP 	presentation_text: autoDraw = False
+110.6959 	EXP 	recall_txt: autoDraw = True
+110.6959 	EXP 	textbox: autoDraw = True
+110.6959 	EXP 	cont_button: autoDraw = True
+111.1739 	DATA 	Keypress: 6
+111.1979 	DATA 	Keypress: 7
+111.2732 	DATA 	Keypress: 8
+111.3477 	DATA 	Keypress: 9
+111.4230 	DATA 	Keypress: 0
+113.0303 	DATA 	Mouse: Left button down, pos=(664,87)
+113.0466 	EXP 	recall_txt: autoDraw = False
+113.0466 	EXP 	textbox: autoDraw = False
+113.0466 	EXP 	cont_button: autoDraw = False
+113.0466 	EXP 	feedback_text: text = 'Incorrect'
+113.0466 	EXP 	feedback_text: autoDraw = True
+113.1641 	DATA 	Mouse:  Left button up, pos=(664,87)
+114.0304 	EXP 	New trial (rep=0, index=2): {'trialNumber': 3}
+114.0312 	EXP 	Created sequence: random, trialTypes=1, nReps=3, seed=None
+114.0313 	EXP 	New trial (rep=0, index=0): None
+114.0463 	EXP 	feedback_text: autoDraw = False
+114.0463 	EXP 	feedback_text: autoDraw = False
+114.0463 	EXP 	presentation_text: height = 0.1
+114.0463 	EXP 	presentation_text: height = 0.1
+114.0463 	EXP 	presentation_text: height = 0.1
+114.0463 	EXP 	presentation_text: text = 8
+114.0463 	EXP 	fixation: autoDraw = True
+115.0305 	EXP 	presentation_text: autoDraw = True
+115.0471 	EXP 	fixation: autoDraw = False
+116.0141 	EXP 	New trial (rep=1, index=0): None
+116.0298 	EXP 	presentation_text: autoDraw = False
+116.0298 	EXP 	fixation: autoDraw = False
+116.0298 	EXP 	presentation_text: autoDraw = False
+116.0298 	EXP 	presentation_text: height = 0.1
+116.0298 	EXP 	presentation_text: height = 0.1
+116.0298 	EXP 	presentation_text: height = 0.1
+116.0298 	EXP 	presentation_text: text = 1
+116.0298 	EXP 	fixation: autoDraw = True
+117.0301 	EXP 	fixation: autoDraw = False
+117.0463 	EXP 	presentation_text: autoDraw = True
+118.0310 	EXP 	New trial (rep=2, index=0): None
+118.0468 	EXP 	presentation_text: autoDraw = False
+118.0468 	EXP 	fixation: autoDraw = False
+118.0468 	EXP 	presentation_text: autoDraw = False
+118.0468 	EXP 	presentation_text: height = 0.1
+118.0468 	EXP 	presentation_text: height = 0.1
+118.0468 	EXP 	presentation_text: height = 0.1
+118.0468 	EXP 	presentation_text: text = 2
+118.0468 	EXP 	fixation: autoDraw = True
+119.0299 	EXP 	presentation_text: autoDraw = True
+119.0466 	EXP 	fixation: autoDraw = False
+120.0311 	EXP 	presentation_text: autoDraw = False
+120.0311 	EXP 	fixation: autoDraw = False
+120.0311 	EXP 	presentation_text: autoDraw = False
+120.0311 	EXP 	recall_txt: autoDraw = True
+120.0311 	EXP 	textbox: autoDraw = True
+120.0311 	EXP 	cont_button: autoDraw = True
+122.0511 	DATA 	Keypress: 4
+122.1317 	DATA 	Keypress: 5
+122.1813 	DATA 	Keypress: 6
+122.2146 	DATA 	Keypress: 7
+122.2669 	DATA 	Keypress: 8
+122.7636 	DATA 	Mouse: Left button down, pos=(664,87)
+122.7799 	EXP 	recall_txt: autoDraw = False
+122.7799 	EXP 	textbox: autoDraw = False
+122.7799 	EXP 	cont_button: autoDraw = False
+122.7799 	EXP 	feedback_text: text = 'Incorrect'
+122.7799 	EXP 	feedback_text: autoDraw = True
+122.8310 	DATA 	Mouse:  Left button up, pos=(664,87)
+123.7640 	EXP 	New trial (rep=0, index=3): {'trialNumber': 4}
+123.7648 	EXP 	Created sequence: random, trialTypes=1, nReps=3, seed=None
+123.7650 	EXP 	New trial (rep=0, index=0): None
+123.7800 	EXP 	feedback_text: autoDraw = False
+123.7800 	EXP 	feedback_text: autoDraw = False
+123.7800 	EXP 	presentation_text: height = 0.1
+123.7800 	EXP 	presentation_text: height = 0.1
+123.7800 	EXP 	presentation_text: height = 0.1
+123.7800 	EXP 	presentation_text: text = 7
+123.7800 	EXP 	fixation: autoDraw = True
+124.7636 	EXP 	presentation_text: autoDraw = True
+124.7800 	EXP 	fixation: autoDraw = False
+125.7478 	EXP 	New trial (rep=1, index=0): None
+125.7641 	EXP 	presentation_text: autoDraw = False
+125.7641 	EXP 	fixation: autoDraw = False
+125.7641 	EXP 	presentation_text: autoDraw = False
+125.7641 	EXP 	presentation_text: height = 0.1
+125.7641 	EXP 	presentation_text: height = 0.1
+125.7641 	EXP 	presentation_text: height = 0.1
+125.7641 	EXP 	presentation_text: text = 8
+125.7641 	EXP 	fixation: autoDraw = True
+126.7636 	EXP 	fixation: autoDraw = False
+126.7636 	EXP 	presentation_text: autoDraw = True
+127.7477 	EXP 	New trial (rep=2, index=0): None
+127.7636 	EXP 	presentation_text: autoDraw = False
+127.7636 	EXP 	fixation: autoDraw = False
+127.7636 	EXP 	presentation_text: autoDraw = False
+127.7636 	EXP 	presentation_text: height = 0.1
+127.7636 	EXP 	presentation_text: height = 0.1
+127.7636 	EXP 	presentation_text: height = 0.1
+127.7636 	EXP 	presentation_text: text = 6
+127.7636 	EXP 	fixation: autoDraw = True
+128.7637 	EXP 	fixation: autoDraw = False
+128.7637 	EXP 	presentation_text: autoDraw = True
+129.7642 	EXP 	presentation_text: autoDraw = False
+129.7642 	EXP 	fixation: autoDraw = False
+129.7642 	EXP 	presentation_text: autoDraw = False
+129.7642 	EXP 	recall_txt: autoDraw = True
+129.7642 	EXP 	textbox: autoDraw = True
+129.7642 	EXP 	cont_button: autoDraw = True
+130.7511 	DATA 	Keypress: 5
+130.8490 	DATA 	Keypress: 6
+130.8653 	DATA 	Keypress: 7
+130.8993 	DATA 	Keypress: 8
+130.9486 	DATA 	Keypress: 9
+131.3312 	DATA 	Mouse: Left button down, pos=(664,87)
+131.3477 	EXP 	recall_txt: autoDraw = False
+131.3477 	EXP 	textbox: autoDraw = False
+131.3477 	EXP 	cont_button: autoDraw = False
+131.3477 	EXP 	feedback_text: text = 'Incorrect'
+131.3477 	EXP 	feedback_text: autoDraw = True
+131.3815 	DATA 	Mouse:  Left button up, pos=(664,87)
+132.3308 	EXP 	New trial (rep=0, index=4): {'trialNumber': 5}
+132.3315 	EXP 	Created sequence: random, trialTypes=1, nReps=3, seed=None
+132.3316 	EXP 	New trial (rep=0, index=0): None
+132.3469 	EXP 	feedback_text: autoDraw = False
+132.3469 	EXP 	feedback_text: autoDraw = False
+132.3469 	EXP 	presentation_text: height = 0.1
+132.3469 	EXP 	presentation_text: height = 0.1
+132.3469 	EXP 	presentation_text: height = 0.1
+132.3469 	EXP 	presentation_text: text = 8
+132.3469 	EXP 	fixation: autoDraw = True
+133.3308 	EXP 	presentation_text: autoDraw = True
+133.3471 	EXP 	fixation: autoDraw = False
+134.3145 	EXP 	New trial (rep=1, index=0): None
+134.3303 	EXP 	presentation_text: autoDraw = False
+134.3303 	EXP 	fixation: autoDraw = False
+134.3303 	EXP 	presentation_text: autoDraw = False
+134.3303 	EXP 	presentation_text: height = 0.1
+134.3303 	EXP 	presentation_text: height = 0.1
+134.3303 	EXP 	presentation_text: height = 0.1
+134.3303 	EXP 	presentation_text: text = 5
+134.3303 	EXP 	fixation: autoDraw = True
+135.3305 	EXP 	fixation: autoDraw = False
+135.3305 	EXP 	presentation_text: autoDraw = True
+136.3155 	EXP 	New trial (rep=2, index=0): None
+136.3312 	EXP 	presentation_text: autoDraw = False
+136.3312 	EXP 	fixation: autoDraw = False
+136.3312 	EXP 	presentation_text: autoDraw = False
+136.3312 	EXP 	presentation_text: height = 0.1
+136.3312 	EXP 	presentation_text: height = 0.1
+136.3312 	EXP 	presentation_text: height = 0.1
+136.3312 	EXP 	presentation_text: text = 4
+136.3312 	EXP 	fixation: autoDraw = True
+137.3307 	EXP 	fixation: autoDraw = False
+137.3307 	EXP 	presentation_text: autoDraw = True
+138.3306 	EXP 	presentation_text: autoDraw = False
+138.3306 	EXP 	fixation: autoDraw = False
+138.3306 	EXP 	presentation_text: autoDraw = False
+138.3306 	EXP 	recall_txt: autoDraw = True
+138.3306 	EXP 	textbox: autoDraw = True
+138.3306 	EXP 	cont_button: autoDraw = True
+140.0323 	DATA 	Keypress: 4
+140.0496 	DATA 	Keypress: 5
+140.0824 	DATA 	Keypress: 6
+140.1491 	DATA 	Keypress: 7
+140.2161 	DATA 	Keypress: 8
+141.2476 	DATA 	Mouse: Left button down, pos=(664,87)
+141.2640 	EXP 	recall_txt: autoDraw = False
+141.2640 	EXP 	textbox: autoDraw = False
+141.2640 	EXP 	cont_button: autoDraw = False
+141.2640 	EXP 	feedback_text: text = 'Incorrect'
+141.2640 	EXP 	feedback_text: autoDraw = True
+141.3323 	DATA 	Mouse:  Left button up, pos=(664,87)
+142.2483 	EXP 	New trial (rep=0, index=5): {'trialNumber': 6}
+142.2491 	EXP 	Created sequence: random, trialTypes=1, nReps=3, seed=None
+142.2492 	EXP 	New trial (rep=0, index=0): None
+142.2641 	EXP 	feedback_text: autoDraw = False
+142.2641 	EXP 	feedback_text: autoDraw = False
+142.2641 	EXP 	presentation_text: height = 0.1
+142.2641 	EXP 	presentation_text: height = 0.1
+142.2641 	EXP 	presentation_text: height = 0.1
+142.2641 	EXP 	presentation_text: text = 9
+142.2641 	EXP 	fixation: autoDraw = True
+143.2484 	EXP 	presentation_text: autoDraw = True
+143.2648 	EXP 	fixation: autoDraw = False
+144.2314 	EXP 	New trial (rep=1, index=0): None
+144.2476 	EXP 	presentation_text: autoDraw = False
+144.2476 	EXP 	fixation: autoDraw = False
+144.2476 	EXP 	presentation_text: autoDraw = False
+144.2476 	EXP 	presentation_text: height = 0.1
+144.2476 	EXP 	presentation_text: height = 0.1
+144.2476 	EXP 	presentation_text: height = 0.1
+144.2476 	EXP 	presentation_text: text = 4
+144.2643 	EXP 	fixation: autoDraw = True
+145.2642 	EXP 	fixation: autoDraw = False
+145.2642 	EXP 	presentation_text: autoDraw = True
+146.2484 	EXP 	New trial (rep=2, index=0): None
+146.2643 	EXP 	presentation_text: autoDraw = False
+146.2643 	EXP 	fixation: autoDraw = False
+146.2643 	EXP 	presentation_text: autoDraw = False
+146.2643 	EXP 	presentation_text: height = 0.1
+146.2643 	EXP 	presentation_text: height = 0.1
+146.2643 	EXP 	presentation_text: height = 0.1
+146.2643 	EXP 	presentation_text: text = 6
+146.2643 	EXP 	fixation: autoDraw = True
+147.2647 	EXP 	fixation: autoDraw = False
+147.2647 	EXP 	presentation_text: autoDraw = True
+148.2653 	EXP 	presentation_text: autoDraw = False
+148.2653 	EXP 	fixation: autoDraw = False
+148.2653 	EXP 	presentation_text: autoDraw = False
+148.2653 	EXP 	recall_txt: autoDraw = True
+148.2653 	EXP 	textbox: autoDraw = True
+148.2653 	EXP 	cont_button: autoDraw = True
+148.7661 	DATA 	Keypress: 3
+148.7844 	DATA 	Keypress: 4
+148.8662 	DATA 	Keypress: 5
+148.9160 	DATA 	Keypress: 6
+148.9658 	DATA 	Keypress: 7
+148.9999 	DATA 	Keypress: 8
+149.0493 	DATA 	Keypress: 9
+149.5316 	DATA 	Mouse: Left button down, pos=(664,87)
+149.5486 	EXP 	recall_txt: autoDraw = False
+149.5486 	EXP 	textbox: autoDraw = False
+149.5486 	EXP 	cont_button: autoDraw = False
+149.5486 	EXP 	feedback_text: text = 'Incorrect'
+149.5486 	EXP 	feedback_text: autoDraw = True
+149.5991 	DATA 	Mouse:  Left button up, pos=(664,87)
+150.5329 	EXP 	New trial (rep=0, index=6): {'trialNumber': 7}
+150.5336 	EXP 	Created sequence: random, trialTypes=1, nReps=3, seed=None
+150.5338 	EXP 	New trial (rep=0, index=0): None
+150.5480 	EXP 	feedback_text: autoDraw = False
+150.5480 	EXP 	feedback_text: autoDraw = False
+150.5480 	EXP 	presentation_text: height = 0.1
+150.5480 	EXP 	presentation_text: height = 0.1
+150.5480 	EXP 	presentation_text: height = 0.1
+150.5480 	EXP 	presentation_text: text = 2
+150.5480 	EXP 	fixation: autoDraw = True
+151.5494 	EXP 	fixation: autoDraw = False
+151.5494 	EXP 	presentation_text: autoDraw = True
+152.5328 	EXP 	New trial (rep=1, index=0): None
+152.5489 	EXP 	presentation_text: autoDraw = False
+152.5489 	EXP 	fixation: autoDraw = False
+152.5489 	EXP 	presentation_text: autoDraw = False
+152.5489 	EXP 	presentation_text: height = 0.1
+152.5489 	EXP 	presentation_text: height = 0.1
+152.5489 	EXP 	presentation_text: height = 0.1
+152.5489 	EXP 	presentation_text: text = 3
+152.5489 	EXP 	fixation: autoDraw = True
+153.5483 	EXP 	presentation_text: autoDraw = True
+153.5651 	EXP 	fixation: autoDraw = False
+154.5320 	EXP 	New trial (rep=2, index=0): None
+154.5480 	EXP 	presentation_text: autoDraw = False
+154.5480 	EXP 	fixation: autoDraw = False
+154.5480 	EXP 	presentation_text: autoDraw = False
+154.5480 	EXP 	presentation_text: height = 0.1
+154.5480 	EXP 	presentation_text: height = 0.1
+154.5480 	EXP 	presentation_text: height = 0.1
+154.5480 	EXP 	presentation_text: text = 1
+154.5480 	EXP 	fixation: autoDraw = True
+155.5487 	EXP 	fixation: autoDraw = False
+155.5487 	EXP 	presentation_text: autoDraw = True
+156.5493 	EXP 	presentation_text: autoDraw = False
+156.5493 	EXP 	fixation: autoDraw = False
+156.5493 	EXP 	presentation_text: autoDraw = False
+156.5493 	EXP 	recall_txt: autoDraw = True
+156.5493 	EXP 	textbox: autoDraw = True
+156.5493 	EXP 	cont_button: autoDraw = True
+158.9668 	DATA 	Keypress: 3
+159.1684 	DATA 	Keypress: 4
+159.2329 	DATA 	Keypress: 5
+159.2829 	DATA 	Keypress: 6
+159.3167 	DATA 	Keypress: 7
+159.9488 	DATA 	Mouse: Left button down, pos=(664,87)
+159.9648 	EXP 	recall_txt: autoDraw = False
+159.9648 	EXP 	textbox: autoDraw = False
+159.9648 	EXP 	cont_button: autoDraw = False
+159.9648 	EXP 	feedback_text: text = 'Incorrect'
+159.9648 	EXP 	feedback_text: autoDraw = True
+160.0328 	DATA 	Mouse:  Left button up, pos=(664,87)
+160.9496 	EXP 	New trial (rep=0, index=7): {'trialNumber': 8}
+160.9504 	EXP 	Created sequence: random, trialTypes=1, nReps=3, seed=None
+160.9506 	EXP 	New trial (rep=0, index=0): None
+160.9660 	EXP 	feedback_text: autoDraw = False
+160.9660 	EXP 	feedback_text: autoDraw = False
+160.9660 	EXP 	presentation_text: height = 0.1
+160.9660 	EXP 	presentation_text: height = 0.1
+160.9660 	EXP 	presentation_text: height = 0.1
+160.9660 	EXP 	presentation_text: text = 7
+160.9660 	EXP 	fixation: autoDraw = True
+161.9652 	EXP 	presentation_text: autoDraw = True
+161.9818 	EXP 	fixation: autoDraw = False
+162.9491 	EXP 	New trial (rep=1, index=0): None
+162.9650 	EXP 	presentation_text: autoDraw = False
+162.9650 	EXP 	fixation: autoDraw = False
+162.9650 	EXP 	presentation_text: autoDraw = False
+162.9650 	EXP 	presentation_text: height = 0.1
+162.9650 	EXP 	presentation_text: height = 0.1
+162.9650 	EXP 	presentation_text: height = 0.1
+162.9650 	EXP 	presentation_text: text = 3
+162.9650 	EXP 	fixation: autoDraw = True
+163.9650 	EXP 	fixation: autoDraw = False
+163.9650 	EXP 	presentation_text: autoDraw = True
+164.9490 	EXP 	New trial (rep=2, index=0): None
+164.9651 	EXP 	presentation_text: autoDraw = False
+164.9651 	EXP 	fixation: autoDraw = False
+164.9651 	EXP 	presentation_text: autoDraw = False
+164.9651 	EXP 	presentation_text: height = 0.1
+164.9651 	EXP 	presentation_text: height = 0.1
+164.9651 	EXP 	presentation_text: height = 0.1
+164.9651 	EXP 	presentation_text: text = 4
+164.9651 	EXP 	fixation: autoDraw = True
+165.9657 	EXP 	fixation: autoDraw = False
+165.9657 	EXP 	presentation_text: autoDraw = True
+166.9652 	EXP 	presentation_text: autoDraw = False
+166.9652 	EXP 	fixation: autoDraw = False
+166.9652 	EXP 	presentation_text: autoDraw = False
+166.9652 	EXP 	recall_txt: autoDraw = True
+166.9652 	EXP 	textbox: autoDraw = True
+166.9652 	EXP 	cont_button: autoDraw = True
+170.1333 	DATA 	Keypress: 4
+170.2020 	DATA 	Keypress: 5
+170.2665 	DATA 	Keypress: 6
+170.3000 	DATA 	Keypress: 7
+170.3502 	DATA 	Keypress: 8
+170.4000 	DATA 	Keypress: 9
+170.7164 	DATA 	Mouse: Left button down, pos=(664,87)
+170.7317 	EXP 	recall_txt: autoDraw = False
+170.7317 	EXP 	textbox: autoDraw = False
+170.7317 	EXP 	cont_button: autoDraw = False
+170.7317 	EXP 	feedback_text: text = 'Incorrect'
+170.7317 	EXP 	feedback_text: autoDraw = True
+170.7663 	DATA 	Mouse:  Left button up, pos=(664,87)
+171.7159 	EXP 	New trial (rep=0, index=8): {'trialNumber': 9}
+171.7166 	EXP 	Created sequence: random, trialTypes=1, nReps=3, seed=None
+171.7168 	EXP 	New trial (rep=0, index=0): None
+171.7324 	EXP 	feedback_text: autoDraw = False
+171.7324 	EXP 	feedback_text: autoDraw = False
+171.7324 	EXP 	presentation_text: height = 0.1
+171.7324 	EXP 	presentation_text: height = 0.1
+171.7324 	EXP 	presentation_text: height = 0.1
+171.7324 	EXP 	presentation_text: text = 2
+171.7324 	EXP 	fixation: autoDraw = True
+172.7168 	EXP 	presentation_text: autoDraw = True
+172.7329 	EXP 	fixation: autoDraw = False
+173.6999 	EXP 	New trial (rep=1, index=0): None
+173.7157 	EXP 	presentation_text: autoDraw = False
+173.7157 	EXP 	fixation: autoDraw = False
+173.7157 	EXP 	presentation_text: autoDraw = False
+173.7157 	EXP 	presentation_text: height = 0.1
+173.7157 	EXP 	presentation_text: height = 0.1
+173.7157 	EXP 	presentation_text: height = 0.1
+173.7157 	EXP 	presentation_text: text = 4
+173.7157 	EXP 	fixation: autoDraw = True
+174.7168 	EXP 	fixation: autoDraw = False
+174.7168 	EXP 	presentation_text: autoDraw = True
+175.7160 	EXP 	New trial (rep=2, index=0): None
+175.7322 	EXP 	presentation_text: autoDraw = False
+175.7322 	EXP 	fixation: autoDraw = False
+175.7322 	EXP 	presentation_text: autoDraw = False
+175.7322 	EXP 	presentation_text: height = 0.1
+175.7322 	EXP 	presentation_text: height = 0.1
+175.7322 	EXP 	presentation_text: height = 0.1
+175.7322 	EXP 	presentation_text: text = 7
+175.7322 	EXP 	fixation: autoDraw = True
+176.7156 	EXP 	presentation_text: autoDraw = True
+176.7324 	EXP 	fixation: autoDraw = False
+177.7157 	EXP 	presentation_text: autoDraw = False
+177.7157 	EXP 	fixation: autoDraw = False
+177.7157 	EXP 	presentation_text: autoDraw = False
+177.7157 	EXP 	recall_txt: autoDraw = True
+177.7157 	EXP 	textbox: autoDraw = True
+177.7157 	EXP 	cont_button: autoDraw = True
+187.2012 	DATA 	Keypress: 5
+187.2349 	DATA 	Keypress: 6
+187.2672 	DATA 	Keypress: 7
+187.3010 	DATA 	Keypress: 8
+189.6169 	DATA 	Mouse: Left button down, pos=(664,87)
+189.6330 	EXP 	recall_txt: autoDraw = False
+189.6330 	EXP 	textbox: autoDraw = False
+189.6330 	EXP 	cont_button: autoDraw = False
+189.6330 	EXP 	feedback_text: text = 'Incorrect'
+189.6330 	EXP 	feedback_text: autoDraw = True
+189.7008 	DATA 	Mouse:  Left button up, pos=(664,87)
+190.6169 	EXP 	New trial (rep=0, index=9): {'trialNumber': 10}
+190.6176 	EXP 	Created sequence: random, trialTypes=1, nReps=3, seed=None
+190.6178 	EXP 	New trial (rep=0, index=0): None
+190.6328 	EXP 	feedback_text: autoDraw = False
+190.6328 	EXP 	feedback_text: autoDraw = False
+190.6328 	EXP 	presentation_text: height = 0.1
+190.6328 	EXP 	presentation_text: height = 0.1
+190.6328 	EXP 	presentation_text: height = 0.1
+190.6328 	EXP 	presentation_text: text = 4
+190.6328 	EXP 	fixation: autoDraw = True
+191.6162 	EXP 	presentation_text: autoDraw = True
+191.6342 	EXP 	fixation: autoDraw = False
+192.6001 	EXP 	New trial (rep=1, index=0): None
+192.6162 	EXP 	presentation_text: autoDraw = False
+192.6162 	EXP 	fixation: autoDraw = False
+192.6162 	EXP 	presentation_text: autoDraw = False
+192.6162 	EXP 	presentation_text: height = 0.1
+192.6162 	EXP 	presentation_text: height = 0.1
+192.6162 	EXP 	presentation_text: height = 0.1
+192.6162 	EXP 	presentation_text: text = 8
+192.6329 	EXP 	fixation: autoDraw = True
+193.6163 	EXP 	presentation_text: autoDraw = True
+193.6329 	EXP 	fixation: autoDraw = False
+194.6004 	EXP 	New trial (rep=2, index=0): None
+194.6163 	EXP 	presentation_text: autoDraw = False
+194.6163 	EXP 	fixation: autoDraw = False
+194.6163 	EXP 	presentation_text: autoDraw = False
+194.6163 	EXP 	presentation_text: height = 0.1
+194.6163 	EXP 	presentation_text: height = 0.1
+194.6163 	EXP 	presentation_text: height = 0.1
+194.6163 	EXP 	presentation_text: text = 3
+194.6163 	EXP 	fixation: autoDraw = True
+195.6163 	EXP 	fixation: autoDraw = False
+195.6163 	EXP 	presentation_text: autoDraw = True
+196.6170 	EXP 	presentation_text: autoDraw = False
+196.6170 	EXP 	fixation: autoDraw = False
+196.6170 	EXP 	presentation_text: autoDraw = False
+196.6170 	EXP 	recall_txt: autoDraw = True
+196.6170 	EXP 	textbox: autoDraw = True
+196.6170 	EXP 	cont_button: autoDraw = True
+197.0681 	DATA 	Keypress: 3
+197.1849 	DATA 	Keypress: 4
+197.2343 	DATA 	Keypress: 5
+197.2848 	DATA 	Keypress: 6
+197.3034 	DATA 	Keypress: 7
+197.3369 	DATA 	Keypress: 8
+197.6352 	DATA 	Mouse: Left button down, pos=(664,87)
+197.6663 	EXP 	recall_txt: autoDraw = False
+197.6663 	EXP 	textbox: autoDraw = False
+197.6663 	EXP 	cont_button: autoDraw = False
+197.6663 	EXP 	feedback_text: text = 'Incorrect'
+197.6663 	EXP 	feedback_text: autoDraw = True
+197.7012 	DATA 	Mouse:  Left button up, pos=(664,87)
+198.6504 	EXP 	New trial (rep=0, index=10): {'trialNumber': 11}
+198.6511 	EXP 	Created sequence: random, trialTypes=1, nReps=3, seed=None
+198.6513 	EXP 	New trial (rep=0, index=0): None
+198.6664 	EXP 	feedback_text: autoDraw = False
+198.6664 	EXP 	feedback_text: autoDraw = False
+198.6664 	EXP 	presentation_text: height = 0.1
+198.6664 	EXP 	presentation_text: height = 0.1
+198.6664 	EXP 	presentation_text: height = 0.1
+198.6664 	EXP 	presentation_text: text = 1
+198.6664 	EXP 	fixation: autoDraw = True
+199.6498 	EXP 	presentation_text: autoDraw = True
+199.6665 	EXP 	fixation: autoDraw = False
+200.6342 	EXP 	New trial (rep=1, index=0): None
+200.6500 	EXP 	presentation_text: autoDraw = False
+200.6500 	EXP 	fixation: autoDraw = False
+200.6500 	EXP 	presentation_text: autoDraw = False
+200.6500 	EXP 	presentation_text: height = 0.1
+200.6500 	EXP 	presentation_text: height = 0.1
+200.6500 	EXP 	presentation_text: height = 0.1
+200.6500 	EXP 	presentation_text: text = 4
+200.6500 	EXP 	fixation: autoDraw = True
+201.6499 	EXP 	fixation: autoDraw = False
+201.6499 	EXP 	presentation_text: autoDraw = True
+202.6343 	EXP 	New trial (rep=2, index=0): None
+202.6500 	EXP 	presentation_text: autoDraw = False
+202.6500 	EXP 	fixation: autoDraw = False
+202.6500 	EXP 	presentation_text: autoDraw = False
+202.6500 	EXP 	presentation_text: height = 0.1
+202.6500 	EXP 	presentation_text: height = 0.1
+202.6500 	EXP 	presentation_text: height = 0.1
+202.6500 	EXP 	presentation_text: text = 3
+202.6500 	EXP 	fixation: autoDraw = True
+203.6501 	EXP 	fixation: autoDraw = False
+203.6501 	EXP 	presentation_text: autoDraw = True
+204.6500 	EXP 	presentation_text: autoDraw = False
+204.6500 	EXP 	fixation: autoDraw = False
+204.6500 	EXP 	presentation_text: autoDraw = False
+204.6500 	EXP 	recall_txt: autoDraw = True
+204.6500 	EXP 	textbox: autoDraw = True
+204.6500 	EXP 	cont_button: autoDraw = True
+205.9519 	DATA 	Keypress: 4
+206.0015 	DATA 	Keypress: 5
+206.0377 	DATA 	Keypress: 6
+206.0704 	DATA 	Keypress: 7
+206.1182 	DATA 	Keypress: 8
+206.4508 	DATA 	Mouse: Left button down, pos=(664,87)
+206.4672 	EXP 	recall_txt: autoDraw = False
+206.4672 	EXP 	textbox: autoDraw = False
+206.4672 	EXP 	cont_button: autoDraw = False
+206.4672 	EXP 	feedback_text: text = 'Incorrect'
+206.4672 	EXP 	feedback_text: autoDraw = True
+206.5181 	DATA 	Mouse:  Left button up, pos=(664,87)
+207.4509 	EXP 	New trial (rep=0, index=11): {'trialNumber': 12}
+207.4516 	EXP 	Created sequence: random, trialTypes=1, nReps=3, seed=None
+207.4518 	EXP 	New trial (rep=0, index=0): None
+207.4679 	EXP 	feedback_text: autoDraw = False
+207.4679 	EXP 	feedback_text: autoDraw = False
+207.4679 	EXP 	presentation_text: height = 0.1
+207.4679 	EXP 	presentation_text: height = 0.1
+207.4679 	EXP 	presentation_text: height = 0.1
+207.4679 	EXP 	presentation_text: text = 9
+207.4679 	EXP 	fixation: autoDraw = True
+208.4510 	EXP 	presentation_text: autoDraw = True
+208.4678 	EXP 	fixation: autoDraw = False
+209.4347 	EXP 	New trial (rep=1, index=0): None
+209.4501 	EXP 	presentation_text: autoDraw = False
+209.4501 	EXP 	fixation: autoDraw = False
+209.4501 	EXP 	presentation_text: autoDraw = False
+209.4501 	EXP 	presentation_text: height = 0.1
+209.4501 	EXP 	presentation_text: height = 0.1
+209.4501 	EXP 	presentation_text: height = 0.1
+209.4501 	EXP 	presentation_text: text = 6
+209.4501 	EXP 	fixation: autoDraw = True
+210.4503 	EXP 	fixation: autoDraw = False
+210.4503 	EXP 	presentation_text: autoDraw = True
+211.4343 	EXP 	New trial (rep=2, index=0): None
+211.4503 	EXP 	presentation_text: autoDraw = False
+211.4503 	EXP 	fixation: autoDraw = False
+211.4503 	EXP 	presentation_text: autoDraw = False
+211.4503 	EXP 	presentation_text: height = 0.1
+211.4503 	EXP 	presentation_text: height = 0.1
+211.4503 	EXP 	presentation_text: height = 0.1
+211.4503 	EXP 	presentation_text: text = 7
+211.4503 	EXP 	fixation: autoDraw = True
+212.4508 	EXP 	fixation: autoDraw = False
+212.4508 	EXP 	presentation_text: autoDraw = True
+213.4504 	EXP 	presentation_text: autoDraw = False
+213.4504 	EXP 	fixation: autoDraw = False
+213.4504 	EXP 	presentation_text: autoDraw = False
+213.4504 	EXP 	recall_txt: autoDraw = True
+213.4504 	EXP 	textbox: autoDraw = True
+213.4504 	EXP 	cont_button: autoDraw = True
+217.2020 	DATA 	Keypress: 4
+217.2521 	DATA 	Keypress: 5
+217.3020 	DATA 	Keypress: 6
+217.3354 	DATA 	Keypress: 7
+217.3685 	DATA 	Keypress: 8
+217.8348 	DATA 	Mouse: Left button down, pos=(664,87)
+217.8503 	EXP 	recall_txt: autoDraw = False
+217.8503 	EXP 	textbox: autoDraw = False
+217.8503 	EXP 	cont_button: autoDraw = False
+217.8503 	EXP 	feedback_text: text = 'Incorrect'
+217.8503 	EXP 	feedback_text: autoDraw = True
+217.9018 	DATA 	Mouse:  Left button up, pos=(664,87)
+218.8345 	EXP 	New trial (rep=0, index=12): {'trialNumber': 13}
+218.8351 	EXP 	Created sequence: random, trialTypes=1, nReps=3, seed=None
+218.8353 	EXP 	New trial (rep=0, index=0): None
+218.8506 	EXP 	feedback_text: autoDraw = False
+218.8506 	EXP 	feedback_text: autoDraw = False
+218.8506 	EXP 	presentation_text: height = 0.1
+218.8506 	EXP 	presentation_text: height = 0.1
+218.8506 	EXP 	presentation_text: height = 0.1
+218.8506 	EXP 	presentation_text: text = 6
+218.8506 	EXP 	fixation: autoDraw = True
+219.8343 	EXP 	presentation_text: autoDraw = True
+219.8507 	EXP 	fixation: autoDraw = False
+220.8182 	EXP 	New trial (rep=1, index=0): None
+220.8342 	EXP 	presentation_text: autoDraw = False
+220.8342 	EXP 	fixation: autoDraw = False
+220.8342 	EXP 	presentation_text: autoDraw = False
+220.8342 	EXP 	presentation_text: height = 0.1
+220.8342 	EXP 	presentation_text: height = 0.1
+220.8342 	EXP 	presentation_text: height = 0.1
+220.8342 	EXP 	presentation_text: text = 2
+220.8342 	EXP 	fixation: autoDraw = True
+221.8352 	EXP 	fixation: autoDraw = False
+221.8352 	EXP 	presentation_text: autoDraw = True
+222.8184 	EXP 	New trial (rep=2, index=0): None
+222.8342 	EXP 	presentation_text: autoDraw = False
+222.8342 	EXP 	fixation: autoDraw = False
+222.8342 	EXP 	presentation_text: autoDraw = False
+222.8342 	EXP 	presentation_text: height = 0.1
+222.8342 	EXP 	presentation_text: height = 0.1
+222.8342 	EXP 	presentation_text: height = 0.1
+222.8342 	EXP 	presentation_text: text = 9
+222.8342 	EXP 	fixation: autoDraw = True
+223.8347 	EXP 	fixation: autoDraw = False
+223.8347 	EXP 	presentation_text: autoDraw = True
+224.8341 	EXP 	presentation_text: autoDraw = False
+224.8341 	EXP 	fixation: autoDraw = False
+224.8341 	EXP 	presentation_text: autoDraw = False
+224.8341 	EXP 	recall_txt: autoDraw = True
+224.8341 	EXP 	textbox: autoDraw = True
+224.8341 	EXP 	cont_button: autoDraw = True
+225.4193 	DATA 	Keypress: 2
+225.5861 	DATA 	Keypress: 3
+225.6379 	DATA 	Keypress: 4
+225.6859 	DATA 	Keypress: 5
+225.7363 	DATA 	Keypress: 6
+225.7691 	DATA 	Keypress: 7
+226.2015 	DATA 	Mouse: Left button down, pos=(664,87)
+226.2178 	EXP 	recall_txt: autoDraw = False
+226.2178 	EXP 	textbox: autoDraw = False
+226.2178 	EXP 	cont_button: autoDraw = False
+226.2178 	EXP 	feedback_text: text = 'Incorrect'
+226.2178 	EXP 	feedback_text: autoDraw = True
+226.3025 	DATA 	Mouse:  Left button up, pos=(664,87)
+227.2023 	EXP 	New trial (rep=0, index=13): {'trialNumber': 14}
+227.2029 	EXP 	Created sequence: random, trialTypes=1, nReps=3, seed=None
+227.2031 	EXP 	New trial (rep=0, index=0): None
+227.2183 	EXP 	feedback_text: autoDraw = False
+227.2183 	EXP 	feedback_text: autoDraw = False
+227.2183 	EXP 	presentation_text: height = 0.1
+227.2183 	EXP 	presentation_text: height = 0.1
+227.2183 	EXP 	presentation_text: height = 0.1
+227.2183 	EXP 	presentation_text: text = 9
+227.2183 	EXP 	fixation: autoDraw = True
+228.2007 	EXP 	presentation_text: autoDraw = True
+228.2351 	EXP 	fixation: autoDraw = False
+229.1857 	EXP 	New trial (rep=1, index=0): None
+229.2020 	EXP 	presentation_text: autoDraw = False
+229.2020 	EXP 	fixation: autoDraw = False
+229.2020 	EXP 	presentation_text: autoDraw = False
+229.2020 	EXP 	presentation_text: height = 0.1
+229.2020 	EXP 	presentation_text: height = 0.1
+229.2020 	EXP 	presentation_text: height = 0.1
+229.2020 	EXP 	presentation_text: text = 2
+229.2020 	EXP 	fixation: autoDraw = True
+230.2018 	EXP 	fixation: autoDraw = False
+230.2018 	EXP 	presentation_text: autoDraw = True
+231.1858 	EXP 	New trial (rep=2, index=0): None
+231.2014 	EXP 	presentation_text: autoDraw = False
+231.2014 	EXP 	fixation: autoDraw = False
+231.2014 	EXP 	presentation_text: autoDraw = False
+231.2014 	EXP 	presentation_text: height = 0.1
+231.2014 	EXP 	presentation_text: height = 0.1
+231.2014 	EXP 	presentation_text: height = 0.1
+231.2014 	EXP 	presentation_text: text = 7
+231.2014 	EXP 	fixation: autoDraw = True
+232.2021 	EXP 	fixation: autoDraw = False
+232.2021 	EXP 	presentation_text: autoDraw = True
+233.2016 	EXP 	presentation_text: autoDraw = False
+233.2016 	EXP 	fixation: autoDraw = False
+233.2016 	EXP 	presentation_text: autoDraw = False
+233.2016 	EXP 	recall_txt: autoDraw = True
+233.2016 	EXP 	textbox: autoDraw = True
+233.2016 	EXP 	cont_button: autoDraw = True
+237.0060 	DATA 	Keypress: 3
+237.1382 	DATA 	Keypress: 4
+237.2031 	DATA 	Keypress: 5
+237.2548 	DATA 	Keypress: 6
+237.3191 	DATA 	Keypress: 7
+237.7356 	DATA 	Mouse: Left button down, pos=(664,87)
+237.7517 	EXP 	recall_txt: autoDraw = False
+237.7517 	EXP 	textbox: autoDraw = False
+237.7517 	EXP 	cont_button: autoDraw = False
+237.7517 	EXP 	feedback_text: text = 'Incorrect'
+237.7517 	EXP 	feedback_text: autoDraw = True
+237.8195 	DATA 	Mouse:  Left button up, pos=(664,87)
+238.7527 	EXP 	feedback_text: autoDraw = False
+238.7527 	EXP 	feedback_text: autoDraw = False
+238.7527 	EXP 	roundTransition: autoDraw = True
+243.9721 	DATA 	Keypress: return
+243.9850 	EXP 	roundTransition: autoDraw = False
+243.9850 	EXP 	BSGenInsText: autoDraw = True
+245.3581 	EXP 	Imported digitSpanPractice.xlsx as conditions, 2 conditions, 3 params
+245.3585 	EXP 	Created sequence: sequential, trialTypes=2, nReps=1, seed=None
+245.3589 	EXP 	New trial (rep=0, index=0): {'digitSpan': 3, 'digits': 342, 'digitsReverse': 243}
+245.3591 	EXP 	Created sequence: sequential, trialTypes=1, nReps=2, seed=None
+245.3592 	EXP 	New trial (rep=0, index=0): None
+245.3633 	DATA 	Keypress: return
+245.3680 	EXP 	BSGenInsText: autoDraw = False
+245.3680 	EXP 	pres_text_practice_2: height = 0.1
+245.3680 	EXP 	pres_text_practice_2: height = 0.1
+245.3680 	EXP 	pres_text_practice_2: height = 0.1
+245.3680 	EXP 	pres_text_practice_2: text = '2'
+245.3680 	EXP 	fixation_3: autoDraw = True
+246.3520 	EXP 	pres_text_practice_2: autoDraw = True
+246.3686 	EXP 	fixation_3: autoDraw = False
+247.3358 	EXP 	New trial (rep=1, index=0): None
+247.3521 	EXP 	pres_text_practice_2: autoDraw = False
+247.3521 	EXP 	fixation_3: autoDraw = False
+247.3521 	EXP 	pres_text_practice_2: autoDraw = False
+247.3521 	EXP 	pres_text_practice_2: height = 0.1
+247.3521 	EXP 	pres_text_practice_2: height = 0.1
+247.3521 	EXP 	pres_text_practice_2: height = 0.1
+247.3521 	EXP 	pres_text_practice_2: text = '4'
+247.3521 	EXP 	fixation_3: autoDraw = True
+248.3523 	EXP 	fixation_3: autoDraw = False
+248.3523 	EXP 	pres_text_practice_2: autoDraw = True
+249.3518 	EXP 	pres_text_practice_2: autoDraw = False
+249.3518 	EXP 	fixation_3: autoDraw = False
+249.3518 	EXP 	pres_text_practice_2: autoDraw = False
+249.3518 	EXP 	recall_txtPractice_2: autoDraw = True
+249.3518 	EXP 	textboxPractice_2: autoDraw = True
+249.3518 	EXP 	cont_buttonPractice_2: autoDraw = True
+250.0401 	DATA 	Keypress: 3
+250.2208 	DATA 	Keypress: 4
+250.3037 	DATA 	Keypress: 5
+250.3703 	DATA 	Keypress: 6
+250.4533 	DATA 	Keypress: 7
+251.0025 	DATA 	Mouse: Left button down, pos=(664,87)
+251.0187 	EXP 	window1: mouseVisible = True

@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2022.2.1),
@@ -12,7 +12,8 @@ If you publish work using this script the most relevant publication is:
 """
 
 import psychopy
-psychopy.useVersion('2022.2.1')
+#psychopy.useVersion('2022.2.1')
+psychopy.useVersion('2023.2.0')
 
 
 # --- Import packages ---
@@ -1059,7 +1060,7 @@ for thisTrialFSPractice in trialFSPractice:
     # Run 'Begin Routine' code from JScodePractice
     # translated from js
     # this is a temporary fix to allow editable textbox to be used on several trials
-    textboxPractice.refresh()
+    #textboxPractice.refresh()
     # keep track of which components have finished
     RecallPracticeComponents = [recall_txtPractice, textboxPractice, cont_buttonPractice, mousePractice]
     for thisComponent in RecallPracticeComponents:
@@ -1636,7 +1637,7 @@ for thisTrialsFS in trialsFS:
     # Run 'Begin Routine' code from JScode
     # translated from js
     # this is a temporary fix to allow editable textbox to be used on several trials
-    textboxPractice.refresh()
+    #textboxPractice.refresh()
     # keep track of which components have finished
     RecallComponents = [recall_txt, textbox, cont_button, mouse_3]
     for thisComponent in RecallComponents:
@@ -2189,7 +2190,7 @@ for thisTrialsPracticeBS in trialsPracticeBS:
     # Run 'Begin Routine' code from JScodePractice_2
     # translated from js
     # this is a temporary fix to allow editable textbox to be used on several trials
-    textboxPractice.refresh()
+    #textboxPractice.refresh()
     # keep track of which components have finished
     recallPracticeBSComponents = [recall_txtPractice_2, textboxPractice_2, cont_buttonPractice_2, mousePractice_2]
     for thisComponent in recallPracticeBSComponents:
@@ -2762,7 +2763,7 @@ for thisTrialsBS in trialsBS:
     # Run 'Begin Routine' code from JScode_BS
     # translated from js
     # this is a temporary fix to allow editable textbox to be used on several trials
-    textboxPractice.refresh()
+    #textboxPractice.refresh()
     # keep track of which components have finished
     RecallBSComponents = [recall_txtBS, textboxBS, cont_buttonBS, mouseBS]
     for thisComponent in RecallBSComponents:
