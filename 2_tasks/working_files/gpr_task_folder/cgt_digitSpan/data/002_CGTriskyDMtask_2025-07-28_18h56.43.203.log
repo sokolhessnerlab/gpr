@@ -1,0 +1,3109 @@
+20.2419 	WARNING 	User requested fullscreen with size [2560 1440], but screen is actually [1440, 900]. Using actual size
+20.9271 	EXP 	Created window1 = Window(allowGUI=True, allowStencil=False, autoLog=True, backendConf=UNKNOWN, backgroundFit=<method-wrapper '__getattribute__' of attributeSetter object at 0x155463220>, backgroundImage=<method-wrapper '__getattribute__' of attributeSetter object at 0x155463280>, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([-1, -1, -1]), colorSpace='rgb', depthBits=8, fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x155463430>, gamma=None, gammaErrorPolicy='raise', lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x155313310>, multiSample=False, name='window1', numSamples=2, pos=[360.0, 225.0], screen=0, size=array([2880, 1800]), stencilBits=0, stereo=False, title='PsychoPy', units='height', useFBO=True, useRetina=True, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+20.9272 	EXP 	window1: mouseVisible = True
+20.9272 	EXP 	window1: backgroundImage = None
+20.9272 	EXP 	window1: backgroundFit = 'cover'
+20.9283 	EXP 	window1: mouseVisible = False
+20.9306 	EXP 	window1: Attempting to measure frame rate of screen (0) ...
+20.9306 	EXP 	window1: recordFrameIntervals = False
+21.0928 	EXP 	window1: recordFrameIntervals = True
+21.3278 	EXP 	Screen (0) actual frame rate measured at 59.58Hz
+21.3278 	EXP 	window1: recordFrameIntervals = False
+24.0806 	EXP 	window1: mouseVisible = True
+24.1322 	EXP 	Created GenInsText = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='GenInsText', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1.6)
+24.1324 	EXP 	window1: mouseVisible = True
+24.1389 	EXP 	Created Reminder1 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='Reminder1', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1.6)
+24.1390 	EXP 	window1: mouseVisible = True
+24.1454 	EXP 	Created Reminder2 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='Reminder2', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1.6)
+24.1455 	EXP 	window1: mouseVisible = True
+24.1614 	EXP 	Created FSGenInsText = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='FSGenInsText', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1.6)
+24.1615 	EXP 	window1: mouseVisible = True
+24.1633 	EXP 	Created fixation_2 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='fixation_2', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=UNKNOWN, text='+', units='height', win=Window(...), wrapWidth=1)
+24.1634 	EXP 	window1: mouseVisible = True
+24.1641 	EXP 	Created pres_text_practice = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='pres_text_practice', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+24.1642 	EXP 	window1: mouseVisible = True
+24.1659 	EXP 	Created recall_txtPractice = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='recall_txtPractice', opacity=1.0, ori=0, pos=array([0.  , 0.25]), rgb=UNKNOWN, text='Recall', units='height', win=Window(...), wrapWidth=1)
+24.1661 	EXP 	window1: mouseVisible = True
+24.1662 	EXP 	window1: mouseVisible = True
+24.1666 	EXP 	window1: mouseVisible = True
+24.1669 	EXP 	window1: mouseVisible = True
+24.1716 	EXP 	window1: mouseVisible = True
+24.1717 	EXP 	window1: mouseVisible = True
+24.1721 	EXP 	window1: mouseVisible = True
+24.1724 	EXP 	window1: mouseVisible = True
+24.2079 	EXP 	window1: mouseVisible = True
+24.2522 	EXP 	Created cont_buttonPractice = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, draggable=False, flipHoriz=False, flipVert=False, image='continue.png', interpolate=True, mask=None, maskParams=None, name='cont_buttonPractice', opacity=1.0, ori=0.0, pos=array([ 0. , -0.4]), size=array([0.3 , 0.07]), texRes=128.0, units='height', win=Window(...))
+24.2523 	EXP 	window1: mouseVisible = True
+24.2524 	EXP 	window1: mouseVisible = True
+24.2532 	EXP 	Created feedbac_textPractice = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='feedbac_textPractice', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+24.2533 	EXP 	window1: mouseVisible = True
+24.2622 	EXP 	Created praccomplete = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='praccomplete', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1.6)
+24.2623 	EXP 	window1: mouseVisible = True
+24.2637 	EXP 	Created fixation = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='fixation', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=UNKNOWN, text='+', units='height', win=Window(...), wrapWidth=1)
+24.2637 	EXP 	window1: mouseVisible = True
+24.2644 	EXP 	Created presentation_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='presentation_text', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+24.2645 	EXP 	window1: mouseVisible = True
+24.2661 	EXP 	Created recall_txt = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='recall_txt', opacity=1.0, ori=0, pos=array([0.  , 0.25]), rgb=UNKNOWN, text='Recall', units='height', win=Window(...), wrapWidth=1)
+24.2662 	EXP 	window1: mouseVisible = True
+24.2663 	EXP 	window1: mouseVisible = True
+24.2667 	EXP 	window1: mouseVisible = True
+24.2670 	EXP 	window1: mouseVisible = True
+24.2703 	EXP 	window1: mouseVisible = True
+24.2704 	EXP 	window1: mouseVisible = True
+24.2707 	EXP 	window1: mouseVisible = True
+24.2711 	EXP 	window1: mouseVisible = True
+24.2744 	EXP 	window1: mouseVisible = True
+24.2813 	EXP 	Created cont_button = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, draggable=False, flipHoriz=False, flipVert=False, image='continue.png', interpolate=True, mask=None, maskParams=None, name='cont_button', opacity=1.0, ori=0.0, pos=array([ 0. , -0.4]), size=array([0.3 , 0.07]), texRes=128.0, units='height', win=Window(...))
+24.2813 	EXP 	window1: mouseVisible = True
+24.2814 	EXP 	window1: mouseVisible = True
+24.2821 	EXP 	Created feedback_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='feedback_text', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+24.2822 	EXP 	window1: mouseVisible = True
+24.2891 	EXP 	Created roundTransition = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='roundTransition', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+24.2892 	EXP 	window1: mouseVisible = True
+24.3123 	EXP 	Created BSGenInsText = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='BSGenInsText', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1.6)
+24.3124 	EXP 	window1: mouseVisible = True
+24.3141 	EXP 	Created fixation_3 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='fixation_3', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=UNKNOWN, text='+', units='height', win=Window(...), wrapWidth=1)
+24.3141 	EXP 	window1: mouseVisible = True
+24.3148 	EXP 	Created pres_text_practice_2 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='pres_text_practice_2', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+24.3149 	EXP 	window1: mouseVisible = True
+24.3165 	EXP 	Created recall_txtPractice_2 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='recall_txtPractice_2', opacity=1.0, ori=0, pos=array([0.  , 0.25]), rgb=UNKNOWN, text='Recall', units='height', win=Window(...), wrapWidth=1)
+24.3166 	EXP 	window1: mouseVisible = True
+24.3167 	EXP 	window1: mouseVisible = True
+24.3171 	EXP 	window1: mouseVisible = True
+24.3174 	EXP 	window1: mouseVisible = True
+24.3206 	EXP 	window1: mouseVisible = True
+24.3207 	EXP 	window1: mouseVisible = True
+24.3211 	EXP 	window1: mouseVisible = True
+24.3214 	EXP 	window1: mouseVisible = True
+24.3242 	EXP 	window1: mouseVisible = True
+24.3316 	EXP 	Created cont_buttonPractice_2 = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, draggable=False, flipHoriz=False, flipVert=False, image='continue.png', interpolate=True, mask=None, maskParams=None, name='cont_buttonPractice_2', opacity=1.0, ori=0.0, pos=array([ 0. , -0.4]), size=array([0.3 , 0.07]), texRes=128.0, units='height', win=Window(...))
+24.3317 	EXP 	window1: mouseVisible = True
+24.3318 	EXP 	window1: mouseVisible = True
+24.3325 	EXP 	Created feedbac_textPractice_2 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='feedbac_textPractice_2', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+24.3325 	EXP 	window1: mouseVisible = True
+24.3413 	EXP 	Created praccompleteBS = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='praccompleteBS', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1.6)
+24.3414 	EXP 	window1: mouseVisible = True
+24.3427 	EXP 	Created fixationBS = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='fixationBS', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=UNKNOWN, text='+', units='height', win=Window(...), wrapWidth=1)
+24.3428 	EXP 	window1: mouseVisible = True
+24.3435 	EXP 	Created presentation_textBS = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='presentation_textBS', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+24.3435 	EXP 	window1: mouseVisible = True
+24.3451 	EXP 	Created recall_txtBS = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='recall_txtBS', opacity=1.0, ori=0, pos=array([0.  , 0.25]), rgb=UNKNOWN, text='Recall', units='height', win=Window(...), wrapWidth=1)
+24.3452 	EXP 	window1: mouseVisible = True
+24.3453 	EXP 	window1: mouseVisible = True
+24.3456 	EXP 	window1: mouseVisible = True
+24.3460 	EXP 	window1: mouseVisible = True
+24.3491 	EXP 	window1: mouseVisible = True
+24.3492 	EXP 	window1: mouseVisible = True
+24.3496 	EXP 	window1: mouseVisible = True
+24.3499 	EXP 	window1: mouseVisible = True
+24.3527 	EXP 	window1: mouseVisible = True
+24.3594 	EXP 	Created cont_buttonBS = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, draggable=False, flipHoriz=False, flipVert=False, image='continue.png', interpolate=True, mask=None, maskParams=None, name='cont_buttonBS', opacity=1.0, ori=0.0, pos=array([ 0. , -0.4]), size=array([0.3 , 0.07]), texRes=128.0, units='height', win=Window(...))
+24.3595 	EXP 	window1: mouseVisible = True
+24.3596 	EXP 	window1: mouseVisible = True
+24.3603 	EXP 	Created feedback_textBS = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='feedback_textBS', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+24.3603 	EXP 	window1: mouseVisible = True
+24.3649 	EXP 	Created ThankYou = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='ThankYou', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1.6)
+24.3797 	EXP 	textboxPractice: autoLog = True
+24.3797 	EXP 	textbox: autoLog = True
+24.3797 	EXP 	textboxPractice_2: autoLog = True
+24.3797 	EXP 	textboxBS: autoLog = True
+24.3797 	EXP 	GenInsText: autoDraw = True
+365.7460 	DATA 	Keypress: return
+365.7512 	EXP 	GenInsText: autoDraw = False
+365.7512 	EXP 	Reminder1: autoDraw = True
+370.4281 	DATA 	Keypress: return
+370.4401 	EXP 	Reminder1: autoDraw = False
+370.4401 	EXP 	Reminder2: autoDraw = True
+377.4779 	DATA 	Keypress: return
+377.4903 	EXP 	Reminder2: autoDraw = False
+377.4903 	EXP 	FSGenInsText: autoDraw = True
+398.2856 	EXP 	Imported digitSpanPractice.xlsx as conditions, 2 conditions, 5 params
+398.2869 	EXP 	Created sequence: sequential, trialTypes=2, nReps=1, seed=None
+398.2874 	EXP 	New trial (rep=0, index=0): {'digitSpanForward': 3, 'digits': 342, 'digitsReverse': 24, 'digitSpanReverse': 2, 'digitsReverseCorrAnswer': 42}
+398.2876 	EXP 	Created sequence: sequential, trialTypes=1, nReps=3, seed=None
+398.2878 	EXP 	New trial (rep=0, index=0): None
+398.2941 	DATA 	Keypress: return
+398.2983 	EXP 	FSGenInsText: autoDraw = False
+398.2983 	EXP 	pres_text_practice: height = 0.1
+398.2983 	EXP 	pres_text_practice: height = 0.1
+398.2983 	EXP 	pres_text_practice: height = 0.1
+398.2983 	EXP 	pres_text_practice: text = '3'
+398.2983 	EXP 	fixation_2: autoDraw = True
+399.2913 	EXP 	pres_text_practice: autoDraw = True
+399.3079 	EXP 	fixation_2: autoDraw = False
+400.2755 	EXP 	New trial (rep=1, index=0): None
+400.2915 	EXP 	pres_text_practice: autoDraw = False
+400.2915 	EXP 	fixation_2: autoDraw = False
+400.2915 	EXP 	pres_text_practice: autoDraw = False
+400.2915 	EXP 	pres_text_practice: height = 0.1
+400.2915 	EXP 	pres_text_practice: height = 0.1
+400.2915 	EXP 	pres_text_practice: height = 0.1
+400.2915 	EXP 	pres_text_practice: text = '4'
+400.2915 	EXP 	fixation_2: autoDraw = True
+401.2749 	EXP 	pres_text_practice: autoDraw = True
+401.2913 	EXP 	fixation_2: autoDraw = False
+402.2587 	EXP 	New trial (rep=2, index=0): None
+402.2754 	EXP 	pres_text_practice: autoDraw = False
+402.2754 	EXP 	fixation_2: autoDraw = False
+402.2754 	EXP 	pres_text_practice: autoDraw = False
+402.2754 	EXP 	pres_text_practice: height = 0.1
+402.2754 	EXP 	pres_text_practice: height = 0.1
+402.2754 	EXP 	pres_text_practice: height = 0.1
+402.2754 	EXP 	pres_text_practice: text = '2'
+402.2917 	EXP 	fixation_2: autoDraw = True
+403.2916 	EXP 	fixation_2: autoDraw = False
+403.2916 	EXP 	pres_text_practice: autoDraw = True
+404.2915 	EXP 	pres_text_practice: autoDraw = False
+404.2915 	EXP 	fixation_2: autoDraw = False
+404.2915 	EXP 	pres_text_practice: autoDraw = False
+404.2915 	EXP 	recall_txtPractice: autoDraw = True
+404.2915 	EXP 	textboxPractice: autoDraw = True
+404.2915 	EXP 	cont_buttonPractice: autoDraw = True
+405.3710 	DATA 	Keypress: 3
+405.7366 	DATA 	Keypress: 4
+406.0016 	DATA 	Keypress: 2
+407.6607 	DATA 	Mouse: Left button down, pos=(675,97)
+407.6916 	EXP 	recall_txtPractice: autoDraw = False
+407.6916 	EXP 	textboxPractice: autoDraw = False
+407.6916 	EXP 	cont_buttonPractice: autoDraw = False
+407.6916 	EXP 	feedbac_textPractice: height = 0.04
+407.6916 	EXP 	feedbac_textPractice: height = 0.04
+407.6916 	EXP 	feedbac_textPractice: height = 0.04
+407.6916 	EXP 	feedbac_textPractice: text = 'Correct!'
+407.6916 	EXP 	feedbac_textPractice: autoDraw = True
+407.8094 	DATA 	Mouse:  Left button up, pos=(675,97)
+408.6756 	EXP 	New trial (rep=0, index=1): {'digitSpanForward': 3, 'digits': 937, 'digitsReverse': 73, 'digitSpanReverse': 2, 'digitsReverseCorrAnswer': 37}
+408.6760 	EXP 	Created sequence: sequential, trialTypes=1, nReps=3, seed=None
+408.6762 	EXP 	New trial (rep=0, index=0): None
+408.6918 	EXP 	feedbac_textPractice: autoDraw = False
+408.6918 	EXP 	feedbac_textPractice: autoDraw = False
+408.6918 	EXP 	pres_text_practice: height = 0.1
+408.6918 	EXP 	pres_text_practice: height = 0.1
+408.6918 	EXP 	pres_text_practice: height = 0.1
+408.6918 	EXP 	pres_text_practice: text = '9'
+408.6918 	EXP 	fixation_2: autoDraw = True
+409.6918 	EXP 	fixation_2: autoDraw = False
+409.6918 	EXP 	pres_text_practice: autoDraw = True
+410.6758 	EXP 	New trial (rep=1, index=0): None
+410.6920 	EXP 	pres_text_practice: autoDraw = False
+410.6920 	EXP 	fixation_2: autoDraw = False
+410.6920 	EXP 	pres_text_practice: autoDraw = False
+410.6920 	EXP 	pres_text_practice: height = 0.1
+410.6920 	EXP 	pres_text_practice: height = 0.1
+410.6920 	EXP 	pres_text_practice: height = 0.1
+410.6920 	EXP 	pres_text_practice: text = '3'
+410.6920 	EXP 	fixation_2: autoDraw = True
+411.6919 	EXP 	fixation_2: autoDraw = False
+411.6919 	EXP 	pres_text_practice: autoDraw = True
+412.6769 	EXP 	New trial (rep=2, index=0): None
+412.6926 	EXP 	pres_text_practice: autoDraw = False
+412.6926 	EXP 	fixation_2: autoDraw = False
+412.6926 	EXP 	pres_text_practice: autoDraw = False
+412.6926 	EXP 	pres_text_practice: height = 0.1
+412.6926 	EXP 	pres_text_practice: height = 0.1
+412.6926 	EXP 	pres_text_practice: height = 0.1
+412.6926 	EXP 	pres_text_practice: text = '7'
+412.6926 	EXP 	fixation_2: autoDraw = True
+413.6919 	EXP 	fixation_2: autoDraw = False
+413.6919 	EXP 	pres_text_practice: autoDraw = True
+414.6921 	EXP 	pres_text_practice: autoDraw = False
+414.6921 	EXP 	fixation_2: autoDraw = False
+414.6921 	EXP 	pres_text_practice: autoDraw = False
+414.6921 	EXP 	recall_txtPractice: autoDraw = True
+414.6921 	EXP 	textboxPractice: autoDraw = True
+414.6921 	EXP 	cont_buttonPractice: autoDraw = True
+415.6527 	DATA 	Keypress: 9
+416.2120 	DATA 	Keypress: 3
+416.3856 	DATA 	Keypress: 7
+417.4427 	DATA 	Mouse: Left button down, pos=(698,72)
+417.4587 	EXP 	recall_txtPractice: autoDraw = False
+417.4587 	EXP 	textboxPractice: autoDraw = False
+417.4587 	EXP 	cont_buttonPractice: autoDraw = False
+417.4587 	EXP 	feedbac_textPractice: text = 'Correct!'
+417.4587 	EXP 	feedbac_textPractice: autoDraw = True
+417.5765 	DATA 	Mouse:  Left button up, pos=(698,72)
+418.4588 	EXP 	feedbac_textPractice: autoDraw = False
+418.4588 	EXP 	feedbac_textPractice: autoDraw = False
+418.4588 	EXP 	praccomplete: autoDraw = True
+435.2660 	EXP 	Imported digitSpanTrialNumber.xlsx as conditions, 14 conditions, 1 params
+435.2664 	EXP 	Created sequence: sequential, trialTypes=14, nReps=1, seed=None
+435.2667 	EXP 	New trial (rep=0, index=0): {'trialNumber': 1}
+435.2677 	EXP 	Created sequence: random, trialTypes=1, nReps=3, seed=None
+435.2678 	EXP 	New trial (rep=0, index=0): None
+435.2721 	DATA 	Keypress: return
+435.2768 	EXP 	praccomplete: autoDraw = False
+435.2768 	EXP 	presentation_text: height = 0.1
+435.2768 	EXP 	presentation_text: height = 0.1
+435.2768 	EXP 	presentation_text: height = 0.1
+435.2768 	EXP 	presentation_text: text = 6
+435.2768 	EXP 	fixation: autoDraw = True
+436.2764 	EXP 	fixation: autoDraw = False
+436.2764 	EXP 	presentation_text: autoDraw = True
+437.2602 	EXP 	New trial (rep=1, index=0): None
+437.2763 	EXP 	presentation_text: autoDraw = False
+437.2763 	EXP 	fixation: autoDraw = False
+437.2763 	EXP 	presentation_text: autoDraw = False
+437.2763 	EXP 	presentation_text: height = 0.1
+437.2763 	EXP 	presentation_text: height = 0.1
+437.2763 	EXP 	presentation_text: height = 0.1
+437.2763 	EXP 	presentation_text: text = 2
+437.2763 	EXP 	fixation: autoDraw = True
+438.2771 	EXP 	fixation: autoDraw = False
+438.2771 	EXP 	presentation_text: autoDraw = True
+439.2606 	EXP 	New trial (rep=2, index=0): None
+439.2763 	EXP 	presentation_text: autoDraw = False
+439.2763 	EXP 	fixation: autoDraw = False
+439.2763 	EXP 	presentation_text: autoDraw = False
+439.2763 	EXP 	presentation_text: height = 0.1
+439.2763 	EXP 	presentation_text: height = 0.1
+439.2763 	EXP 	presentation_text: height = 0.1
+439.2763 	EXP 	presentation_text: text = 4
+439.2763 	EXP 	fixation: autoDraw = True
+440.2767 	EXP 	fixation: autoDraw = False
+440.2767 	EXP 	presentation_text: autoDraw = True
+441.2768 	EXP 	presentation_text: autoDraw = False
+441.2768 	EXP 	fixation: autoDraw = False
+441.2768 	EXP 	presentation_text: autoDraw = False
+441.2768 	EXP 	recall_txt: autoDraw = True
+441.2768 	EXP 	textbox: autoDraw = True
+441.2768 	EXP 	cont_button: autoDraw = True
+441.8204 	DATA 	Keypress: 6
+442.0114 	DATA 	Keypress: 2
+442.2112 	DATA 	Keypress: 4
+443.0437 	DATA 	Mouse: Left button down, pos=(689,91)
+443.0603 	EXP 	recall_txt: autoDraw = False
+443.0603 	EXP 	textbox: autoDraw = False
+443.0603 	EXP 	cont_button: autoDraw = False
+443.0603 	EXP 	feedback_text: height = 0.04
+443.0603 	EXP 	feedback_text: height = 0.04
+443.0603 	EXP 	feedback_text: height = 0.04
+443.0603 	EXP 	feedback_text: text = 'Correct!'
+443.0603 	EXP 	feedback_text: autoDraw = True
+443.1277 	DATA 	Mouse:  Left button up, pos=(689,91)
+444.0437 	EXP 	New trial (rep=0, index=1): {'trialNumber': 2}
+444.0444 	EXP 	Created sequence: random, trialTypes=1, nReps=4, seed=None
+444.0446 	EXP 	New trial (rep=0, index=0): None
+444.0599 	EXP 	feedback_text: autoDraw = False
+444.0599 	EXP 	feedback_text: autoDraw = False
+444.0599 	EXP 	presentation_text: height = 0.1
+444.0599 	EXP 	presentation_text: height = 0.1
+444.0599 	EXP 	presentation_text: height = 0.1
+444.0599 	EXP 	presentation_text: text = 4
+444.0599 	EXP 	fixation: autoDraw = True
+445.0437 	EXP 	presentation_text: autoDraw = True
+445.0606 	EXP 	fixation: autoDraw = False
+446.0275 	EXP 	New trial (rep=1, index=0): None
+446.0432 	EXP 	presentation_text: autoDraw = False
+446.0432 	EXP 	fixation: autoDraw = False
+446.0432 	EXP 	presentation_text: autoDraw = False
+446.0432 	EXP 	presentation_text: height = 0.1
+446.0432 	EXP 	presentation_text: height = 0.1
+446.0432 	EXP 	presentation_text: height = 0.1
+446.0432 	EXP 	presentation_text: text = 2
+446.0432 	EXP 	fixation: autoDraw = True
+447.0433 	EXP 	fixation: autoDraw = False
+447.0433 	EXP 	presentation_text: autoDraw = True
+448.0273 	EXP 	New trial (rep=2, index=0): None
+448.0433 	EXP 	presentation_text: autoDraw = False
+448.0433 	EXP 	fixation: autoDraw = False
+448.0433 	EXP 	presentation_text: autoDraw = False
+448.0433 	EXP 	presentation_text: height = 0.1
+448.0433 	EXP 	presentation_text: height = 0.1
+448.0433 	EXP 	presentation_text: height = 0.1
+448.0433 	EXP 	presentation_text: text = 9
+448.0433 	EXP 	fixation: autoDraw = True
+449.0435 	EXP 	fixation: autoDraw = False
+449.0435 	EXP 	presentation_text: autoDraw = True
+450.0278 	EXP 	New trial (rep=3, index=0): None
+450.0435 	EXP 	presentation_text: autoDraw = False
+450.0435 	EXP 	fixation: autoDraw = False
+450.0435 	EXP 	presentation_text: autoDraw = False
+450.0435 	EXP 	presentation_text: height = 0.1
+450.0435 	EXP 	presentation_text: height = 0.1
+450.0435 	EXP 	presentation_text: height = 0.1
+450.0435 	EXP 	presentation_text: text = 8
+450.0435 	EXP 	fixation: autoDraw = True
+451.0435 	EXP 	fixation: autoDraw = False
+451.0435 	EXP 	presentation_text: autoDraw = True
+452.0436 	EXP 	presentation_text: autoDraw = False
+452.0436 	EXP 	fixation: autoDraw = False
+452.0436 	EXP 	presentation_text: autoDraw = False
+452.0436 	EXP 	recall_txt: autoDraw = True
+452.0436 	EXP 	textbox: autoDraw = True
+452.0436 	EXP 	cont_button: autoDraw = True
+453.4952 	DATA 	Keypress: 4
+454.0979 	DATA 	Keypress: 2
+454.5475 	DATA 	Keypress: 9
+454.9904 	DATA 	Keypress: 8
+456.0271 	DATA 	Mouse: Left button down, pos=(687,75)
+456.0442 	EXP 	recall_txt: autoDraw = False
+456.0442 	EXP 	textbox: autoDraw = False
+456.0442 	EXP 	cont_button: autoDraw = False
+456.0442 	EXP 	feedback_text: text = 'Correct!'
+456.0442 	EXP 	feedback_text: autoDraw = True
+456.1616 	DATA 	Mouse:  Left button up, pos=(687,75)
+457.0276 	EXP 	New trial (rep=0, index=2): {'trialNumber': 3}
+457.0283 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+457.0284 	EXP 	New trial (rep=0, index=0): None
+457.0439 	EXP 	feedback_text: autoDraw = False
+457.0439 	EXP 	feedback_text: autoDraw = False
+457.0439 	EXP 	presentation_text: height = 0.1
+457.0439 	EXP 	presentation_text: height = 0.1
+457.0439 	EXP 	presentation_text: height = 0.1
+457.0439 	EXP 	presentation_text: text = 4
+457.0439 	EXP 	fixation: autoDraw = True
+458.0286 	EXP 	presentation_text: autoDraw = True
+458.0450 	EXP 	fixation: autoDraw = False
+459.0122 	EXP 	New trial (rep=1, index=0): None
+459.0282 	EXP 	presentation_text: autoDraw = False
+459.0282 	EXP 	fixation: autoDraw = False
+459.0282 	EXP 	presentation_text: autoDraw = False
+459.0282 	EXP 	presentation_text: height = 0.1
+459.0282 	EXP 	presentation_text: height = 0.1
+459.0282 	EXP 	presentation_text: height = 0.1
+459.0282 	EXP 	presentation_text: text = 7
+459.0282 	EXP 	fixation: autoDraw = True
+460.0273 	EXP 	fixation: autoDraw = False
+460.0273 	EXP 	presentation_text: autoDraw = True
+461.0113 	EXP 	New trial (rep=2, index=0): None
+461.0274 	EXP 	presentation_text: autoDraw = False
+461.0274 	EXP 	fixation: autoDraw = False
+461.0274 	EXP 	presentation_text: autoDraw = False
+461.0274 	EXP 	presentation_text: height = 0.1
+461.0274 	EXP 	presentation_text: height = 0.1
+461.0274 	EXP 	presentation_text: height = 0.1
+461.0274 	EXP 	presentation_text: text = 8
+461.0274 	EXP 	fixation: autoDraw = True
+462.0273 	EXP 	fixation: autoDraw = False
+462.0273 	EXP 	presentation_text: autoDraw = True
+463.0115 	EXP 	New trial (rep=3, index=0): None
+463.0274 	EXP 	presentation_text: autoDraw = False
+463.0274 	EXP 	fixation: autoDraw = False
+463.0274 	EXP 	presentation_text: autoDraw = False
+463.0274 	EXP 	presentation_text: height = 0.1
+463.0274 	EXP 	presentation_text: height = 0.1
+463.0274 	EXP 	presentation_text: height = 0.1
+463.0274 	EXP 	presentation_text: text = 1
+463.0274 	EXP 	fixation: autoDraw = True
+464.0275 	EXP 	fixation: autoDraw = False
+464.0275 	EXP 	presentation_text: autoDraw = True
+465.0116 	EXP 	New trial (rep=4, index=0): None
+465.0275 	EXP 	presentation_text: autoDraw = False
+465.0275 	EXP 	fixation: autoDraw = False
+465.0275 	EXP 	presentation_text: autoDraw = False
+465.0275 	EXP 	presentation_text: height = 0.1
+465.0275 	EXP 	presentation_text: height = 0.1
+465.0275 	EXP 	presentation_text: height = 0.1
+465.0275 	EXP 	presentation_text: text = 6
+465.0275 	EXP 	fixation: autoDraw = True
+466.0284 	EXP 	fixation: autoDraw = False
+466.0284 	EXP 	presentation_text: autoDraw = True
+467.0279 	EXP 	presentation_text: autoDraw = False
+467.0279 	EXP 	fixation: autoDraw = False
+467.0279 	EXP 	presentation_text: autoDraw = False
+467.0279 	EXP 	recall_txt: autoDraw = True
+467.0279 	EXP 	textbox: autoDraw = True
+467.0279 	EXP 	cont_button: autoDraw = True
+468.6125 	DATA 	Keypress: 4
+468.8957 	DATA 	Keypress: 7
+469.3959 	DATA 	Keypress: 8
+469.6024 	DATA 	Keypress: 1
+469.7623 	DATA 	Keypress: 6
+470.7450 	DATA 	Mouse: Left button down, pos=(717,79)
+470.7613 	EXP 	recall_txt: autoDraw = False
+470.7613 	EXP 	textbox: autoDraw = False
+470.7613 	EXP 	cont_button: autoDraw = False
+470.7613 	EXP 	feedback_text: text = 'Correct!'
+470.7613 	EXP 	feedback_text: autoDraw = True
+470.8623 	DATA 	Mouse:  Left button up, pos=(717,79)
+471.7451 	EXP 	New trial (rep=0, index=3): {'trialNumber': 4}
+471.7458 	EXP 	Created sequence: random, trialTypes=1, nReps=6, seed=None
+471.7460 	EXP 	New trial (rep=0, index=0): None
+471.7615 	EXP 	feedback_text: autoDraw = False
+471.7615 	EXP 	feedback_text: autoDraw = False
+471.7615 	EXP 	presentation_text: height = 0.1
+471.7615 	EXP 	presentation_text: height = 0.1
+471.7615 	EXP 	presentation_text: height = 0.1
+471.7615 	EXP 	presentation_text: text = 1
+471.7615 	EXP 	fixation: autoDraw = True
+472.7446 	EXP 	presentation_text: autoDraw = True
+472.7613 	EXP 	fixation: autoDraw = False
+473.7284 	EXP 	New trial (rep=1, index=0): None
+473.7445 	EXP 	presentation_text: autoDraw = False
+473.7445 	EXP 	fixation: autoDraw = False
+473.7445 	EXP 	presentation_text: autoDraw = False
+473.7445 	EXP 	presentation_text: height = 0.1
+473.7445 	EXP 	presentation_text: height = 0.1
+473.7445 	EXP 	presentation_text: height = 0.1
+473.7445 	EXP 	presentation_text: text = 8
+473.7611 	EXP 	fixation: autoDraw = True
+474.7446 	EXP 	presentation_text: autoDraw = True
+474.7613 	EXP 	fixation: autoDraw = False
+475.7289 	EXP 	New trial (rep=2, index=0): None
+475.7445 	EXP 	presentation_text: autoDraw = False
+475.7445 	EXP 	fixation: autoDraw = False
+475.7445 	EXP 	presentation_text: autoDraw = False
+475.7445 	EXP 	presentation_text: height = 0.1
+475.7445 	EXP 	presentation_text: height = 0.1
+475.7445 	EXP 	presentation_text: height = 0.1
+475.7445 	EXP 	presentation_text: text = 7
+475.7445 	EXP 	fixation: autoDraw = True
+476.7445 	EXP 	fixation: autoDraw = False
+476.7445 	EXP 	presentation_text: autoDraw = True
+477.7290 	EXP 	New trial (rep=3, index=0): None
+477.7447 	EXP 	presentation_text: autoDraw = False
+477.7447 	EXP 	fixation: autoDraw = False
+477.7447 	EXP 	presentation_text: autoDraw = False
+477.7447 	EXP 	presentation_text: height = 0.1
+477.7447 	EXP 	presentation_text: height = 0.1
+477.7447 	EXP 	presentation_text: height = 0.1
+477.7447 	EXP 	presentation_text: text = 9
+477.7447 	EXP 	fixation: autoDraw = True
+478.7449 	EXP 	fixation: autoDraw = False
+478.7449 	EXP 	presentation_text: autoDraw = True
+479.7287 	EXP 	New trial (rep=4, index=0): None
+479.7448 	EXP 	presentation_text: autoDraw = False
+479.7448 	EXP 	fixation: autoDraw = False
+479.7448 	EXP 	presentation_text: autoDraw = False
+479.7448 	EXP 	presentation_text: height = 0.1
+479.7448 	EXP 	presentation_text: height = 0.1
+479.7448 	EXP 	presentation_text: height = 0.1
+479.7448 	EXP 	presentation_text: text = 3
+479.7448 	EXP 	fixation: autoDraw = True
+480.7449 	EXP 	fixation: autoDraw = False
+480.7449 	EXP 	presentation_text: autoDraw = True
+481.7289 	EXP 	New trial (rep=5, index=0): None
+481.7457 	EXP 	presentation_text: autoDraw = False
+481.7457 	EXP 	fixation: autoDraw = False
+481.7457 	EXP 	presentation_text: autoDraw = False
+481.7457 	EXP 	presentation_text: height = 0.1
+481.7457 	EXP 	presentation_text: height = 0.1
+481.7457 	EXP 	presentation_text: height = 0.1
+481.7457 	EXP 	presentation_text: text = 5
+481.7457 	EXP 	fixation: autoDraw = True
+482.7448 	EXP 	fixation: autoDraw = False
+482.7448 	EXP 	presentation_text: autoDraw = True
+483.7456 	EXP 	presentation_text: autoDraw = False
+483.7456 	EXP 	fixation: autoDraw = False
+483.7456 	EXP 	presentation_text: autoDraw = False
+483.7456 	EXP 	recall_txt: autoDraw = True
+483.7456 	EXP 	textbox: autoDraw = True
+483.7456 	EXP 	cont_button: autoDraw = True
+484.2802 	DATA 	Keypress: 1
+484.5304 	DATA 	Keypress: 8
+484.7798 	DATA 	Keypress: 7
+485.4634 	DATA 	Keypress: 9
+485.8821 	DATA 	Keypress: 3
+486.0891 	DATA 	Keypress: 5
+487.6623 	DATA 	Mouse: Left button down, pos=(669,89)
+487.6783 	EXP 	recall_txt: autoDraw = False
+487.6783 	EXP 	textbox: autoDraw = False
+487.6783 	EXP 	cont_button: autoDraw = False
+487.6783 	EXP 	feedback_text: text = 'Correct!'
+487.6783 	EXP 	feedback_text: autoDraw = True
+487.7966 	DATA 	Mouse:  Left button up, pos=(669,89)
+488.6626 	EXP 	New trial (rep=0, index=4): {'trialNumber': 5}
+488.6635 	EXP 	Created sequence: random, trialTypes=1, nReps=7, seed=None
+488.6637 	EXP 	New trial (rep=0, index=0): None
+488.6793 	EXP 	feedback_text: autoDraw = False
+488.6793 	EXP 	feedback_text: autoDraw = False
+488.6793 	EXP 	presentation_text: height = 0.1
+488.6793 	EXP 	presentation_text: height = 0.1
+488.6793 	EXP 	presentation_text: height = 0.1
+488.6793 	EXP 	presentation_text: text = 5
+488.6793 	EXP 	fixation: autoDraw = True
+489.6792 	EXP 	fixation: autoDraw = False
+489.6792 	EXP 	presentation_text: autoDraw = True
+490.6632 	EXP 	New trial (rep=1, index=0): None
+490.6799 	EXP 	presentation_text: autoDraw = False
+490.6799 	EXP 	fixation: autoDraw = False
+490.6799 	EXP 	presentation_text: autoDraw = False
+490.6799 	EXP 	presentation_text: height = 0.1
+490.6799 	EXP 	presentation_text: height = 0.1
+490.6799 	EXP 	presentation_text: height = 0.1
+490.6799 	EXP 	presentation_text: text = 4
+490.6799 	EXP 	fixation: autoDraw = True
+491.6623 	EXP 	presentation_text: autoDraw = True
+491.6786 	EXP 	fixation: autoDraw = False
+492.6463 	EXP 	New trial (rep=2, index=0): None
+492.6632 	EXP 	presentation_text: autoDraw = False
+492.6632 	EXP 	fixation: autoDraw = False
+492.6632 	EXP 	presentation_text: autoDraw = False
+492.6632 	EXP 	presentation_text: height = 0.1
+492.6632 	EXP 	presentation_text: height = 0.1
+492.6632 	EXP 	presentation_text: height = 0.1
+492.6632 	EXP 	presentation_text: text = 2
+492.6632 	EXP 	fixation: autoDraw = True
+493.6620 	EXP 	presentation_text: autoDraw = True
+493.6787 	EXP 	fixation: autoDraw = False
+494.6462 	EXP 	New trial (rep=3, index=0): None
+494.6620 	EXP 	presentation_text: autoDraw = False
+494.6620 	EXP 	fixation: autoDraw = False
+494.6620 	EXP 	presentation_text: autoDraw = False
+494.6620 	EXP 	presentation_text: height = 0.1
+494.6620 	EXP 	presentation_text: height = 0.1
+494.6620 	EXP 	presentation_text: height = 0.1
+494.6620 	EXP 	presentation_text: text = 6
+494.6620 	EXP 	fixation: autoDraw = True
+495.6621 	EXP 	fixation: autoDraw = False
+495.6621 	EXP 	presentation_text: autoDraw = True
+496.6467 	EXP 	New trial (rep=4, index=0): None
+496.6627 	EXP 	presentation_text: autoDraw = False
+496.6627 	EXP 	fixation: autoDraw = False
+496.6627 	EXP 	presentation_text: autoDraw = False
+496.6627 	EXP 	presentation_text: height = 0.1
+496.6627 	EXP 	presentation_text: height = 0.1
+496.6627 	EXP 	presentation_text: height = 0.1
+496.6627 	EXP 	presentation_text: text = 7
+496.6627 	EXP 	fixation: autoDraw = True
+497.6630 	EXP 	fixation: autoDraw = False
+497.6630 	EXP 	presentation_text: autoDraw = True
+498.6463 	EXP 	New trial (rep=5, index=0): None
+498.6622 	EXP 	presentation_text: autoDraw = False
+498.6622 	EXP 	fixation: autoDraw = False
+498.6622 	EXP 	presentation_text: autoDraw = False
+498.6622 	EXP 	presentation_text: height = 0.1
+498.6622 	EXP 	presentation_text: height = 0.1
+498.6622 	EXP 	presentation_text: height = 0.1
+498.6622 	EXP 	presentation_text: text = 3
+498.6622 	EXP 	fixation: autoDraw = True
+499.6622 	EXP 	fixation: autoDraw = False
+499.6622 	EXP 	presentation_text: autoDraw = True
+500.6463 	EXP 	New trial (rep=6, index=0): None
+500.6622 	EXP 	presentation_text: autoDraw = False
+500.6622 	EXP 	fixation: autoDraw = False
+500.6622 	EXP 	presentation_text: autoDraw = False
+500.6622 	EXP 	presentation_text: height = 0.1
+500.6622 	EXP 	presentation_text: height = 0.1
+500.6622 	EXP 	presentation_text: height = 0.1
+500.6622 	EXP 	presentation_text: text = 8
+500.6622 	EXP 	fixation: autoDraw = True
+501.6623 	EXP 	fixation: autoDraw = False
+501.6623 	EXP 	presentation_text: autoDraw = True
+502.6625 	EXP 	presentation_text: autoDraw = False
+502.6625 	EXP 	fixation: autoDraw = False
+502.6625 	EXP 	presentation_text: autoDraw = False
+502.6625 	EXP 	recall_txt: autoDraw = True
+502.6625 	EXP 	textbox: autoDraw = True
+502.6625 	EXP 	cont_button: autoDraw = True
+503.9306 	DATA 	Keypress: 5
+504.7307 	DATA 	Keypress: 4
+504.9975 	DATA 	Keypress: 2
+505.2643 	DATA 	Keypress: 6
+505.4973 	DATA 	Keypress: 7
+507.5476 	DATA 	Keypress: 3
+508.0313 	DATA 	Keypress: 8
+509.6630 	DATA 	Mouse: Left button down, pos=(720,97)
+509.6796 	EXP 	recall_txt: autoDraw = False
+509.6796 	EXP 	textbox: autoDraw = False
+509.6796 	EXP 	cont_button: autoDraw = False
+509.6796 	EXP 	feedback_text: text = 'Correct!'
+509.6796 	EXP 	feedback_text: autoDraw = True
+509.7643 	DATA 	Mouse:  Left button up, pos=(720,97)
+510.6631 	EXP 	New trial (rep=0, index=5): {'trialNumber': 6}
+510.6639 	EXP 	Created sequence: random, trialTypes=1, nReps=8, seed=None
+510.6641 	EXP 	New trial (rep=0, index=0): None
+510.6793 	EXP 	feedback_text: autoDraw = False
+510.6793 	EXP 	feedback_text: autoDraw = False
+510.6793 	EXP 	presentation_text: height = 0.1
+510.6793 	EXP 	presentation_text: height = 0.1
+510.6793 	EXP 	presentation_text: height = 0.1
+510.6793 	EXP 	presentation_text: text = 4
+510.6793 	EXP 	fixation: autoDraw = True
+511.6628 	EXP 	presentation_text: autoDraw = True
+511.6792 	EXP 	fixation: autoDraw = False
+512.6472 	EXP 	New trial (rep=1, index=0): None
+512.6629 	EXP 	presentation_text: autoDraw = False
+512.6629 	EXP 	fixation: autoDraw = False
+512.6629 	EXP 	presentation_text: autoDraw = False
+512.6629 	EXP 	presentation_text: height = 0.1
+512.6629 	EXP 	presentation_text: height = 0.1
+512.6629 	EXP 	presentation_text: height = 0.1
+512.6629 	EXP 	presentation_text: text = 6
+512.6629 	EXP 	fixation: autoDraw = True
+513.6630 	EXP 	fixation: autoDraw = False
+513.6630 	EXP 	presentation_text: autoDraw = True
+514.6483 	EXP 	New trial (rep=2, index=0): None
+514.6630 	EXP 	presentation_text: autoDraw = False
+514.6630 	EXP 	fixation: autoDraw = False
+514.6630 	EXP 	presentation_text: autoDraw = False
+514.6630 	EXP 	presentation_text: height = 0.1
+514.6630 	EXP 	presentation_text: height = 0.1
+514.6630 	EXP 	presentation_text: height = 0.1
+514.6630 	EXP 	presentation_text: text = 5
+514.6630 	EXP 	fixation: autoDraw = True
+515.6631 	EXP 	fixation: autoDraw = False
+515.6631 	EXP 	presentation_text: autoDraw = True
+516.6478 	EXP 	New trial (rep=3, index=0): None
+516.6632 	EXP 	presentation_text: autoDraw = False
+516.6632 	EXP 	fixation: autoDraw = False
+516.6632 	EXP 	presentation_text: autoDraw = False
+516.6632 	EXP 	presentation_text: height = 0.1
+516.6632 	EXP 	presentation_text: height = 0.1
+516.6632 	EXP 	presentation_text: height = 0.1
+516.6632 	EXP 	presentation_text: text = 8
+516.6632 	EXP 	fixation: autoDraw = True
+517.6630 	EXP 	fixation: autoDraw = False
+517.6630 	EXP 	presentation_text: autoDraw = True
+518.6474 	EXP 	New trial (rep=4, index=0): None
+518.6630 	EXP 	presentation_text: autoDraw = False
+518.6630 	EXP 	fixation: autoDraw = False
+518.6630 	EXP 	presentation_text: autoDraw = False
+518.6630 	EXP 	presentation_text: height = 0.1
+518.6630 	EXP 	presentation_text: height = 0.1
+518.6630 	EXP 	presentation_text: height = 0.1
+518.6630 	EXP 	presentation_text: text = 7
+518.6630 	EXP 	fixation: autoDraw = True
+519.6638 	EXP 	fixation: autoDraw = False
+519.6638 	EXP 	presentation_text: autoDraw = True
+520.6477 	EXP 	New trial (rep=5, index=0): None
+520.6635 	EXP 	presentation_text: autoDraw = False
+520.6635 	EXP 	fixation: autoDraw = False
+520.6635 	EXP 	presentation_text: autoDraw = False
+520.6635 	EXP 	presentation_text: height = 0.1
+520.6635 	EXP 	presentation_text: height = 0.1
+520.6635 	EXP 	presentation_text: height = 0.1
+520.6635 	EXP 	presentation_text: text = 1
+520.6635 	EXP 	fixation: autoDraw = True
+521.6640 	EXP 	fixation: autoDraw = False
+521.6640 	EXP 	presentation_text: autoDraw = True
+522.6480 	EXP 	New trial (rep=6, index=0): None
+522.6640 	EXP 	presentation_text: autoDraw = False
+522.6640 	EXP 	fixation: autoDraw = False
+522.6640 	EXP 	presentation_text: autoDraw = False
+522.6640 	EXP 	presentation_text: height = 0.1
+522.6640 	EXP 	presentation_text: height = 0.1
+522.6640 	EXP 	presentation_text: height = 0.1
+522.6640 	EXP 	presentation_text: text = 9
+522.6640 	EXP 	fixation: autoDraw = True
+523.6641 	EXP 	fixation: autoDraw = False
+523.6641 	EXP 	presentation_text: autoDraw = True
+524.6480 	EXP 	New trial (rep=7, index=0): None
+524.6637 	EXP 	presentation_text: autoDraw = False
+524.6637 	EXP 	fixation: autoDraw = False
+524.6637 	EXP 	presentation_text: autoDraw = False
+524.6637 	EXP 	presentation_text: height = 0.1
+524.6637 	EXP 	presentation_text: height = 0.1
+524.6637 	EXP 	presentation_text: height = 0.1
+524.6637 	EXP 	presentation_text: text = 3
+524.6637 	EXP 	fixation: autoDraw = True
+525.6630 	EXP 	fixation: autoDraw = False
+525.6630 	EXP 	presentation_text: autoDraw = True
+526.6636 	EXP 	presentation_text: autoDraw = False
+526.6636 	EXP 	fixation: autoDraw = False
+526.6636 	EXP 	presentation_text: autoDraw = False
+526.6636 	EXP 	recall_txt: autoDraw = True
+526.6636 	EXP 	textbox: autoDraw = True
+526.6636 	EXP 	cont_button: autoDraw = True
+527.8160 	DATA 	Keypress: 6
+529.4484 	DATA 	Keypress: 6
+529.9336 	DATA 	Keypress: 5
+530.5486 	DATA 	Keypress: 7
+530.8319 	DATA 	Keypress: 8
+531.1502 	DATA 	Keypress: 1
+531.4318 	DATA 	Keypress: 9
+532.8153 	DATA 	Keypress: backspace
+532.9985 	DATA 	Keypress: backspace
+533.1813 	DATA 	Keypress: backspace
+533.3480 	DATA 	Keypress: backspace
+533.5311 	DATA 	Keypress: backspace
+533.7148 	DATA 	Keypress: backspace
+534.0146 	DATA 	Keypress: backspace
+534.6649 	DATA 	Keypress: 4
+535.8336 	DATA 	Keypress: 6
+536.3653 	DATA 	Keypress: 7
+537.0149 	DATA 	Keypress: 5
+537.3318 	DATA 	Keypress: 8
+537.4836 	DATA 	Keypress: 1
+537.6485 	DATA 	Keypress: 9
+538.8644 	DATA 	Mouse: Left button down, pos=(686,78)
+538.8806 	EXP 	recall_txt: autoDraw = False
+538.8806 	EXP 	textbox: autoDraw = False
+538.8806 	EXP 	cont_button: autoDraw = False
+538.8806 	EXP 	feedback_text: height = 0.04
+538.8806 	EXP 	feedback_text: height = 0.04
+538.8806 	EXP 	feedback_text: height = 0.04
+538.8806 	EXP 	feedback_text: text = 'Incorrect'
+538.8806 	EXP 	feedback_text: autoDraw = True
+538.9652 	DATA 	Mouse:  Left button up, pos=(686,78)
+539.8644 	EXP 	New trial (rep=0, index=6): {'trialNumber': 7}
+539.8653 	EXP 	Created sequence: random, trialTypes=1, nReps=8, seed=None
+539.8655 	EXP 	New trial (rep=0, index=0): None
+539.8805 	EXP 	feedback_text: autoDraw = False
+539.8805 	EXP 	feedback_text: autoDraw = False
+539.8805 	EXP 	presentation_text: height = 0.1
+539.8805 	EXP 	presentation_text: height = 0.1
+539.8805 	EXP 	presentation_text: height = 0.1
+539.8805 	EXP 	presentation_text: text = 8
+539.8805 	EXP 	fixation: autoDraw = True
+540.8640 	EXP 	presentation_text: autoDraw = True
+540.8806 	EXP 	fixation: autoDraw = False
+541.8479 	EXP 	New trial (rep=1, index=0): None
+541.8641 	EXP 	presentation_text: autoDraw = False
+541.8641 	EXP 	fixation: autoDraw = False
+541.8641 	EXP 	presentation_text: autoDraw = False
+541.8641 	EXP 	presentation_text: height = 0.1
+541.8641 	EXP 	presentation_text: height = 0.1
+541.8641 	EXP 	presentation_text: height = 0.1
+541.8641 	EXP 	presentation_text: text = 7
+541.8641 	EXP 	fixation: autoDraw = True
+542.8640 	EXP 	fixation: autoDraw = False
+542.8640 	EXP 	presentation_text: autoDraw = True
+543.8482 	EXP 	New trial (rep=2, index=0): None
+543.8641 	EXP 	presentation_text: autoDraw = False
+543.8641 	EXP 	fixation: autoDraw = False
+543.8641 	EXP 	presentation_text: autoDraw = False
+543.8641 	EXP 	presentation_text: height = 0.1
+543.8641 	EXP 	presentation_text: height = 0.1
+543.8641 	EXP 	presentation_text: height = 0.1
+543.8641 	EXP 	presentation_text: text = 9
+543.8641 	EXP 	fixation: autoDraw = True
+544.8641 	EXP 	fixation: autoDraw = False
+544.8641 	EXP 	presentation_text: autoDraw = True
+545.8485 	EXP 	New trial (rep=3, index=0): None
+545.8645 	EXP 	presentation_text: autoDraw = False
+545.8645 	EXP 	fixation: autoDraw = False
+545.8645 	EXP 	presentation_text: autoDraw = False
+545.8645 	EXP 	presentation_text: height = 0.1
+545.8645 	EXP 	presentation_text: height = 0.1
+545.8645 	EXP 	presentation_text: height = 0.1
+545.8645 	EXP 	presentation_text: text = 3
+545.8645 	EXP 	fixation: autoDraw = True
+546.8642 	EXP 	fixation: autoDraw = False
+546.8642 	EXP 	presentation_text: autoDraw = True
+547.8484 	EXP 	New trial (rep=4, index=0): None
+547.8643 	EXP 	presentation_text: autoDraw = False
+547.8643 	EXP 	fixation: autoDraw = False
+547.8643 	EXP 	presentation_text: autoDraw = False
+547.8643 	EXP 	presentation_text: height = 0.1
+547.8643 	EXP 	presentation_text: height = 0.1
+547.8643 	EXP 	presentation_text: height = 0.1
+547.8643 	EXP 	presentation_text: text = 1
+547.8643 	EXP 	fixation: autoDraw = True
+548.8642 	EXP 	fixation: autoDraw = False
+548.8642 	EXP 	presentation_text: autoDraw = True
+549.8485 	EXP 	New trial (rep=5, index=0): None
+549.8645 	EXP 	presentation_text: autoDraw = False
+549.8645 	EXP 	fixation: autoDraw = False
+549.8645 	EXP 	presentation_text: autoDraw = False
+549.8645 	EXP 	presentation_text: height = 0.1
+549.8645 	EXP 	presentation_text: height = 0.1
+549.8645 	EXP 	presentation_text: height = 0.1
+549.8645 	EXP 	presentation_text: text = 5
+549.8645 	EXP 	fixation: autoDraw = True
+550.8651 	EXP 	fixation: autoDraw = False
+550.8651 	EXP 	presentation_text: autoDraw = True
+551.8488 	EXP 	New trial (rep=6, index=0): None
+551.8647 	EXP 	presentation_text: autoDraw = False
+551.8647 	EXP 	fixation: autoDraw = False
+551.8647 	EXP 	presentation_text: autoDraw = False
+551.8647 	EXP 	presentation_text: height = 0.1
+551.8647 	EXP 	presentation_text: height = 0.1
+551.8647 	EXP 	presentation_text: height = 0.1
+551.8647 	EXP 	presentation_text: text = 2
+551.8647 	EXP 	fixation: autoDraw = True
+552.8650 	EXP 	fixation: autoDraw = False
+552.8650 	EXP 	presentation_text: autoDraw = True
+553.8490 	EXP 	New trial (rep=7, index=0): None
+553.8654 	EXP 	presentation_text: autoDraw = False
+553.8654 	EXP 	fixation: autoDraw = False
+553.8654 	EXP 	presentation_text: autoDraw = False
+553.8654 	EXP 	presentation_text: height = 0.1
+553.8654 	EXP 	presentation_text: height = 0.1
+553.8654 	EXP 	presentation_text: height = 0.1
+553.8654 	EXP 	presentation_text: text = 4
+553.8654 	EXP 	fixation: autoDraw = True
+554.8655 	EXP 	fixation: autoDraw = False
+554.8655 	EXP 	presentation_text: autoDraw = True
+555.8643 	EXP 	presentation_text: autoDraw = False
+555.8643 	EXP 	fixation: autoDraw = False
+555.8643 	EXP 	presentation_text: autoDraw = False
+555.8643 	EXP 	recall_txt: autoDraw = True
+555.8643 	EXP 	textbox: autoDraw = True
+555.8643 	EXP 	cont_button: autoDraw = True
+557.0660 	DATA 	Keypress: 8
+557.3328 	DATA 	Keypress: 7
+558.4329 	DATA 	Keypress: 9
+558.9680 	DATA 	Keypress: 3
+559.1831 	DATA 	Keypress: 1
+559.6670 	DATA 	Keypress: 5
+559.9831 	DATA 	Keypress: 2
+560.2996 	DATA 	Keypress: 4
+562.1985 	DATA 	Mouse: Left button down, pos=(699,106)
+562.2146 	EXP 	recall_txt: autoDraw = False
+562.2146 	EXP 	textbox: autoDraw = False
+562.2146 	EXP 	cont_button: autoDraw = False
+562.2146 	EXP 	feedback_text: height = 0.04
+562.2146 	EXP 	feedback_text: height = 0.04
+562.2146 	EXP 	feedback_text: height = 0.04
+562.2146 	EXP 	feedback_text: text = 'Correct!'
+562.2146 	EXP 	feedback_text: autoDraw = True
+562.3159 	DATA 	Mouse:  Left button up, pos=(699,106)
+563.1987 	EXP 	New trial (rep=0, index=7): {'trialNumber': 8}
+563.1995 	EXP 	Created sequence: random, trialTypes=1, nReps=9, seed=None
+563.1997 	EXP 	New trial (rep=0, index=0): None
+563.2147 	EXP 	feedback_text: autoDraw = False
+563.2147 	EXP 	feedback_text: autoDraw = False
+563.2147 	EXP 	presentation_text: height = 0.1
+563.2147 	EXP 	presentation_text: height = 0.1
+563.2147 	EXP 	presentation_text: height = 0.1
+563.2147 	EXP 	presentation_text: text = 3
+563.2147 	EXP 	fixation: autoDraw = True
+564.1982 	EXP 	presentation_text: autoDraw = True
+564.2147 	EXP 	fixation: autoDraw = False
+565.1822 	EXP 	New trial (rep=1, index=0): None
+565.1984 	EXP 	presentation_text: autoDraw = False
+565.1984 	EXP 	fixation: autoDraw = False
+565.1984 	EXP 	presentation_text: autoDraw = False
+565.1984 	EXP 	presentation_text: height = 0.1
+565.1984 	EXP 	presentation_text: height = 0.1
+565.1984 	EXP 	presentation_text: height = 0.1
+565.1984 	EXP 	presentation_text: text = 5
+565.1984 	EXP 	fixation: autoDraw = True
+566.1996 	EXP 	fixation: autoDraw = False
+566.1996 	EXP 	presentation_text: autoDraw = True
+567.1993 	EXP 	New trial (rep=2, index=0): None
+567.2149 	EXP 	presentation_text: autoDraw = False
+567.2149 	EXP 	fixation: autoDraw = False
+567.2149 	EXP 	presentation_text: autoDraw = False
+567.2149 	EXP 	presentation_text: height = 0.1
+567.2149 	EXP 	presentation_text: height = 0.1
+567.2149 	EXP 	presentation_text: height = 0.1
+567.2149 	EXP 	presentation_text: text = 6
+567.2149 	EXP 	fixation: autoDraw = True
+568.1989 	EXP 	presentation_text: autoDraw = True
+568.2149 	EXP 	fixation: autoDraw = False
+569.1826 	EXP 	New trial (rep=3, index=0): None
+569.1984 	EXP 	presentation_text: autoDraw = False
+569.1984 	EXP 	fixation: autoDraw = False
+569.1984 	EXP 	presentation_text: autoDraw = False
+569.1984 	EXP 	presentation_text: height = 0.1
+569.1984 	EXP 	presentation_text: height = 0.1
+569.1984 	EXP 	presentation_text: height = 0.1
+569.1984 	EXP 	presentation_text: text = 4
+569.1984 	EXP 	fixation: autoDraw = True
+570.1984 	EXP 	fixation: autoDraw = False
+570.1984 	EXP 	presentation_text: autoDraw = True
+571.1825 	EXP 	New trial (rep=4, index=0): None
+571.1984 	EXP 	presentation_text: autoDraw = False
+571.1984 	EXP 	fixation: autoDraw = False
+571.1984 	EXP 	presentation_text: autoDraw = False
+571.1984 	EXP 	presentation_text: height = 0.1
+571.1984 	EXP 	presentation_text: height = 0.1
+571.1984 	EXP 	presentation_text: height = 0.1
+571.1984 	EXP 	presentation_text: text = 2
+571.1984 	EXP 	fixation: autoDraw = True
+572.1986 	EXP 	fixation: autoDraw = False
+572.1986 	EXP 	presentation_text: autoDraw = True
+573.1826 	EXP 	New trial (rep=5, index=0): None
+573.1984 	EXP 	presentation_text: autoDraw = False
+573.1984 	EXP 	fixation: autoDraw = False
+573.1984 	EXP 	presentation_text: autoDraw = False
+573.1984 	EXP 	presentation_text: height = 0.1
+573.1984 	EXP 	presentation_text: height = 0.1
+573.1984 	EXP 	presentation_text: height = 0.1
+573.1984 	EXP 	presentation_text: text = 8
+573.1984 	EXP 	fixation: autoDraw = True
+574.1985 	EXP 	fixation: autoDraw = False
+574.1985 	EXP 	presentation_text: autoDraw = True
+575.1827 	EXP 	New trial (rep=6, index=0): None
+575.1986 	EXP 	presentation_text: autoDraw = False
+575.1986 	EXP 	fixation: autoDraw = False
+575.1986 	EXP 	presentation_text: autoDraw = False
+575.1986 	EXP 	presentation_text: height = 0.1
+575.1986 	EXP 	presentation_text: height = 0.1
+575.1986 	EXP 	presentation_text: height = 0.1
+575.1986 	EXP 	presentation_text: text = 7
+575.1986 	EXP 	fixation: autoDraw = True
+576.1986 	EXP 	fixation: autoDraw = False
+576.1986 	EXP 	presentation_text: autoDraw = True
+577.1830 	EXP 	New trial (rep=7, index=0): None
+577.1987 	EXP 	presentation_text: autoDraw = False
+577.1987 	EXP 	fixation: autoDraw = False
+577.1987 	EXP 	presentation_text: autoDraw = False
+577.1987 	EXP 	presentation_text: height = 0.1
+577.1987 	EXP 	presentation_text: height = 0.1
+577.1987 	EXP 	presentation_text: height = 0.1
+577.1987 	EXP 	presentation_text: text = 9
+577.1987 	EXP 	fixation: autoDraw = True
+578.1992 	EXP 	fixation: autoDraw = False
+578.1992 	EXP 	presentation_text: autoDraw = True
+579.1827 	EXP 	New trial (rep=8, index=0): None
+579.1988 	EXP 	presentation_text: autoDraw = False
+579.1988 	EXP 	fixation: autoDraw = False
+579.1988 	EXP 	presentation_text: autoDraw = False
+579.1988 	EXP 	presentation_text: height = 0.1
+579.1988 	EXP 	presentation_text: height = 0.1
+579.1988 	EXP 	presentation_text: height = 0.1
+579.1988 	EXP 	presentation_text: text = 1
+579.1988 	EXP 	fixation: autoDraw = True
+580.1991 	EXP 	fixation: autoDraw = False
+580.1991 	EXP 	presentation_text: autoDraw = True
+581.1990 	EXP 	presentation_text: autoDraw = False
+581.1990 	EXP 	fixation: autoDraw = False
+581.1990 	EXP 	presentation_text: autoDraw = False
+581.1990 	EXP 	recall_txt: autoDraw = True
+581.1990 	EXP 	textbox: autoDraw = True
+581.1990 	EXP 	cont_button: autoDraw = True
+584.0340 	DATA 	Keypress: 3
+584.7503 	DATA 	Keypress: 5
+585.2507 	DATA 	Keypress: 8
+585.6506 	DATA 	Keypress: 6
+586.6174 	DATA 	Keypress: 4
+589.1015 	DATA 	Keypress: 7
+589.3841 	DATA 	Keypress: 2
+589.8345 	DATA 	Keypress: 9
+590.0025 	DATA 	Keypress: 1
+590.9997 	DATA 	Mouse: Left button down, pos=(696,73)
+591.0170 	EXP 	recall_txt: autoDraw = False
+591.0170 	EXP 	textbox: autoDraw = False
+591.0170 	EXP 	cont_button: autoDraw = False
+591.0170 	EXP 	feedback_text: height = 0.04
+591.0170 	EXP 	feedback_text: height = 0.04
+591.0170 	EXP 	feedback_text: height = 0.04
+591.0170 	EXP 	feedback_text: text = 'Incorrect'
+591.0170 	EXP 	feedback_text: autoDraw = True
+591.1005 	DATA 	Mouse:  Left button up, pos=(696,73)
+591.9999 	EXP 	New trial (rep=0, index=8): {'trialNumber': 9}
+592.0008 	EXP 	Created sequence: random, trialTypes=1, nReps=9, seed=None
+592.0010 	EXP 	New trial (rep=0, index=0): None
+592.0162 	EXP 	feedback_text: autoDraw = False
+592.0162 	EXP 	feedback_text: autoDraw = False
+592.0162 	EXP 	presentation_text: height = 0.1
+592.0162 	EXP 	presentation_text: height = 0.1
+592.0162 	EXP 	presentation_text: height = 0.1
+592.0162 	EXP 	presentation_text: text = 7
+592.0162 	EXP 	fixation: autoDraw = True
+592.9994 	EXP 	presentation_text: autoDraw = True
+593.0161 	EXP 	fixation: autoDraw = False
+593.9842 	EXP 	New trial (rep=1, index=0): None
+593.9997 	EXP 	presentation_text: autoDraw = False
+593.9997 	EXP 	fixation: autoDraw = False
+593.9997 	EXP 	presentation_text: autoDraw = False
+593.9997 	EXP 	presentation_text: height = 0.1
+593.9997 	EXP 	presentation_text: height = 0.1
+593.9997 	EXP 	presentation_text: height = 0.1
+593.9997 	EXP 	presentation_text: text = 2
+593.9997 	EXP 	fixation: autoDraw = True
+594.9999 	EXP 	fixation: autoDraw = False
+594.9999 	EXP 	presentation_text: autoDraw = True
+595.9843 	EXP 	New trial (rep=2, index=0): None
+596.0004 	EXP 	presentation_text: autoDraw = False
+596.0004 	EXP 	fixation: autoDraw = False
+596.0004 	EXP 	presentation_text: autoDraw = False
+596.0004 	EXP 	presentation_text: height = 0.1
+596.0004 	EXP 	presentation_text: height = 0.1
+596.0004 	EXP 	presentation_text: height = 0.1
+596.0004 	EXP 	presentation_text: text = 1
+596.0004 	EXP 	fixation: autoDraw = True
+597.0002 	EXP 	fixation: autoDraw = False
+597.0002 	EXP 	presentation_text: autoDraw = True
+597.9836 	EXP 	New trial (rep=3, index=0): None
+597.9994 	EXP 	presentation_text: autoDraw = False
+597.9994 	EXP 	fixation: autoDraw = False
+597.9994 	EXP 	presentation_text: autoDraw = False
+597.9994 	EXP 	presentation_text: height = 0.1
+597.9994 	EXP 	presentation_text: height = 0.1
+597.9994 	EXP 	presentation_text: height = 0.1
+597.9994 	EXP 	presentation_text: text = 9
+597.9994 	EXP 	fixation: autoDraw = True
+598.9997 	EXP 	fixation: autoDraw = False
+598.9997 	EXP 	presentation_text: autoDraw = True
+599.9848 	EXP 	New trial (rep=4, index=0): None
+600.0006 	EXP 	presentation_text: autoDraw = False
+600.0006 	EXP 	fixation: autoDraw = False
+600.0006 	EXP 	presentation_text: autoDraw = False
+600.0006 	EXP 	presentation_text: height = 0.1
+600.0006 	EXP 	presentation_text: height = 0.1
+600.0006 	EXP 	presentation_text: height = 0.1
+600.0006 	EXP 	presentation_text: text = 4
+600.0006 	EXP 	fixation: autoDraw = True
+600.9996 	EXP 	fixation: autoDraw = False
+600.9996 	EXP 	presentation_text: autoDraw = True
+601.9840 	EXP 	New trial (rep=5, index=0): None
+602.0002 	EXP 	presentation_text: autoDraw = False
+602.0002 	EXP 	fixation: autoDraw = False
+602.0002 	EXP 	presentation_text: autoDraw = False
+602.0002 	EXP 	presentation_text: height = 0.1
+602.0002 	EXP 	presentation_text: height = 0.1
+602.0002 	EXP 	presentation_text: height = 0.1
+602.0002 	EXP 	presentation_text: text = 6
+602.0002 	EXP 	fixation: autoDraw = True
+603.0011 	EXP 	fixation: autoDraw = False
+603.0011 	EXP 	presentation_text: autoDraw = True
+604.0005 	EXP 	New trial (rep=6, index=0): None
+604.0165 	EXP 	presentation_text: autoDraw = False
+604.0165 	EXP 	fixation: autoDraw = False
+604.0165 	EXP 	presentation_text: autoDraw = False
+604.0165 	EXP 	presentation_text: height = 0.1
+604.0165 	EXP 	presentation_text: height = 0.1
+604.0165 	EXP 	presentation_text: height = 0.1
+604.0165 	EXP 	presentation_text: text = 8
+604.0165 	EXP 	fixation: autoDraw = True
+605.0003 	EXP 	presentation_text: autoDraw = True
+605.0165 	EXP 	fixation: autoDraw = False
+605.9846 	EXP 	New trial (rep=7, index=0): None
+606.0007 	EXP 	presentation_text: autoDraw = False
+606.0007 	EXP 	fixation: autoDraw = False
+606.0007 	EXP 	presentation_text: autoDraw = False
+606.0007 	EXP 	presentation_text: height = 0.1
+606.0007 	EXP 	presentation_text: height = 0.1
+606.0007 	EXP 	presentation_text: height = 0.1
+606.0007 	EXP 	presentation_text: text = 5
+606.0007 	EXP 	fixation: autoDraw = True
+606.9999 	EXP 	fixation: autoDraw = False
+606.9999 	EXP 	presentation_text: autoDraw = True
+607.9854 	EXP 	New trial (rep=8, index=0): None
+608.0015 	EXP 	presentation_text: autoDraw = False
+608.0015 	EXP 	fixation: autoDraw = False
+608.0015 	EXP 	presentation_text: autoDraw = False
+608.0015 	EXP 	presentation_text: height = 0.1
+608.0015 	EXP 	presentation_text: height = 0.1
+608.0015 	EXP 	presentation_text: height = 0.1
+608.0015 	EXP 	presentation_text: text = 3
+608.0015 	EXP 	fixation: autoDraw = True
+609.0002 	EXP 	fixation: autoDraw = False
+609.0002 	EXP 	presentation_text: autoDraw = True
+610.0006 	EXP 	presentation_text: autoDraw = False
+610.0006 	EXP 	fixation: autoDraw = False
+610.0006 	EXP 	presentation_text: autoDraw = False
+610.0006 	EXP 	recall_txt: autoDraw = True
+610.0006 	EXP 	textbox: autoDraw = True
+610.0006 	EXP 	cont_button: autoDraw = True
+611.3690 	DATA 	Keypress: 7
+612.0184 	DATA 	Keypress: 2
+612.3683 	DATA 	Keypress: 1
+612.6350 	DATA 	Keypress: 9
+613.5188 	DATA 	Keypress: 6
+613.7854 	DATA 	Keypress: 4
+613.9523 	DATA 	Keypress: 5
+614.4519 	DATA 	Keypress: 7
+614.6851 	DATA 	Keypress: 1
+614.8517 	DATA 	Keypress: 2
+615.6851 	DATA 	Keypress: backspace
+617.8187 	DATA 	Keypress: backspace
+618.1349 	DATA 	Keypress: backspace
+618.7542 	DATA 	Keypress: 8
+619.3357 	DATA 	Keypress: 1
+619.6027 	DATA 	Keypress: 2
+620.4205 	DATA 	Mouse: Left button down, pos=(686,83)
+620.4507 	EXP 	recall_txt: autoDraw = False
+620.4507 	EXP 	textbox: autoDraw = False
+620.4507 	EXP 	cont_button: autoDraw = False
+620.4507 	EXP 	feedback_text: text = 'Incorrect'
+620.4507 	EXP 	feedback_text: autoDraw = True
+620.5517 	DATA 	Mouse:  Left button up, pos=(686,83)
+621.4348 	EXP 	New trial (rep=0, index=9): {'trialNumber': 10}
+621.4356 	EXP 	Created sequence: random, trialTypes=1, nReps=8, seed=None
+621.4357 	EXP 	New trial (rep=0, index=0): None
+621.4507 	EXP 	feedback_text: autoDraw = False
+621.4507 	EXP 	feedback_text: autoDraw = False
+621.4507 	EXP 	presentation_text: height = 0.1
+621.4507 	EXP 	presentation_text: height = 0.1
+621.4507 	EXP 	presentation_text: height = 0.1
+621.4507 	EXP 	presentation_text: text = 9
+621.4507 	EXP 	fixation: autoDraw = True
+622.4511 	EXP 	fixation: autoDraw = False
+622.4511 	EXP 	presentation_text: autoDraw = True
+623.4347 	EXP 	New trial (rep=1, index=0): None
+623.4509 	EXP 	presentation_text: autoDraw = False
+623.4509 	EXP 	fixation: autoDraw = False
+623.4509 	EXP 	presentation_text: autoDraw = False
+623.4509 	EXP 	presentation_text: height = 0.1
+623.4509 	EXP 	presentation_text: height = 0.1
+623.4509 	EXP 	presentation_text: height = 0.1
+623.4509 	EXP 	presentation_text: text = 7
+623.4509 	EXP 	fixation: autoDraw = True
+624.4507 	EXP 	fixation: autoDraw = False
+624.4507 	EXP 	presentation_text: autoDraw = True
+625.4347 	EXP 	New trial (rep=2, index=0): None
+625.4509 	EXP 	presentation_text: autoDraw = False
+625.4509 	EXP 	fixation: autoDraw = False
+625.4509 	EXP 	presentation_text: autoDraw = False
+625.4509 	EXP 	presentation_text: height = 0.1
+625.4509 	EXP 	presentation_text: height = 0.1
+625.4509 	EXP 	presentation_text: height = 0.1
+625.4509 	EXP 	presentation_text: text = 4
+625.4509 	EXP 	fixation: autoDraw = True
+626.4349 	EXP 	presentation_text: autoDraw = True
+626.4513 	EXP 	fixation: autoDraw = False
+627.4186 	EXP 	New trial (rep=3, index=0): None
+627.4350 	EXP 	presentation_text: autoDraw = False
+627.4350 	EXP 	fixation: autoDraw = False
+627.4350 	EXP 	presentation_text: autoDraw = False
+627.4350 	EXP 	presentation_text: height = 0.1
+627.4350 	EXP 	presentation_text: height = 0.1
+627.4350 	EXP 	presentation_text: height = 0.1
+627.4350 	EXP 	presentation_text: text = 5
+627.4350 	EXP 	fixation: autoDraw = True
+628.4347 	EXP 	fixation: autoDraw = False
+628.4347 	EXP 	presentation_text: autoDraw = True
+629.4186 	EXP 	New trial (rep=4, index=0): None
+629.4350 	EXP 	presentation_text: autoDraw = False
+629.4350 	EXP 	fixation: autoDraw = False
+629.4350 	EXP 	presentation_text: autoDraw = False
+629.4350 	EXP 	presentation_text: height = 0.1
+629.4350 	EXP 	presentation_text: height = 0.1
+629.4350 	EXP 	presentation_text: height = 0.1
+629.4350 	EXP 	presentation_text: text = 2
+629.4350 	EXP 	fixation: autoDraw = True
+630.4348 	EXP 	fixation: autoDraw = False
+630.4348 	EXP 	presentation_text: autoDraw = True
+631.4187 	EXP 	New trial (rep=5, index=0): None
+631.4345 	EXP 	presentation_text: autoDraw = False
+631.4345 	EXP 	fixation: autoDraw = False
+631.4345 	EXP 	presentation_text: autoDraw = False
+631.4345 	EXP 	presentation_text: height = 0.1
+631.4345 	EXP 	presentation_text: height = 0.1
+631.4345 	EXP 	presentation_text: height = 0.1
+631.4345 	EXP 	presentation_text: text = 8
+631.4345 	EXP 	fixation: autoDraw = True
+632.4350 	EXP 	fixation: autoDraw = False
+632.4350 	EXP 	presentation_text: autoDraw = True
+633.4186 	EXP 	New trial (rep=6, index=0): None
+633.4344 	EXP 	presentation_text: autoDraw = False
+633.4344 	EXP 	fixation: autoDraw = False
+633.4344 	EXP 	presentation_text: autoDraw = False
+633.4344 	EXP 	presentation_text: height = 0.1
+633.4344 	EXP 	presentation_text: height = 0.1
+633.4344 	EXP 	presentation_text: height = 0.1
+633.4344 	EXP 	presentation_text: text = 1
+633.4344 	EXP 	fixation: autoDraw = True
+634.4347 	EXP 	fixation: autoDraw = False
+634.4347 	EXP 	presentation_text: autoDraw = True
+635.4191 	EXP 	New trial (rep=7, index=0): None
+635.4347 	EXP 	presentation_text: autoDraw = False
+635.4347 	EXP 	fixation: autoDraw = False
+635.4347 	EXP 	presentation_text: autoDraw = False
+635.4347 	EXP 	presentation_text: height = 0.1
+635.4347 	EXP 	presentation_text: height = 0.1
+635.4347 	EXP 	presentation_text: height = 0.1
+635.4347 	EXP 	presentation_text: text = 3
+635.4347 	EXP 	fixation: autoDraw = True
+636.4356 	EXP 	fixation: autoDraw = False
+636.4356 	EXP 	presentation_text: autoDraw = True
+637.4346 	EXP 	presentation_text: autoDraw = False
+637.4346 	EXP 	fixation: autoDraw = False
+637.4346 	EXP 	presentation_text: autoDraw = False
+637.4346 	EXP 	recall_txt: autoDraw = True
+637.4346 	EXP 	textbox: autoDraw = True
+637.4346 	EXP 	cont_button: autoDraw = True
+638.6558 	DATA 	Keypress: 9
+639.2193 	DATA 	Keypress: 7
+639.5859 	DATA 	Keypress: 4
+639.7693 	DATA 	Keypress: 5
+640.1859 	DATA 	Keypress: 8
+640.8367 	DATA 	Keypress: 2
+641.0532 	DATA 	Keypress: 1
+641.2862 	DATA 	Keypress: 3
+642.8520 	DATA 	Mouse: Left button down, pos=(693,86)
+642.8679 	EXP 	recall_txt: autoDraw = False
+642.8679 	EXP 	textbox: autoDraw = False
+642.8679 	EXP 	cont_button: autoDraw = False
+642.8679 	EXP 	feedback_text: text = 'Incorrect'
+642.8679 	EXP 	feedback_text: autoDraw = True
+642.9860 	DATA 	Mouse:  Left button up, pos=(693,86)
+643.8520 	EXP 	New trial (rep=0, index=10): {'trialNumber': 11}
+643.8529 	EXP 	Created sequence: random, trialTypes=1, nReps=8, seed=None
+643.8531 	EXP 	New trial (rep=0, index=0): None
+643.8681 	EXP 	feedback_text: autoDraw = False
+643.8681 	EXP 	feedback_text: autoDraw = False
+643.8681 	EXP 	presentation_text: height = 0.1
+643.8681 	EXP 	presentation_text: height = 0.1
+643.8681 	EXP 	presentation_text: height = 0.1
+643.8681 	EXP 	presentation_text: text = 9
+643.8681 	EXP 	fixation: autoDraw = True
+644.8680 	EXP 	fixation: autoDraw = False
+644.8680 	EXP 	presentation_text: autoDraw = True
+645.8522 	EXP 	New trial (rep=1, index=0): None
+645.8682 	EXP 	presentation_text: autoDraw = False
+645.8682 	EXP 	fixation: autoDraw = False
+645.8682 	EXP 	presentation_text: autoDraw = False
+645.8682 	EXP 	presentation_text: height = 0.1
+645.8682 	EXP 	presentation_text: height = 0.1
+645.8682 	EXP 	presentation_text: height = 0.1
+645.8682 	EXP 	presentation_text: text = 1
+645.8682 	EXP 	fixation: autoDraw = True
+646.8518 	EXP 	presentation_text: autoDraw = True
+646.8681 	EXP 	fixation: autoDraw = False
+647.8359 	EXP 	New trial (rep=2, index=0): None
+647.8516 	EXP 	presentation_text: autoDraw = False
+647.8516 	EXP 	fixation: autoDraw = False
+647.8516 	EXP 	presentation_text: autoDraw = False
+647.8516 	EXP 	presentation_text: height = 0.1
+647.8516 	EXP 	presentation_text: height = 0.1
+647.8516 	EXP 	presentation_text: height = 0.1
+647.8516 	EXP 	presentation_text: text = 8
+647.8516 	EXP 	fixation: autoDraw = True
+648.8517 	EXP 	fixation: autoDraw = False
+648.8517 	EXP 	presentation_text: autoDraw = True
+649.8358 	EXP 	New trial (rep=3, index=0): None
+649.8515 	EXP 	presentation_text: autoDraw = False
+649.8515 	EXP 	fixation: autoDraw = False
+649.8515 	EXP 	presentation_text: autoDraw = False
+649.8515 	EXP 	presentation_text: height = 0.1
+649.8515 	EXP 	presentation_text: height = 0.1
+649.8515 	EXP 	presentation_text: height = 0.1
+649.8515 	EXP 	presentation_text: text = 3
+649.8515 	EXP 	fixation: autoDraw = True
+650.8517 	EXP 	fixation: autoDraw = False
+650.8517 	EXP 	presentation_text: autoDraw = True
+651.8358 	EXP 	New trial (rep=4, index=0): None
+651.8517 	EXP 	presentation_text: autoDraw = False
+651.8517 	EXP 	fixation: autoDraw = False
+651.8517 	EXP 	presentation_text: autoDraw = False
+651.8517 	EXP 	presentation_text: height = 0.1
+651.8517 	EXP 	presentation_text: height = 0.1
+651.8517 	EXP 	presentation_text: height = 0.1
+651.8517 	EXP 	presentation_text: text = 6
+651.8517 	EXP 	fixation: autoDraw = True
+652.8519 	EXP 	fixation: autoDraw = False
+652.8519 	EXP 	presentation_text: autoDraw = True
+653.8363 	EXP 	New trial (rep=5, index=0): None
+653.8517 	EXP 	presentation_text: autoDraw = False
+653.8517 	EXP 	fixation: autoDraw = False
+653.8517 	EXP 	presentation_text: autoDraw = False
+653.8517 	EXP 	presentation_text: height = 0.1
+653.8517 	EXP 	presentation_text: height = 0.1
+653.8517 	EXP 	presentation_text: height = 0.1
+653.8517 	EXP 	presentation_text: text = 2
+653.8517 	EXP 	fixation: autoDraw = True
+654.8518 	EXP 	fixation: autoDraw = False
+654.8518 	EXP 	presentation_text: autoDraw = True
+655.8365 	EXP 	New trial (rep=6, index=0): None
+655.8517 	EXP 	presentation_text: autoDraw = False
+655.8517 	EXP 	fixation: autoDraw = False
+655.8517 	EXP 	presentation_text: autoDraw = False
+655.8517 	EXP 	presentation_text: height = 0.1
+655.8517 	EXP 	presentation_text: height = 0.1
+655.8517 	EXP 	presentation_text: height = 0.1
+655.8517 	EXP 	presentation_text: text = 4
+655.8517 	EXP 	fixation: autoDraw = True
+656.8517 	EXP 	fixation: autoDraw = False
+656.8517 	EXP 	presentation_text: autoDraw = True
+657.8360 	EXP 	New trial (rep=7, index=0): None
+657.8520 	EXP 	presentation_text: autoDraw = False
+657.8520 	EXP 	fixation: autoDraw = False
+657.8520 	EXP 	presentation_text: autoDraw = False
+657.8520 	EXP 	presentation_text: height = 0.1
+657.8520 	EXP 	presentation_text: height = 0.1
+657.8520 	EXP 	presentation_text: height = 0.1
+657.8520 	EXP 	presentation_text: text = 5
+657.8520 	EXP 	fixation: autoDraw = True
+658.8523 	EXP 	fixation: autoDraw = False
+658.8523 	EXP 	presentation_text: autoDraw = True
+659.8520 	EXP 	presentation_text: autoDraw = False
+659.8520 	EXP 	fixation: autoDraw = False
+659.8520 	EXP 	presentation_text: autoDraw = False
+659.8520 	EXP 	recall_txt: autoDraw = True
+659.8520 	EXP 	textbox: autoDraw = True
+659.8520 	EXP 	cont_button: autoDraw = True
+662.0369 	DATA 	Keypress: 9
+662.5205 	DATA 	Keypress: 1
+662.9202 	DATA 	Keypress: 8
+663.5536 	DATA 	Keypress: 3
+663.8202 	DATA 	Keypress: 6
+664.3039 	DATA 	Keypress: 2
+664.6544 	DATA 	Keypress: 4
+664.7873 	DATA 	Keypress: 5
+665.8190 	DATA 	Mouse: Left button down, pos=(702,86)
+665.8360 	EXP 	recall_txt: autoDraw = False
+665.8360 	EXP 	textbox: autoDraw = False
+665.8360 	EXP 	cont_button: autoDraw = False
+665.8360 	EXP 	feedback_text: height = 0.04
+665.8360 	EXP 	feedback_text: height = 0.04
+665.8360 	EXP 	feedback_text: height = 0.04
+665.8360 	EXP 	feedback_text: text = 'Correct!'
+665.8360 	EXP 	feedback_text: autoDraw = True
+665.9035 	DATA 	Mouse:  Left button up, pos=(702,86)
+666.8197 	EXP 	New trial (rep=0, index=11): {'trialNumber': 12}
+666.8206 	EXP 	Created sequence: random, trialTypes=1, nReps=9, seed=None
+666.8208 	EXP 	New trial (rep=0, index=0): None
+666.8361 	EXP 	feedback_text: autoDraw = False
+666.8361 	EXP 	feedback_text: autoDraw = False
+666.8361 	EXP 	presentation_text: height = 0.1
+666.8361 	EXP 	presentation_text: height = 0.1
+666.8361 	EXP 	presentation_text: height = 0.1
+666.8361 	EXP 	presentation_text: text = 9
+666.8361 	EXP 	fixation: autoDraw = True
+667.8357 	EXP 	fixation: autoDraw = False
+667.8357 	EXP 	presentation_text: autoDraw = True
+668.8201 	EXP 	New trial (rep=1, index=0): None
+668.8356 	EXP 	presentation_text: autoDraw = False
+668.8356 	EXP 	fixation: autoDraw = False
+668.8356 	EXP 	presentation_text: autoDraw = False
+668.8356 	EXP 	presentation_text: height = 0.1
+668.8356 	EXP 	presentation_text: height = 0.1
+668.8356 	EXP 	presentation_text: height = 0.1
+668.8356 	EXP 	presentation_text: text = 4
+668.8356 	EXP 	fixation: autoDraw = True
+669.8356 	EXP 	fixation: autoDraw = False
+669.8356 	EXP 	presentation_text: autoDraw = True
+670.8199 	EXP 	New trial (rep=2, index=0): None
+670.8360 	EXP 	presentation_text: autoDraw = False
+670.8360 	EXP 	fixation: autoDraw = False
+670.8360 	EXP 	presentation_text: autoDraw = False
+670.8360 	EXP 	presentation_text: height = 0.1
+670.8360 	EXP 	presentation_text: height = 0.1
+670.8360 	EXP 	presentation_text: height = 0.1
+670.8360 	EXP 	presentation_text: text = 3
+670.8360 	EXP 	fixation: autoDraw = True
+671.8192 	EXP 	presentation_text: autoDraw = True
+671.8359 	EXP 	fixation: autoDraw = False
+672.8035 	EXP 	New trial (rep=3, index=0): None
+672.8193 	EXP 	presentation_text: autoDraw = False
+672.8193 	EXP 	fixation: autoDraw = False
+672.8193 	EXP 	presentation_text: autoDraw = False
+672.8193 	EXP 	presentation_text: height = 0.1
+672.8193 	EXP 	presentation_text: height = 0.1
+672.8193 	EXP 	presentation_text: height = 0.1
+672.8193 	EXP 	presentation_text: text = 5
+672.8193 	EXP 	fixation: autoDraw = True
+673.8194 	EXP 	fixation: autoDraw = False
+673.8194 	EXP 	presentation_text: autoDraw = True
+674.8040 	EXP 	New trial (rep=4, index=0): None
+674.8200 	EXP 	presentation_text: autoDraw = False
+674.8200 	EXP 	fixation: autoDraw = False
+674.8200 	EXP 	presentation_text: autoDraw = False
+674.8200 	EXP 	presentation_text: height = 0.1
+674.8200 	EXP 	presentation_text: height = 0.1
+674.8200 	EXP 	presentation_text: height = 0.1
+674.8200 	EXP 	presentation_text: text = 1
+674.8200 	EXP 	fixation: autoDraw = True
+675.8199 	EXP 	fixation: autoDraw = False
+675.8199 	EXP 	presentation_text: autoDraw = True
+676.8038 	EXP 	New trial (rep=5, index=0): None
+676.8201 	EXP 	presentation_text: autoDraw = False
+676.8201 	EXP 	fixation: autoDraw = False
+676.8201 	EXP 	presentation_text: autoDraw = False
+676.8201 	EXP 	presentation_text: height = 0.1
+676.8201 	EXP 	presentation_text: height = 0.1
+676.8201 	EXP 	presentation_text: height = 0.1
+676.8201 	EXP 	presentation_text: text = 2
+676.8201 	EXP 	fixation: autoDraw = True
+677.8195 	EXP 	fixation: autoDraw = False
+677.8195 	EXP 	presentation_text: autoDraw = True
+678.8038 	EXP 	New trial (rep=6, index=0): None
+678.8200 	EXP 	presentation_text: autoDraw = False
+678.8200 	EXP 	fixation: autoDraw = False
+678.8200 	EXP 	presentation_text: autoDraw = False
+678.8200 	EXP 	presentation_text: height = 0.1
+678.8200 	EXP 	presentation_text: height = 0.1
+678.8200 	EXP 	presentation_text: height = 0.1
+678.8200 	EXP 	presentation_text: text = 7
+678.8200 	EXP 	fixation: autoDraw = True
+679.8198 	EXP 	fixation: autoDraw = False
+679.8198 	EXP 	presentation_text: autoDraw = True
+680.8041 	EXP 	New trial (rep=7, index=0): None
+680.8203 	EXP 	presentation_text: autoDraw = False
+680.8203 	EXP 	fixation: autoDraw = False
+680.8203 	EXP 	presentation_text: autoDraw = False
+680.8203 	EXP 	presentation_text: height = 0.1
+680.8203 	EXP 	presentation_text: height = 0.1
+680.8203 	EXP 	presentation_text: height = 0.1
+680.8203 	EXP 	presentation_text: text = 6
+680.8203 	EXP 	fixation: autoDraw = True
+681.8197 	EXP 	fixation: autoDraw = False
+681.8197 	EXP 	presentation_text: autoDraw = True
+682.8042 	EXP 	New trial (rep=8, index=0): None
+682.8198 	EXP 	presentation_text: autoDraw = False
+682.8198 	EXP 	fixation: autoDraw = False
+682.8198 	EXP 	presentation_text: autoDraw = False
+682.8198 	EXP 	presentation_text: height = 0.1
+682.8198 	EXP 	presentation_text: height = 0.1
+682.8198 	EXP 	presentation_text: height = 0.1
+682.8198 	EXP 	presentation_text: text = 8
+682.8198 	EXP 	fixation: autoDraw = True
+683.8197 	EXP 	fixation: autoDraw = False
+683.8197 	EXP 	presentation_text: autoDraw = True
+684.8195 	EXP 	presentation_text: autoDraw = False
+684.8195 	EXP 	fixation: autoDraw = False
+684.8195 	EXP 	presentation_text: autoDraw = False
+684.8195 	EXP 	recall_txt: autoDraw = True
+684.8195 	EXP 	textbox: autoDraw = True
+684.8195 	EXP 	cont_button: autoDraw = True
+686.0218 	DATA 	Keypress: 9
+686.4551 	DATA 	Keypress: 4
+686.7047 	DATA 	Keypress: 3
+687.5051 	DATA 	Keypress: 5
+687.7882 	DATA 	Keypress: 1
+688.3216 	DATA 	Keypress: 2
+689.0885 	DATA 	Keypress: 6
+689.3218 	DATA 	Keypress: 7
+689.5717 	DATA 	Keypress: 8
+690.6364 	DATA 	Mouse: Left button down, pos=(697,68)
+690.6529 	EXP 	recall_txt: autoDraw = False
+690.6529 	EXP 	textbox: autoDraw = False
+690.6529 	EXP 	cont_button: autoDraw = False
+690.6529 	EXP 	feedback_text: height = 0.04
+690.6529 	EXP 	feedback_text: height = 0.04
+690.6529 	EXP 	feedback_text: height = 0.04
+690.6529 	EXP 	feedback_text: text = 'Incorrect'
+690.6529 	EXP 	feedback_text: autoDraw = True
+690.7714 	DATA 	Mouse:  Left button up, pos=(697,69)
+691.6378 	EXP 	New trial (rep=0, index=12): {'trialNumber': 13}
+691.6385 	EXP 	Created sequence: random, trialTypes=1, nReps=9, seed=None
+691.6387 	EXP 	New trial (rep=0, index=0): None
+691.6532 	EXP 	feedback_text: autoDraw = False
+691.6532 	EXP 	feedback_text: autoDraw = False
+691.6532 	EXP 	presentation_text: height = 0.1
+691.6532 	EXP 	presentation_text: height = 0.1
+691.6532 	EXP 	presentation_text: height = 0.1
+691.6532 	EXP 	presentation_text: text = 3
+691.6532 	EXP 	fixation: autoDraw = True
+692.6374 	EXP 	presentation_text: autoDraw = True
+692.6541 	EXP 	fixation: autoDraw = False
+693.6209 	EXP 	New trial (rep=1, index=0): None
+693.6365 	EXP 	presentation_text: autoDraw = False
+693.6365 	EXP 	fixation: autoDraw = False
+693.6365 	EXP 	presentation_text: autoDraw = False
+693.6365 	EXP 	presentation_text: height = 0.1
+693.6365 	EXP 	presentation_text: height = 0.1
+693.6365 	EXP 	presentation_text: height = 0.1
+693.6365 	EXP 	presentation_text: text = 2
+693.6533 	EXP 	fixation: autoDraw = True
+694.6535 	EXP 	fixation: autoDraw = False
+694.6535 	EXP 	presentation_text: autoDraw = True
+695.6374 	EXP 	New trial (rep=2, index=0): None
+695.6535 	EXP 	presentation_text: autoDraw = False
+695.6535 	EXP 	fixation: autoDraw = False
+695.6535 	EXP 	presentation_text: autoDraw = False
+695.6535 	EXP 	presentation_text: height = 0.1
+695.6535 	EXP 	presentation_text: height = 0.1
+695.6535 	EXP 	presentation_text: height = 0.1
+695.6535 	EXP 	presentation_text: text = 8
+695.6535 	EXP 	fixation: autoDraw = True
+696.6541 	EXP 	fixation: autoDraw = False
+696.6541 	EXP 	presentation_text: autoDraw = True
+697.6378 	EXP 	New trial (rep=3, index=0): None
+697.6535 	EXP 	presentation_text: autoDraw = False
+697.6535 	EXP 	fixation: autoDraw = False
+697.6535 	EXP 	presentation_text: autoDraw = False
+697.6535 	EXP 	presentation_text: height = 0.1
+697.6535 	EXP 	presentation_text: height = 0.1
+697.6535 	EXP 	presentation_text: height = 0.1
+697.6535 	EXP 	presentation_text: text = 1
+697.6535 	EXP 	fixation: autoDraw = True
+698.6375 	EXP 	presentation_text: autoDraw = True
+698.6538 	EXP 	fixation: autoDraw = False
+699.6211 	EXP 	New trial (rep=4, index=0): None
+699.6371 	EXP 	presentation_text: autoDraw = False
+699.6371 	EXP 	fixation: autoDraw = False
+699.6371 	EXP 	presentation_text: autoDraw = False
+699.6371 	EXP 	presentation_text: height = 0.1
+699.6371 	EXP 	presentation_text: height = 0.1
+699.6371 	EXP 	presentation_text: height = 0.1
+699.6371 	EXP 	presentation_text: text = 5
+699.6537 	EXP 	fixation: autoDraw = True
+700.6539 	EXP 	fixation: autoDraw = False
+700.6539 	EXP 	presentation_text: autoDraw = True
+701.6378 	EXP 	New trial (rep=5, index=0): None
+701.6537 	EXP 	presentation_text: autoDraw = False
+701.6537 	EXP 	fixation: autoDraw = False
+701.6537 	EXP 	presentation_text: autoDraw = False
+701.6537 	EXP 	presentation_text: height = 0.1
+701.6537 	EXP 	presentation_text: height = 0.1
+701.6537 	EXP 	presentation_text: height = 0.1
+701.6537 	EXP 	presentation_text: text = 6
+701.6537 	EXP 	fixation: autoDraw = True
+702.6537 	EXP 	fixation: autoDraw = False
+702.6537 	EXP 	presentation_text: autoDraw = True
+703.6381 	EXP 	New trial (rep=6, index=0): None
+703.6543 	EXP 	presentation_text: autoDraw = False
+703.6543 	EXP 	fixation: autoDraw = False
+703.6543 	EXP 	presentation_text: autoDraw = False
+703.6543 	EXP 	presentation_text: height = 0.1
+703.6543 	EXP 	presentation_text: height = 0.1
+703.6543 	EXP 	presentation_text: height = 0.1
+703.6543 	EXP 	presentation_text: text = 4
+703.6543 	EXP 	fixation: autoDraw = True
+704.6377 	EXP 	presentation_text: autoDraw = True
+704.6542 	EXP 	fixation: autoDraw = False
+705.6217 	EXP 	New trial (rep=7, index=0): None
+705.6380 	EXP 	presentation_text: autoDraw = False
+705.6380 	EXP 	fixation: autoDraw = False
+705.6380 	EXP 	presentation_text: autoDraw = False
+705.6380 	EXP 	presentation_text: height = 0.1
+705.6380 	EXP 	presentation_text: height = 0.1
+705.6380 	EXP 	presentation_text: height = 0.1
+705.6380 	EXP 	presentation_text: text = 9
+705.6380 	EXP 	fixation: autoDraw = True
+706.6377 	EXP 	fixation: autoDraw = False
+706.6377 	EXP 	presentation_text: autoDraw = True
+707.6213 	EXP 	New trial (rep=8, index=0): None
+707.6373 	EXP 	presentation_text: autoDraw = False
+707.6373 	EXP 	fixation: autoDraw = False
+707.6373 	EXP 	presentation_text: autoDraw = False
+707.6373 	EXP 	presentation_text: height = 0.1
+707.6373 	EXP 	presentation_text: height = 0.1
+707.6373 	EXP 	presentation_text: height = 0.1
+707.6373 	EXP 	presentation_text: text = 7
+707.6373 	EXP 	fixation: autoDraw = True
+708.6373 	EXP 	fixation: autoDraw = False
+708.6373 	EXP 	presentation_text: autoDraw = True
+709.6380 	EXP 	presentation_text: autoDraw = False
+709.6380 	EXP 	fixation: autoDraw = False
+709.6380 	EXP 	presentation_text: autoDraw = False
+709.6380 	EXP 	recall_txt: autoDraw = True
+709.6380 	EXP 	textbox: autoDraw = True
+709.6380 	EXP 	cont_button: autoDraw = True
+711.5898 	DATA 	Keypress: 3
+711.8574 	DATA 	Keypress: 2
+712.2890 	DATA 	Keypress: 8
+712.5226 	DATA 	Keypress: 1
+712.8224 	DATA 	Keypress: 5
+713.0396 	DATA 	Keypress: 6
+713.7067 	DATA 	Keypress: 4
+714.1389 	DATA 	Keypress: 9
+714.6061 	DATA 	Keypress: 7
+715.3216 	DATA 	Mouse: Left button down, pos=(690,95)
+715.3375 	EXP 	recall_txt: autoDraw = False
+715.3375 	EXP 	textbox: autoDraw = False
+715.3375 	EXP 	cont_button: autoDraw = False
+715.3375 	EXP 	feedback_text: height = 0.04
+715.3375 	EXP 	feedback_text: height = 0.04
+715.3375 	EXP 	feedback_text: height = 0.04
+715.3375 	EXP 	feedback_text: text = 'Correct!'
+715.3375 	EXP 	feedback_text: autoDraw = True
+715.4219 	DATA 	Mouse:  Left button up, pos=(690,95)
+716.3222 	EXP 	New trial (rep=0, index=13): {'trialNumber': 14}
+716.3230 	EXP 	Created sequence: random, trialTypes=1, nReps=10, seed=None
+716.3232 	EXP 	New trial (rep=0, index=0): None
+716.3386 	EXP 	feedback_text: autoDraw = False
+716.3386 	EXP 	feedback_text: autoDraw = False
+716.3386 	EXP 	presentation_text: height = 0.1
+716.3386 	EXP 	presentation_text: height = 0.1
+716.3386 	EXP 	presentation_text: height = 0.1
+716.3386 	EXP 	presentation_text: text = 6
+716.3386 	EXP 	fixation: autoDraw = True
+717.3379 	EXP 	fixation: autoDraw = False
+717.3379 	EXP 	presentation_text: autoDraw = True
+718.3219 	EXP 	New trial (rep=1, index=0): None
+718.3378 	EXP 	presentation_text: autoDraw = False
+718.3378 	EXP 	fixation: autoDraw = False
+718.3378 	EXP 	presentation_text: autoDraw = False
+718.3378 	EXP 	presentation_text: height = 0.1
+718.3378 	EXP 	presentation_text: height = 0.1
+718.3378 	EXP 	presentation_text: height = 0.1
+718.3378 	EXP 	presentation_text: text = 3
+718.3378 	EXP 	fixation: autoDraw = True
+719.3213 	EXP 	presentation_text: autoDraw = True
+719.3378 	EXP 	fixation: autoDraw = False
+720.3055 	EXP 	New trial (rep=2, index=0): None
+720.3213 	EXP 	presentation_text: autoDraw = False
+720.3213 	EXP 	fixation: autoDraw = False
+720.3213 	EXP 	presentation_text: autoDraw = False
+720.3213 	EXP 	presentation_text: height = 0.1
+720.3213 	EXP 	presentation_text: height = 0.1
+720.3213 	EXP 	presentation_text: height = 0.1
+720.3213 	EXP 	presentation_text: text = 4
+720.3381 	EXP 	fixation: autoDraw = True
+721.3217 	EXP 	presentation_text: autoDraw = True
+721.3378 	EXP 	fixation: autoDraw = False
+722.3054 	EXP 	New trial (rep=3, index=0): None
+722.3220 	EXP 	presentation_text: autoDraw = False
+722.3220 	EXP 	fixation: autoDraw = False
+722.3220 	EXP 	presentation_text: autoDraw = False
+722.3220 	EXP 	presentation_text: height = 0.1
+722.3220 	EXP 	presentation_text: height = 0.1
+722.3220 	EXP 	presentation_text: height = 0.1
+722.3220 	EXP 	presentation_text: text = 2
+722.3385 	EXP 	fixation: autoDraw = True
+723.3228 	EXP 	presentation_text: autoDraw = True
+723.3393 	EXP 	fixation: autoDraw = False
+724.3058 	EXP 	New trial (rep=4, index=0): None
+724.3222 	EXP 	presentation_text: autoDraw = False
+724.3222 	EXP 	fixation: autoDraw = False
+724.3222 	EXP 	presentation_text: autoDraw = False
+724.3222 	EXP 	presentation_text: height = 0.1
+724.3222 	EXP 	presentation_text: height = 0.1
+724.3222 	EXP 	presentation_text: height = 0.1
+724.3222 	EXP 	presentation_text: text = 7
+724.3222 	EXP 	fixation: autoDraw = True
+725.3222 	EXP 	fixation: autoDraw = False
+725.3395 	EXP 	presentation_text: autoDraw = True
+726.3385 	EXP 	New trial (rep=5, index=0): None
+726.3552 	EXP 	fixation: autoDraw = False
+726.3552 	EXP 	presentation_text: autoDraw = False
+726.3552 	EXP 	presentation_text: height = 0.1
+726.3552 	EXP 	presentation_text: height = 0.1
+726.3552 	EXP 	presentation_text: height = 0.1
+726.3552 	EXP 	presentation_text: text = 8
+726.3552 	EXP 	fixation: autoDraw = True
+727.3226 	EXP 	presentation_text: autoDraw = True
+727.3552 	EXP 	fixation: autoDraw = False
+728.3062 	EXP 	New trial (rep=6, index=0): None
+728.3222 	EXP 	presentation_text: autoDraw = False
+728.3222 	EXP 	fixation: autoDraw = False
+728.3222 	EXP 	presentation_text: autoDraw = False
+728.3222 	EXP 	presentation_text: height = 0.1
+728.3222 	EXP 	presentation_text: height = 0.1
+728.3222 	EXP 	presentation_text: height = 0.1
+728.3222 	EXP 	presentation_text: text = 5
+728.3222 	EXP 	fixation: autoDraw = True
+729.3221 	EXP 	fixation: autoDraw = False
+729.3391 	EXP 	presentation_text: autoDraw = True
+730.3225 	EXP 	New trial (rep=7, index=0): None
+730.3384 	EXP 	presentation_text: autoDraw = False
+730.3384 	EXP 	fixation: autoDraw = False
+730.3384 	EXP 	presentation_text: autoDraw = False
+730.3384 	EXP 	presentation_text: height = 0.1
+730.3384 	EXP 	presentation_text: height = 0.1
+730.3384 	EXP 	presentation_text: height = 0.1
+730.3384 	EXP 	presentation_text: text = 9
+730.3384 	EXP 	fixation: autoDraw = True
+731.3391 	EXP 	fixation: autoDraw = False
+731.3391 	EXP 	presentation_text: autoDraw = True
+732.3225 	EXP 	New trial (rep=8, index=0): None
+732.3383 	EXP 	presentation_text: autoDraw = False
+732.3383 	EXP 	fixation: autoDraw = False
+732.3383 	EXP 	presentation_text: autoDraw = False
+732.3383 	EXP 	presentation_text: height = 0.1
+732.3383 	EXP 	presentation_text: height = 0.1
+732.3383 	EXP 	presentation_text: height = 0.1
+732.3383 	EXP 	presentation_text: text = 1
+732.3383 	EXP 	fixation: autoDraw = True
+733.3218 	EXP 	presentation_text: autoDraw = True
+733.3393 	EXP 	fixation: autoDraw = False
+734.3057 	EXP 	New trial (rep=9, index=0): None
+734.3218 	EXP 	presentation_text: autoDraw = False
+734.3218 	EXP 	fixation: autoDraw = False
+734.3218 	EXP 	presentation_text: autoDraw = False
+734.3218 	EXP 	presentation_text: height = 0.1
+734.3218 	EXP 	presentation_text: height = 0.1
+734.3218 	EXP 	presentation_text: height = 0.1
+734.3218 	EXP 	presentation_text: text = 1
+734.3218 	EXP 	fixation: autoDraw = True
+735.3219 	EXP 	fixation: autoDraw = False
+735.3219 	EXP 	presentation_text: autoDraw = True
+736.3219 	EXP 	presentation_text: autoDraw = False
+736.3219 	EXP 	fixation: autoDraw = False
+736.3219 	EXP 	presentation_text: autoDraw = False
+736.3219 	EXP 	recall_txt: autoDraw = True
+736.3219 	EXP 	textbox: autoDraw = True
+736.3219 	EXP 	cont_button: autoDraw = True
+737.5245 	DATA 	Keypress: 6
+737.8419 	DATA 	Keypress: 3
+738.6236 	DATA 	Keypress: 4
+738.8733 	DATA 	Keypress: 7
+739.2085 	DATA 	Keypress: 2
+739.5401 	DATA 	Keypress: 8
+740.2095 	DATA 	Keypress: 5
+741.0237 	DATA 	Keypress: 9
+741.2576 	DATA 	Keypress: 1
+741.4905 	DATA 	Keypress: 1
+742.3393 	DATA 	Mouse: Left button down, pos=(665,85)
+742.3554 	EXP 	recall_txt: autoDraw = False
+742.3554 	EXP 	textbox: autoDraw = False
+742.3554 	EXP 	cont_button: autoDraw = False
+742.3554 	EXP 	feedback_text: height = 0.04
+742.3554 	EXP 	feedback_text: height = 0.04
+742.3554 	EXP 	feedback_text: height = 0.04
+742.3554 	EXP 	feedback_text: text = 'Incorrect'
+742.3554 	EXP 	feedback_text: autoDraw = True
+742.4404 	DATA 	Mouse:  Left button up, pos=(665,85)
+743.3560 	EXP 	feedback_text: autoDraw = False
+743.3560 	EXP 	feedback_text: autoDraw = False
+743.3560 	EXP 	roundTransition: autoDraw = True
+746.9597 	DATA 	Keypress: return
+746.9724 	EXP 	roundTransition: autoDraw = False
+746.9724 	EXP 	BSGenInsText: autoDraw = True
+769.5486 	EXP 	Imported digitSpanPractice.xlsx as conditions, 2 conditions, 5 params
+769.5489 	EXP 	Created sequence: sequential, trialTypes=2, nReps=1, seed=None
+769.5492 	EXP 	New trial (rep=0, index=0): {'digitSpanForward': 3, 'digits': 342, 'digitsReverse': 24, 'digitSpanReverse': 2, 'digitsReverseCorrAnswer': 42}
+769.5494 	EXP 	Created sequence: sequential, trialTypes=1, nReps=2, seed=None
+769.5495 	EXP 	New trial (rep=0, index=0): None
+769.5536 	DATA 	Keypress: return
+769.5576 	EXP 	BSGenInsText: autoDraw = False
+769.5576 	EXP 	pres_text_practice_2: height = 0.1
+769.5576 	EXP 	pres_text_practice_2: height = 0.1
+769.5576 	EXP 	pres_text_practice_2: height = 0.1
+769.5576 	EXP 	pres_text_practice_2: text = '2'
+769.5576 	EXP 	fixation_3: autoDraw = True
+770.5567 	EXP 	fixation_3: autoDraw = False
+770.5567 	EXP 	pres_text_practice_2: autoDraw = True
+771.5405 	EXP 	New trial (rep=1, index=0): None
+771.5569 	EXP 	pres_text_practice_2: autoDraw = False
+771.5569 	EXP 	fixation_3: autoDraw = False
+771.5569 	EXP 	pres_text_practice_2: autoDraw = False
+771.5569 	EXP 	pres_text_practice_2: height = 0.1
+771.5569 	EXP 	pres_text_practice_2: height = 0.1
+771.5569 	EXP 	pres_text_practice_2: height = 0.1
+771.5569 	EXP 	pres_text_practice_2: text = '4'
+771.5569 	EXP 	fixation_3: autoDraw = True
+772.5567 	EXP 	fixation_3: autoDraw = False
+772.5567 	EXP 	pres_text_practice_2: autoDraw = True
+773.5570 	EXP 	pres_text_practice_2: autoDraw = False
+773.5570 	EXP 	fixation_3: autoDraw = False
+773.5570 	EXP 	pres_text_practice_2: autoDraw = False
+773.5570 	EXP 	recall_txtPractice_2: autoDraw = True
+773.5570 	EXP 	textboxPractice_2: autoDraw = True
+773.5570 	EXP 	cont_buttonPractice_2: autoDraw = True
+774.0421 	DATA 	Keypress: 4
+774.3585 	DATA 	Keypress: 2
+775.3240 	DATA 	Mouse: Left button down, pos=(679,74)
+775.3404 	EXP 	recall_txtPractice_2: autoDraw = False
+775.3404 	EXP 	textboxPractice_2: autoDraw = False
+775.3404 	EXP 	cont_buttonPractice_2: autoDraw = False
+775.3404 	EXP 	feedbac_textPractice_2: height = 0.04
+775.3404 	EXP 	feedbac_textPractice_2: height = 0.04
+775.3404 	EXP 	feedbac_textPractice_2: height = 0.04
+775.3404 	EXP 	feedbac_textPractice_2: text = 'Correct!'
+775.3404 	EXP 	feedbac_textPractice_2: autoDraw = True
+775.4247 	DATA 	Mouse:  Left button up, pos=(679,74)
+776.3256 	EXP 	New trial (rep=0, index=1): {'digitSpanForward': 3, 'digits': 937, 'digitsReverse': 73, 'digitSpanReverse': 2, 'digitsReverseCorrAnswer': 37}
+776.3260 	EXP 	Created sequence: sequential, trialTypes=1, nReps=2, seed=None
+776.3262 	EXP 	New trial (rep=0, index=0): None
+776.3402 	EXP 	feedbac_textPractice_2: autoDraw = False
+776.3402 	EXP 	feedbac_textPractice_2: autoDraw = False
+776.3402 	EXP 	pres_text_practice_2: height = 0.1
+776.3402 	EXP 	pres_text_practice_2: height = 0.1
+776.3402 	EXP 	pres_text_practice_2: height = 0.1
+776.3402 	EXP 	pres_text_practice_2: text = '7'
+776.3402 	EXP 	fixation_3: autoDraw = True
+777.3408 	EXP 	fixation_3: autoDraw = False
+777.3408 	EXP 	pres_text_practice_2: autoDraw = True
+778.3245 	EXP 	New trial (rep=1, index=0): None
+778.3403 	EXP 	pres_text_practice_2: autoDraw = False
+778.3403 	EXP 	fixation_3: autoDraw = False
+778.3403 	EXP 	pres_text_practice_2: autoDraw = False
+778.3403 	EXP 	pres_text_practice_2: height = 0.1
+778.3403 	EXP 	pres_text_practice_2: height = 0.1
+778.3403 	EXP 	pres_text_practice_2: height = 0.1
+778.3403 	EXP 	pres_text_practice_2: text = '3'
+778.3403 	EXP 	fixation_3: autoDraw = True
+779.3403 	EXP 	fixation_3: autoDraw = False
+779.3403 	EXP 	pres_text_practice_2: autoDraw = True
+780.3404 	EXP 	pres_text_practice_2: autoDraw = False
+780.3404 	EXP 	fixation_3: autoDraw = False
+780.3404 	EXP 	pres_text_practice_2: autoDraw = False
+780.3404 	EXP 	recall_txtPractice_2: autoDraw = True
+780.3404 	EXP 	textboxPractice_2: autoDraw = True
+780.3404 	EXP 	cont_buttonPractice_2: autoDraw = True
+781.5615 	DATA 	Keypress: 3
+782.1419 	DATA 	Keypress: 7
+783.0410 	DATA 	Mouse: Left button down, pos=(680,81)
+783.0572 	EXP 	recall_txtPractice_2: autoDraw = False
+783.0572 	EXP 	textboxPractice_2: autoDraw = False
+783.0572 	EXP 	cont_buttonPractice_2: autoDraw = False
+783.0572 	EXP 	feedbac_textPractice_2: text = 'Correct!'
+783.0572 	EXP 	feedbac_textPractice_2: autoDraw = True
+783.1586 	DATA 	Mouse:  Left button up, pos=(680,81)
+784.0572 	EXP 	feedbac_textPractice_2: autoDraw = False
+784.0572 	EXP 	feedbac_textPractice_2: autoDraw = False
+784.0572 	EXP 	praccompleteBS: autoDraw = True
+785.7480 	EXP 	Imported digitSpanTrialNumber.xlsx as conditions, 14 conditions, 1 params
+785.7486 	EXP 	Created sequence: sequential, trialTypes=14, nReps=1, seed=None
+785.7489 	EXP 	New trial (rep=0, index=0): {'trialNumber': 1}
+785.7495 	EXP 	Created sequence: random, trialTypes=1, nReps=2, seed=None
+785.7496 	EXP 	New trial (rep=0, index=0): None
+785.7540 	DATA 	Keypress: return
+785.7585 	EXP 	praccompleteBS: autoDraw = False
+785.7585 	EXP 	presentation_textBS: height = 0.1
+785.7585 	EXP 	presentation_textBS: height = 0.1
+785.7585 	EXP 	presentation_textBS: height = 0.1
+785.7585 	EXP 	presentation_textBS: text = 8
+785.7585 	EXP 	fixationBS: autoDraw = True
+786.7571 	EXP 	presentation_textBS: autoDraw = True
+786.7739 	EXP 	fixationBS: autoDraw = False
+787.7423 	EXP 	New trial (rep=1, index=0): None
+787.7583 	EXP 	presentation_textBS: autoDraw = False
+787.7583 	EXP 	fixationBS: autoDraw = False
+787.7583 	EXP 	presentation_textBS: autoDraw = False
+787.7583 	EXP 	presentation_textBS: height = 0.1
+787.7583 	EXP 	presentation_textBS: height = 0.1
+787.7583 	EXP 	presentation_textBS: height = 0.1
+787.7583 	EXP 	presentation_textBS: text = 6
+787.7583 	EXP 	fixationBS: autoDraw = True
+788.7575 	EXP 	fixationBS: autoDraw = False
+788.7575 	EXP 	presentation_textBS: autoDraw = True
+789.7578 	EXP 	presentation_textBS: autoDraw = False
+789.7578 	EXP 	fixationBS: autoDraw = False
+789.7578 	EXP 	presentation_textBS: autoDraw = False
+789.7578 	EXP 	recall_txtBS: autoDraw = True
+789.7578 	EXP 	textboxBS: autoDraw = True
+789.7578 	EXP 	cont_buttonBS: autoDraw = True
+790.3089 	DATA 	Keypress: 6
+790.4589 	DATA 	Keypress: 8
+791.2744 	DATA 	Mouse: Left button down, pos=(726,78)
+791.2910 	EXP 	recall_txtBS: autoDraw = False
+791.2910 	EXP 	textboxBS: autoDraw = False
+791.2910 	EXP 	cont_buttonBS: autoDraw = False
+791.2910 	EXP 	feedback_textBS: height = 0.04
+791.2910 	EXP 	feedback_textBS: height = 0.04
+791.2910 	EXP 	feedback_textBS: height = 0.04
+791.2910 	EXP 	feedback_textBS: text = 'Correct!'
+791.2910 	EXP 	feedback_textBS: autoDraw = True
+791.4084 	DATA 	Mouse:  Left button up, pos=(726,78)
+792.2750 	EXP 	New trial (rep=0, index=1): {'trialNumber': 2}
+792.2758 	EXP 	Created sequence: random, trialTypes=1, nReps=3, seed=None
+792.2760 	EXP 	New trial (rep=0, index=0): None
+792.2909 	EXP 	feedback_textBS: autoDraw = False
+792.2909 	EXP 	feedback_textBS: autoDraw = False
+792.2909 	EXP 	presentation_textBS: height = 0.1
+792.2909 	EXP 	presentation_textBS: height = 0.1
+792.2909 	EXP 	presentation_textBS: height = 0.1
+792.2909 	EXP 	presentation_textBS: text = 1
+792.2909 	EXP 	fixationBS: autoDraw = True
+793.2909 	EXP 	fixationBS: autoDraw = False
+793.2909 	EXP 	presentation_textBS: autoDraw = True
+794.2761 	EXP 	New trial (rep=1, index=0): None
+794.2916 	EXP 	presentation_textBS: autoDraw = False
+794.2916 	EXP 	fixationBS: autoDraw = False
+794.2916 	EXP 	presentation_textBS: autoDraw = False
+794.2916 	EXP 	presentation_textBS: height = 0.1
+794.2916 	EXP 	presentation_textBS: height = 0.1
+794.2916 	EXP 	presentation_textBS: height = 0.1
+794.2916 	EXP 	presentation_textBS: text = 4
+794.2916 	EXP 	fixationBS: autoDraw = True
+795.2910 	EXP 	fixationBS: autoDraw = False
+795.2910 	EXP 	presentation_textBS: autoDraw = True
+796.2750 	EXP 	New trial (rep=2, index=0): None
+796.2910 	EXP 	presentation_textBS: autoDraw = False
+796.2910 	EXP 	fixationBS: autoDraw = False
+796.2910 	EXP 	presentation_textBS: autoDraw = False
+796.2910 	EXP 	presentation_textBS: height = 0.1
+796.2910 	EXP 	presentation_textBS: height = 0.1
+796.2910 	EXP 	presentation_textBS: height = 0.1
+796.2910 	EXP 	presentation_textBS: text = 6
+796.2910 	EXP 	fixationBS: autoDraw = True
+797.2744 	EXP 	presentation_textBS: autoDraw = True
+797.2915 	EXP 	fixationBS: autoDraw = False
+798.2742 	EXP 	presentation_textBS: autoDraw = False
+798.2742 	EXP 	fixationBS: autoDraw = False
+798.2742 	EXP 	presentation_textBS: autoDraw = False
+798.2742 	EXP 	recall_txtBS: autoDraw = True
+798.2742 	EXP 	textboxBS: autoDraw = True
+798.2742 	EXP 	cont_buttonBS: autoDraw = True
+798.5422 	DATA 	Keypress: 6
+798.8090 	DATA 	Keypress: 4
+798.9595 	DATA 	Keypress: 1
+799.8584 	DATA 	Mouse: Left button down, pos=(700,67)
+799.8745 	EXP 	recall_txtBS: autoDraw = False
+799.8745 	EXP 	textboxBS: autoDraw = False
+799.8745 	EXP 	cont_buttonBS: autoDraw = False
+799.8745 	EXP 	feedback_textBS: text = 'Correct!'
+799.8745 	EXP 	feedback_textBS: autoDraw = True
+800.0094 	DATA 	Mouse:  Left button up, pos=(700,67)
+800.8592 	EXP 	New trial (rep=0, index=2): {'trialNumber': 3}
+800.8599 	EXP 	Created sequence: random, trialTypes=1, nReps=4, seed=None
+800.8601 	EXP 	New trial (rep=0, index=0): None
+800.8750 	EXP 	feedback_textBS: autoDraw = False
+800.8750 	EXP 	feedback_textBS: autoDraw = False
+800.8750 	EXP 	presentation_textBS: height = 0.1
+800.8750 	EXP 	presentation_textBS: height = 0.1
+800.8750 	EXP 	presentation_textBS: height = 0.1
+800.8750 	EXP 	presentation_textBS: text = 2
+800.8750 	EXP 	fixationBS: autoDraw = True
+801.8744 	EXP 	fixationBS: autoDraw = False
+801.8744 	EXP 	presentation_textBS: autoDraw = True
+802.8583 	EXP 	New trial (rep=1, index=0): None
+802.8752 	EXP 	presentation_textBS: autoDraw = False
+802.8752 	EXP 	fixationBS: autoDraw = False
+802.8752 	EXP 	presentation_textBS: autoDraw = False
+802.8752 	EXP 	presentation_textBS: height = 0.1
+802.8752 	EXP 	presentation_textBS: height = 0.1
+802.8752 	EXP 	presentation_textBS: height = 0.1
+802.8752 	EXP 	presentation_textBS: text = 5
+802.8752 	EXP 	fixationBS: autoDraw = True
+803.8748 	EXP 	fixationBS: autoDraw = False
+803.8748 	EXP 	presentation_textBS: autoDraw = True
+804.8587 	EXP 	New trial (rep=2, index=0): None
+804.8748 	EXP 	presentation_textBS: autoDraw = False
+804.8748 	EXP 	fixationBS: autoDraw = False
+804.8748 	EXP 	presentation_textBS: autoDraw = False
+804.8748 	EXP 	presentation_textBS: height = 0.1
+804.8748 	EXP 	presentation_textBS: height = 0.1
+804.8748 	EXP 	presentation_textBS: height = 0.1
+804.8748 	EXP 	presentation_textBS: text = 7
+804.8748 	EXP 	fixationBS: autoDraw = True
+805.8747 	EXP 	fixationBS: autoDraw = False
+805.8747 	EXP 	presentation_textBS: autoDraw = True
+806.8588 	EXP 	New trial (rep=3, index=0): None
+806.8748 	EXP 	presentation_textBS: autoDraw = False
+806.8748 	EXP 	fixationBS: autoDraw = False
+806.8748 	EXP 	presentation_textBS: autoDraw = False
+806.8748 	EXP 	presentation_textBS: height = 0.1
+806.8748 	EXP 	presentation_textBS: height = 0.1
+806.8748 	EXP 	presentation_textBS: height = 0.1
+806.8748 	EXP 	presentation_textBS: text = 8
+806.8748 	EXP 	fixationBS: autoDraw = True
+807.8752 	EXP 	fixationBS: autoDraw = False
+807.8752 	EXP 	presentation_textBS: autoDraw = True
+808.8752 	EXP 	presentation_textBS: autoDraw = False
+808.8752 	EXP 	fixationBS: autoDraw = False
+808.8752 	EXP 	presentation_textBS: autoDraw = False
+808.8752 	EXP 	recall_txtBS: autoDraw = True
+808.8752 	EXP 	textboxBS: autoDraw = True
+808.8752 	EXP 	cont_buttonBS: autoDraw = True
+810.5265 	DATA 	Keypress: 8
+810.7432 	DATA 	Keypress: 7
+811.0265 	DATA 	Keypress: 5
+811.2096 	DATA 	Keypress: 2
+812.6254 	DATA 	Mouse: Left button down, pos=(682,80)
+812.6417 	EXP 	recall_txtBS: autoDraw = False
+812.6417 	EXP 	textboxBS: autoDraw = False
+812.6417 	EXP 	cont_buttonBS: autoDraw = False
+812.6417 	EXP 	feedback_textBS: text = 'Correct!'
+812.6417 	EXP 	feedback_textBS: autoDraw = True
+812.7599 	DATA 	Mouse:  Left button up, pos=(682,80)
+813.6255 	EXP 	New trial (rep=0, index=3): {'trialNumber': 4}
+813.6263 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+813.6264 	EXP 	New trial (rep=0, index=0): None
+813.6416 	EXP 	feedback_textBS: autoDraw = False
+813.6416 	EXP 	feedback_textBS: autoDraw = False
+813.6416 	EXP 	presentation_textBS: height = 0.1
+813.6416 	EXP 	presentation_textBS: height = 0.1
+813.6416 	EXP 	presentation_textBS: height = 0.1
+813.6416 	EXP 	presentation_textBS: text = 4
+813.6416 	EXP 	fixationBS: autoDraw = True
+814.6252 	EXP 	presentation_textBS: autoDraw = True
+814.6417 	EXP 	fixationBS: autoDraw = False
+815.6098 	EXP 	New trial (rep=1, index=0): None
+815.6256 	EXP 	presentation_textBS: autoDraw = False
+815.6256 	EXP 	fixationBS: autoDraw = False
+815.6256 	EXP 	presentation_textBS: autoDraw = False
+815.6256 	EXP 	presentation_textBS: height = 0.1
+815.6256 	EXP 	presentation_textBS: height = 0.1
+815.6256 	EXP 	presentation_textBS: height = 0.1
+815.6256 	EXP 	presentation_textBS: text = 7
+815.6256 	EXP 	fixationBS: autoDraw = True
+816.6260 	EXP 	fixationBS: autoDraw = False
+816.6260 	EXP 	presentation_textBS: autoDraw = True
+817.6094 	EXP 	New trial (rep=2, index=0): None
+817.6253 	EXP 	presentation_textBS: autoDraw = False
+817.6253 	EXP 	fixationBS: autoDraw = False
+817.6253 	EXP 	presentation_textBS: autoDraw = False
+817.6253 	EXP 	presentation_textBS: height = 0.1
+817.6253 	EXP 	presentation_textBS: height = 0.1
+817.6253 	EXP 	presentation_textBS: height = 0.1
+817.6253 	EXP 	presentation_textBS: text = 8
+817.6253 	EXP 	fixationBS: autoDraw = True
+818.6250 	EXP 	fixationBS: autoDraw = False
+818.6250 	EXP 	presentation_textBS: autoDraw = True
+819.6094 	EXP 	New trial (rep=3, index=0): None
+819.6252 	EXP 	presentation_textBS: autoDraw = False
+819.6252 	EXP 	fixationBS: autoDraw = False
+819.6252 	EXP 	presentation_textBS: autoDraw = False
+819.6252 	EXP 	presentation_textBS: height = 0.1
+819.6252 	EXP 	presentation_textBS: height = 0.1
+819.6252 	EXP 	presentation_textBS: height = 0.1
+819.6252 	EXP 	presentation_textBS: text = 5
+819.6252 	EXP 	fixationBS: autoDraw = True
+820.6260 	EXP 	fixationBS: autoDraw = False
+820.6260 	EXP 	presentation_textBS: autoDraw = True
+821.6099 	EXP 	New trial (rep=4, index=0): None
+821.6253 	EXP 	presentation_textBS: autoDraw = False
+821.6253 	EXP 	fixationBS: autoDraw = False
+821.6253 	EXP 	presentation_textBS: autoDraw = False
+821.6253 	EXP 	presentation_textBS: height = 0.1
+821.6253 	EXP 	presentation_textBS: height = 0.1
+821.6253 	EXP 	presentation_textBS: height = 0.1
+821.6253 	EXP 	presentation_textBS: text = 9
+821.6253 	EXP 	fixationBS: autoDraw = True
+822.6253 	EXP 	fixationBS: autoDraw = False
+822.6253 	EXP 	presentation_textBS: autoDraw = True
+823.6255 	EXP 	presentation_textBS: autoDraw = False
+823.6255 	EXP 	fixationBS: autoDraw = False
+823.6255 	EXP 	presentation_textBS: autoDraw = False
+823.6255 	EXP 	recall_txtBS: autoDraw = True
+823.6255 	EXP 	textboxBS: autoDraw = True
+823.6255 	EXP 	cont_buttonBS: autoDraw = True
+824.5101 	DATA 	Keypress: 9
+825.0439 	DATA 	Keypress: 5
+825.4604 	DATA 	Keypress: 8
+825.6605 	DATA 	Keypress: 7
+826.2103 	DATA 	Keypress: 4
+827.0761 	DATA 	Mouse: Left button down, pos=(652,72)
+827.0922 	EXP 	recall_txtBS: autoDraw = False
+827.0922 	EXP 	textboxBS: autoDraw = False
+827.0922 	EXP 	cont_buttonBS: autoDraw = False
+827.0922 	EXP 	feedback_textBS: text = 'Correct!'
+827.0922 	EXP 	feedback_textBS: autoDraw = True
+827.2102 	DATA 	Mouse:  Left button up, pos=(652,72)
+828.0773 	EXP 	New trial (rep=0, index=4): {'trialNumber': 5}
+828.0781 	EXP 	Created sequence: random, trialTypes=1, nReps=6, seed=None
+828.0783 	EXP 	New trial (rep=0, index=0): None
+828.0922 	EXP 	feedback_textBS: autoDraw = False
+828.0922 	EXP 	feedback_textBS: autoDraw = False
+828.0922 	EXP 	presentation_textBS: height = 0.1
+828.0922 	EXP 	presentation_textBS: height = 0.1
+828.0922 	EXP 	presentation_textBS: height = 0.1
+828.0922 	EXP 	presentation_textBS: text = 6
+828.0922 	EXP 	fixationBS: autoDraw = True
+829.0924 	EXP 	fixationBS: autoDraw = False
+829.0924 	EXP 	presentation_textBS: autoDraw = True
+830.0775 	EXP 	New trial (rep=1, index=0): None
+830.0924 	EXP 	presentation_textBS: autoDraw = False
+830.0924 	EXP 	fixationBS: autoDraw = False
+830.0924 	EXP 	presentation_textBS: autoDraw = False
+830.0924 	EXP 	presentation_textBS: height = 0.1
+830.0924 	EXP 	presentation_textBS: height = 0.1
+830.0924 	EXP 	presentation_textBS: height = 0.1
+830.0924 	EXP 	presentation_textBS: text = 7
+830.0924 	EXP 	fixationBS: autoDraw = True
+831.0923 	EXP 	fixationBS: autoDraw = False
+831.0923 	EXP 	presentation_textBS: autoDraw = True
+832.0768 	EXP 	New trial (rep=2, index=0): None
+832.0929 	EXP 	presentation_textBS: autoDraw = False
+832.0929 	EXP 	fixationBS: autoDraw = False
+832.0929 	EXP 	presentation_textBS: autoDraw = False
+832.0929 	EXP 	presentation_textBS: height = 0.1
+832.0929 	EXP 	presentation_textBS: height = 0.1
+832.0929 	EXP 	presentation_textBS: height = 0.1
+832.0929 	EXP 	presentation_textBS: text = 5
+832.0929 	EXP 	fixationBS: autoDraw = True
+833.0925 	EXP 	fixationBS: autoDraw = False
+833.0925 	EXP 	presentation_textBS: autoDraw = True
+834.0780 	EXP 	New trial (rep=3, index=0): None
+834.0936 	EXP 	presentation_textBS: autoDraw = False
+834.0936 	EXP 	fixationBS: autoDraw = False
+834.0936 	EXP 	presentation_textBS: autoDraw = False
+834.0936 	EXP 	presentation_textBS: height = 0.1
+834.0936 	EXP 	presentation_textBS: height = 0.1
+834.0936 	EXP 	presentation_textBS: height = 0.1
+834.0936 	EXP 	presentation_textBS: text = 4
+834.0936 	EXP 	fixationBS: autoDraw = True
+835.0760 	EXP 	presentation_textBS: autoDraw = True
+835.0933 	EXP 	fixationBS: autoDraw = False
+836.0599 	EXP 	New trial (rep=4, index=0): None
+836.0758 	EXP 	presentation_textBS: autoDraw = False
+836.0758 	EXP 	fixationBS: autoDraw = False
+836.0758 	EXP 	presentation_textBS: autoDraw = False
+836.0758 	EXP 	presentation_textBS: height = 0.1
+836.0758 	EXP 	presentation_textBS: height = 0.1
+836.0758 	EXP 	presentation_textBS: height = 0.1
+836.0758 	EXP 	presentation_textBS: text = 8
+836.0926 	EXP 	fixationBS: autoDraw = True
+837.0926 	EXP 	fixationBS: autoDraw = False
+837.0926 	EXP 	presentation_textBS: autoDraw = True
+838.0775 	EXP 	New trial (rep=5, index=0): None
+838.0935 	EXP 	presentation_textBS: autoDraw = False
+838.0935 	EXP 	fixationBS: autoDraw = False
+838.0935 	EXP 	presentation_textBS: autoDraw = False
+838.0935 	EXP 	presentation_textBS: height = 0.1
+838.0935 	EXP 	presentation_textBS: height = 0.1
+838.0935 	EXP 	presentation_textBS: height = 0.1
+838.0935 	EXP 	presentation_textBS: text = 2
+838.0935 	EXP 	fixationBS: autoDraw = True
+839.0934 	EXP 	fixationBS: autoDraw = False
+839.0934 	EXP 	presentation_textBS: autoDraw = True
+840.0930 	EXP 	presentation_textBS: autoDraw = False
+840.0930 	EXP 	fixationBS: autoDraw = False
+840.0930 	EXP 	presentation_textBS: autoDraw = False
+840.0930 	EXP 	recall_txtBS: autoDraw = True
+840.0930 	EXP 	textboxBS: autoDraw = True
+840.0930 	EXP 	cont_buttonBS: autoDraw = True
+842.1943 	DATA 	Keypress: 2
+842.4288 	DATA 	Keypress: 8
+843.2798 	DATA 	Keypress: 4
+843.7785 	DATA 	Keypress: 5
+843.9776 	DATA 	Keypress: 7
+844.6113 	DATA 	Keypress: 6
+845.6598 	DATA 	Mouse: Left button down, pos=(676,91)
+845.6764 	EXP 	recall_txtBS: autoDraw = False
+845.6764 	EXP 	textboxBS: autoDraw = False
+845.6764 	EXP 	cont_buttonBS: autoDraw = False
+845.6764 	EXP 	feedback_textBS: text = 'Correct!'
+845.6764 	EXP 	feedback_textBS: autoDraw = True
+845.7610 	DATA 	Mouse:  Left button up, pos=(676,91)
+846.6609 	EXP 	New trial (rep=0, index=5): {'trialNumber': 6}
+846.6616 	EXP 	Created sequence: random, trialTypes=1, nReps=7, seed=None
+846.6619 	EXP 	New trial (rep=0, index=0): None
+846.6765 	EXP 	feedback_textBS: autoDraw = False
+846.6765 	EXP 	feedback_textBS: autoDraw = False
+846.6765 	EXP 	presentation_textBS: height = 0.1
+846.6765 	EXP 	presentation_textBS: height = 0.1
+846.6765 	EXP 	presentation_textBS: height = 0.1
+846.6765 	EXP 	presentation_textBS: text = 3
+846.6765 	EXP 	fixationBS: autoDraw = True
+847.6763 	EXP 	fixationBS: autoDraw = False
+847.6763 	EXP 	presentation_textBS: autoDraw = True
+848.6607 	EXP 	New trial (rep=1, index=0): None
+848.6765 	EXP 	presentation_textBS: autoDraw = False
+848.6765 	EXP 	fixationBS: autoDraw = False
+848.6765 	EXP 	presentation_textBS: autoDraw = False
+848.6765 	EXP 	presentation_textBS: height = 0.1
+848.6765 	EXP 	presentation_textBS: height = 0.1
+848.6765 	EXP 	presentation_textBS: height = 0.1
+848.6765 	EXP 	presentation_textBS: text = 7
+848.6765 	EXP 	fixationBS: autoDraw = True
+849.6779 	EXP 	fixationBS: autoDraw = False
+849.6779 	EXP 	presentation_textBS: autoDraw = True
+850.6768 	EXP 	New trial (rep=2, index=0): None
+850.6933 	EXP 	fixationBS: autoDraw = False
+850.6933 	EXP 	presentation_textBS: autoDraw = False
+850.6933 	EXP 	presentation_textBS: height = 0.1
+850.6933 	EXP 	presentation_textBS: height = 0.1
+850.6933 	EXP 	presentation_textBS: height = 0.1
+850.6933 	EXP 	presentation_textBS: text = 2
+850.6933 	EXP 	fixationBS: autoDraw = True
+851.6767 	EXP 	presentation_textBS: autoDraw = True
+851.6935 	EXP 	fixationBS: autoDraw = False
+852.6615 	EXP 	New trial (rep=3, index=0): None
+852.6774 	EXP 	presentation_textBS: autoDraw = False
+852.6774 	EXP 	fixationBS: autoDraw = False
+852.6774 	EXP 	presentation_textBS: autoDraw = False
+852.6774 	EXP 	presentation_textBS: height = 0.1
+852.6774 	EXP 	presentation_textBS: height = 0.1
+852.6774 	EXP 	presentation_textBS: height = 0.1
+852.6774 	EXP 	presentation_textBS: text = 6
+852.6774 	EXP 	fixationBS: autoDraw = True
+853.6767 	EXP 	fixationBS: autoDraw = False
+853.6767 	EXP 	presentation_textBS: autoDraw = True
+854.6609 	EXP 	New trial (rep=4, index=0): None
+854.6773 	EXP 	presentation_textBS: autoDraw = False
+854.6773 	EXP 	fixationBS: autoDraw = False
+854.6773 	EXP 	presentation_textBS: autoDraw = False
+854.6773 	EXP 	presentation_textBS: height = 0.1
+854.6773 	EXP 	presentation_textBS: height = 0.1
+854.6773 	EXP 	presentation_textBS: height = 0.1
+854.6773 	EXP 	presentation_textBS: text = 1
+854.6773 	EXP 	fixationBS: autoDraw = True
+855.6781 	EXP 	fixationBS: autoDraw = False
+855.6781 	EXP 	presentation_textBS: autoDraw = True
+856.6614 	EXP 	New trial (rep=5, index=0): None
+856.6779 	EXP 	presentation_textBS: autoDraw = False
+856.6779 	EXP 	fixationBS: autoDraw = False
+856.6779 	EXP 	presentation_textBS: autoDraw = False
+856.6779 	EXP 	presentation_textBS: height = 0.1
+856.6779 	EXP 	presentation_textBS: height = 0.1
+856.6779 	EXP 	presentation_textBS: height = 0.1
+856.6779 	EXP 	presentation_textBS: text = 4
+856.6779 	EXP 	fixationBS: autoDraw = True
+857.6601 	EXP 	presentation_textBS: autoDraw = True
+857.6934 	EXP 	fixationBS: autoDraw = False
+858.6455 	EXP 	New trial (rep=6, index=0): None
+858.6611 	EXP 	presentation_textBS: autoDraw = False
+858.6611 	EXP 	fixationBS: autoDraw = False
+858.6611 	EXP 	presentation_textBS: autoDraw = False
+858.6611 	EXP 	presentation_textBS: height = 0.1
+858.6611 	EXP 	presentation_textBS: height = 0.1
+858.6611 	EXP 	presentation_textBS: height = 0.1
+858.6611 	EXP 	presentation_textBS: text = 5
+858.6611 	EXP 	fixationBS: autoDraw = True
+859.6604 	EXP 	fixationBS: autoDraw = False
+859.6604 	EXP 	presentation_textBS: autoDraw = True
+860.6606 	EXP 	presentation_textBS: autoDraw = False
+860.6606 	EXP 	fixationBS: autoDraw = False
+860.6606 	EXP 	presentation_textBS: autoDraw = False
+860.6606 	EXP 	recall_txtBS: autoDraw = True
+860.6606 	EXP 	textboxBS: autoDraw = True
+860.6606 	EXP 	cont_buttonBS: autoDraw = True
+862.6788 	DATA 	Keypress: 5
+863.0121 	DATA 	Keypress: 4
+863.3788 	DATA 	Keypress: 1
+863.5951 	DATA 	Keypress: 2
+864.2638 	DATA 	Keypress: 6
+864.4621 	DATA 	Keypress: 7
+864.7788 	DATA 	Keypress: 3
+865.7274 	DATA 	Mouse: Left button down, pos=(657,98)
+865.7439 	EXP 	recall_txtBS: autoDraw = False
+865.7439 	EXP 	textboxBS: autoDraw = False
+865.7439 	EXP 	cont_buttonBS: autoDraw = False
+865.7439 	EXP 	feedback_textBS: height = 0.04
+865.7439 	EXP 	feedback_textBS: height = 0.04
+865.7439 	EXP 	feedback_textBS: height = 0.04
+865.7439 	EXP 	feedback_textBS: text = 'Incorrect'
+865.7439 	EXP 	feedback_textBS: autoDraw = True
+865.8455 	DATA 	Mouse:  Left button up, pos=(657,98)
+866.7281 	EXP 	New trial (rep=0, index=6): {'trialNumber': 7}
+866.7287 	EXP 	Created sequence: random, trialTypes=1, nReps=7, seed=None
+866.7289 	EXP 	New trial (rep=0, index=0): None
+866.7451 	EXP 	feedback_textBS: autoDraw = False
+866.7451 	EXP 	feedback_textBS: autoDraw = False
+866.7451 	EXP 	presentation_textBS: height = 0.1
+866.7451 	EXP 	presentation_textBS: height = 0.1
+866.7451 	EXP 	presentation_textBS: height = 0.1
+866.7451 	EXP 	presentation_textBS: text = 6
+866.7451 	EXP 	fixationBS: autoDraw = True
+867.7275 	EXP 	presentation_textBS: autoDraw = True
+867.7442 	EXP 	fixationBS: autoDraw = False
+868.7117 	EXP 	New trial (rep=1, index=0): None
+868.7282 	EXP 	presentation_textBS: autoDraw = False
+868.7282 	EXP 	fixationBS: autoDraw = False
+868.7282 	EXP 	presentation_textBS: autoDraw = False
+868.7282 	EXP 	presentation_textBS: height = 0.1
+868.7282 	EXP 	presentation_textBS: height = 0.1
+868.7282 	EXP 	presentation_textBS: height = 0.1
+868.7282 	EXP 	presentation_textBS: text = 5
+868.7282 	EXP 	fixationBS: autoDraw = True
+869.7273 	EXP 	fixationBS: autoDraw = False
+869.7273 	EXP 	presentation_textBS: autoDraw = True
+870.7123 	EXP 	New trial (rep=2, index=0): None
+870.7283 	EXP 	presentation_textBS: autoDraw = False
+870.7283 	EXP 	fixationBS: autoDraw = False
+870.7283 	EXP 	presentation_textBS: autoDraw = False
+870.7283 	EXP 	presentation_textBS: height = 0.1
+870.7283 	EXP 	presentation_textBS: height = 0.1
+870.7283 	EXP 	presentation_textBS: height = 0.1
+870.7283 	EXP 	presentation_textBS: text = 7
+870.7283 	EXP 	fixationBS: autoDraw = True
+871.7280 	EXP 	fixationBS: autoDraw = False
+871.7280 	EXP 	presentation_textBS: autoDraw = True
+872.7115 	EXP 	New trial (rep=3, index=0): None
+872.7275 	EXP 	presentation_textBS: autoDraw = False
+872.7275 	EXP 	fixationBS: autoDraw = False
+872.7275 	EXP 	presentation_textBS: autoDraw = False
+872.7275 	EXP 	presentation_textBS: height = 0.1
+872.7275 	EXP 	presentation_textBS: height = 0.1
+872.7275 	EXP 	presentation_textBS: height = 0.1
+872.7275 	EXP 	presentation_textBS: text = 8
+872.7275 	EXP 	fixationBS: autoDraw = True
+873.7279 	EXP 	fixationBS: autoDraw = False
+873.7279 	EXP 	presentation_textBS: autoDraw = True
+874.7114 	EXP 	New trial (rep=4, index=0): None
+874.7276 	EXP 	presentation_textBS: autoDraw = False
+874.7276 	EXP 	fixationBS: autoDraw = False
+874.7276 	EXP 	presentation_textBS: autoDraw = False
+874.7276 	EXP 	presentation_textBS: height = 0.1
+874.7276 	EXP 	presentation_textBS: height = 0.1
+874.7276 	EXP 	presentation_textBS: height = 0.1
+874.7276 	EXP 	presentation_textBS: text = 2
+874.7442 	EXP 	fixationBS: autoDraw = True
+875.7285 	EXP 	presentation_textBS: autoDraw = True
+875.7442 	EXP 	fixationBS: autoDraw = False
+876.7131 	EXP 	New trial (rep=5, index=0): None
+876.7290 	EXP 	presentation_textBS: autoDraw = False
+876.7290 	EXP 	fixationBS: autoDraw = False
+876.7290 	EXP 	presentation_textBS: autoDraw = False
+876.7290 	EXP 	presentation_textBS: height = 0.1
+876.7290 	EXP 	presentation_textBS: height = 0.1
+876.7290 	EXP 	presentation_textBS: height = 0.1
+876.7290 	EXP 	presentation_textBS: text = 9
+876.7290 	EXP 	fixationBS: autoDraw = True
+877.7286 	EXP 	presentation_textBS: autoDraw = True
+877.7449 	EXP 	fixationBS: autoDraw = False
+878.7120 	EXP 	New trial (rep=6, index=0): None
+878.7278 	EXP 	presentation_textBS: autoDraw = False
+878.7278 	EXP 	fixationBS: autoDraw = False
+878.7278 	EXP 	presentation_textBS: autoDraw = False
+878.7278 	EXP 	presentation_textBS: height = 0.1
+878.7278 	EXP 	presentation_textBS: height = 0.1
+878.7278 	EXP 	presentation_textBS: height = 0.1
+878.7278 	EXP 	presentation_textBS: text = 3
+878.7278 	EXP 	fixationBS: autoDraw = True
+879.7282 	EXP 	fixationBS: autoDraw = False
+879.7282 	EXP 	presentation_textBS: autoDraw = True
+880.7282 	EXP 	presentation_textBS: autoDraw = False
+880.7282 	EXP 	fixationBS: autoDraw = False
+880.7282 	EXP 	presentation_textBS: autoDraw = False
+880.7282 	EXP 	recall_txtBS: autoDraw = True
+880.7282 	EXP 	textboxBS: autoDraw = True
+880.7282 	EXP 	cont_buttonBS: autoDraw = True
+883.1797 	DATA 	Keypress: 3
+883.3626 	DATA 	Keypress: 9
+883.6124 	DATA 	Keypress: 2
+883.8461 	DATA 	Keypress: 8
+884.2148 	DATA 	Keypress: 7
+884.4794 	DATA 	Keypress: 5
+884.6632 	DATA 	Keypress: 6
+885.9121 	DATA 	Mouse: Left button down, pos=(768,90)
+885.9277 	EXP 	recall_txtBS: autoDraw = False
+885.9277 	EXP 	textboxBS: autoDraw = False
+885.9277 	EXP 	cont_buttonBS: autoDraw = False
+885.9277 	EXP 	feedback_textBS: height = 0.04
+885.9277 	EXP 	feedback_textBS: height = 0.04
+885.9277 	EXP 	feedback_textBS: height = 0.04
+885.9277 	EXP 	feedback_textBS: text = 'Correct!'
+885.9277 	EXP 	feedback_textBS: autoDraw = True
+886.0124 	DATA 	Mouse:  Left button up, pos=(768,91)
+886.9121 	EXP 	New trial (rep=0, index=7): {'trialNumber': 8}
+886.9129 	EXP 	Created sequence: random, trialTypes=1, nReps=8, seed=None
+886.9131 	EXP 	New trial (rep=0, index=0): None
+886.9280 	EXP 	feedback_textBS: autoDraw = False
+886.9280 	EXP 	feedback_textBS: autoDraw = False
+886.9280 	EXP 	presentation_textBS: height = 0.1
+886.9280 	EXP 	presentation_textBS: height = 0.1
+886.9280 	EXP 	presentation_textBS: height = 0.1
+886.9280 	EXP 	presentation_textBS: text = 5
+886.9280 	EXP 	fixationBS: autoDraw = True
+887.9282 	EXP 	fixationBS: autoDraw = False
+887.9282 	EXP 	presentation_textBS: autoDraw = True
+888.9124 	EXP 	New trial (rep=1, index=0): None
+888.9281 	EXP 	presentation_textBS: autoDraw = False
+888.9281 	EXP 	fixationBS: autoDraw = False
+888.9281 	EXP 	presentation_textBS: autoDraw = False
+888.9281 	EXP 	presentation_textBS: height = 0.1
+888.9281 	EXP 	presentation_textBS: height = 0.1
+888.9281 	EXP 	presentation_textBS: height = 0.1
+888.9281 	EXP 	presentation_textBS: text = 7
+888.9281 	EXP 	fixationBS: autoDraw = True
+889.9113 	EXP 	presentation_textBS: autoDraw = True
+889.9281 	EXP 	fixationBS: autoDraw = False
+890.8956 	EXP 	New trial (rep=2, index=0): None
+890.9121 	EXP 	presentation_textBS: autoDraw = False
+890.9121 	EXP 	fixationBS: autoDraw = False
+890.9121 	EXP 	presentation_textBS: autoDraw = False
+890.9121 	EXP 	presentation_textBS: height = 0.1
+890.9121 	EXP 	presentation_textBS: height = 0.1
+890.9121 	EXP 	presentation_textBS: height = 0.1
+890.9121 	EXP 	presentation_textBS: text = 2
+890.9121 	EXP 	fixationBS: autoDraw = True
+891.9114 	EXP 	fixationBS: autoDraw = False
+891.9114 	EXP 	presentation_textBS: autoDraw = True
+892.8956 	EXP 	New trial (rep=3, index=0): None
+892.9115 	EXP 	presentation_textBS: autoDraw = False
+892.9115 	EXP 	fixationBS: autoDraw = False
+892.9115 	EXP 	presentation_textBS: autoDraw = False
+892.9115 	EXP 	presentation_textBS: height = 0.1
+892.9115 	EXP 	presentation_textBS: height = 0.1
+892.9115 	EXP 	presentation_textBS: height = 0.1
+892.9115 	EXP 	presentation_textBS: text = 9
+892.9115 	EXP 	fixationBS: autoDraw = True
+893.9116 	EXP 	fixationBS: autoDraw = False
+893.9116 	EXP 	presentation_textBS: autoDraw = True
+894.8960 	EXP 	New trial (rep=4, index=0): None
+894.9116 	EXP 	presentation_textBS: autoDraw = False
+894.9116 	EXP 	fixationBS: autoDraw = False
+894.9116 	EXP 	presentation_textBS: autoDraw = False
+894.9116 	EXP 	presentation_textBS: height = 0.1
+894.9116 	EXP 	presentation_textBS: height = 0.1
+894.9116 	EXP 	presentation_textBS: height = 0.1
+894.9116 	EXP 	presentation_textBS: text = 3
+894.9116 	EXP 	fixationBS: autoDraw = True
+895.9117 	EXP 	fixationBS: autoDraw = False
+895.9117 	EXP 	presentation_textBS: autoDraw = True
+896.8959 	EXP 	New trial (rep=5, index=0): None
+896.9118 	EXP 	presentation_textBS: autoDraw = False
+896.9118 	EXP 	fixationBS: autoDraw = False
+896.9118 	EXP 	presentation_textBS: autoDraw = False
+896.9118 	EXP 	presentation_textBS: height = 0.1
+896.9118 	EXP 	presentation_textBS: height = 0.1
+896.9118 	EXP 	presentation_textBS: height = 0.1
+896.9118 	EXP 	presentation_textBS: text = 4
+896.9118 	EXP 	fixationBS: autoDraw = True
+897.9121 	EXP 	fixationBS: autoDraw = False
+897.9121 	EXP 	presentation_textBS: autoDraw = True
+898.8959 	EXP 	New trial (rep=6, index=0): None
+898.9118 	EXP 	presentation_textBS: autoDraw = False
+898.9118 	EXP 	fixationBS: autoDraw = False
+898.9118 	EXP 	presentation_textBS: autoDraw = False
+898.9118 	EXP 	presentation_textBS: height = 0.1
+898.9118 	EXP 	presentation_textBS: height = 0.1
+898.9118 	EXP 	presentation_textBS: height = 0.1
+898.9118 	EXP 	presentation_textBS: text = 8
+898.9118 	EXP 	fixationBS: autoDraw = True
+899.9121 	EXP 	fixationBS: autoDraw = False
+899.9121 	EXP 	presentation_textBS: autoDraw = True
+900.8965 	EXP 	New trial (rep=7, index=0): None
+900.9119 	EXP 	presentation_textBS: autoDraw = False
+900.9119 	EXP 	fixationBS: autoDraw = False
+900.9119 	EXP 	presentation_textBS: autoDraw = False
+900.9119 	EXP 	presentation_textBS: height = 0.1
+900.9119 	EXP 	presentation_textBS: height = 0.1
+900.9119 	EXP 	presentation_textBS: height = 0.1
+900.9119 	EXP 	presentation_textBS: text = 6
+900.9119 	EXP 	fixationBS: autoDraw = True
+901.9120 	EXP 	fixationBS: autoDraw = False
+901.9120 	EXP 	presentation_textBS: autoDraw = True
+902.9126 	EXP 	presentation_textBS: autoDraw = False
+902.9126 	EXP 	fixationBS: autoDraw = False
+902.9126 	EXP 	presentation_textBS: autoDraw = False
+902.9126 	EXP 	recall_txtBS: autoDraw = True
+902.9126 	EXP 	textboxBS: autoDraw = True
+902.9126 	EXP 	cont_buttonBS: autoDraw = True
+904.7828 	DATA 	Keypress: 6
+905.2138 	DATA 	Keypress: 8
+905.4487 	DATA 	Keypress: 9
+906.4806 	DATA 	Keypress: 4
+906.7138 	DATA 	Keypress: 3
+906.8976 	DATA 	Keypress: 2
+907.5139 	DATA 	Keypress: 7
+907.7974 	DATA 	Keypress: 5
+908.8793 	DATA 	Mouse: Left button down, pos=(761,94)
+908.8959 	EXP 	recall_txtBS: autoDraw = False
+908.8959 	EXP 	textboxBS: autoDraw = False
+908.8959 	EXP 	cont_buttonBS: autoDraw = False
+908.8959 	EXP 	feedback_textBS: height = 0.04
+908.8959 	EXP 	feedback_textBS: height = 0.04
+908.8959 	EXP 	feedback_textBS: height = 0.04
+908.8959 	EXP 	feedback_textBS: text = 'Incorrect'
+908.8959 	EXP 	feedback_textBS: autoDraw = True
+908.9966 	DATA 	Mouse:  Left button up, pos=(761,94)
+909.8794 	EXP 	New trial (rep=0, index=8): {'trialNumber': 9}
+909.8802 	EXP 	Created sequence: random, trialTypes=1, nReps=8, seed=None
+909.8804 	EXP 	New trial (rep=0, index=0): None
+909.8957 	EXP 	feedback_textBS: autoDraw = False
+909.8957 	EXP 	feedback_textBS: autoDraw = False
+909.8957 	EXP 	presentation_textBS: height = 0.1
+909.8957 	EXP 	presentation_textBS: height = 0.1
+909.8957 	EXP 	presentation_textBS: height = 0.1
+909.8957 	EXP 	presentation_textBS: text = 7
+909.8957 	EXP 	fixationBS: autoDraw = True
+910.8796 	EXP 	presentation_textBS: autoDraw = True
+910.8958 	EXP 	fixationBS: autoDraw = False
+911.8635 	EXP 	New trial (rep=1, index=0): None
+911.8790 	EXP 	presentation_textBS: autoDraw = False
+911.8790 	EXP 	fixationBS: autoDraw = False
+911.8790 	EXP 	presentation_textBS: autoDraw = False
+911.8790 	EXP 	presentation_textBS: height = 0.1
+911.8790 	EXP 	presentation_textBS: height = 0.1
+911.8790 	EXP 	presentation_textBS: height = 0.1
+911.8790 	EXP 	presentation_textBS: text = 4
+911.8790 	EXP 	fixationBS: autoDraw = True
+912.8790 	EXP 	fixationBS: autoDraw = False
+912.8790 	EXP 	presentation_textBS: autoDraw = True
+913.8632 	EXP 	New trial (rep=2, index=0): None
+913.8792 	EXP 	presentation_textBS: autoDraw = False
+913.8792 	EXP 	fixationBS: autoDraw = False
+913.8792 	EXP 	presentation_textBS: autoDraw = False
+913.8792 	EXP 	presentation_textBS: height = 0.1
+913.8792 	EXP 	presentation_textBS: height = 0.1
+913.8792 	EXP 	presentation_textBS: height = 0.1
+913.8792 	EXP 	presentation_textBS: text = 8
+913.8792 	EXP 	fixationBS: autoDraw = True
+914.8789 	EXP 	fixationBS: autoDraw = False
+914.8789 	EXP 	presentation_textBS: autoDraw = True
+915.8635 	EXP 	New trial (rep=3, index=0): None
+915.8800 	EXP 	presentation_textBS: autoDraw = False
+915.8800 	EXP 	fixationBS: autoDraw = False
+915.8800 	EXP 	presentation_textBS: autoDraw = False
+915.8800 	EXP 	presentation_textBS: height = 0.1
+915.8800 	EXP 	presentation_textBS: height = 0.1
+915.8800 	EXP 	presentation_textBS: height = 0.1
+915.8800 	EXP 	presentation_textBS: text = 1
+915.8800 	EXP 	fixationBS: autoDraw = True
+916.8793 	EXP 	fixationBS: autoDraw = False
+916.8793 	EXP 	presentation_textBS: autoDraw = True
+917.8634 	EXP 	New trial (rep=4, index=0): None
+917.8793 	EXP 	presentation_textBS: autoDraw = False
+917.8793 	EXP 	fixationBS: autoDraw = False
+917.8793 	EXP 	presentation_textBS: autoDraw = False
+917.8793 	EXP 	presentation_textBS: height = 0.1
+917.8793 	EXP 	presentation_textBS: height = 0.1
+917.8793 	EXP 	presentation_textBS: height = 0.1
+917.8793 	EXP 	presentation_textBS: text = 9
+917.8793 	EXP 	fixationBS: autoDraw = True
+918.8794 	EXP 	fixationBS: autoDraw = False
+918.8794 	EXP 	presentation_textBS: autoDraw = True
+919.8637 	EXP 	New trial (rep=5, index=0): None
+919.8791 	EXP 	presentation_textBS: autoDraw = False
+919.8791 	EXP 	fixationBS: autoDraw = False
+919.8791 	EXP 	presentation_textBS: autoDraw = False
+919.8791 	EXP 	presentation_textBS: height = 0.1
+919.8791 	EXP 	presentation_textBS: height = 0.1
+919.8791 	EXP 	presentation_textBS: height = 0.1
+919.8791 	EXP 	presentation_textBS: text = 2
+919.8791 	EXP 	fixationBS: autoDraw = True
+920.8799 	EXP 	fixationBS: autoDraw = False
+920.8799 	EXP 	presentation_textBS: autoDraw = True
+921.8640 	EXP 	New trial (rep=6, index=0): None
+921.8792 	EXP 	presentation_textBS: autoDraw = False
+921.8792 	EXP 	fixationBS: autoDraw = False
+921.8792 	EXP 	presentation_textBS: autoDraw = False
+921.8792 	EXP 	presentation_textBS: height = 0.1
+921.8792 	EXP 	presentation_textBS: height = 0.1
+921.8792 	EXP 	presentation_textBS: height = 0.1
+921.8792 	EXP 	presentation_textBS: text = 6
+921.8792 	EXP 	fixationBS: autoDraw = True
+922.8795 	EXP 	fixationBS: autoDraw = False
+922.8795 	EXP 	presentation_textBS: autoDraw = True
+923.8644 	EXP 	New trial (rep=7, index=0): None
+923.8804 	EXP 	presentation_textBS: autoDraw = False
+923.8804 	EXP 	fixationBS: autoDraw = False
+923.8804 	EXP 	presentation_textBS: autoDraw = False
+923.8804 	EXP 	presentation_textBS: height = 0.1
+923.8804 	EXP 	presentation_textBS: height = 0.1
+923.8804 	EXP 	presentation_textBS: height = 0.1
+923.8804 	EXP 	presentation_textBS: text = 5
+923.8804 	EXP 	fixationBS: autoDraw = True
+924.8799 	EXP 	fixationBS: autoDraw = False
+924.8799 	EXP 	presentation_textBS: autoDraw = True
+925.8805 	EXP 	presentation_textBS: autoDraw = False
+925.8805 	EXP 	fixationBS: autoDraw = False
+925.8805 	EXP 	presentation_textBS: autoDraw = False
+925.8805 	EXP 	recall_txtBS: autoDraw = True
+925.8805 	EXP 	textboxBS: autoDraw = True
+925.8805 	EXP 	cont_buttonBS: autoDraw = True
+928.0147 	DATA 	Keypress: 5
+928.3809 	DATA 	Keypress: 6
+928.6646 	DATA 	Keypress: 1
+929.1312 	DATA 	Keypress: 9
+929.9980 	DATA 	Keypress: backspace
+930.2666 	DATA 	Keypress: 2
+930.6814 	DATA 	Keypress: 9
+930.9313 	DATA 	Keypress: 8
+931.3833 	DATA 	Keypress: 4
+931.5322 	DATA 	Keypress: 7
+932.8303 	DATA 	Mouse: Left button down, pos=(793,83)
+932.8464 	EXP 	recall_txtBS: autoDraw = False
+932.8464 	EXP 	textboxBS: autoDraw = False
+932.8464 	EXP 	cont_buttonBS: autoDraw = False
+932.8464 	EXP 	feedback_textBS: text = 'Incorrect'
+932.8464 	EXP 	feedback_textBS: autoDraw = True
+932.9317 	DATA 	Mouse:  Left button up, pos=(792,83)
+933.8307 	EXP 	New trial (rep=0, index=9): {'trialNumber': 10}
+933.8315 	EXP 	Created sequence: random, trialTypes=1, nReps=7, seed=None
+933.8317 	EXP 	New trial (rep=0, index=0): None
+933.8466 	EXP 	feedback_textBS: autoDraw = False
+933.8466 	EXP 	feedback_textBS: autoDraw = False
+933.8466 	EXP 	presentation_textBS: height = 0.1
+933.8466 	EXP 	presentation_textBS: height = 0.1
+933.8466 	EXP 	presentation_textBS: height = 0.1
+933.8466 	EXP 	presentation_textBS: text = 9
+933.8466 	EXP 	fixationBS: autoDraw = True
+934.8299 	EXP 	presentation_textBS: autoDraw = True
+934.8466 	EXP 	fixationBS: autoDraw = False
+935.8143 	EXP 	New trial (rep=1, index=0): None
+935.8301 	EXP 	presentation_textBS: autoDraw = False
+935.8301 	EXP 	fixationBS: autoDraw = False
+935.8301 	EXP 	presentation_textBS: autoDraw = False
+935.8301 	EXP 	presentation_textBS: height = 0.1
+935.8301 	EXP 	presentation_textBS: height = 0.1
+935.8301 	EXP 	presentation_textBS: height = 0.1
+935.8301 	EXP 	presentation_textBS: text = 5
+935.8301 	EXP 	fixationBS: autoDraw = True
+936.8306 	EXP 	fixationBS: autoDraw = False
+936.8306 	EXP 	presentation_textBS: autoDraw = True
+937.8141 	EXP 	New trial (rep=2, index=0): None
+937.8302 	EXP 	presentation_textBS: autoDraw = False
+937.8302 	EXP 	fixationBS: autoDraw = False
+937.8302 	EXP 	presentation_textBS: autoDraw = False
+937.8302 	EXP 	presentation_textBS: height = 0.1
+937.8302 	EXP 	presentation_textBS: height = 0.1
+937.8302 	EXP 	presentation_textBS: height = 0.1
+937.8302 	EXP 	presentation_textBS: text = 1
+937.8302 	EXP 	fixationBS: autoDraw = True
+938.8308 	EXP 	fixationBS: autoDraw = False
+938.8308 	EXP 	presentation_textBS: autoDraw = True
+939.8152 	EXP 	New trial (rep=3, index=0): None
+939.8316 	EXP 	presentation_textBS: autoDraw = False
+939.8316 	EXP 	fixationBS: autoDraw = False
+939.8316 	EXP 	presentation_textBS: autoDraw = False
+939.8316 	EXP 	presentation_textBS: height = 0.1
+939.8316 	EXP 	presentation_textBS: height = 0.1
+939.8316 	EXP 	presentation_textBS: height = 0.1
+939.8316 	EXP 	presentation_textBS: text = 6
+939.8316 	EXP 	fixationBS: autoDraw = True
+940.8470 	EXP 	fixationBS: autoDraw = False
+940.8470 	EXP 	presentation_textBS: autoDraw = True
+941.8314 	EXP 	New trial (rep=4, index=0): None
+941.8469 	EXP 	presentation_textBS: autoDraw = False
+941.8469 	EXP 	fixationBS: autoDraw = False
+941.8469 	EXP 	presentation_textBS: autoDraw = False
+941.8469 	EXP 	presentation_textBS: height = 0.1
+941.8469 	EXP 	presentation_textBS: height = 0.1
+941.8469 	EXP 	presentation_textBS: height = 0.1
+941.8469 	EXP 	presentation_textBS: text = 3
+941.8469 	EXP 	fixationBS: autoDraw = True
+942.8303 	EXP 	presentation_textBS: autoDraw = True
+942.8469 	EXP 	fixationBS: autoDraw = False
+943.8154 	EXP 	New trial (rep=5, index=0): None
+943.8315 	EXP 	presentation_textBS: autoDraw = False
+943.8315 	EXP 	fixationBS: autoDraw = False
+943.8315 	EXP 	presentation_textBS: autoDraw = False
+943.8315 	EXP 	presentation_textBS: height = 0.1
+943.8315 	EXP 	presentation_textBS: height = 0.1
+943.8315 	EXP 	presentation_textBS: height = 0.1
+943.8315 	EXP 	presentation_textBS: text = 4
+943.8315 	EXP 	fixationBS: autoDraw = True
+944.8305 	EXP 	fixationBS: autoDraw = False
+944.8305 	EXP 	presentation_textBS: autoDraw = True
+945.8147 	EXP 	New trial (rep=6, index=0): None
+945.8309 	EXP 	presentation_textBS: autoDraw = False
+945.8309 	EXP 	fixationBS: autoDraw = False
+945.8309 	EXP 	presentation_textBS: autoDraw = False
+945.8309 	EXP 	presentation_textBS: height = 0.1
+945.8309 	EXP 	presentation_textBS: height = 0.1
+945.8309 	EXP 	presentation_textBS: height = 0.1
+945.8309 	EXP 	presentation_textBS: text = 8
+945.8309 	EXP 	fixationBS: autoDraw = True
+946.8305 	EXP 	fixationBS: autoDraw = False
+946.8305 	EXP 	presentation_textBS: autoDraw = True
+947.8307 	EXP 	presentation_textBS: autoDraw = False
+947.8307 	EXP 	fixationBS: autoDraw = False
+947.8307 	EXP 	presentation_textBS: autoDraw = False
+947.8307 	EXP 	recall_txtBS: autoDraw = True
+947.8307 	EXP 	textboxBS: autoDraw = True
+947.8307 	EXP 	cont_buttonBS: autoDraw = True
+949.8988 	DATA 	Keypress: 8
+950.1839 	DATA 	Keypress: 4
+950.4822 	DATA 	Keypress: 3
+950.8489 	DATA 	Keypress: 6
+951.0654 	DATA 	Keypress: 1
+951.7326 	DATA 	Keypress: 5
+951.9495 	DATA 	Keypress: 9
+953.1999 	DATA 	Mouse: Left button down, pos=(776,72)
+953.2309 	EXP 	recall_txtBS: autoDraw = False
+953.2309 	EXP 	textboxBS: autoDraw = False
+953.2309 	EXP 	cont_buttonBS: autoDraw = False
+953.2309 	EXP 	feedback_textBS: height = 0.04
+953.2309 	EXP 	feedback_textBS: height = 0.04
+953.2309 	EXP 	feedback_textBS: height = 0.04
+953.2309 	EXP 	feedback_textBS: text = 'Correct!'
+953.2309 	EXP 	feedback_textBS: autoDraw = True
+953.3320 	DATA 	Mouse:  Left button up, pos=(776,72)
+954.2147 	EXP 	New trial (rep=0, index=10): {'trialNumber': 11}
+954.2156 	EXP 	Created sequence: random, trialTypes=1, nReps=8, seed=None
+954.2158 	EXP 	New trial (rep=0, index=0): None
+954.2308 	EXP 	feedback_textBS: autoDraw = False
+954.2308 	EXP 	feedback_textBS: autoDraw = False
+954.2308 	EXP 	presentation_textBS: height = 0.1
+954.2308 	EXP 	presentation_textBS: height = 0.1
+954.2308 	EXP 	presentation_textBS: height = 0.1
+954.2308 	EXP 	presentation_textBS: text = 2
+954.2308 	EXP 	fixationBS: autoDraw = True
+955.2146 	EXP 	presentation_textBS: autoDraw = True
+955.2307 	EXP 	fixationBS: autoDraw = False
+956.1984 	EXP 	New trial (rep=1, index=0): None
+956.2143 	EXP 	presentation_textBS: autoDraw = False
+956.2143 	EXP 	fixationBS: autoDraw = False
+956.2143 	EXP 	presentation_textBS: autoDraw = False
+956.2143 	EXP 	presentation_textBS: height = 0.1
+956.2143 	EXP 	presentation_textBS: height = 0.1
+956.2143 	EXP 	presentation_textBS: height = 0.1
+956.2143 	EXP 	presentation_textBS: text = 6
+956.2143 	EXP 	fixationBS: autoDraw = True
+957.2140 	EXP 	fixationBS: autoDraw = False
+957.2140 	EXP 	presentation_textBS: autoDraw = True
+958.1984 	EXP 	New trial (rep=2, index=0): None
+958.2149 	EXP 	presentation_textBS: autoDraw = False
+958.2149 	EXP 	fixationBS: autoDraw = False
+958.2149 	EXP 	presentation_textBS: autoDraw = False
+958.2149 	EXP 	presentation_textBS: height = 0.1
+958.2149 	EXP 	presentation_textBS: height = 0.1
+958.2149 	EXP 	presentation_textBS: height = 0.1
+958.2149 	EXP 	presentation_textBS: text = 8
+958.2149 	EXP 	fixationBS: autoDraw = True
+959.2143 	EXP 	fixationBS: autoDraw = False
+959.2143 	EXP 	presentation_textBS: autoDraw = True
+960.1988 	EXP 	New trial (rep=3, index=0): None
+960.2149 	EXP 	presentation_textBS: autoDraw = False
+960.2149 	EXP 	fixationBS: autoDraw = False
+960.2149 	EXP 	presentation_textBS: autoDraw = False
+960.2149 	EXP 	presentation_textBS: height = 0.1
+960.2149 	EXP 	presentation_textBS: height = 0.1
+960.2149 	EXP 	presentation_textBS: height = 0.1
+960.2149 	EXP 	presentation_textBS: text = 3
+960.2149 	EXP 	fixationBS: autoDraw = True
+961.2148 	EXP 	fixationBS: autoDraw = False
+961.2148 	EXP 	presentation_textBS: autoDraw = True
+962.1988 	EXP 	New trial (rep=4, index=0): None
+962.2142 	EXP 	presentation_textBS: autoDraw = False
+962.2142 	EXP 	fixationBS: autoDraw = False
+962.2142 	EXP 	presentation_textBS: autoDraw = False
+962.2142 	EXP 	presentation_textBS: height = 0.1
+962.2142 	EXP 	presentation_textBS: height = 0.1
+962.2142 	EXP 	presentation_textBS: height = 0.1
+962.2142 	EXP 	presentation_textBS: text = 5
+962.2142 	EXP 	fixationBS: autoDraw = True
+963.2147 	EXP 	fixationBS: autoDraw = False
+963.2147 	EXP 	presentation_textBS: autoDraw = True
+964.1988 	EXP 	New trial (rep=5, index=0): None
+964.2146 	EXP 	presentation_textBS: autoDraw = False
+964.2146 	EXP 	fixationBS: autoDraw = False
+964.2146 	EXP 	presentation_textBS: autoDraw = False
+964.2146 	EXP 	presentation_textBS: height = 0.1
+964.2146 	EXP 	presentation_textBS: height = 0.1
+964.2146 	EXP 	presentation_textBS: height = 0.1
+964.2146 	EXP 	presentation_textBS: text = 1
+964.2146 	EXP 	fixationBS: autoDraw = True
+965.2150 	EXP 	fixationBS: autoDraw = False
+965.2150 	EXP 	presentation_textBS: autoDraw = True
+966.1988 	EXP 	New trial (rep=6, index=0): None
+966.2145 	EXP 	presentation_textBS: autoDraw = False
+966.2145 	EXP 	fixationBS: autoDraw = False
+966.2145 	EXP 	presentation_textBS: autoDraw = False
+966.2145 	EXP 	presentation_textBS: height = 0.1
+966.2145 	EXP 	presentation_textBS: height = 0.1
+966.2145 	EXP 	presentation_textBS: height = 0.1
+966.2145 	EXP 	presentation_textBS: text = 7
+966.2145 	EXP 	fixationBS: autoDraw = True
+967.2147 	EXP 	fixationBS: autoDraw = False
+967.2147 	EXP 	presentation_textBS: autoDraw = True
+968.1989 	EXP 	New trial (rep=7, index=0): None
+968.2149 	EXP 	presentation_textBS: autoDraw = False
+968.2149 	EXP 	fixationBS: autoDraw = False
+968.2149 	EXP 	presentation_textBS: autoDraw = False
+968.2149 	EXP 	presentation_textBS: height = 0.1
+968.2149 	EXP 	presentation_textBS: height = 0.1
+968.2149 	EXP 	presentation_textBS: height = 0.1
+968.2149 	EXP 	presentation_textBS: text = 4
+968.2149 	EXP 	fixationBS: autoDraw = True
+969.2148 	EXP 	fixationBS: autoDraw = False
+969.2148 	EXP 	presentation_textBS: autoDraw = True
+970.2145 	EXP 	presentation_textBS: autoDraw = False
+970.2145 	EXP 	fixationBS: autoDraw = False
+970.2145 	EXP 	presentation_textBS: autoDraw = False
+970.2145 	EXP 	recall_txtBS: autoDraw = True
+970.2145 	EXP 	textboxBS: autoDraw = True
+970.2145 	EXP 	cont_buttonBS: autoDraw = True
+972.0665 	DATA 	Keypress: 4
+972.3861 	DATA 	Keypress: 7
+972.6499 	DATA 	Keypress: 1
+973.8669 	DATA 	Keypress: 5
+974.7999 	DATA 	Keypress: 3
+975.1499 	DATA 	Keypress: 8
+975.7835 	DATA 	Keypress: 6
+975.9852 	DATA 	Keypress: 2
+976.6009 	DATA 	Mouse: Left button down, pos=(762,80)
+976.6317 	EXP 	recall_txtBS: autoDraw = False
+976.6317 	EXP 	textboxBS: autoDraw = False
+976.6317 	EXP 	cont_buttonBS: autoDraw = False
+976.6317 	EXP 	feedback_textBS: text = 'Correct!'
+976.6317 	EXP 	feedback_textBS: autoDraw = True
+976.6999 	DATA 	Mouse:  Left button up, pos=(762,80)
+977.6156 	EXP 	New trial (rep=0, index=11): {'trialNumber': 12}
+977.6164 	EXP 	Created sequence: random, trialTypes=1, nReps=9, seed=None
+977.6166 	EXP 	New trial (rep=0, index=0): None
+977.6318 	EXP 	feedback_textBS: autoDraw = False
+977.6318 	EXP 	feedback_textBS: autoDraw = False
+977.6318 	EXP 	presentation_textBS: height = 0.1
+977.6318 	EXP 	presentation_textBS: height = 0.1
+977.6318 	EXP 	presentation_textBS: height = 0.1
+977.6318 	EXP 	presentation_textBS: text = 2
+977.6318 	EXP 	fixationBS: autoDraw = True
+978.6150 	EXP 	presentation_textBS: autoDraw = True
+978.6318 	EXP 	fixationBS: autoDraw = False
+979.5991 	EXP 	New trial (rep=1, index=0): None
+979.6151 	EXP 	presentation_textBS: autoDraw = False
+979.6151 	EXP 	fixationBS: autoDraw = False
+979.6151 	EXP 	presentation_textBS: autoDraw = False
+979.6151 	EXP 	presentation_textBS: height = 0.1
+979.6151 	EXP 	presentation_textBS: height = 0.1
+979.6151 	EXP 	presentation_textBS: height = 0.1
+979.6151 	EXP 	presentation_textBS: text = 3
+979.6151 	EXP 	fixationBS: autoDraw = True
+980.6158 	EXP 	fixationBS: autoDraw = False
+980.6158 	EXP 	presentation_textBS: autoDraw = True
+981.5997 	EXP 	New trial (rep=2, index=0): None
+981.6153 	EXP 	presentation_textBS: autoDraw = False
+981.6153 	EXP 	fixationBS: autoDraw = False
+981.6153 	EXP 	presentation_textBS: autoDraw = False
+981.6153 	EXP 	presentation_textBS: height = 0.1
+981.6153 	EXP 	presentation_textBS: height = 0.1
+981.6153 	EXP 	presentation_textBS: height = 0.1
+981.6153 	EXP 	presentation_textBS: text = 5
+981.6153 	EXP 	fixationBS: autoDraw = True
+982.6156 	EXP 	fixationBS: autoDraw = False
+982.6156 	EXP 	presentation_textBS: autoDraw = True
+983.5998 	EXP 	New trial (rep=3, index=0): None
+983.6153 	EXP 	presentation_textBS: autoDraw = False
+983.6153 	EXP 	fixationBS: autoDraw = False
+983.6153 	EXP 	presentation_textBS: autoDraw = False
+983.6153 	EXP 	presentation_textBS: height = 0.1
+983.6153 	EXP 	presentation_textBS: height = 0.1
+983.6153 	EXP 	presentation_textBS: height = 0.1
+983.6153 	EXP 	presentation_textBS: text = 9
+983.6153 	EXP 	fixationBS: autoDraw = True
+984.6152 	EXP 	fixationBS: autoDraw = False
+984.6152 	EXP 	presentation_textBS: autoDraw = True
+985.6002 	EXP 	New trial (rep=4, index=0): None
+985.6157 	EXP 	presentation_textBS: autoDraw = False
+985.6157 	EXP 	fixationBS: autoDraw = False
+985.6157 	EXP 	presentation_textBS: autoDraw = False
+985.6157 	EXP 	presentation_textBS: height = 0.1
+985.6157 	EXP 	presentation_textBS: height = 0.1
+985.6157 	EXP 	presentation_textBS: height = 0.1
+985.6157 	EXP 	presentation_textBS: text = 1
+985.6157 	EXP 	fixationBS: autoDraw = True
+986.6159 	EXP 	fixationBS: autoDraw = False
+986.6159 	EXP 	presentation_textBS: autoDraw = True
+987.5998 	EXP 	New trial (rep=5, index=0): None
+987.6158 	EXP 	presentation_textBS: autoDraw = False
+987.6158 	EXP 	fixationBS: autoDraw = False
+987.6158 	EXP 	presentation_textBS: autoDraw = False
+987.6158 	EXP 	presentation_textBS: height = 0.1
+987.6158 	EXP 	presentation_textBS: height = 0.1
+987.6158 	EXP 	presentation_textBS: height = 0.1
+987.6158 	EXP 	presentation_textBS: text = 6
+987.6158 	EXP 	fixationBS: autoDraw = True
+988.6154 	EXP 	fixationBS: autoDraw = False
+988.6154 	EXP 	presentation_textBS: autoDraw = True
+989.5999 	EXP 	New trial (rep=6, index=0): None
+989.6154 	EXP 	presentation_textBS: autoDraw = False
+989.6154 	EXP 	fixationBS: autoDraw = False
+989.6154 	EXP 	presentation_textBS: autoDraw = False
+989.6154 	EXP 	presentation_textBS: height = 0.1
+989.6154 	EXP 	presentation_textBS: height = 0.1
+989.6154 	EXP 	presentation_textBS: height = 0.1
+989.6154 	EXP 	presentation_textBS: text = 8
+989.6154 	EXP 	fixationBS: autoDraw = True
+990.6165 	EXP 	fixationBS: autoDraw = False
+990.6165 	EXP 	presentation_textBS: autoDraw = True
+991.5999 	EXP 	New trial (rep=7, index=0): None
+991.6162 	EXP 	presentation_textBS: autoDraw = False
+991.6162 	EXP 	fixationBS: autoDraw = False
+991.6162 	EXP 	presentation_textBS: autoDraw = False
+991.6162 	EXP 	presentation_textBS: height = 0.1
+991.6162 	EXP 	presentation_textBS: height = 0.1
+991.6162 	EXP 	presentation_textBS: height = 0.1
+991.6162 	EXP 	presentation_textBS: text = 4
+991.6162 	EXP 	fixationBS: autoDraw = True
+992.6156 	EXP 	fixationBS: autoDraw = False
+992.6156 	EXP 	presentation_textBS: autoDraw = True
+993.5998 	EXP 	New trial (rep=8, index=0): None
+993.6157 	EXP 	presentation_textBS: autoDraw = False
+993.6157 	EXP 	fixationBS: autoDraw = False
+993.6157 	EXP 	presentation_textBS: autoDraw = False
+993.6157 	EXP 	presentation_textBS: height = 0.1
+993.6157 	EXP 	presentation_textBS: height = 0.1
+993.6157 	EXP 	presentation_textBS: height = 0.1
+993.6157 	EXP 	presentation_textBS: text = 7
+993.6157 	EXP 	fixationBS: autoDraw = True
+994.6155 	EXP 	fixationBS: autoDraw = False
+994.6155 	EXP 	presentation_textBS: autoDraw = True
+995.6164 	EXP 	presentation_textBS: autoDraw = False
+995.6164 	EXP 	fixationBS: autoDraw = False
+995.6164 	EXP 	presentation_textBS: autoDraw = False
+995.6164 	EXP 	recall_txtBS: autoDraw = True
+995.6164 	EXP 	textboxBS: autoDraw = True
+995.6164 	EXP 	cont_buttonBS: autoDraw = True
+996.9037 	DATA 	Keypress: 7
+997.4011 	DATA 	Keypress: 4
+997.9341 	DATA 	Keypress: 8
+998.5174 	DATA 	Keypress: 6
+998.6842 	DATA 	Keypress: 1
+999.0513 	DATA 	Keypress: 9
+999.6176 	DATA 	Keypress: 3
+999.9029 	DATA 	Keypress: 5
+1000.0844 	DATA 	Keypress: 2
+1002.4998 	DATA 	Mouse: Left button down, pos=(709,93)
+1002.5163 	EXP 	recall_txtBS: autoDraw = False
+1002.5163 	EXP 	textboxBS: autoDraw = False
+1002.5163 	EXP 	cont_buttonBS: autoDraw = False
+1002.5163 	EXP 	feedback_textBS: height = 0.04
+1002.5163 	EXP 	feedback_textBS: height = 0.04
+1002.5163 	EXP 	feedback_textBS: height = 0.04
+1002.5163 	EXP 	feedback_textBS: text = 'Incorrect'
+1002.5163 	EXP 	feedback_textBS: autoDraw = True
+1002.6008 	DATA 	Mouse:  Left button up, pos=(709,92)
+1003.5004 	EXP 	New trial (rep=0, index=12): {'trialNumber': 13}
+1003.5012 	EXP 	Created sequence: random, trialTypes=1, nReps=9, seed=None
+1003.5015 	EXP 	New trial (rep=0, index=0): None
+1003.5162 	EXP 	feedback_textBS: autoDraw = False
+1003.5162 	EXP 	feedback_textBS: autoDraw = False
+1003.5162 	EXP 	presentation_textBS: height = 0.1
+1003.5162 	EXP 	presentation_textBS: height = 0.1
+1003.5162 	EXP 	presentation_textBS: height = 0.1
+1003.5162 	EXP 	presentation_textBS: text = 7
+1003.5162 	EXP 	fixationBS: autoDraw = True
+1004.5163 	EXP 	fixationBS: autoDraw = False
+1004.5163 	EXP 	presentation_textBS: autoDraw = True
+1005.5002 	EXP 	New trial (rep=1, index=0): None
+1005.5165 	EXP 	presentation_textBS: autoDraw = False
+1005.5165 	EXP 	fixationBS: autoDraw = False
+1005.5165 	EXP 	presentation_textBS: autoDraw = False
+1005.5165 	EXP 	presentation_textBS: height = 0.1
+1005.5165 	EXP 	presentation_textBS: height = 0.1
+1005.5165 	EXP 	presentation_textBS: height = 0.1
+1005.5165 	EXP 	presentation_textBS: text = 1
+1005.5165 	EXP 	fixationBS: autoDraw = True
+1006.5004 	EXP 	presentation_textBS: autoDraw = True
+1006.5169 	EXP 	fixationBS: autoDraw = False
+1007.4837 	EXP 	New trial (rep=2, index=0): None
+1007.4997 	EXP 	presentation_textBS: autoDraw = False
+1007.4997 	EXP 	fixationBS: autoDraw = False
+1007.4997 	EXP 	presentation_textBS: autoDraw = False
+1007.4997 	EXP 	presentation_textBS: height = 0.1
+1007.4997 	EXP 	presentation_textBS: height = 0.1
+1007.4997 	EXP 	presentation_textBS: height = 0.1
+1007.4997 	EXP 	presentation_textBS: text = 3
+1007.5164 	EXP 	fixationBS: autoDraw = True
+1008.5165 	EXP 	fixationBS: autoDraw = False
+1008.5165 	EXP 	presentation_textBS: autoDraw = True
+1009.5012 	EXP 	New trial (rep=3, index=0): None
+1009.5166 	EXP 	presentation_textBS: autoDraw = False
+1009.5166 	EXP 	fixationBS: autoDraw = False
+1009.5166 	EXP 	presentation_textBS: autoDraw = False
+1009.5166 	EXP 	presentation_textBS: height = 0.1
+1009.5166 	EXP 	presentation_textBS: height = 0.1
+1009.5166 	EXP 	presentation_textBS: height = 0.1
+1009.5166 	EXP 	presentation_textBS: text = 5
+1009.5166 	EXP 	fixationBS: autoDraw = True
+1010.4997 	EXP 	presentation_textBS: autoDraw = True
+1010.5167 	EXP 	fixationBS: autoDraw = False
+1011.4851 	EXP 	New trial (rep=4, index=0): None
+1011.5012 	EXP 	presentation_textBS: autoDraw = False
+1011.5012 	EXP 	fixationBS: autoDraw = False
+1011.5012 	EXP 	presentation_textBS: autoDraw = False
+1011.5012 	EXP 	presentation_textBS: height = 0.1
+1011.5012 	EXP 	presentation_textBS: height = 0.1
+1011.5012 	EXP 	presentation_textBS: height = 0.1
+1011.5012 	EXP 	presentation_textBS: text = 8
+1011.5012 	EXP 	fixationBS: autoDraw = True
+1012.4999 	EXP 	presentation_textBS: autoDraw = True
+1012.5166 	EXP 	fixationBS: autoDraw = False
+1013.4846 	EXP 	New trial (rep=5, index=0): None
+1013.4999 	EXP 	presentation_textBS: autoDraw = False
+1013.4999 	EXP 	fixationBS: autoDraw = False
+1013.4999 	EXP 	presentation_textBS: autoDraw = False
+1013.4999 	EXP 	presentation_textBS: height = 0.1
+1013.4999 	EXP 	presentation_textBS: height = 0.1
+1013.4999 	EXP 	presentation_textBS: height = 0.1
+1013.4999 	EXP 	presentation_textBS: text = 9
+1013.4999 	EXP 	fixationBS: autoDraw = True
+1014.5001 	EXP 	fixationBS: autoDraw = False
+1014.5001 	EXP 	presentation_textBS: autoDraw = True
+1015.4841 	EXP 	New trial (rep=6, index=0): None
+1015.5000 	EXP 	presentation_textBS: autoDraw = False
+1015.5000 	EXP 	fixationBS: autoDraw = False
+1015.5000 	EXP 	presentation_textBS: autoDraw = False
+1015.5000 	EXP 	presentation_textBS: height = 0.1
+1015.5000 	EXP 	presentation_textBS: height = 0.1
+1015.5000 	EXP 	presentation_textBS: height = 0.1
+1015.5000 	EXP 	presentation_textBS: text = 2
+1015.5000 	EXP 	fixationBS: autoDraw = True
+1016.5002 	EXP 	fixationBS: autoDraw = False
+1016.5002 	EXP 	presentation_textBS: autoDraw = True
+1017.4847 	EXP 	New trial (rep=7, index=0): None
+1017.5001 	EXP 	presentation_textBS: autoDraw = False
+1017.5001 	EXP 	fixationBS: autoDraw = False
+1017.5001 	EXP 	presentation_textBS: autoDraw = False
+1017.5001 	EXP 	presentation_textBS: height = 0.1
+1017.5001 	EXP 	presentation_textBS: height = 0.1
+1017.5001 	EXP 	presentation_textBS: height = 0.1
+1017.5001 	EXP 	presentation_textBS: text = 4
+1017.5001 	EXP 	fixationBS: autoDraw = True
+1018.5000 	EXP 	fixationBS: autoDraw = False
+1018.5000 	EXP 	presentation_textBS: autoDraw = True
+1019.4847 	EXP 	New trial (rep=8, index=0): None
+1019.5001 	EXP 	presentation_textBS: autoDraw = False
+1019.5001 	EXP 	fixationBS: autoDraw = False
+1019.5001 	EXP 	presentation_textBS: autoDraw = False
+1019.5001 	EXP 	presentation_textBS: height = 0.1
+1019.5001 	EXP 	presentation_textBS: height = 0.1
+1019.5001 	EXP 	presentation_textBS: height = 0.1
+1019.5001 	EXP 	presentation_textBS: text = 6
+1019.5001 	EXP 	fixationBS: autoDraw = True
+1020.5003 	EXP 	fixationBS: autoDraw = False
+1020.5003 	EXP 	presentation_textBS: autoDraw = True
+1021.5008 	EXP 	presentation_textBS: autoDraw = False
+1021.5008 	EXP 	fixationBS: autoDraw = False
+1021.5008 	EXP 	presentation_textBS: autoDraw = False
+1021.5008 	EXP 	recall_txtBS: autoDraw = True
+1021.5008 	EXP 	textboxBS: autoDraw = True
+1021.5008 	EXP 	cont_buttonBS: autoDraw = True
+1022.7516 	DATA 	Keypress: 6
+1023.1375 	DATA 	Keypress: 4
+1023.4350 	DATA 	Keypress: 2
+1024.0183 	DATA 	Keypress: 9
+1025.6520 	DATA 	Keypress: 8
+1026.1520 	DATA 	Keypress: 3
+1026.7047 	DATA 	Keypress: 5
+1027.0859 	DATA 	Keypress: 1
+1027.6856 	DATA 	Keypress: 7
+1030.1011 	DATA 	Mouse: Left button down, pos=(725,80)
+1030.1175 	EXP 	recall_txtBS: autoDraw = False
+1030.1175 	EXP 	textboxBS: autoDraw = False
+1030.1175 	EXP 	cont_buttonBS: autoDraw = False
+1030.1175 	EXP 	feedback_textBS: text = 'Incorrect'
+1030.1175 	EXP 	feedback_textBS: autoDraw = True
+1030.2353 	DATA 	Mouse:  Left button up, pos=(725,81)
+1031.1013 	EXP 	New trial (rep=0, index=13): {'trialNumber': 14}
+1031.1021 	EXP 	Created sequence: random, trialTypes=1, nReps=8, seed=None
+1031.1023 	EXP 	New trial (rep=0, index=0): None
+1031.1173 	EXP 	feedback_textBS: autoDraw = False
+1031.1173 	EXP 	feedback_textBS: autoDraw = False
+1031.1173 	EXP 	presentation_textBS: height = 0.1
+1031.1173 	EXP 	presentation_textBS: height = 0.1
+1031.1173 	EXP 	presentation_textBS: height = 0.1
+1031.1173 	EXP 	presentation_textBS: text = 1
+1031.1173 	EXP 	fixationBS: autoDraw = True
+1032.1179 	EXP 	fixationBS: autoDraw = False
+1032.1179 	EXP 	presentation_textBS: autoDraw = True
+1033.1018 	EXP 	New trial (rep=1, index=0): None
+1033.1178 	EXP 	presentation_textBS: autoDraw = False
+1033.1178 	EXP 	fixationBS: autoDraw = False
+1033.1178 	EXP 	presentation_textBS: autoDraw = False
+1033.1178 	EXP 	presentation_textBS: height = 0.1
+1033.1178 	EXP 	presentation_textBS: height = 0.1
+1033.1178 	EXP 	presentation_textBS: height = 0.1
+1033.1178 	EXP 	presentation_textBS: text = 8
+1033.1178 	EXP 	fixationBS: autoDraw = True
+1034.1008 	EXP 	presentation_textBS: autoDraw = True
+1034.1174 	EXP 	fixationBS: autoDraw = False
+1035.0852 	EXP 	New trial (rep=2, index=0): None
+1035.1008 	EXP 	presentation_textBS: autoDraw = False
+1035.1008 	EXP 	fixationBS: autoDraw = False
+1035.1008 	EXP 	presentation_textBS: autoDraw = False
+1035.1008 	EXP 	presentation_textBS: height = 0.1
+1035.1008 	EXP 	presentation_textBS: height = 0.1
+1035.1008 	EXP 	presentation_textBS: height = 0.1
+1035.1008 	EXP 	presentation_textBS: text = 2
+1035.1008 	EXP 	fixationBS: autoDraw = True
+1036.1007 	EXP 	fixationBS: autoDraw = False
+1036.1007 	EXP 	presentation_textBS: autoDraw = True
+1037.0860 	EXP 	New trial (rep=3, index=0): None
+1037.1017 	EXP 	presentation_textBS: autoDraw = False
+1037.1017 	EXP 	fixationBS: autoDraw = False
+1037.1017 	EXP 	presentation_textBS: autoDraw = False
+1037.1017 	EXP 	presentation_textBS: height = 0.1
+1037.1017 	EXP 	presentation_textBS: height = 0.1
+1037.1017 	EXP 	presentation_textBS: height = 0.1
+1037.1017 	EXP 	presentation_textBS: text = 9
+1037.1017 	EXP 	fixationBS: autoDraw = True
+1038.1013 	EXP 	fixationBS: autoDraw = False
+1038.1013 	EXP 	presentation_textBS: autoDraw = True
+1039.0852 	EXP 	New trial (rep=4, index=0): None
+1039.1010 	EXP 	presentation_textBS: autoDraw = False
+1039.1010 	EXP 	fixationBS: autoDraw = False
+1039.1010 	EXP 	presentation_textBS: autoDraw = False
+1039.1010 	EXP 	presentation_textBS: height = 0.1
+1039.1010 	EXP 	presentation_textBS: height = 0.1
+1039.1010 	EXP 	presentation_textBS: height = 0.1
+1039.1010 	EXP 	presentation_textBS: text = 3
+1039.1010 	EXP 	fixationBS: autoDraw = True
+1040.1015 	EXP 	fixationBS: autoDraw = False
+1040.1015 	EXP 	presentation_textBS: autoDraw = True
+1041.0847 	EXP 	New trial (rep=5, index=0): None
+1041.1012 	EXP 	presentation_textBS: autoDraw = False
+1041.1012 	EXP 	fixationBS: autoDraw = False
+1041.1012 	EXP 	presentation_textBS: autoDraw = False
+1041.1012 	EXP 	presentation_textBS: height = 0.1
+1041.1012 	EXP 	presentation_textBS: height = 0.1
+1041.1012 	EXP 	presentation_textBS: height = 0.1
+1041.1012 	EXP 	presentation_textBS: text = 7
+1041.1012 	EXP 	fixationBS: autoDraw = True
+1042.1012 	EXP 	fixationBS: autoDraw = False
+1042.1012 	EXP 	presentation_textBS: autoDraw = True
+1043.0853 	EXP 	New trial (rep=6, index=0): None
+1043.1010 	EXP 	presentation_textBS: autoDraw = False
+1043.1010 	EXP 	fixationBS: autoDraw = False
+1043.1010 	EXP 	presentation_textBS: autoDraw = False
+1043.1010 	EXP 	presentation_textBS: height = 0.1
+1043.1010 	EXP 	presentation_textBS: height = 0.1
+1043.1010 	EXP 	presentation_textBS: height = 0.1
+1043.1010 	EXP 	presentation_textBS: text = 5
+1043.1010 	EXP 	fixationBS: autoDraw = True
+1044.1011 	EXP 	fixationBS: autoDraw = False
+1044.1011 	EXP 	presentation_textBS: autoDraw = True
+1045.0856 	EXP 	New trial (rep=7, index=0): None
+1045.1016 	EXP 	presentation_textBS: autoDraw = False
+1045.1016 	EXP 	fixationBS: autoDraw = False
+1045.1016 	EXP 	presentation_textBS: autoDraw = False
+1045.1016 	EXP 	presentation_textBS: height = 0.1
+1045.1016 	EXP 	presentation_textBS: height = 0.1
+1045.1016 	EXP 	presentation_textBS: height = 0.1
+1045.1016 	EXP 	presentation_textBS: text = 4
+1045.1016 	EXP 	fixationBS: autoDraw = True
+1046.1012 	EXP 	fixationBS: autoDraw = False
+1046.1012 	EXP 	presentation_textBS: autoDraw = True
+1047.1011 	EXP 	presentation_textBS: autoDraw = False
+1047.1011 	EXP 	fixationBS: autoDraw = False
+1047.1011 	EXP 	presentation_textBS: autoDraw = False
+1047.1011 	EXP 	recall_txtBS: autoDraw = True
+1047.1011 	EXP 	textboxBS: autoDraw = True
+1047.1011 	EXP 	cont_buttonBS: autoDraw = True
+1048.5530 	DATA 	Keypress: 4
+1048.7524 	DATA 	Keypress: 5
+1049.5196 	DATA 	Keypress: 7
+1049.8203 	DATA 	Keypress: 9
+1050.7196 	DATA 	Keypress: 8
+1051.6529 	DATA 	Keypress: 3
+1051.8861 	DATA 	Keypress: 2
+1052.0695 	DATA 	Keypress: 1
+1053.0519 	DATA 	Mouse: Left button down, pos=(746,88)
+1053.0684 	EXP 	recall_txtBS: autoDraw = False
+1053.0684 	EXP 	textboxBS: autoDraw = False
+1053.0684 	EXP 	cont_buttonBS: autoDraw = False
+1053.0684 	EXP 	feedback_textBS: text = 'Incorrect'
+1053.0684 	EXP 	feedback_textBS: autoDraw = True
+1053.1694 	DATA 	Mouse:  Left button up, pos=(746,88)
+1054.0689 	EXP 	feedback_textBS: autoDraw = False
+1054.0689 	EXP 	feedback_textBS: autoDraw = False
+1054.0689 	EXP 	ThankYou: autoDraw = True
+1056.0689 	EXP 	ThankYou: autoDraw = False
+1056.0689 	EXP 	ThankYou: autoDraw = False
+1056.1402 	EXP 	window1: mouseVisible = True
