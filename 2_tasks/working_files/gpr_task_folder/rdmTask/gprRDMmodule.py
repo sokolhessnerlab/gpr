@@ -60,7 +60,7 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
 
     # df = pandas.read_csv(dirName + "rdmTask/" + 'gprRDMstatic.csv', dtype={"percentile":"int"}) 
 
-    staticDF = pd.read_csv(dirName + os.sep + "rdmTask" + os.sep + "gprRDMstatic.csv") 
+    staticDF = pd.read_csv(dirName + os.sep +"rdmTask" + os.sep + "gprRDMstatic.csv") 
 
     # Define rounds of risky decision-making task
     RDMrounds=4; 
@@ -149,11 +149,11 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
     outcomeTime = 1
     isi = .5
 
-    #Set Up the connection between PsychoPy and Biopac
+    # Set Up the connection between PsychoPy and Biopac
     from psychopy.parallel import ParallelPort
     port = ParallelPort(address = 0xD010)
     port.setData(0) # zeros it out in case it's not
-   
+    
     # random iti time of 3 or 3.5 sec for each of the trials in the static and dynamic
     def shuffle(array):
         currentIndex = len(array)
@@ -1370,8 +1370,7 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
         if r == 3:
             callExperimenter.draw()
             win.flip()
-            event.waitKeys(keyList = ['q'], timeStamped = False) # waiting for key press     
-            win.close()
+            event.waitKeys(keyList = ['q'], timeStamped = False) # waiting for key press
 
         
     dataDF = pd.DataFrame(data)
@@ -1437,7 +1436,8 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             data.columns = ["subID","riskyGain", 
             "riskyLoss", "safe", "RT", "round_earnings","curr_goal","curr_bonus","loc", "response", "choice", "outcome", "iti", "itiExtra", "cond", "stimDispStart", "choiceTimeStart", "isiStart", "outcomeDispStart", "itiStart", "trial", "roundRDM", "roundColor","ischecktrial"]
             data = data.iloc[1: , :] # drop the first row which are the variable names
-        filenameRDM = dataDirectoryPath + "gprRDM_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
+        #filenameRDM = dataDirectoryPath + "gprRDM_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
+        filenameRDM = dataDirectoryPath + "sub" + subID + "_" + "gprRDM_" + datetime + ".csv";
         data.to_csv(filenameRDM)
 
     #DATA SAVE        
@@ -1446,7 +1446,8 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
             practiceData = pd.DataFrame(practiceData) #convert data into pandas dataframe
             practiceData.columns=["riskyGain", "riskyLoss", "safe", "RT", "loc", "response", "choice","outcome","iti","itiExtra","stimDispStart","choiceTimeStart","isiStart","outcomeDispStart","itiStart","trial"] # add column names
             practiceData = practiceData.iloc[1: , :] # drop the first row which are the variable practiceData.iloc[1: , :] # drop the first row which are the variable names
-        filenamePrac = dataDirectoryPath + "gprRDMpractice_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
+        #filenamePrac = dataDirectoryPath + "gprRDMpractice_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
+        filenamePrac = dataDirectoryPath + "sub" + subID + "_" + "gprRDMpractice_" + datetime + ".csv";
         practiceData.to_csv(filenamePrac)
 
     if 'compensation' in locals():
@@ -1457,7 +1458,8 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     "totalcompensation", 
                     "finaldollarcompensation"]
             compensation = compensation.iloc[1: , :] # drop the first row which are the variable names
-        filenameGPRcomp = dataDirectoryPath + "gprBonusCompensation_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
+        #filenameGPRcomp = dataDirectoryPath + "gprBonusCompensation_" + "sub" + subID + "_" + datetime + ".csv"; # make filename
+        filenameGPRcomp = dataDirectoryPath + "sub" + subID + "_" + "gprBonusCompensation_" + datetime + ".csv";
         compensation.to_csv(filenameGPRcomp)
 
 

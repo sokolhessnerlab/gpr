@@ -13,6 +13,7 @@ This script does some set up for the experiment and calls all required scripts t
 """
 
 #import os; os.chdir('/Users/justinblake/Documents/GitHub/gpr/2_tasks/working_files/gpr_task_folder'); import gprPrimary; gprPrimary.gprPrimary("xxx", x, x)
+#import os; os.chdir('C:/Users/sokolhessnerlab/Desktop/Github/gpr/2_tasks/working_files/gpr_task_folder'); import gprPrimary; gprPrimary.gprPrimary("xxx", 1, 2, 1)
 
 def gprPrimary(subID, isReal, computerNumber): # define the function and specify the argument(s)
 
@@ -43,7 +44,7 @@ def gprPrimary(subID, isReal, computerNumber): # define the function and specify
         dataDirName = ("/Users/justinblake/Documents/GitHub/gpr/2_tasks/working_files/gpr_task_folder/rdmTask/data/")
     elif computerNumber ==2:
         dirName = ("C:/Users/sokolhessnerlab/Desktop/Github/gpr/2_tasks/working_files/gpr_task_folder/")
-        dataDirName = ("C:/Users/sokolhessnerlab/Desktop/Github/gpr/2_tasks/working_files/gpr_task_folder/data/")
+        dataDirName = ("C:/Users/sokolhessnerlab/Desktop/Github/gpr/2_tasks/working_files/gpr_task_folder/rdmTask/data/rdmData/")
     elif computerNumber ==3:
         dirName = ("/Users/Display/Desktop/Github/gpr/task/") 
         dataDirName = ("/Users/Display/Desktop/gprData/")
@@ -55,8 +56,19 @@ def gprPrimary(subID, isReal, computerNumber): # define the function and specify
 
     
     # Import scripts
+#    if taskSet == 1: # running both tasks
+        
     from rdmTask.gprRDMmodule import gprRDM # risky decision-making task + condition instructions
-    #from cgt_digitSpan import digitSpan_shlab
+        
+#        import cgt_digitSpan.gprDigitSpan_v1
+#    
+#    elif taskSet == 2: # running rdm only
+#        
+#        from rdmTask.gprRDMmodule import gprRDM
+#        
+#    elif taskSet == 3: # running digit span only
+#        
+#        import cgt_digitSpan.gprDigitSpan_v1
         
     # r  d condition order from pre-existing text file which determines conditions and color for each round of RDM task
     conditionDF = pd.read_csv(dirName + "rdmTask/gprConditions.csv", dtype={"subID":"string"}) # specify that subID is a string
@@ -82,7 +94,6 @@ def gprPrimary(subID, isReal, computerNumber): # define the function and specify
     
 
     gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color, cond4color, isReal, dirName, dataDirName)
-    
     
     # simple analysis script (checks for missing trials, runs simple glm, scores span tasks, notes whether we keep the data and then adjusts the condition file)
 
