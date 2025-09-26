@@ -115,9 +115,19 @@ for(s in 1:number_of_subjects){
   
   ##### FILL IN THE REMAINING ROWS BETWEEN HERE AND...
   
+  dm_data_to_add$outcome = tmpdata$outcome
+  dm_data_to_add$ischecktrial = tmpdata$ischecktrial
+  dm_data_to_add$round_earnings = tmpdata$round_earnings
+  dm_data_to_add$curr_goal = tmpdata$curr_goal
+  dm_data_to_add$curr_bonus = tmpdata$curr_bonus
+  dm_data_to_add$cond = tmpdata$cond
+  dm_data_to_add$dec_epoch_start = tmpdata$stimDispStart
+  dm_data_to_add$dec_epoch_end = tmpdata$isiStart
+  dm_data_to_add$otc_epoch_start = tmpdata$outcomeDispStart
+  dm_data_to_add$otc_epoch_end = tmpdata$itiStart
   
-  
-  
+
+  ##### I think that those last 2 are the correct match ups for the file column names but I am not entirely sure. - JB
   ##### ... HERE.
   
   
