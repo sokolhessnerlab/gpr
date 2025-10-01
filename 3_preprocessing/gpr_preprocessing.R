@@ -21,8 +21,8 @@ setwd(config$path$data$raw);
 #### STEP 3: Get the file names & set variables ####
 cat('Identifying data file locations.\n');
 rdmfn = dir(pattern = glob2rx('rdmDatasub*_gprRDM_*.csv'),full.names = T, recursive = T);
-goalfn = dir(pattern = glob2rx('rdmDatasub*_gprBonusCompensation_*.csv'),full.names = T, recursive = T);
 digitspanfn = dir(pattern = glob2rx('*gprDigitSpan*.csv'),full.names = T, recursive = T);
+goalfn = dir(pattern = glob2rx('rdmDatasub*_gprBonusCompensation_*.csv'),full.names = T, recursive = T);
 sclfn = dir(pattern = glob2rx('gpr*25_3.txt'),full.names = T, recursive = T);
 
 all_dirs = dir(pattern = glob2rx('gpr*'));
@@ -92,8 +92,11 @@ colnames(data_wm) <- column_names_wm
 
 
 #### STEP 4: Load and Process Data ####
+cat('Loading and processing data.\n');
 
 for(s in 1:number_of_subjects){
+  ##### DECISION MAKING PROCESSING ##############
+  
   # Load in the data
   tmpdata = read.csv(rdmfn[s]);
   
@@ -112,9 +115,6 @@ for(s in 1:number_of_subjects){
   dm_data_to_add$safe = tmpdata$safe
   dm_data_to_add$choice = tmpdata$choice
   dm_data_to_add$reactiontime = tmpdata$RT
-  
-  ##### FILL IN THE REMAINING ROWS BETWEEN HERE AND...
-  
   dm_data_to_add$outcome = tmpdata$outcome
   dm_data_to_add$ischecktrial = tmpdata$ischecktrial
   dm_data_to_add$round_earnings = tmpdata$round_earnings
@@ -126,54 +126,38 @@ for(s in 1:number_of_subjects){
   dm_data_to_add$otc_epoch_start = tmpdata$outcomeDispStart
   dm_data_to_add$otc_epoch_end = tmpdata$itiStart
   
-
-  ##### I think that those last 2 are the correct match ups for the file column names but I am not entirely sure. - JB
-  ##### ... HERE.
-  
-  
-  
-  
-  
-  ##### TODO: DELETE EVERYTHING BELOW THIS WHEN DONE
-  
-  tmp_riskyopt1 = c(tmpdata$riskyoption1[dm_index_static],
-                    tmpdata$riskyoption1[dm_index_dynamic]);
-  tmp_riskyopt2 = c(tmpdata$riskyoption2[dm_index_static],
-                    tmpdata$riskyoption2[dm_index_dynamic]);
-  tmp_safe = c(tmpdata$safeoption[dm_index_static],
-               tmpdata$safeoption[dm_index_dynamic]);
-  
-  dm_data_to_add[,4:6] = cbind(tmp_riskyopt1,tmp_riskyopt2,tmp_safe) # dollar amounts
-  
-  dm_data_to_add[,7] = c(tmpdata$choices[dm_index_static],
-                         tmpdata$choices[dm_index_dynamic]); # choices
-  
-  dm_data_to_add[,8] = c(tmpdata$realChoice.rt[dm_index_static],
-                         tmpdata$realChoice.rt[dm_index_dynamic]); # RTs
-  
-  dm_data_to_add[,9] = c(tmpdata$outcomes[dm_index_static],
-                         tmpdata$outcomes[dm_index_dynamic]); # outcomes
-  
-  dm_data_to_add[,10] = c(tmpdata$ischecktrial[dm_index_static],
-                          array(data = 0, dim = c(1,num_dynamic_trials))); # is check trial
-  
-  dm_data_to_add[,11] = c(array(data = 0, dim = c(1,num_static_trials)),
-                          array(data = 1, dim = c(1,num_dynamic_trials))); # static 0, dynamic 1
-  
-  dm_data_to_add[,12] = c(array(data = 0, dim = c(1,num_static_trials)),
-                          tmpdata$easy0difficult1[dm_index_dynamic]*-2 + 1); # easy +1, difficult -1
-  
-  dm_data_to_add[,13] = c(array(data = NA, dim = c(1,num_static_trials)),
-                          tmpdata$choiceP[dm_index_dynamic]); # choice probability on easy/diff dynamic trials
-  
-  dm_data_to_add[,14] = tmpdata$bestRho[is.finite(tmpdata$bestRho)];
-  dm_data_to_add[,15] = tmpdata$bestMu[is.finite(tmpdata$bestMu)];
-  
-  
-  
-  #### JUST DON'T DELETE THIS LINE! 
-  
   # Add this person's DM data to the total DM data.
   data_dm = rbind(data_dm,dm_data_to_add);
   
+  
+  rm(tmpdata) # remove the temporary file
+  
+  ##### WORKING MEMORY PROCESSING ##############
+  wm_data_to_add = array(data = NA, dim = c(number_of_wm_trials_per_person,length(column_names_wm)));
+  wm_data_to_add = as.data.frame(wm_data_to_add)
+  colnames(wm_data_to_add) <- column_names_wm
+  
+  # Load in the data
+  tmpdata = read.csv(digitspanfn[s]);
+  
+  wm_trial_indices = which((!is.na(tmpdata$trialNumber)) & is.finite(tmpdata$correct));
+  
+  wm_data_to_add[,1] = 1:number_of_wm_trials_per_person; # trial numbers
+  wm_data_to_add[,2] = s; # subject number
+
+  wm_data_to_add[,3] = nchar(tmpdata$digitsForTrial[wm_trial_indices-1])/3; # number of digits on the trial
+  
+  wm_data_to_add[1:14,4] = 1; # forward is always first
+  wm_data_to_add[15:28,4] = 0; # backward is always second
+  
+  wm_data_to_add[,5] = tmpdata$correct[wm_trial_indices]; # correct = 1, incorrect = 0
+  
+  data_wm = rbind(data_wm,wm_data_to_add);
 }
+
+setwd(config$path$data$processed);
+
+write.csv(data_dm, file=sprintf('gpr_processed_decisionmaking_data_%s.csv',format(Sys.Date(), format="%Y%m%d")),
+          row.names = F);
+write.csv(data_wm, file=sprintf('gpr_processed_workingmemory_data_%s.csv',format(Sys.Date(), format="%Y%m%d")),
+          row.names = F);
