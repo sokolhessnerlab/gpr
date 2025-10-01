@@ -819,7 +819,7 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                 choice = 0
                 outcome = safePract[p]
             round_earnings += outcome
-
+            round_earnings = round(round_earnings,2) # remove floating point errors by rounding to 2 decimal points of precision
     
     
         if outcome == gainPract[p]:
@@ -1211,6 +1211,7 @@ def gprRDM(subID, cond1, cond2, cond3, cond4, cond1color, cond2color, cond3color
                     choice = 0
                     outcome = safe[t]
                 round_earnings += outcome
+                round_earnings = round(round_earnings,2) # remove floating point errors by rounding to 2 decimal points of precision
 
 
             if choice == 1:
