@@ -90,6 +90,47 @@ column_names_wm = c(
 data_wm = array(data = NA, dim = c(0, length(column_names_wm)));
 colnames(data_wm) <- column_names_wm
 
+# Prep object for goalfn information (and other subject-level info
+# Set up variables to hold decision-making data
+
+# ONE ROW PER SUBJECT
+column_names_subjlevel_wide = c(
+  'subjectnumber',
+  'round1earnings', # achieved earnings
+  'round2earnings',
+  'round3earnings',
+  'round4earnings',
+  'round1bonusreceived01', # did they get the bonus (1) or not(0)
+  'round2bonusreceived01',
+  'round3bonusreceived01',
+  'round4bonusreceived01',
+  'round1bonusatstake', # the bonus they were trying to get
+  'round2bonusatstake',
+  'round3bonusatstake',
+  'round4bonusatstake',
+  'round1goallevel', # the goal level
+  'round2goallevel',
+  'round3goallevel',
+  'round4goallevel',
+  'totalcompensation' # total $ compensation
+);
+
+column_names_subjlevel_long = c(
+  'subjectnumber',
+  'roundnum', # achieved earnings
+  'earnings',
+  'bonusreceived01', # did they get the bonus (1) or not(0)
+  'bonusatstake', # the bonus they were trying to get
+  'goallevel' # the goal level
+);
+
+
+data_subjlevel_wide = as.data.frame(array(data = NA, dim = c(number_of_subjects, length(column_names_subjlevel_wide))));
+colnames(data_subjlevel_wide) <- column_names_subjlevel_wide
+
+data_subjlevel_long = as.data.frame(array(data = NA, dim = c(number_of_subjects*4, length(column_names_subjlevel_long))));
+colnames(data_subjlevel_long) <- column_names_subjlevel_long
+
 
 # STEP 4: Load and Process Data ----
 cat('Loading and processing data.\n');
@@ -158,12 +199,51 @@ for(s in 1:number_of_subjects){
   
   data_wm = rbind(data_wm,wm_data_to_add);
   
+  rm(tmpdata) # remove the temporary file
+  
   
   ## SUBJECT-LEVEL DATA PROCESSING ----
   
-  # cat(', subject-level')
+  cat(', subject-level')
   
+  # Load in the data
+  tmpdata = read.csv(goalfn[s]);
   
+  tmpgoals = dm_data_to_add$curr_goal[dm_data_to_add$trialnumber_block == 1]
+  tmpbonus = dm_data_to_add$curr_bonus[dm_data_to_add$trialnumber_block == 1]
+  
+  # WIDE VERSION (1 row per subject)
+  data_subjlevel_wide$subjectnumber[s] = s
+  data_subjlevel_wide$round1earnings[s] = as.numeric(tmpdata$roundearnings[1])
+  data_subjlevel_wide$round2earnings[s] = as.numeric(tmpdata$roundearnings[2])
+  data_subjlevel_wide$round3earnings[s] = as.numeric(tmpdata$roundearnings[3])
+  data_subjlevel_wide$round4earnings[s] = as.numeric(tmpdata$roundearnings[4])
+  
+  data_subjlevel_wide$round1bonusreceived01[s] = as.numeric(tmpdata$roundbonus[1] > 0)
+  data_subjlevel_wide$round2bonusreceived01[s] = as.numeric(tmpdata$roundbonus[2] > 0)
+  data_subjlevel_wide$round3bonusreceived01[s] = as.numeric(tmpdata$roundbonus[3] > 0)
+  data_subjlevel_wide$round4bonusreceived01[s] = as.numeric(tmpdata$roundbonus[4] > 0)
+
+  data_subjlevel_wide$round1bonusatstake[s] = tmpbonus[1]
+  data_subjlevel_wide$round2bonusatstake[s] = tmpbonus[2]
+  data_subjlevel_wide$round3bonusatstake[s] = tmpbonus[3]
+  data_subjlevel_wide$round4bonusatstake[s] = tmpbonus[4]
+  
+  data_subjlevel_wide$round1goallevel[s] = tmpgoals[1]
+  data_subjlevel_wide$round2goallevel[s] = tmpgoals[2]
+  data_subjlevel_wide$round3goallevel[s] = tmpgoals[3]
+  data_subjlevel_wide$round4goallevel[s] = tmpgoals[4]
+  
+  data_subjlevel_wide$totalcompensation = as.numeric(tmpdata$totalcompensation[5])
+  
+  # "LONG" VERSION (4 rows per subject)
+  subj_level_long_ind = ((s-1)*4+1):((s-1)*4+4)
+  data_subjlevel_long$subjectnumber[subj_level_long_ind] = s;
+  data_subjlevel_long$roundnum[subj_level_long_ind] = 1:4;
+  data_subjlevel_long$earnings[subj_level_long_ind] = as.numeric(tmpdata$roundearnings[1:4])
+  data_subjlevel_long$bonusreceived01[subj_level_long_ind] = as.numeric(tmpdata$roundbonus[1:4] > 0)
+  data_subjlevel_long$bonusatstake[subj_level_long_ind] = tmpbonus
+  data_subjlevel_long$goallevel[subj_level_long_ind] = tmpgoals
   
   cat('. Done.\n')
 }
@@ -176,3 +256,10 @@ write.csv(data_dm, file=sprintf('gpr_processed_decisionmaking_data_%s.csv',forma
           row.names = F);
 write.csv(data_wm, file=sprintf('gpr_processed_workingmemory_data_%s.csv',format(Sys.Date(), format="%Y%m%d")),
           row.names = F);
+write.csv(data_subjlevel_wide, file=sprintf('gpr_processed_subjlevelwide_data_%s.csv',format(Sys.Date(), format="%Y%m%d")),
+          row.names = F);
+write.csv(data_subjlevel_long, file=sprintf('gpr_processed_subjlevellong_data_%s.csv',format(Sys.Date(), format="%Y%m%d")),
+          row.names = F);
+
+cat('Finished with preprocessing. Go forth & analyze!\n\n')
+
