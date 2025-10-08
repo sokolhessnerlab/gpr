@@ -136,7 +136,7 @@ colnames(data_subjlevel_long) <- column_names_subjlevel_long
 cat('Loading and processing data.\n');
 
 for(s in 1:number_of_subjects){
-  cat(sprintf('GPR%03i: DM',s))
+  cat(sprintf('GPR%03i: DM',subject_IDs[s]))
   
   
   ## DECISION MAKING PROCESSING ----
@@ -188,7 +188,7 @@ for(s in 1:number_of_subjects){
   wm_trial_indices = which((!is.na(tmpdata$trialNumber)) & is.finite(tmpdata$correct));
   
   wm_data_to_add[,1] = 1:number_of_wm_trials_per_person; # trial numbers
-  wm_data_to_add[,2] = s; # subject number
+  wm_data_to_add[,2] = subject_IDs[s]; # subject number
 
   wm_data_to_add[,3] = nchar(tmpdata$digitsForTrial[wm_trial_indices-1])/3; # number of digits on the trial
   
@@ -213,7 +213,7 @@ for(s in 1:number_of_subjects){
   tmpbonus = dm_data_to_add$curr_bonus[dm_data_to_add$trialnumber_block == 1]
   
   # WIDE VERSION (1 row per subject)
-  data_subjlevel_wide$subjectnumber[s] = s
+  data_subjlevel_wide$subjectnumber[s] = subject_IDs[s]
   data_subjlevel_wide$round1earnings[s] = as.numeric(tmpdata$roundearnings[1])
   data_subjlevel_wide$round2earnings[s] = as.numeric(tmpdata$roundearnings[2])
   data_subjlevel_wide$round3earnings[s] = as.numeric(tmpdata$roundearnings[3])
@@ -238,7 +238,7 @@ for(s in 1:number_of_subjects){
   
   # "LONG" VERSION (4 rows per subject)
   subj_level_long_ind = ((s-1)*4+1):((s-1)*4+4)
-  data_subjlevel_long$subjectnumber[subj_level_long_ind] = s;
+  data_subjlevel_long$subjectnumber[subj_level_long_ind] = subject_IDs[s];
   data_subjlevel_long$roundnum[subj_level_long_ind] = 1:4;
   data_subjlevel_long$earnings[subj_level_long_ind] = as.numeric(tmpdata$roundearnings[1:4])
   data_subjlevel_long$bonusreceived01[subj_level_long_ind] = as.numeric(tmpdata$roundbonus[1:4] > 0)
