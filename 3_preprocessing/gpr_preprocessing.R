@@ -4,21 +4,21 @@
 # and Risk-taking) study in 2025-2026.
 #
 
-#### STEP 0: CONNECTIONS ####
+# STEP 0: CONNECTIONS ----
 # - Connect to the server
 
-#### STEP 1: SET YOUR WORKING DIRECTORY! ####
+# STEP 1: SET YOUR WORKING DIRECTORY! ----
 # On PSH's computers...
 setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
 # On JB's computers...
 # setwd('/Users/justinblake/Documents/gpr/');
 
-#### STEP 2: then run from here on the same ####
+# STEP 2: then run from here on the same ----
 config = config::get();
 
 setwd(config$path$data$raw);
 
-#### STEP 3: Get the file names & set variables ####
+# STEP 3: Get the file names & set variables ----
 cat('Identifying data file locations.\n');
 rdmfn = dir(pattern = glob2rx('rdmDatasub*_gprRDM_*.csv'),full.names = T, recursive = T);
 digitspanfn = dir(pattern = glob2rx('*gprDigitSpan*.csv'),full.names = T, recursive = T);
@@ -91,11 +91,11 @@ data_wm = array(data = NA, dim = c(0, length(column_names_wm)));
 colnames(data_wm) <- column_names_wm
 
 
-#### STEP 4: Load and Process Data ####
+# STEP 4: Load and Process Data ----
 cat('Loading and processing data.\n');
 
 for(s in 1:number_of_subjects){
-  ##### DECISION MAKING PROCESSING ##############
+  ## DECISION MAKING PROCESSING ----
   
   # Load in the data
   tmpdata = read.csv(rdmfn[s]);
@@ -132,7 +132,7 @@ for(s in 1:number_of_subjects){
   
   rm(tmpdata) # remove the temporary file
   
-  ##### WORKING MEMORY PROCESSING ##############
+  ## WORKING MEMORY PROCESSING ----
   wm_data_to_add = array(data = NA, dim = c(number_of_wm_trials_per_person,length(column_names_wm)));
   wm_data_to_add = as.data.frame(wm_data_to_add)
   colnames(wm_data_to_add) <- column_names_wm
@@ -155,6 +155,7 @@ for(s in 1:number_of_subjects){
   data_wm = rbind(data_wm,wm_data_to_add);
 }
 
+# STEP 5: SAVE OUT PROCESSED DATA FILES ----
 setwd(config$path$data$processed);
 
 write.csv(data_dm, file=sprintf('gpr_processed_decisionmaking_data_%s.csv',format(Sys.Date(), format="%Y%m%d")),
