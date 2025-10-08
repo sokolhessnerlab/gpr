@@ -95,12 +95,14 @@ colnames(data_wm) <- column_names_wm
 cat('Loading and processing data.\n');
 
 for(s in 1:number_of_subjects){
+  cat(sprintf('GPR%03i: DM',s))
+  
+  
   ## DECISION MAKING PROCESSING ----
   
   # Load in the data
   tmpdata = read.csv(rdmfn[s]);
   
-  # DECISION-MAKING DATA
   dm_data_to_add = array(data = NA, dim = c(number_of_dm_trials_per_person,length(column_names_dm)));
   dm_data_to_add = as.data.frame(dm_data_to_add)
   colnames(dm_data_to_add) <- column_names_dm
@@ -129,10 +131,12 @@ for(s in 1:number_of_subjects){
   # Add this person's DM data to the total DM data.
   data_dm = rbind(data_dm,dm_data_to_add);
   
-  
   rm(tmpdata) # remove the temporary file
   
+  
   ## WORKING MEMORY PROCESSING ----
+  
+  cat(', WM')
   wm_data_to_add = array(data = NA, dim = c(number_of_wm_trials_per_person,length(column_names_wm)));
   wm_data_to_add = as.data.frame(wm_data_to_add)
   colnames(wm_data_to_add) <- column_names_wm
@@ -153,9 +157,19 @@ for(s in 1:number_of_subjects){
   wm_data_to_add[,5] = tmpdata$correct[wm_trial_indices]; # correct = 1, incorrect = 0
   
   data_wm = rbind(data_wm,wm_data_to_add);
+  
+  
+  ## SUBJECT-LEVEL DATA PROCESSING ----
+  
+  # cat(', subject-level')
+  
+  
+  
+  cat('. Done.\n')
 }
 
 # STEP 5: SAVE OUT PROCESSED DATA FILES ----
+cat('Saving data.\n');
 setwd(config$path$data$processed);
 
 write.csv(data_dm, file=sprintf('gpr_processed_decisionmaking_data_%s.csv',format(Sys.Date(), format="%Y%m%d")),
