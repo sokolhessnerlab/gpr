@@ -9,9 +9,9 @@
 
 # STEP 1: SET YOUR WORKING DIRECTORY! ----
 # On PSH's computers...
-setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
+#setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
 # On JB's computers...
-# setwd('/Users/justinblake/Documents/gpr/');
+setwd('/Users/justinblake/Documents/GitHub/gpr/');
 
 # STEP 2: then run from here on the same ----
 config = config::get();
@@ -244,6 +244,219 @@ for(s in 1:number_of_subjects){
   data_subjlevel_long$bonusreceived01[subj_level_long_ind] = as.numeric(tmpdata$roundbonus[1:4] > 0)
   data_subjlevel_long$bonusatstake[subj_level_long_ind] = tmpbonus
   data_subjlevel_long$goallevel[subj_level_long_ind] = tmpgoals
+  
+  # End of Task Qualtrics Data
+  raw_qualtrics_data <- read.csv("gprQualtricsData_values_20251011.csv")
+  raw_qualtrics_data = raw_qualtrics_data[-1,]
+  
+  column_names_qualtrics = c(
+    'subID',          #gprXXX
+    'stai_s_1',       #state anxiety - Just put the overall score? - 1, 2, 5, 8, 10, 11, 15, 16, 19, 20 reverse scored (might be already from XM)
+    'stai_s_2',
+    'stai_s_3',
+    'stai_s_4',
+    'stai_s_5',
+    'stai_s_6',
+    'stai_s_7',
+    'stai_s_8',
+    'stai_s_9',
+    'stai_s_10',
+    'stai_s_11',
+    'stai_s_12',
+    'stai_s_13',
+    'stai_s_14',
+    'stai_s_15',
+    'stai_s_16',
+    'stai_s_17',
+    'stai_s_18',
+    'stai_s_19',
+    'stai_s_20',
+    'stai_s_overall',
+    'stai_t_1',       #trait anxiety - Just put the overall score? - 1, 3, 6, 7, 10, 13, 14, 16, 19 reverse scored (might be already from XM)
+    'stai_t_2',
+    'stai_t_3',
+    'stai_t_4',
+    'stai_t_5',
+    'stai_t_6',
+    'stai_t_7',
+    'stai_t_8',
+    'stai_t_9',
+    'stai_t_10',
+    'stai_t_11',
+    'stai_t_12',
+    'stai_t_13',
+    'stai_t_14',
+    'stai_t_15',
+    'stai_t_16',
+    'stai_t_17',
+    'stai_t_18',
+    'stai_t_19',
+    'stai_t_20',
+    'stai_t_overall',
+    'rrs_1',          #rumination - Just put the overall score?
+    'rrs_2',
+    'rrs_3',
+    'rrs_4',
+    'rrs_5',
+    'rrs_6',
+    'rrs_7',
+    'rrs_8',
+    'rrs_9',
+    'rrs_10',
+    'rrs_brood',
+    'rrs_reflect',
+    'rrs_overall',
+    'bis_bas_1',      #BIS/BAS - Just put the overall score? - 1, 6, 11, and 17 are fillers (won't calculate them)
+    'bis_bas_2',
+    'bis_bas_3',
+    'bis_bas_4',
+    'bis_bas_5',
+    'bis_bas_6',
+    'bis_bas_7',
+    'bis_bas_8',
+    'bis_bas_9',
+    'bis_bas_10',
+    'bis_bas_11',
+    'bis_bas_12',
+    'bis_bas_13',
+    'bis_bas_14',
+    'bis_bas_15',
+    'bis_bas_16',
+    'bis_bas_17',
+    'bis_bas_18',
+    'bis_bas_19',
+    'bis_bas_20',
+    'bis_bas_21',
+    'bis_bas_22',
+    'bis_bas_23',
+    'bis_bas_24',
+    'bis_bas_overall',
+    'age',
+    'gender',                       
+    'ethnicity',                    
+    'race',                         
+    'highest_degree_attained',      
+    'political_orientation',        
+    'first_generation',             
+    'fraction_attn_check_correct'
+  );
+  
+  number_of_qualtrics_subjects = dim(raw_qualtrics_data)
+  
+  data_qualtrics = array(data = NA, dim = c(number_of_qualtrics_subjects, length(column_names_qualtrics)));
+  colnames(data_qualtrics) <- column_names_qualtrics
+  data_qualtrics = as.data.frame(data_qualtrics) ### THIS IS WHERE I GOT STUCK - I don't know what's wrong exactly, but I think that it might be that the above names don't match what is in the qualtrics csv file? ###
+  
+  data_qualtrics$attn_check_correct = (as.numeric(raw_qualtrics_data$attentionCheck1) +
+                                         as.numeric(raw_qualtrics_data$attentionCheck2) +
+                                         as.numeric(raw_qualtrics_data$attentionCheck3))/3;
+  
+  
+  data_qualtrics$subID = as.numeric(raw_qualtrics_data$subID);
+  
+  data_qualtrics$age = as.numeric(raw_qualtrics_data$Age);
+  
+  data_qualtrics$ethnicity = as.numeric(raw_qualtrics_data$Ethnicity);
+  # 1-Hispanic/Latinx, 2-Not Hispanic/Latinx, 3-Prefer not to say
+  
+  data_qualtrics$race = as.numeric(raw_qualtrics_data$Race);
+  # 1-American/Alaskan Native, 2-Black/African-American, 3-East Asian, 4-Native Hawaiian/Pacific Islander, 5-South Asian, 6-White, 7-Bi-racial, 8-Other, 9-Prefer not to say
+  
+  data_qualtrics$highest_degree_attained = as.numeric(raw_qualtrics_data$Education_Level)
+  # 1-No school, 2-Nursery to 8th, 3-High school-no diploma, 4-High school diploma, 5-trade school, 6-associates degree, 7-bachelors degree, 8-masters degree, 9-professional degree, 10-doctorate
+  
+  data_qualtrics$gender = as.numeric(raw_qualtrics_data$Gender)
+  # 1-Man, 2-Woman, 3-Non-Binary, 4-Genderqueer, 5-Gender Expansive, 6-Two-Spirited, 7-Third Gender, 8-Agender, 9-Not Sure, 10-Other, 11-Prefer not to say
+  
+  data_qualtrics$political_orientation = as.numeric(raw_qualtrics_data$Politics)
+  # 1-Extremely conservative, 5-centrist, 9-Extremely liberal
+  
+  data_qualtrics$first_generation = as.numeric(raw_qualtrics_data$First_Generation)
+  # 1-Yes, 2-No, 3-Unsure
+  
+  data_qualtrics$stai_s_overall = (5 - as.numeric(raw_qualtrics_data$stai_s_1)) +
+                                     5 - as.numeric(raw_qualtrics_data$stai_s_2) +
+                                     as.numeric(raw_qualtrics_data$stai_s_3) +
+                                     as.numeric(raw_qualtrics_data$stai_s_4) +
+                                     5 - as.numeric(raw_qualtrics_data$stai_s_5) +
+                                     as.numeric(raw_qualtrics_data$stai_s_6) +
+                                     as.numeric(raw_qualtrics_data$stai_s_7) +
+                                     5 - as.numeric(raw_qualtrics_data$stai_s_8) +
+                                     as.numeric(raw_qualtrics_data$stai_s_9) +
+                                     5 - as.numeric(raw_qualtrics_data$stai_s_10) +
+                                     5 - as.numeric(raw_qualtrics_data$stai_s_11) +
+                                     as.numeric(raw_qualtrics_data$stai_s_12) +
+                                     as.numeric(raw_qualtrics_data$stai_s_13) +
+                                     as.numeric(raw_qualtrics_data$stai_s_14) +
+                                     5 - as.numeric(raw_qualtrics_data$stai_s_15) +
+                                     5 - as.numeric(raw_qualtrics_data$stai_s_16) +
+                                     as.numeric(raw_qualtrics_data$stai_s_17) +
+                                     as.numeric(raw_qualtrics_data$stai_s_18) +
+                                     5 - as.numeric(raw_qualtrics_data$stai_s_19) +
+                                     5 - as.numeric(raw_qualtrics_data$stai_s_20);
+  
+  data_qualtrics$stai_t_overall = (5 - as.numeric(raw_qualtrics_data$stai_t_1)) +
+                                     as.numeric(raw_qualtrics_data$stai_t_2) +
+                                     5 - as.numeric(raw_qualtrics_data$stai_t_3) +
+                                     as.numeric(raw_qualtrics_data$stai_t_4) +
+                                     as.numeric(raw_qualtrics_data$stai_t_5) +
+                                     5 - as.numeric(raw_qualtrics_data$stai_t_6) +
+                                     5 - as.numeric(raw_qualtrics_data$stai_t_7) +
+                                     as.numeric(raw_qualtrics_data$stai_t_8) +
+                                     as.numeric(raw_qualtrics_data$stai_t_9) +
+                                     5 - as.numeric(raw_qualtrics_data$stai_t_10) +
+                                     as.numeric(raw_qualtrics_data$stai_t_11) +
+                                     as.numeric(raw_qualtrics_data$stai_t_12) +
+                                     5 - as.numeric(raw_qualtrics_data$stai_t_13) +
+                                     5 - as.numeric(raw_qualtrics_data$stai_t_14) +
+                                     as.numeric(raw_qualtrics_data$stai_t_15) +
+                                     5 - as.numeric(raw_qualtrics_data$stai_t_16) +
+                                     as.numeric(raw_qualtrics_data$stai_t_17) +
+                                     as.numeric(raw_qualtrics_data$stai_t_18) +
+                                     5 - as.numeric(raw_qualtrics_data$stai_t_19) +
+                                     as.numeric(raw_qualtrics_data$stai_t_20);
+  
+  data_qualtrics$rrs_brood = (as.numeric(raw_qualtrics_data$rrs_1)) +
+                                as.numeric(raw_qualtrics_data$rrs_3) +
+                                as.numeric(raw_qualtrics_data$rrs_6) +
+                                as.numeric(raw_qualtrics_data$rrs_7) +
+                                as.numeric(raw_qualtrics_data$rrs_8);
+                                 
+  data_qualtrics$rrs_reflect = (as.numeric(raw_qualtrics_data$rrs_2)) +
+                                  as.numeric(raw_qualtrics_data$rrs_4) +
+                                  as.numeric(raw_qualtrics_data$rrs_5) +
+                                  as.numeric(raw_qualtrics_data$rrs_9) +
+                                  as.numeric(raw_qualtrics_data$rrs_10);
+                                
+  data_qualtrics$rrs_overall = (rrs_brood + rrs_reflect)
+  
+                                
+  data_qualtrics$bas_drive = (as.numeric(raw_qualtrics_data$bis_bas_3)) +
+                                      as.numeric(raw_qualtrics_data$bis_bas_9) +
+                                      as.numeric(raw_qualtrics_data$bis_bas_12) +
+                                      as.numeric(raw_qualtrics_data$bis_bas_21);
+  
+  data_qualtrics$bas_fun = (as.numeric(raw_qualtrics_data$bis_bas_5)) +
+                                      5 - as.numeric(raw_qualtrics_data$bis_bas_10) +
+                                      as.numeric(raw_qualtrics_data$bis_bas_15) +
+                                      as.numeric(raw_qualtrics_data$bis_bas_20);
+  
+  data_qualtrics$bas_reward = (5 - as.numeric(raw_qualtrics_data$bis_bas_4)) +
+                                      as.numeric(raw_qualtrics_data$bis_bas_7) +
+                                      as.numeric(raw_qualtrics_data$bis_bas_14) +
+                                      as.numeric(raw_qualtrics_data$bis_bas_18) +
+                                      as.numeric(raw_qualtrics_data$bis_bas_23);
+  
+  data_qualtrics$bis_overall = (5 - as.numeric(raw_qualtrics_data$bis_bas_2)) +
+                                      5 - as.numeric(raw_qualtrics_data$bis_bas_8) +
+                                      5 - as.numeric(raw_qualtrics_data$bis_bas_13) +
+                                      as.numeric(raw_qualtrics_data$bis_bas_16) +
+                                      as.numeric(raw_qualtrics_data$bis_bas_19) +
+                                      as.numeric(raw_qualtrics_data$bis_bas_22) +
+                                      as.numeric(raw_qualtrics_data$bis_bas_24);
+  
+  data_qualtrics$bis_bas_overall = (bis_overall + bas_drive + bas_fun + bas_reward)
+  
   
   cat('. Done.\n')
 }

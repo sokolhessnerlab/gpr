@@ -10,9 +10,9 @@ rm(list = ls())
 
 # STEP 1: SET YOUR WORKING DIRECTORY! ----
 # On PSH's computers...
-setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
+#setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
 # On JB's computers...
-# setwd('/Users/justinblake/Documents/gpr/');
+setwd('/Users/justinblake/Documents/GitHub/gpr/');
 
 # STEP 2: then run from here on the same ----
 config = config::get();
@@ -32,7 +32,7 @@ data_subjlevel_long = read.csv(subjlevellongfn[length(subjlevellongfn)])
 
 num_rdm_trials = 50;
 num_rdm_blocks = 4;
-number_of_dm_trials_per_person = num_rdm_trials * num_rdm_blocks; # static = 50, dynamic = 120
+number_of_dm_trials_per_person = num_rdm_trials * num_rdm_blocks; # static = 200
 
 subject_IDs = unique(data_dm$subjectnumber)
 number_of_subjects = length(subject_IDs)
