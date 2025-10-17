@@ -288,26 +288,26 @@ for(s in 1:number_of_subjects){
     
     # Process the QUALTRICS Data and include in subject-level dfs
     # Do WIDE first
-    data_subjlevel_wide$stais[s] = 5 - num_qualtrics_data$GPR.STAI.S_1[qual_rowInd] +
-      5 - num_qualtrics_data$GPR.STAI.S_2[qual_rowInd] +
-      num_qualtrics_data$GPR.STAI.S_3[qual_rowInd] +
-      num_qualtrics_data$GPR.STAI.S_4[qual_rowInd] +
-      5 - num_qualtrics_data$GPR.STAI.S_5[qual_rowInd] +
-      num_qualtrics_data$GPR.STAI.S_6[qual_rowInd] +
-      num_qualtrics_data$GPR.STAI.S_7[qual_rowInd] +
-      5 - num_qualtrics_data$GPR.STAI.S_8[qual_rowInd] +
-      num_qualtrics_data$GPR.STAI.S_9[qual_rowInd] +
-      5 - num_qualtrics_data$GPR.STAI.S_10[qual_rowInd] +
-      5 - num_qualtrics_data$GPR.STAI.S_11[qual_rowInd] +
-      num_qualtrics_data$GPR.STAI.S_12[qual_rowInd] +
-      num_qualtrics_data$GPR.STAI.S_13[qual_rowInd] +
-      num_qualtrics_data$GPR.STAI.S_14[qual_rowInd] +
-      5 - num_qualtrics_data$GPR.STAI.S_15[qual_rowInd] +
-      5 - num_qualtrics_data$GPR.STAI.S_16[qual_rowInd] +
-      num_qualtrics_data$GPR.STAI.S_17[qual_rowInd] +
-      num_qualtrics_data$GPR.STAI.S_18[qual_rowInd] +
-      5 - num_qualtrics_data$GPR.STAI.S_19[qual_rowInd] +
-      5 - num_qualtrics_data$GPR.STAI.S_20[qual_rowInd];
+    data_subjlevel_wide$stais[s] =  5 - num_qualtrics_data$GPR.STAI.S_1[qual_rowInd] +
+                                    5 - num_qualtrics_data$GPR.STAI.S_2[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.S_3[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.S_4[qual_rowInd] +
+                                    5 - num_qualtrics_data$GPR.STAI.S_5[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.S_6[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.S_7[qual_rowInd] +
+                                    5 - num_qualtrics_data$GPR.STAI.S_8[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.S_9[qual_rowInd] +
+                                    5 - num_qualtrics_data$GPR.STAI.S_10[qual_rowInd] +
+                                    5 - num_qualtrics_data$GPR.STAI.S_11[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.S_12[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.S_13[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.S_14[qual_rowInd] +
+                                    5 - num_qualtrics_data$GPR.STAI.S_15[qual_rowInd] +
+                                    5 - num_qualtrics_data$GPR.STAI.S_16[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.S_17[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.S_18[qual_rowInd] +
+                                    5 - num_qualtrics_data$GPR.STAI.S_19[qual_rowInd] +
+                                    5 - num_qualtrics_data$GPR.STAI.S_20[qual_rowInd];
     
     # # JUSTIN PICK UP HERE AND TRY CLEANING UP THE BELOW
     # 
@@ -489,7 +489,7 @@ for(s in 1:number_of_subjects){
   
   
   # Bind all the data
-  # Add this person's DM data to the total DM data.
+  # Add this person's DM and WM data to the total data structures. 
   data_dm = rbind(data_dm,dm_data_to_add);
   data_wm = rbind(data_wm,wm_data_to_add);
   
@@ -500,14 +500,14 @@ for(s in 1:number_of_subjects){
 cat('Saving data.\n');
 setwd(config$path$data$processed);
 
-# write.csv(data_dm, file=sprintf('gpr_processed_decisionmaking_data_%s.csv',format(Sys.Date(), format="%Y%m%d")),
-#           row.names = F);
-# write.csv(data_wm, file=sprintf('gpr_processed_workingmemory_data_%s.csv',format(Sys.Date(), format="%Y%m%d")),
-#           row.names = F);
-# write.csv(data_subjlevel_wide, file=sprintf('gpr_processed_subjlevelwide_data_%s.csv',format(Sys.Date(), format="%Y%m%d")),
-#           row.names = F);
-# write.csv(data_subjlevel_long, file=sprintf('gpr_processed_subjlevellong_data_%s.csv',format(Sys.Date(), format="%Y%m%d")),
-#           row.names = F);
+write.csv(data_dm, file=sprintf('gpr_processed_decisionmaking_data_%s.csv',format(Sys.Date(), format="%Y%m%d")),
+          row.names = F);
+write.csv(data_wm, file=sprintf('gpr_processed_workingmemory_data_%s.csv',format(Sys.Date(), format="%Y%m%d")),
+          row.names = F);
+write.csv(data_subjlevel_wide, file=sprintf('gpr_processed_subjlevelwide_data_%s.csv',format(Sys.Date(), format="%Y%m%d")),
+          row.names = F);
+write.csv(data_subjlevel_long, file=sprintf('gpr_processed_subjlevellong_data_%s.csv',format(Sys.Date(), format="%Y%m%d")),
+          row.names = F);
 
 cat('Finished with preprocessing. Go forth & analyze!\n\n')
 
