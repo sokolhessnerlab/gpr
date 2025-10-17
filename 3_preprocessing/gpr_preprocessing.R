@@ -288,26 +288,26 @@ for(s in 1:number_of_subjects){
     
     # Process the QUALTRICS Data and include in subject-level dfs
     # Do WIDE first
-    data_subjlevel_wide$stais[s] = 5 - num_qualtrics_data$stai_s_1[qual_rowInd] +
-                                  5 - num_qualtrics_data$stai_s_2[qual_rowInd] +
-                                  num_qualtrics_data$stai_s_3[qual_rowInd] +
-                                  num_qualtrics_data$stai_s_4[qual_rowInd] +
-                                  5 - num_qualtrics_data$stai_s_5[qual_rowInd] +
-                                  num_qualtrics_data$stai_s_6[qual_rowInd] +
-                                  num_qualtrics_data$stai_s_7[qual_rowInd] +
-                                  5 - num_qualtrics_data$stai_s_8[qual_rowInd] +
-                                  num_qualtrics_data$stai_s_9[qual_rowInd] +
-                                  5 - num_qualtrics_data$stai_s_10[qual_rowInd] +
-                                  5 - num_qualtrics_data$stai_s_11[qual_rowInd] +
-                                  num_qualtrics_data$stai_s_12[qual_rowInd] +
-                                  num_qualtrics_data$stai_s_13[qual_rowInd] +
-                                  num_qualtrics_data$stai_s_14[qual_rowInd] +
-                                  5 - num_qualtrics_data$stai_s_15[qual_rowInd] +
-                                  5 - num_qualtrics_data$stai_s_16[qual_rowInd] +
-                                  num_qualtrics_data$stai_s_17[qual_rowInd] +
-                                  num_qualtrics_data$stai_s_18[qual_rowInd] +
-                                  5 - num_qualtrics_data$stai_s_19[qual_rowInd] +
-                                  5 - num_qualtrics_data$stai_s_20[qual_rowInd];
+    data_subjlevel_wide$stais[s] = 5 - num_qualtrics_data$GPR.STAI.S_1[qual_rowInd] +
+                                  5 - num_qualtrics_data$GPR.STAI.S_2[qual_rowInd] +
+                                  num_qualtrics_data$GPR.STAI.S_3[qual_rowInd] +
+                                  num_qualtrics_data$GPR.STAI.S_4[qual_rowInd] +
+                                  5 - num_qualtrics_data$GPR.STAI.S_5[qual_rowInd] +
+                                  num_qualtrics_data$GPR.STAI.S_6[qual_rowInd] +
+                                  num_qualtrics_data$GPR.STAI.S_7[qual_rowInd] +
+                                  5 - num_qualtrics_data$GPR.STAI.S_8[qual_rowInd] +
+                                  num_qualtrics_data$GPR.STAI.S_9[qual_rowInd] +
+                                  5 - num_qualtrics_data$GPR.STAI.S_10[qual_rowInd] +
+                                  5 - num_qualtrics_data$GPR.STAI.S_11[qual_rowInd] +
+                                  num_qualtrics_data$GPR.STAI.S_12[qual_rowInd] +
+                                  num_qualtrics_data$GPR.STAI.S_13[qual_rowInd] +
+                                  num_qualtrics_data$GPR.STAI.S_14[qual_rowInd] +
+                                  5 - num_qualtrics_data$GPR.STAI.S_15[qual_rowInd] +
+                                  5 - num_qualtrics_data$GPR.STAI.S_16[qual_rowInd] +
+                                  num_qualtrics_data$GPR.STAI.S_17[qual_rowInd] +
+                                  num_qualtrics_data$GPR.STAI.S_18[qual_rowInd] +
+                                  5 - num_qualtrics_data$GPR.STAI.S_19[qual_rowInd] +
+                                  5 - num_qualtrics_data$GPR.STAI.S_20[qual_rowInd];
     
     # # JUSTIN PICK UP HERE AND TRY CLEANING UP THE BELOW
     # 
