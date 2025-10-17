@@ -167,7 +167,7 @@ cat('Loading and processing data.\n');
 raw_qualtrics_data <- read.csv(qualfn[length(qualfn)])
 raw_qualtrics_data = raw_qualtrics_data[-1:-6,]
 num_qualtrics_data = suppressWarnings(as.data.frame(apply(raw_qualtrics_data,2,as.numeric)))
-  # Warnings suppressed b/c of multiple conversion-to-NA errors
+# Warnings suppressed b/c of multiple conversion-to-NA errors
 
 number_of_qualtrics_subjects = nrow(num_qualtrics_data)
 
@@ -226,7 +226,7 @@ for(s in 1:number_of_subjects){
   
   wm_data_to_add[,1] = 1:number_of_wm_trials_per_person; # trial numbers
   wm_data_to_add[,2] = subject_IDs[s]; # subject number
-
+  
   wm_data_to_add[,3] = nchar(tmpdata$digitsForTrial[wm_trial_indices-1])/3; # number of digits on the trial
   
   wm_data_to_add[1:14,4] = 1; # forward is always first
@@ -258,7 +258,7 @@ for(s in 1:number_of_subjects){
   data_subjlevel_wide$round2bonusreceived01[s] = as.numeric(tmpdata$roundbonus[2] > 0)
   data_subjlevel_wide$round3bonusreceived01[s] = as.numeric(tmpdata$roundbonus[3] > 0)
   data_subjlevel_wide$round4bonusreceived01[s] = as.numeric(tmpdata$roundbonus[4] > 0)
-
+  
   data_subjlevel_wide$round1bonusatstake[s] = tmpbonus[1]
   data_subjlevel_wide$round2bonusatstake[s] = tmpbonus[2]
   data_subjlevel_wide$round3bonusatstake[s] = tmpbonus[3]
@@ -289,25 +289,25 @@ for(s in 1:number_of_subjects){
     # Process the QUALTRICS Data and include in subject-level dfs
     # Do WIDE first
     data_subjlevel_wide$stais[s] = 5 - num_qualtrics_data$GPR.STAI.S_1[qual_rowInd] +
-                                  5 - num_qualtrics_data$GPR.STAI.S_2[qual_rowInd] +
-                                  num_qualtrics_data$GPR.STAI.S_3[qual_rowInd] +
-                                  num_qualtrics_data$GPR.STAI.S_4[qual_rowInd] +
-                                  5 - num_qualtrics_data$GPR.STAI.S_5[qual_rowInd] +
-                                  num_qualtrics_data$GPR.STAI.S_6[qual_rowInd] +
-                                  num_qualtrics_data$GPR.STAI.S_7[qual_rowInd] +
-                                  5 - num_qualtrics_data$GPR.STAI.S_8[qual_rowInd] +
-                                  num_qualtrics_data$GPR.STAI.S_9[qual_rowInd] +
-                                  5 - num_qualtrics_data$GPR.STAI.S_10[qual_rowInd] +
-                                  5 - num_qualtrics_data$GPR.STAI.S_11[qual_rowInd] +
-                                  num_qualtrics_data$GPR.STAI.S_12[qual_rowInd] +
-                                  num_qualtrics_data$GPR.STAI.S_13[qual_rowInd] +
-                                  num_qualtrics_data$GPR.STAI.S_14[qual_rowInd] +
-                                  5 - num_qualtrics_data$GPR.STAI.S_15[qual_rowInd] +
-                                  5 - num_qualtrics_data$GPR.STAI.S_16[qual_rowInd] +
-                                  num_qualtrics_data$GPR.STAI.S_17[qual_rowInd] +
-                                  num_qualtrics_data$GPR.STAI.S_18[qual_rowInd] +
-                                  5 - num_qualtrics_data$GPR.STAI.S_19[qual_rowInd] +
-                                  5 - num_qualtrics_data$GPR.STAI.S_20[qual_rowInd];
+      5 - num_qualtrics_data$GPR.STAI.S_2[qual_rowInd] +
+      num_qualtrics_data$GPR.STAI.S_3[qual_rowInd] +
+      num_qualtrics_data$GPR.STAI.S_4[qual_rowInd] +
+      5 - num_qualtrics_data$GPR.STAI.S_5[qual_rowInd] +
+      num_qualtrics_data$GPR.STAI.S_6[qual_rowInd] +
+      num_qualtrics_data$GPR.STAI.S_7[qual_rowInd] +
+      5 - num_qualtrics_data$GPR.STAI.S_8[qual_rowInd] +
+      num_qualtrics_data$GPR.STAI.S_9[qual_rowInd] +
+      5 - num_qualtrics_data$GPR.STAI.S_10[qual_rowInd] +
+      5 - num_qualtrics_data$GPR.STAI.S_11[qual_rowInd] +
+      num_qualtrics_data$GPR.STAI.S_12[qual_rowInd] +
+      num_qualtrics_data$GPR.STAI.S_13[qual_rowInd] +
+      num_qualtrics_data$GPR.STAI.S_14[qual_rowInd] +
+      5 - num_qualtrics_data$GPR.STAI.S_15[qual_rowInd] +
+      5 - num_qualtrics_data$GPR.STAI.S_16[qual_rowInd] +
+      num_qualtrics_data$GPR.STAI.S_17[qual_rowInd] +
+      num_qualtrics_data$GPR.STAI.S_18[qual_rowInd] +
+      5 - num_qualtrics_data$GPR.STAI.S_19[qual_rowInd] +
+      5 - num_qualtrics_data$GPR.STAI.S_20[qual_rowInd];
     
     # # JUSTIN PICK UP HERE AND TRY CLEANING UP THE BELOW
     # 
@@ -404,7 +404,7 @@ for(s in 1:number_of_subjects){
   
   ## SCL DATA PROCESSING ----
   
-  cat(', SCL data')
+  cat(', SCL')
   
   # Load the data
   tmp_scl = read.delim(sclfn[s], sep = "\t", header = F)
@@ -474,7 +474,7 @@ for(s in 1:number_of_subjects){
     tmp_scl$scl_filt_sm[trial_end_ind[50]] - tmp_scl$scl_filt_sm[trial_start_ind[1]],
     tmp_scl$scl_filt_sm[trial_end_ind[100]] - tmp_scl$scl_filt_sm[trial_start_ind[51]],
     tmp_scl$scl_filt_sm[trial_end_ind[150]] - tmp_scl$scl_filt_sm[trial_start_ind[101]],
-    tmp_scl$scl_filt_sm[trial_end_ind[200]] - tmp_scl$scl_filt_sm[trial_start_ind[151]],
+    tmp_scl$scl_filt_sm[trial_end_ind[200]] - tmp_scl$scl_filt_sm[trial_start_ind[151]]
   )
   
   # changebeforescl
@@ -484,10 +484,10 @@ for(s in 1:number_of_subjects){
     tmp_scl$scl_filt_sm[trial_start_ind[1]] - tmp_scl$scl_filt_sm[trial_start_ind[1] - nsamplesback],
     tmp_scl$scl_filt_sm[trial_start_ind[51]] - tmp_scl$scl_filt_sm[trial_start_ind[51] - nsamplesback],
     tmp_scl$scl_filt_sm[trial_start_ind[101]] - tmp_scl$scl_filt_sm[trial_start_ind[101] - nsamplesback],
-    tmp_scl$scl_filt_sm[trial_start_ind[151]] - tmp_scl$scl_filt_sm[trial_start_ind[151] - nsamplesback],
+    tmp_scl$scl_filt_sm[trial_start_ind[151]] - tmp_scl$scl_filt_sm[trial_start_ind[151] - nsamplesback]
   )
-    
-    
+  
+  
   # Bind all the data
   # Add this person's DM data to the total DM data.
   data_dm = rbind(data_dm,dm_data_to_add);
