@@ -38,7 +38,8 @@ number_of_subjects = length(subject_IDs)
 # Store some basic information about size of the decision-making task
 num_rdm_trials = 50;
 num_rdm_blocks = 4;
-number_of_dm_trials_per_person = num_rdm_trials * num_rdm_blocks; # static = 50, dynamic = 120
+number_of_dm_trials_per_person = num_rdm_trials * num_rdm_blocks;
+scl_sampling_rate = 200 # 200 Hz (200 samples/second)
 
 # Set up variables to hold decision-making data
 column_names_dm = c(
@@ -60,7 +61,8 @@ column_names_dm = c(
   'dec_epoch_start',
   'dec_epoch_end',
   'otc_epoch_start',
-  'otc_epoch_end'
+  'otc_epoch_end',
+  'meanscl'
 );
 
 data_dm = array(data = NA, dim = c(0, length(column_names_dm)));
@@ -144,7 +146,10 @@ column_names_subjlevel_long = c(
   'rrs_reflection',
   'rrs_overall',
   'bisbas_overall', # Do others? 
-  'age'
+  'age',
+  'meanscl', # mean SCL value in this block
+  'slopescl', # slope of the SCL across this block
+  'changebeforescl' # change of the SCL from 30 seconds before the block begins to onset of first choice, i.e. during instruction
 );
 
 
@@ -162,7 +167,7 @@ cat('Loading and processing data.\n');
 raw_qualtrics_data <- read.csv(qualfn[length(qualfn)])
 raw_qualtrics_data = raw_qualtrics_data[-1:-6,]
 num_qualtrics_data = suppressWarnings(as.data.frame(apply(raw_qualtrics_data,2,as.numeric)))
-  # Warnings suppressed b/c of multiple conversion-to-NA errors
+# Warnings suppressed b/c of multiple conversion-to-NA errors
 
 number_of_qualtrics_subjects = nrow(num_qualtrics_data)
 
@@ -174,7 +179,7 @@ for(s in 1:number_of_subjects){
   cat(sprintf('GPR%03i: DM',subject_IDs[s]))
   
   
-  ## DECISION MAKING PROCESSING ----
+  ## DECISION-MAKING PROCESSING ----
   
   # Load in the data
   tmpdata = read.csv(rdmfn[s]);
@@ -204,9 +209,6 @@ for(s in 1:number_of_subjects){
   dm_data_to_add$otc_epoch_start = tmpdata$outcomeDispStart
   dm_data_to_add$otc_epoch_end = tmpdata$itiStart
   
-  # Add this person's DM data to the total DM data.
-  data_dm = rbind(data_dm,dm_data_to_add);
-  
   rm(tmpdata) # remove the temporary file
   
   
@@ -224,15 +226,13 @@ for(s in 1:number_of_subjects){
   
   wm_data_to_add[,1] = 1:number_of_wm_trials_per_person; # trial numbers
   wm_data_to_add[,2] = subject_IDs[s]; # subject number
-
+  
   wm_data_to_add[,3] = nchar(tmpdata$digitsForTrial[wm_trial_indices-1])/3; # number of digits on the trial
   
   wm_data_to_add[1:14,4] = 1; # forward is always first
   wm_data_to_add[15:28,4] = 0; # backward is always second
   
   wm_data_to_add[,5] = tmpdata$correct[wm_trial_indices]; # correct = 1, incorrect = 0
-  
-  data_wm = rbind(data_wm,wm_data_to_add);
   
   rm(tmpdata) # remove the temporary file
   
@@ -258,7 +258,7 @@ for(s in 1:number_of_subjects){
   data_subjlevel_wide$round2bonusreceived01[s] = as.numeric(tmpdata$roundbonus[2] > 0)
   data_subjlevel_wide$round3bonusreceived01[s] = as.numeric(tmpdata$roundbonus[3] > 0)
   data_subjlevel_wide$round4bonusreceived01[s] = as.numeric(tmpdata$roundbonus[4] > 0)
-
+  
   data_subjlevel_wide$round1bonusatstake[s] = tmpbonus[1]
   data_subjlevel_wide$round2bonusatstake[s] = tmpbonus[2]
   data_subjlevel_wide$round3bonusatstake[s] = tmpbonus[3]
@@ -288,118 +288,210 @@ for(s in 1:number_of_subjects){
     
     # Process the QUALTRICS Data and include in subject-level dfs
     # Do WIDE first
-    data_subjlevel_wide$stais[s] = 5 - num_qualtrics_data$stai_s_1[qual_rowInd] +
-                                  5 - num_qualtrics_data$stai_s_2[qual_rowInd] +
-                                  num_qualtrics_data$stai_s_3[qual_rowInd] +
-                                  num_qualtrics_data$stai_s_4[qual_rowInd] +
-                                  5 - num_qualtrics_data$stai_s_5[qual_rowInd] +
-                                  num_qualtrics_data$stai_s_6[qual_rowInd] +
-                                  num_qualtrics_data$stai_s_7[qual_rowInd] +
-                                  5 - num_qualtrics_data$stai_s_8[qual_rowInd] +
-                                  num_qualtrics_data$stai_s_9[qual_rowInd] +
-                                  5 - num_qualtrics_data$stai_s_10[qual_rowInd] +
-                                  5 - num_qualtrics_data$stai_s_11[qual_rowInd] +
-                                  num_qualtrics_data$stai_s_12[qual_rowInd] +
-                                  num_qualtrics_data$stai_s_13[qual_rowInd] +
-                                  num_qualtrics_data$stai_s_14[qual_rowInd] +
-                                  5 - num_qualtrics_data$stai_s_15[qual_rowInd] +
-                                  5 - num_qualtrics_data$stai_s_16[qual_rowInd] +
-                                  num_qualtrics_data$stai_s_17[qual_rowInd] +
-                                  num_qualtrics_data$stai_s_18[qual_rowInd] +
-                                  5 - num_qualtrics_data$stai_s_19[qual_rowInd] +
-                                  5 - num_qualtrics_data$stai_s_20[qual_rowInd];
+    data_subjlevel_wide$stais[s] =  5 - num_qualtrics_data$GPR.STAI.S_1[qual_rowInd] +
+                                    5 - num_qualtrics_data$GPR.STAI.S_2[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.S_3[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.S_4[qual_rowInd] +
+                                    5 - num_qualtrics_data$GPR.STAI.S_5[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.S_6[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.S_7[qual_rowInd] +
+                                    5 - num_qualtrics_data$GPR.STAI.S_8[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.S_9[qual_rowInd] +
+                                    5 - num_qualtrics_data$GPR.STAI.S_10[qual_rowInd] +
+                                    5 - num_qualtrics_data$GPR.STAI.S_11[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.S_12[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.S_13[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.S_14[qual_rowInd] +
+                                    5 - num_qualtrics_data$GPR.STAI.S_15[qual_rowInd] +
+                                    5 - num_qualtrics_data$GPR.STAI.S_16[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.S_17[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.S_18[qual_rowInd] +
+                                    5 - num_qualtrics_data$GPR.STAI.S_19[qual_rowInd] +
+                                    5 - num_qualtrics_data$GPR.STAI.S_20[qual_rowInd];
     
-    # JUSTIN PICK UP HERE AND TRY CLEANING UP THE BELOW
-    
-    data_qualtrics$attn_check_correct = (as.numeric(raw_qualtrics_data$attentionCheck1) +
-                                           as.numeric(raw_qualtrics_data$attentionCheck2) +
-                                           as.numeric(raw_qualtrics_data$attentionCheck3))/3;
-    
-    
-    
-    data_qualtrics$age = as.numeric(raw_qualtrics_data$Age);
-    
-    data_qualtrics$ethnicity = as.numeric(raw_qualtrics_data$Ethnicity);
-    # 1-Hispanic/Latinx, 2-Not Hispanic/Latinx, 3-Prefer not to say
-    
-    data_qualtrics$race = as.numeric(raw_qualtrics_data$Race);
-    # 1-American/Alaskan Native, 2-Black/African-American, 3-East Asian, 4-Native Hawaiian/Pacific Islander, 5-South Asian, 6-White, 7-Bi-racial, 8-Other, 9-Prefer not to say
-    
-    data_qualtrics$highest_degree_attained = as.numeric(raw_qualtrics_data$Education_Level)
-    # 1-No school, 2-Nursery to 8th, 3-High school-no diploma, 4-High school diploma, 5-trade school, 6-associates degree, 7-bachelors degree, 8-masters degree, 9-professional degree, 10-doctorate
-    
-    data_qualtrics$gender = as.numeric(raw_qualtrics_data$Gender)
-    # 1-Man, 2-Woman, 3-Non-Binary, 4-Genderqueer, 5-Gender Expansive, 6-Two-Spirited, 7-Third Gender, 8-Agender, 9-Not Sure, 10-Other, 11-Prefer not to say
-    
-    data_qualtrics$political_orientation = as.numeric(raw_qualtrics_data$Politics)
-    # 1-Extremely conservative, 5-centrist, 9-Extremely liberal
-    
-    data_qualtrics$first_generation = as.numeric(raw_qualtrics_data$First_Generation)
-    # 1-Yes, 2-No, 3-Unsure
-    
-    
-    data_qualtrics$stai_t_overall = (5 - as.numeric(raw_qualtrics_data$stai_t_1)) +
-      as.numeric(raw_qualtrics_data$stai_t_2) +
-      5 - as.numeric(raw_qualtrics_data$stai_t_3) +
-      as.numeric(raw_qualtrics_data$stai_t_4) +
-      as.numeric(raw_qualtrics_data$stai_t_5) +
-      5 - as.numeric(raw_qualtrics_data$stai_t_6) +
-      5 - as.numeric(raw_qualtrics_data$stai_t_7) +
-      as.numeric(raw_qualtrics_data$stai_t_8) +
-      as.numeric(raw_qualtrics_data$stai_t_9) +
-      5 - as.numeric(raw_qualtrics_data$stai_t_10) +
-      as.numeric(raw_qualtrics_data$stai_t_11) +
-      as.numeric(raw_qualtrics_data$stai_t_12) +
-      5 - as.numeric(raw_qualtrics_data$stai_t_13) +
-      5 - as.numeric(raw_qualtrics_data$stai_t_14) +
-      as.numeric(raw_qualtrics_data$stai_t_15) +
-      5 - as.numeric(raw_qualtrics_data$stai_t_16) +
-      as.numeric(raw_qualtrics_data$stai_t_17) +
-      as.numeric(raw_qualtrics_data$stai_t_18) +
-      5 - as.numeric(raw_qualtrics_data$stai_t_19) +
-      as.numeric(raw_qualtrics_data$stai_t_20);
-    
-    data_qualtrics$rrs_brood = (as.numeric(raw_qualtrics_data$rrs_1)) +
-      as.numeric(raw_qualtrics_data$rrs_3) +
-      as.numeric(raw_qualtrics_data$rrs_6) +
-      as.numeric(raw_qualtrics_data$rrs_7) +
-      as.numeric(raw_qualtrics_data$rrs_8);
-    
-    data_qualtrics$rrs_reflect = (as.numeric(raw_qualtrics_data$rrs_2)) +
-      as.numeric(raw_qualtrics_data$rrs_4) +
-      as.numeric(raw_qualtrics_data$rrs_5) +
-      as.numeric(raw_qualtrics_data$rrs_9) +
-      as.numeric(raw_qualtrics_data$rrs_10);
-    
-    data_qualtrics$rrs_overall = (rrs_brood + rrs_reflect)
-    
-    
-    data_qualtrics$bas_drive = (as.numeric(raw_qualtrics_data$bis_bas_3)) +
-      as.numeric(raw_qualtrics_data$bis_bas_9) +
-      as.numeric(raw_qualtrics_data$bis_bas_12) +
-      as.numeric(raw_qualtrics_data$bis_bas_21);
-    
-    data_qualtrics$bas_fun = (as.numeric(raw_qualtrics_data$bis_bas_5)) +
-      5 - as.numeric(raw_qualtrics_data$bis_bas_10) +
-      as.numeric(raw_qualtrics_data$bis_bas_15) +
-      as.numeric(raw_qualtrics_data$bis_bas_20);
-    
-    data_qualtrics$bas_reward = (5 - as.numeric(raw_qualtrics_data$bis_bas_4)) +
-      as.numeric(raw_qualtrics_data$bis_bas_7) +
-      as.numeric(raw_qualtrics_data$bis_bas_14) +
-      as.numeric(raw_qualtrics_data$bis_bas_18) +
-      as.numeric(raw_qualtrics_data$bis_bas_23);
-    
-    data_qualtrics$bis_overall = (5 - as.numeric(raw_qualtrics_data$bis_bas_2)) +
-      5 - as.numeric(raw_qualtrics_data$bis_bas_8) +
-      5 - as.numeric(raw_qualtrics_data$bis_bas_13) +
-      as.numeric(raw_qualtrics_data$bis_bas_16) +
-      as.numeric(raw_qualtrics_data$bis_bas_19) +
-      as.numeric(raw_qualtrics_data$bis_bas_22) +
-      as.numeric(raw_qualtrics_data$bis_bas_24);
-    
-    data_qualtrics$bis_bas_overall = (bis_overall + bas_drive + bas_fun + bas_reward)
+    # # JUSTIN PICK UP HERE AND TRY CLEANING UP THE BELOW
+    # 
+    # data_qualtrics$attn_check_correct = (as.numeric(raw_qualtrics_data$attentionCheck1) +
+    #                                        as.numeric(raw_qualtrics_data$attentionCheck2) +
+    #                                        as.numeric(raw_qualtrics_data$attentionCheck3))/3;
+    # 
+    # 
+    # 
+    # data_qualtrics$age = as.numeric(raw_qualtrics_data$Age);
+    # 
+    # data_qualtrics$ethnicity = as.numeric(raw_qualtrics_data$Ethnicity);
+    # # 1-Hispanic/Latinx, 2-Not Hispanic/Latinx, 3-Prefer not to say
+    # 
+    # data_qualtrics$race = as.numeric(raw_qualtrics_data$Race);
+    # # 1-American/Alaskan Native, 2-Black/African-American, 3-East Asian, 4-Native Hawaiian/Pacific Islander, 5-South Asian, 6-White, 7-Bi-racial, 8-Other, 9-Prefer not to say
+    # 
+    # data_qualtrics$highest_degree_attained = as.numeric(raw_qualtrics_data$Education_Level)
+    # # 1-No school, 2-Nursery to 8th, 3-High school-no diploma, 4-High school diploma, 5-trade school, 6-associates degree, 7-bachelors degree, 8-masters degree, 9-professional degree, 10-doctorate
+    # 
+    # data_qualtrics$gender = as.numeric(raw_qualtrics_data$Gender)
+    # # 1-Man, 2-Woman, 3-Non-Binary, 4-Genderqueer, 5-Gender Expansive, 6-Two-Spirited, 7-Third Gender, 8-Agender, 9-Not Sure, 10-Other, 11-Prefer not to say
+    # 
+    # data_qualtrics$political_orientation = as.numeric(raw_qualtrics_data$Politics)
+    # # 1-Extremely conservative, 5-centrist, 9-Extremely liberal
+    # 
+    # data_qualtrics$first_generation = as.numeric(raw_qualtrics_data$First_Generation)
+    # # 1-Yes, 2-No, 3-Unsure
+    # 
+    # 
+    # data_qualtrics$stai_t_overall = (5 - as.numeric(raw_qualtrics_data$stai_t_1)) +
+    #   as.numeric(raw_qualtrics_data$stai_t_2) +
+    #   5 - as.numeric(raw_qualtrics_data$stai_t_3) +
+    #   as.numeric(raw_qualtrics_data$stai_t_4) +
+    #   as.numeric(raw_qualtrics_data$stai_t_5) +
+    #   5 - as.numeric(raw_qualtrics_data$stai_t_6) +
+    #   5 - as.numeric(raw_qualtrics_data$stai_t_7) +
+    #   as.numeric(raw_qualtrics_data$stai_t_8) +
+    #   as.numeric(raw_qualtrics_data$stai_t_9) +
+    #   5 - as.numeric(raw_qualtrics_data$stai_t_10) +
+    #   as.numeric(raw_qualtrics_data$stai_t_11) +
+    #   as.numeric(raw_qualtrics_data$stai_t_12) +
+    #   5 - as.numeric(raw_qualtrics_data$stai_t_13) +
+    #   5 - as.numeric(raw_qualtrics_data$stai_t_14) +
+    #   as.numeric(raw_qualtrics_data$stai_t_15) +
+    #   5 - as.numeric(raw_qualtrics_data$stai_t_16) +
+    #   as.numeric(raw_qualtrics_data$stai_t_17) +
+    #   as.numeric(raw_qualtrics_data$stai_t_18) +
+    #   5 - as.numeric(raw_qualtrics_data$stai_t_19) +
+    #   as.numeric(raw_qualtrics_data$stai_t_20);
+    # 
+    # data_qualtrics$rrs_brood = (as.numeric(raw_qualtrics_data$rrs_1)) +
+    #   as.numeric(raw_qualtrics_data$rrs_3) +
+    #   as.numeric(raw_qualtrics_data$rrs_6) +
+    #   as.numeric(raw_qualtrics_data$rrs_7) +
+    #   as.numeric(raw_qualtrics_data$rrs_8);
+    # 
+    # data_qualtrics$rrs_reflect = (as.numeric(raw_qualtrics_data$rrs_2)) +
+    #   as.numeric(raw_qualtrics_data$rrs_4) +
+    #   as.numeric(raw_qualtrics_data$rrs_5) +
+    #   as.numeric(raw_qualtrics_data$rrs_9) +
+    #   as.numeric(raw_qualtrics_data$rrs_10);
+    # 
+    # data_qualtrics$rrs_overall = (rrs_brood + rrs_reflect)
+    # 
+    # 
+    # data_qualtrics$bas_drive = (as.numeric(raw_qualtrics_data$bis_bas_3)) +
+    #   as.numeric(raw_qualtrics_data$bis_bas_9) +
+    #   as.numeric(raw_qualtrics_data$bis_bas_12) +
+    #   as.numeric(raw_qualtrics_data$bis_bas_21);
+    # 
+    # data_qualtrics$bas_fun = (as.numeric(raw_qualtrics_data$bis_bas_5)) +
+    #   5 - as.numeric(raw_qualtrics_data$bis_bas_10) +
+    #   as.numeric(raw_qualtrics_data$bis_bas_15) +
+    #   as.numeric(raw_qualtrics_data$bis_bas_20);
+    # 
+    # data_qualtrics$bas_reward = (5 - as.numeric(raw_qualtrics_data$bis_bas_4)) +
+    #   as.numeric(raw_qualtrics_data$bis_bas_7) +
+    #   as.numeric(raw_qualtrics_data$bis_bas_14) +
+    #   as.numeric(raw_qualtrics_data$bis_bas_18) +
+    #   as.numeric(raw_qualtrics_data$bis_bas_23);
+    # 
+    # data_qualtrics$bis_overall = (5 - as.numeric(raw_qualtrics_data$bis_bas_2)) +
+    #   5 - as.numeric(raw_qualtrics_data$bis_bas_8) +
+    #   5 - as.numeric(raw_qualtrics_data$bis_bas_13) +
+    #   as.numeric(raw_qualtrics_data$bis_bas_16) +
+    #   as.numeric(raw_qualtrics_data$bis_bas_19) +
+    #   as.numeric(raw_qualtrics_data$bis_bas_22) +
+    #   as.numeric(raw_qualtrics_data$bis_bas_24);
+    # 
+    # data_qualtrics$bis_bas_overall = (bis_overall + bas_drive + bas_fun + bas_reward)
   }
+  
+  
+  ## SCL DATA PROCESSING ----
+  
+  cat(', SCL')
+  
+  # Load the data
+  tmp_scl = read.delim(sclfn[s], sep = "\t", header = F)
+  tmp_scl = tmp_scl[,-5] # remove an empty data column
+  
+  colnames(tmp_scl) <- c('scl_raw', 'scl_filt', 'scl_filt_sm', 'ttl')
+  # Columns:
+  # 1. Raw SCL (microsiemens)
+  # 2. SCL filtered (Low pass filter, freq. cutoff of 25, coefficients = 16, type = Blackman)
+  # 3. SCL filtered & smoothed (kernel of 3, mean)
+  # 4. TTL (values of 0 or 5 corresponding to off or on)
+  #     Pattern is:
+  #     ON: ITI ends / Decision window begins
+  #     OFF: Response entered & decision window ends / ISI begins
+  #     ON: ISI ends / Outcome begins
+  #     OFF: Outcome ends / ITI begins
+  #
+  # N.B.: in practice, filtering is the most impactful thing. Smoothing does 
+  # relatively little after the filtering. 
+  
+  
+  ### PER-TRIAL MEANS ----
+  
+  # Identify sample indices of the start and end of each trial
+  diff_ttl = diff(tmp_scl$ttl) # identify where the TTL changes from 0-5 and 5-0
+  
+  ttl_onsets_ind = which(diff_ttl == 5) + 1 # FIRST +5 value
+  ttl_offsets_ind = which(diff_ttl == -5) # LAST +5 value
+  
+  # Check that assumptions are correct!
+  # With 5 practice trials + 50 trials/block for 4 blocks, expect 205 trials,
+  # each of which should have two onsets and two offsets (see above), so length
+  # of both of these indices should be 410. 
+  if(length(ttl_onsets_ind) != 410){
+    warning(sprintf('Incorrect number of ONSETS found (expecting %i, found %i)!',
+                    length(ttl_onsets_ind), 410))
+  }
+  
+  if(length(ttl_offsets_ind) != 410){
+    warning(sprintf('Incorrect number of OFFSETS found (expecting %i, found %i)!',
+                    length(ttl_offsets_ind), 410))
+  }
+  
+  # Onset of the decision period (odd indices of the onsets, skipping prac.)
+  trial_start_ind = ttl_onsets_ind[seq(from = 11, by = 2, to = 410)]
+  
+  # Offset of the outcome period (even indices of the offsets, skipping prac.)
+  trial_end_ind = ttl_offsets_ind[seq(from = 12, by = 2, to = 410)]
+  
+  # Calculate means on a per-trial basis
+  for (t in 1:number_of_dm_trials_per_person){
+    tmp_ind_vals = trial_start_ind[t]:trial_end_ind[t] # the indices
+    dm_data_to_add$meanscl[t] = mean(tmp_scl$scl_filt_sm[tmp_ind_vals]) # calc the mean
+  }
+  
+  ### PER-BLOCK MEANS ----
+  # meanscl
+  data_subjlevel_long$meanscl[subj_level_long_ind] = c(
+    mean(tmp_scl$scl_filt_sm[trial_start_ind[1]:trial_end_ind[50]]),
+    mean(tmp_scl$scl_filt_sm[trial_start_ind[51]:trial_end_ind[100]]),
+    mean(tmp_scl$scl_filt_sm[trial_start_ind[101]:trial_end_ind[150]]),
+    mean(tmp_scl$scl_filt_sm[trial_start_ind[151]:trial_end_ind[200]])
+  )
+  
+  # slopescl
+  data_subjlevel_long$slopescl[subj_level_long_ind] = c(
+    tmp_scl$scl_filt_sm[trial_end_ind[50]] - tmp_scl$scl_filt_sm[trial_start_ind[1]],
+    tmp_scl$scl_filt_sm[trial_end_ind[100]] - tmp_scl$scl_filt_sm[trial_start_ind[51]],
+    tmp_scl$scl_filt_sm[trial_end_ind[150]] - tmp_scl$scl_filt_sm[trial_start_ind[101]],
+    tmp_scl$scl_filt_sm[trial_end_ind[200]] - tmp_scl$scl_filt_sm[trial_start_ind[151]]
+  )
+  
+  # changebeforescl
+  lengthback = 30 # seconds back
+  nsamplesback = lengthback * scl_sampling_rate
+  data_subjlevel_long$changebeforescl[subj_level_long_ind] = c(
+    tmp_scl$scl_filt_sm[trial_start_ind[1]] - tmp_scl$scl_filt_sm[trial_start_ind[1] - nsamplesback],
+    tmp_scl$scl_filt_sm[trial_start_ind[51]] - tmp_scl$scl_filt_sm[trial_start_ind[51] - nsamplesback],
+    tmp_scl$scl_filt_sm[trial_start_ind[101]] - tmp_scl$scl_filt_sm[trial_start_ind[101] - nsamplesback],
+    tmp_scl$scl_filt_sm[trial_start_ind[151]] - tmp_scl$scl_filt_sm[trial_start_ind[151] - nsamplesback]
+  )
+  
+  
+  # Bind all the data
+  # Add this person's DM and WM data to the total data structures. 
+  data_dm = rbind(data_dm,dm_data_to_add);
+  data_wm = rbind(data_wm,wm_data_to_add);
   
   cat('. Done.\n')
 }
