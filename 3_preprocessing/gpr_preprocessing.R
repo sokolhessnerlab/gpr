@@ -309,96 +309,94 @@ for(s in 1:number_of_subjects){
                                     5 - num_qualtrics_data$GPR.STAI.S_19[qual_rowInd] +
                                     5 - num_qualtrics_data$GPR.STAI.S_20[qual_rowInd];
     
-    # # JUSTIN PICK UP HERE AND TRY CLEANING UP THE BELOW
-    # 
-    # data_qualtrics$attn_check_correct = (as.numeric(raw_qualtrics_data$attentionCheck1) +
-    #                                        as.numeric(raw_qualtrics_data$attentionCheck2) +
-    #                                        as.numeric(raw_qualtrics_data$attentionCheck3))/3;
-    # 
-    # 
-    # 
-    # data_qualtrics$age = as.numeric(raw_qualtrics_data$Age);
-    # 
-    # data_qualtrics$ethnicity = as.numeric(raw_qualtrics_data$Ethnicity);
-    # # 1-Hispanic/Latinx, 2-Not Hispanic/Latinx, 3-Prefer not to say
-    # 
-    # data_qualtrics$race = as.numeric(raw_qualtrics_data$Race);
-    # # 1-American/Alaskan Native, 2-Black/African-American, 3-East Asian, 4-Native Hawaiian/Pacific Islander, 5-South Asian, 6-White, 7-Bi-racial, 8-Other, 9-Prefer not to say
-    # 
-    # data_qualtrics$highest_degree_attained = as.numeric(raw_qualtrics_data$Education_Level)
-    # # 1-No school, 2-Nursery to 8th, 3-High school-no diploma, 4-High school diploma, 5-trade school, 6-associates degree, 7-bachelors degree, 8-masters degree, 9-professional degree, 10-doctorate
-    # 
-    # data_qualtrics$gender = as.numeric(raw_qualtrics_data$Gender)
-    # # 1-Man, 2-Woman, 3-Non-Binary, 4-Genderqueer, 5-Gender Expansive, 6-Two-Spirited, 7-Third Gender, 8-Agender, 9-Not Sure, 10-Other, 11-Prefer not to say
-    # 
-    # data_qualtrics$political_orientation = as.numeric(raw_qualtrics_data$Politics)
-    # # 1-Extremely conservative, 5-centrist, 9-Extremely liberal
-    # 
-    # data_qualtrics$first_generation = as.numeric(raw_qualtrics_data$First_Generation)
-    # # 1-Yes, 2-No, 3-Unsure
-    # 
-    # 
-    # data_qualtrics$stai_t_overall = (5 - as.numeric(raw_qualtrics_data$stai_t_1)) +
-    #   as.numeric(raw_qualtrics_data$stai_t_2) +
-    #   5 - as.numeric(raw_qualtrics_data$stai_t_3) +
-    #   as.numeric(raw_qualtrics_data$stai_t_4) +
-    #   as.numeric(raw_qualtrics_data$stai_t_5) +
-    #   5 - as.numeric(raw_qualtrics_data$stai_t_6) +
-    #   5 - as.numeric(raw_qualtrics_data$stai_t_7) +
-    #   as.numeric(raw_qualtrics_data$stai_t_8) +
-    #   as.numeric(raw_qualtrics_data$stai_t_9) +
-    #   5 - as.numeric(raw_qualtrics_data$stai_t_10) +
-    #   as.numeric(raw_qualtrics_data$stai_t_11) +
-    #   as.numeric(raw_qualtrics_data$stai_t_12) +
-    #   5 - as.numeric(raw_qualtrics_data$stai_t_13) +
-    #   5 - as.numeric(raw_qualtrics_data$stai_t_14) +
-    #   as.numeric(raw_qualtrics_data$stai_t_15) +
-    #   5 - as.numeric(raw_qualtrics_data$stai_t_16) +
-    #   as.numeric(raw_qualtrics_data$stai_t_17) +
-    #   as.numeric(raw_qualtrics_data$stai_t_18) +
-    #   5 - as.numeric(raw_qualtrics_data$stai_t_19) +
-    #   as.numeric(raw_qualtrics_data$stai_t_20);
-    # 
-    # data_qualtrics$rrs_brood = (as.numeric(raw_qualtrics_data$rrs_1)) +
-    #   as.numeric(raw_qualtrics_data$rrs_3) +
-    #   as.numeric(raw_qualtrics_data$rrs_6) +
-    #   as.numeric(raw_qualtrics_data$rrs_7) +
-    #   as.numeric(raw_qualtrics_data$rrs_8);
-    # 
-    # data_qualtrics$rrs_reflect = (as.numeric(raw_qualtrics_data$rrs_2)) +
-    #   as.numeric(raw_qualtrics_data$rrs_4) +
-    #   as.numeric(raw_qualtrics_data$rrs_5) +
-    #   as.numeric(raw_qualtrics_data$rrs_9) +
-    #   as.numeric(raw_qualtrics_data$rrs_10);
-    # 
-    # data_qualtrics$rrs_overall = (rrs_brood + rrs_reflect)
-    # 
-    # 
-    # data_qualtrics$bas_drive = (as.numeric(raw_qualtrics_data$bis_bas_3)) +
-    #   as.numeric(raw_qualtrics_data$bis_bas_9) +
-    #   as.numeric(raw_qualtrics_data$bis_bas_12) +
-    #   as.numeric(raw_qualtrics_data$bis_bas_21);
-    # 
-    # data_qualtrics$bas_fun = (as.numeric(raw_qualtrics_data$bis_bas_5)) +
-    #   5 - as.numeric(raw_qualtrics_data$bis_bas_10) +
-    #   as.numeric(raw_qualtrics_data$bis_bas_15) +
-    #   as.numeric(raw_qualtrics_data$bis_bas_20);
-    # 
-    # data_qualtrics$bas_reward = (5 - as.numeric(raw_qualtrics_data$bis_bas_4)) +
-    #   as.numeric(raw_qualtrics_data$bis_bas_7) +
-    #   as.numeric(raw_qualtrics_data$bis_bas_14) +
-    #   as.numeric(raw_qualtrics_data$bis_bas_18) +
-    #   as.numeric(raw_qualtrics_data$bis_bas_23);
-    # 
-    # data_qualtrics$bis_overall = (5 - as.numeric(raw_qualtrics_data$bis_bas_2)) +
-    #   5 - as.numeric(raw_qualtrics_data$bis_bas_8) +
-    #   5 - as.numeric(raw_qualtrics_data$bis_bas_13) +
-    #   as.numeric(raw_qualtrics_data$bis_bas_16) +
-    #   as.numeric(raw_qualtrics_data$bis_bas_19) +
-    #   as.numeric(raw_qualtrics_data$bis_bas_22) +
-    #   as.numeric(raw_qualtrics_data$bis_bas_24);
-    # 
-    # data_qualtrics$bis_bas_overall = (bis_overall + bas_drive + bas_fun + bas_reward)
+    # JUSTIN PICK UP HERE AND TRY CLEANING UP THE BELOW
+
+    data_qualtrics$attn_check_correct = num_qualtrics_data$attentionCheck == 3;
+
+    data_qualtrics$age = num_qualtrics_data$Age[qual_rowInd];
+
+    data_qualtrics$ethnicity = num_qualtrics_data$Ethnicity[qual_rowInd];
+    # 1-Hispanic/Latinx, 2-Not Hispanic/Latinx, 3-Prefer not to say
+
+    data_qualtrics$race = num_qualtrics_data$Race[qual_rowInd];
+    # 1-American/Alaskan Native, 2-Black/African-American, 3-East Asian, 4-Native Hawaiian/Pacific Islander, 5-South Asian, 6-White, 7-Bi-racial, 8-Other, 9-Prefer not to say
+
+    data_qualtrics$highest_degree_attained = num_qualtrics_data$Education_Level[qual_rowInd]
+    # 1-No school, 2-Nursery to 8th, 3-High school-no diploma, 4-High school diploma, 5-trade school, 6-associates degree, 7-bachelors degree, 8-masters degree, 9-professional degree, 10-doctorate
+
+    data_qualtrics$gender = num_qualtrics_data$Gender[qual_rowInd]
+    # 1-Man, 2-Woman, 3-Non-Binary, 4-Genderqueer, 5-Gender Expansive, 6-Two-Spirited, 7-Third Gender, 8-Agender, 9-Not Sure, 10-Other, 11-Prefer not to say
+
+    data_qualtrics$political_orientation = num_qualtrics_data$Politics[qual_rowInd]
+    # 1-Extremely conservative, 5-centrist, 9-Extremely liberal
+
+    data_qualtrics$first_generation = num_qualtrics_data$First_Generation[qual_rowInd]
+    # 1-Yes, 2-No, 3-Unsure
+    
+    data_subjlevel_wide$stais[s] =  5 - num_qualtrics_data$GPR.STAI.T_1[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.T_2[qual_rowInd] +
+                                    5 - num_qualtrics_data$GPR.STAI.T_3[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.T_4[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.T_5[qual_rowInd] +
+                                    5 - num_qualtrics_data$GPR.STAI.T_6[qual_rowInd] +
+                                    5 - num_qualtrics_data$GPR.STAI.T_7[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.T_8[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.T_9[qual_rowInd] +
+                                    5 - num_qualtrics_data$GPR.STAI.T_10[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.T_11[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.T_12[qual_rowInd] +
+                                    5 - num_qualtrics_data$GPR.STAI.T_13[qual_rowInd] +
+                                    5 - num_qualtrics_data$GPR.STAI.T_14[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.T_15[qual_rowInd] +
+                                    5 - num_qualtrics_data$GPR.STAI.T_16[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.T_17[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.T_18[qual_rowInd] +
+                                    5 - num_qualtrics_data$GPR.STAI.T_19[qual_rowInd] +
+                                    num_qualtrics_data$GPR.STAI.T_20[qual_rowInd];
+    
+ 
+    data_qualtrics$rrs_brood = num_qualtrics_data$GPR.RRS_1[qual_rowInd] +
+                                num_qualtrics_data$GPR.RRS_3[qual_rowInd] +
+                                num_qualtrics_data$GPR.RRS_6[qual_rowInd] +
+                                num_qualtrics_data$GPR.RRS_7[qual_rowInd] +
+                                num_qualtrics_data$GPR.RRS.BROOD_8[qual_rowInd];
+
+    data_qualtrics$rrs_reflect = num_qualtrics_data$GPR.RRS_2[qual_rowInd] +
+                                  num_qualtrics_data$GPR.RRS_4[qual_rowInd] +
+                                  num_qualtrics_data$GPR.RRS_5[qual_rowInd] +
+                                  num_qualtrics_data$GPR.RRS_9[qual_rowInd] +
+                                  num_qualtrics_data$GPR.RRS_10[qual_rowInd];
+
+    data_qualtrics$rrs_overall = data_qualtrics$rrs_brood + data_qualtrics$rrs_reflect
+
+
+    data_qualtrics$bas_drive = num_qualtrics_data$GPR.BIS.BAS_3[qual_rowInd] +
+                                num_qualtrics_data$GPR.BIS.BAS_9[qual_rowInd] +
+                                num_qualtrics_data$GPR.BIS.BAS_12[qual_rowInd]
+                                num_qualtrics_data$GPR.BIS.BAS_21[qual_rowInd];
+    
+    
+    data_qualtrics$bas_fun = num_qualtrics_data$GPR.BIS.BAS_5[qual_rowInd] +
+                                num_qualtrics_data$GPR.BIS.BAS_10[qual_rowInd] +
+                                num_qualtrics_data$GPR.BIS.BAS_15[qual_rowInd] +
+                                num_qualtrics_data$GPR.BIS.BAS_20[qual_rowInd];
+
+    data_qualtrics$bas_reward = 5 - num_qualtrics_data$GPR.BIS.BAS_4[qual_rowInd] +
+                                  num_qualtrics_data$GPR.BIS.BAS_7[qual_rowInd] +
+                                  num_qualtrics_data$GPR.BIS.BAS_14[qual_rowInd] +
+                                  num_qualtrics_data$GPR.BIS.BAS_18[qual_rowInd] +
+                                  num_qualtrics_data$GPR.BIS.BAS_23[qual_rowInd];
+                                  
+     
+    data_qualtrics$bis_overall = 5 - num_qualtrics_data$GPR.BIS.BAS_2[qual_rowInd] +
+                                  num_qualtrics_data$GPR.BIS.BAS_8[qual_rowInd] +
+                                  num_qualtrics_data$GPR.BIS.BAS_13[qual_rowInd] +
+                                  num_qualtrics_data$GPR.BIS.BAS_16[qual_rowInd] +
+                                  num_qualtrics_data$GPR.BIS.BAS_19[qual_rowInd] +
+                                  num_qualtrics_data$GPR.BIS.BAS_22[qual_rowInd] +
+                                  num_qualtrics_data$GPR.BIS.BAS_24[qual_rowInd];
+    
+    data_qualtrics$bis_bas_overall = data_qualtrics$bis_overall + data_qualtrics$bas_drive + data_qualtrics$bas_fun + data_qualtrics$bas_reward
   }
   
   
