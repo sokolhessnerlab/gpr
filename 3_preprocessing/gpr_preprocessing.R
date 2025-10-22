@@ -172,7 +172,8 @@ num_qualtrics_data = suppressWarnings(as.data.frame(apply(raw_qualtrics_data,2,a
 number_of_qualtrics_subjects = nrow(num_qualtrics_data)
 
 if (number_of_subjects != number_of_qualtrics_subjects){
-  warning('Numbers of subjects do not match!')
+  warning(sprintf('Numbers of subjects do not match! Behavioral N = %i; Qualtrics N = %i.',
+                  number_of_subjects, number_of_qualtrics_subjects))
 }
 
 for(s in 1:number_of_subjects){
