@@ -62,7 +62,7 @@ column_names_dm = c(
   'dec_epoch_end',
   'otc_epoch_start',
   'otc_epoch_end',
-  'meanscl'
+  'tmeanscl'
 );
 
 data_dm = array(data = NA, dim = c(0, length(column_names_dm)));
@@ -155,8 +155,8 @@ column_names_subjlevel_long = c(
   'bis_overall',
   'bisbas_overall',
   'age',
-  'meanscl', # mean SCL value in this block
-  'slopescl', # slope of the SCL across this block
+  'blockmeanscl', # mean SCL value in this block
+  'blockslopescl', # slope of the SCL across this block
   'changebeforescl' # change of the SCL from 30 seconds before the block begins to onset of first choice, i.e. during instruction
 );
 
@@ -461,12 +461,12 @@ for(s in 1:number_of_subjects){
   # Calculate means on a per-trial basis
   for (t in 1:number_of_dm_trials_per_person){
     tmp_ind_vals = trial_start_ind[t]:trial_end_ind[t] # the indices
-    dm_data_to_add$meanscl[t] = mean(tmp_scl$scl_filt_sm[tmp_ind_vals]) # calc the mean
+    dm_data_to_add$tmeanscl[t] = mean(tmp_scl$scl_filt_sm[tmp_ind_vals]) # calc the mean
   }
   
   ### PER-BLOCK MEANS ----
   # meanscl
-  data_subjlevel_long$meanscl[subj_level_long_ind] = c(
+  data_subjlevel_long$blockmeanscl[subj_level_long_ind] = c(
     mean(tmp_scl$scl_filt_sm[trial_start_ind[1]:trial_end_ind[50]]),
     mean(tmp_scl$scl_filt_sm[trial_start_ind[51]:trial_end_ind[100]]),
     mean(tmp_scl$scl_filt_sm[trial_start_ind[101]:trial_end_ind[150]]),
@@ -474,7 +474,7 @@ for(s in 1:number_of_subjects){
   )
   
   # slopescl
-  data_subjlevel_long$slopescl[subj_level_long_ind] = c(
+  data_subjlevel_long$blockslopescl[subj_level_long_ind] = c(
     tmp_scl$scl_filt_sm[trial_end_ind[50]] - tmp_scl$scl_filt_sm[trial_start_ind[1]],
     tmp_scl$scl_filt_sm[trial_end_ind[100]] - tmp_scl$scl_filt_sm[trial_start_ind[51]],
     tmp_scl$scl_filt_sm[trial_end_ind[150]] - tmp_scl$scl_filt_sm[trial_start_ind[101]],
