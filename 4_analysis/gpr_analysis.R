@@ -37,6 +37,17 @@ number_of_dm_trials_per_person = num_rdm_trials * num_rdm_blocks; # static = 200
 subject_IDs = unique(data_dm$subjectnumber)
 number_of_subjects = length(subject_IDs)
 
+# Quality Assurance
+
+# Use...
+# - percent risky/safe choices
+# - RTs (too fast)
+# - qualtrics attention check
+# - button press (e.g. all left; or all alternating)
+# - 
+
+
+
 # STEP 4: ANALYZE ----
 
 # Working Memory
