@@ -388,6 +388,21 @@ for(s in 1:number_of_subjects){
     data_subjlevel_wide$bisbas_overall[s] = data_subjlevel_wide$bis_overall[s] + data_subjlevel_wide$bas_drive[s] + data_subjlevel_wide$bas_fun[s] + data_subjlevel_wide$bas_reward[s]
                                         
     data_subjlevel_wide$qualtrics_duration[s] = num_qualtrics_data$Duration..in.seconds.[qual_rowInd]
+    
+    # Put them into the LONG dataframe as well
+    
+    long_ind = data_subjlevel_long$subjectnumber == subject_IDs[s];
+    data_subjlevel_long$stais[long_ind] = data_subjlevel_wide$stais[s]
+    data_subjlevel_long$stait[long_ind] = data_subjlevel_wide$stait[s]
+    data_subjlevel_long$rrs_brood[long_ind] = data_subjlevel_wide$rrs_brood[s]
+    data_subjlevel_long$rrs_reflection[long_ind] = data_subjlevel_wide$rrs_reflection[s]
+    data_subjlevel_long$rrs_overall[long_ind] = data_subjlevel_wide$rrs_overall[s]
+    data_subjlevel_long$bas_drive[long_ind] = data_subjlevel_wide$bas_drive[s]
+    data_subjlevel_long$bas_fun[long_ind] = data_subjlevel_wide$bas_fun[s]
+    data_subjlevel_long$bas_reward[long_ind] = data_subjlevel_wide$bas_reward[s]
+    data_subjlevel_long$bis_overall[long_ind] = data_subjlevel_wide$bis_overall[s]
+    data_subjlevel_long$bisbas_overall[long_ind] = data_subjlevel_wide$bisbas_overall[s]
+    data_subjlevel_long$age[long_ind] = data_subjlevel_wide$age[s]
   }
   
   
