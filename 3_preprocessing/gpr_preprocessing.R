@@ -62,7 +62,7 @@ column_names_dm = c(
   'dec_epoch_end',
   'otc_epoch_start',
   'otc_epoch_end',
-  'meanscl'
+  'tmeanscl'
 );
 
 data_dm = array(data = NA, dim = c(0, length(column_names_dm)));
@@ -121,15 +121,19 @@ column_names_subjlevel_wide = c(
   'rrs_brood',
   'rrs_reflection',
   'rrs_overall',
-  'bisbas_overall', # Do others? 
+  'bas_drive',
+  'bas_fun',
+  'bas_reward',
+  'bis_overall',
+  'bisbas_overall', 
   'age',
-  'gender',
-  'ethnicity',
-  'race',
-  'highest_degree_attained',      
-  'political_orientation',        
-  'first_generation',             
-  'fraction_attn_check_correct',
+  # 'gender', # NOT INCLUDING THESE B/C NO PRIOR HYPOTHESES, AND HARD TO USE AS ANALYSIS VARIABLE
+  # 'ethnicity',
+  # 'race',
+  # 'highest_degree_attained',      
+  # 'political_orientation',        
+  # 'first_generation',             
+  'attn_check_correct',
   'qualtrics_duration'
 );
 
@@ -145,10 +149,14 @@ column_names_subjlevel_long = c(
   'rrs_brood',
   'rrs_reflection',
   'rrs_overall',
-  'bisbas_overall', # Do others? 
+  'bas_drive',
+  'bas_fun',
+  'bas_reward',
+  'bis_overall',
+  'bisbas_overall',
   'age',
-  'meanscl', # mean SCL value in this block
-  'slopescl', # slope of the SCL across this block
+  'blockmeanscl', # mean SCL value in this block
+  'blockslopescl', # slope of the SCL across this block
   'changebeforescl' # change of the SCL from 30 seconds before the block begins to onset of first choice, i.e. during instruction
 );
 
@@ -172,7 +180,8 @@ num_qualtrics_data = suppressWarnings(as.data.frame(apply(raw_qualtrics_data,2,a
 number_of_qualtrics_subjects = nrow(num_qualtrics_data)
 
 if (number_of_subjects != number_of_qualtrics_subjects){
-  warning('Numbers of subjects do not match!')
+  warning(sprintf('Numbers of subjects do not match! Behavioral N = %i; Qualtrics N = %i.',
+                  number_of_subjects, number_of_qualtrics_subjects))
 }
 
 for(s in 1:number_of_subjects){
@@ -309,31 +318,7 @@ for(s in 1:number_of_subjects){
                                     5 - num_qualtrics_data$GPR.STAI.S_19[qual_rowInd] +
                                     5 - num_qualtrics_data$GPR.STAI.S_20[qual_rowInd];
     
-    # JUSTIN PICK UP HERE AND TRY CLEANING UP THE BELOW
-
-    data_qualtrics$attn_check_correct = num_qualtrics_data$attentionCheck == 3;
-
-    data_qualtrics$age = num_qualtrics_data$Age[qual_rowInd];
-
-    data_qualtrics$ethnicity = num_qualtrics_data$Ethnicity[qual_rowInd];
-    # 1-Hispanic/Latinx, 2-Not Hispanic/Latinx, 3-Prefer not to say
-
-    data_qualtrics$race = num_qualtrics_data$Race[qual_rowInd];
-    # 1-American/Alaskan Native, 2-Black/African-American, 3-East Asian, 4-Native Hawaiian/Pacific Islander, 5-South Asian, 6-White, 7-Bi-racial, 8-Other, 9-Prefer not to say
-
-    data_qualtrics$highest_degree_attained = num_qualtrics_data$Education_Level[qual_rowInd]
-    # 1-No school, 2-Nursery to 8th, 3-High school-no diploma, 4-High school diploma, 5-trade school, 6-associates degree, 7-bachelors degree, 8-masters degree, 9-professional degree, 10-doctorate
-
-    data_qualtrics$gender = num_qualtrics_data$Gender[qual_rowInd]
-    # 1-Man, 2-Woman, 3-Non-Binary, 4-Genderqueer, 5-Gender Expansive, 6-Two-Spirited, 7-Third Gender, 8-Agender, 9-Not Sure, 10-Other, 11-Prefer not to say
-
-    data_qualtrics$political_orientation = num_qualtrics_data$Politics[qual_rowInd]
-    # 1-Extremely conservative, 5-centrist, 9-Extremely liberal
-
-    data_qualtrics$first_generation = num_qualtrics_data$First_Generation[qual_rowInd]
-    # 1-Yes, 2-No, 3-Unsure
-    
-    data_subjlevel_wide$stais[s] =  5 - num_qualtrics_data$GPR.STAI.T_1[qual_rowInd] +
+    data_subjlevel_wide$stait[s] =  5 - num_qualtrics_data$GPR.STAI.T_1[qual_rowInd] +
                                     num_qualtrics_data$GPR.STAI.T_2[qual_rowInd] +
                                     5 - num_qualtrics_data$GPR.STAI.T_3[qual_rowInd] +
                                     num_qualtrics_data$GPR.STAI.T_4[qual_rowInd] +
@@ -354,49 +339,70 @@ for(s in 1:number_of_subjects){
                                     5 - num_qualtrics_data$GPR.STAI.T_19[qual_rowInd] +
                                     num_qualtrics_data$GPR.STAI.T_20[qual_rowInd];
     
- 
-    data_qualtrics$rrs_brood = num_qualtrics_data$GPR.RRS_1[qual_rowInd] +
-                                num_qualtrics_data$GPR.RRS_3[qual_rowInd] +
-                                num_qualtrics_data$GPR.RRS_6[qual_rowInd] +
-                                num_qualtrics_data$GPR.RRS_7[qual_rowInd] +
-                                num_qualtrics_data$GPR.RRS.BROOD_8[qual_rowInd];
+    
+    data_subjlevel_wide$attn_check_correct[s] = as.numeric(num_qualtrics_data$Attention.Check[qual_rowInd] == 3);
 
-    data_qualtrics$rrs_reflect = num_qualtrics_data$GPR.RRS_2[qual_rowInd] +
-                                  num_qualtrics_data$GPR.RRS_4[qual_rowInd] +
-                                  num_qualtrics_data$GPR.RRS_5[qual_rowInd] +
-                                  num_qualtrics_data$GPR.RRS_9[qual_rowInd] +
-                                  num_qualtrics_data$GPR.RRS_10[qual_rowInd];
+    data_subjlevel_wide$age[s] = num_qualtrics_data$Age[qual_rowInd];
 
-    data_qualtrics$rrs_overall = data_qualtrics$rrs_brood + data_qualtrics$rrs_reflect
+    data_subjlevel_wide$rrs_brood[s] =  num_qualtrics_data$GPR.RRS.10_1[qual_rowInd] +
+                                        num_qualtrics_data$GPR.RRS.10_3[qual_rowInd] +
+                                        num_qualtrics_data$GPR.RRS.10_6[qual_rowInd] +
+                                        num_qualtrics_data$GPR.RRS.10_7[qual_rowInd] +
+                                        num_qualtrics_data$GPR.RRS.10_8[qual_rowInd];
+
+    data_subjlevel_wide$rrs_reflection[s] = num_qualtrics_data$GPR.RRS.10_2[qual_rowInd] +
+                                            num_qualtrics_data$GPR.RRS.10_4[qual_rowInd] +
+                                            num_qualtrics_data$GPR.RRS.10_5[qual_rowInd] +
+                                            num_qualtrics_data$GPR.RRS.10_9[qual_rowInd] +
+                                            num_qualtrics_data$GPR.RRS.10_10[qual_rowInd];
+
+    data_subjlevel_wide$rrs_overall[s] = data_subjlevel_wide$rrs_brood[s] + data_subjlevel_wide$rrs_reflection[s]
 
 
-    data_qualtrics$bas_drive = num_qualtrics_data$GPR.BIS.BAS_3[qual_rowInd] +
-                                num_qualtrics_data$GPR.BIS.BAS_9[qual_rowInd] +
-                                num_qualtrics_data$GPR.BIS.BAS_12[qual_rowInd]
-                                num_qualtrics_data$GPR.BIS.BAS_21[qual_rowInd];
+    data_subjlevel_wide$bas_drive[s] =  num_qualtrics_data$GPR.BIS.BAS_3[qual_rowInd] +
+                                        num_qualtrics_data$GPR.BIS.BAS_9[qual_rowInd] +
+                                        num_qualtrics_data$GPR.BIS.BAS_12[qual_rowInd]
+                                        num_qualtrics_data$GPR.BIS.BAS_21[qual_rowInd];
     
     
-    data_qualtrics$bas_fun = num_qualtrics_data$GPR.BIS.BAS_5[qual_rowInd] +
-                                num_qualtrics_data$GPR.BIS.BAS_10[qual_rowInd] +
-                                num_qualtrics_data$GPR.BIS.BAS_15[qual_rowInd] +
-                                num_qualtrics_data$GPR.BIS.BAS_20[qual_rowInd];
+    data_subjlevel_wide$bas_fun[s] =  num_qualtrics_data$GPR.BIS.BAS_5[qual_rowInd] +
+                                      num_qualtrics_data$GPR.BIS.BAS_10[qual_rowInd] +
+                                      num_qualtrics_data$GPR.BIS.BAS_15[qual_rowInd] +
+                                      num_qualtrics_data$GPR.BIS.BAS_20[qual_rowInd];
 
-    data_qualtrics$bas_reward = 5 - num_qualtrics_data$GPR.BIS.BAS_4[qual_rowInd] +
-                                  num_qualtrics_data$GPR.BIS.BAS_7[qual_rowInd] +
-                                  num_qualtrics_data$GPR.BIS.BAS_14[qual_rowInd] +
-                                  num_qualtrics_data$GPR.BIS.BAS_18[qual_rowInd] +
-                                  num_qualtrics_data$GPR.BIS.BAS_23[qual_rowInd];
+    data_subjlevel_wide$bas_reward[s] = 5 - num_qualtrics_data$GPR.BIS.BAS_4[qual_rowInd] +
+                                            num_qualtrics_data$GPR.BIS.BAS_7[qual_rowInd] +
+                                            num_qualtrics_data$GPR.BIS.BAS_14[qual_rowInd] +
+                                            num_qualtrics_data$GPR.BIS.BAS_18[qual_rowInd] +
+                                            num_qualtrics_data$GPR.BIS.BAS_23[qual_rowInd];
                                   
      
-    data_qualtrics$bis_overall = 5 - num_qualtrics_data$GPR.BIS.BAS_2[qual_rowInd] +
-                                  num_qualtrics_data$GPR.BIS.BAS_8[qual_rowInd] +
-                                  num_qualtrics_data$GPR.BIS.BAS_13[qual_rowInd] +
-                                  num_qualtrics_data$GPR.BIS.BAS_16[qual_rowInd] +
-                                  num_qualtrics_data$GPR.BIS.BAS_19[qual_rowInd] +
-                                  num_qualtrics_data$GPR.BIS.BAS_22[qual_rowInd] +
-                                  num_qualtrics_data$GPR.BIS.BAS_24[qual_rowInd];
+    data_subjlevel_wide$bis_overall[s] =  5 - num_qualtrics_data$GPR.BIS.BAS_2[qual_rowInd] +
+                                              num_qualtrics_data$GPR.BIS.BAS_8[qual_rowInd] +
+                                              num_qualtrics_data$GPR.BIS.BAS_13[qual_rowInd] +
+                                              num_qualtrics_data$GPR.BIS.BAS_16[qual_rowInd] +
+                                              num_qualtrics_data$GPR.BIS.BAS_19[qual_rowInd] +
+                                              num_qualtrics_data$GPR.BIS.BAS_22[qual_rowInd] +
+                                              num_qualtrics_data$GPR.BIS.BAS_24[qual_rowInd];
     
-    data_qualtrics$bis_bas_overall = data_qualtrics$bis_overall + data_qualtrics$bas_drive + data_qualtrics$bas_fun + data_qualtrics$bas_reward
+    data_subjlevel_wide$bisbas_overall[s] = data_subjlevel_wide$bis_overall[s] + data_subjlevel_wide$bas_drive[s] + data_subjlevel_wide$bas_fun[s] + data_subjlevel_wide$bas_reward[s]
+                                        
+    data_subjlevel_wide$qualtrics_duration[s] = num_qualtrics_data$Duration..in.seconds.[qual_rowInd]
+    
+    # Put them into the LONG dataframe as well
+    
+    long_ind = data_subjlevel_long$subjectnumber == subject_IDs[s];
+    data_subjlevel_long$stais[long_ind] = data_subjlevel_wide$stais[s]
+    data_subjlevel_long$stait[long_ind] = data_subjlevel_wide$stait[s]
+    data_subjlevel_long$rrs_brood[long_ind] = data_subjlevel_wide$rrs_brood[s]
+    data_subjlevel_long$rrs_reflection[long_ind] = data_subjlevel_wide$rrs_reflection[s]
+    data_subjlevel_long$rrs_overall[long_ind] = data_subjlevel_wide$rrs_overall[s]
+    data_subjlevel_long$bas_drive[long_ind] = data_subjlevel_wide$bas_drive[s]
+    data_subjlevel_long$bas_fun[long_ind] = data_subjlevel_wide$bas_fun[s]
+    data_subjlevel_long$bas_reward[long_ind] = data_subjlevel_wide$bas_reward[s]
+    data_subjlevel_long$bis_overall[long_ind] = data_subjlevel_wide$bis_overall[s]
+    data_subjlevel_long$bisbas_overall[long_ind] = data_subjlevel_wide$bisbas_overall[s]
+    data_subjlevel_long$age[long_ind] = data_subjlevel_wide$age[s]
   }
   
   
@@ -455,12 +461,12 @@ for(s in 1:number_of_subjects){
   # Calculate means on a per-trial basis
   for (t in 1:number_of_dm_trials_per_person){
     tmp_ind_vals = trial_start_ind[t]:trial_end_ind[t] # the indices
-    dm_data_to_add$meanscl[t] = mean(tmp_scl$scl_filt_sm[tmp_ind_vals]) # calc the mean
+    dm_data_to_add$tmeanscl[t] = mean(tmp_scl$scl_filt_sm[tmp_ind_vals]) # calc the mean
   }
   
   ### PER-BLOCK MEANS ----
   # meanscl
-  data_subjlevel_long$meanscl[subj_level_long_ind] = c(
+  data_subjlevel_long$blockmeanscl[subj_level_long_ind] = c(
     mean(tmp_scl$scl_filt_sm[trial_start_ind[1]:trial_end_ind[50]]),
     mean(tmp_scl$scl_filt_sm[trial_start_ind[51]:trial_end_ind[100]]),
     mean(tmp_scl$scl_filt_sm[trial_start_ind[101]:trial_end_ind[150]]),
@@ -468,7 +474,7 @@ for(s in 1:number_of_subjects){
   )
   
   # slopescl
-  data_subjlevel_long$slopescl[subj_level_long_ind] = c(
+  data_subjlevel_long$blockslopescl[subj_level_long_ind] = c(
     tmp_scl$scl_filt_sm[trial_end_ind[50]] - tmp_scl$scl_filt_sm[trial_start_ind[1]],
     tmp_scl$scl_filt_sm[trial_end_ind[100]] - tmp_scl$scl_filt_sm[trial_start_ind[51]],
     tmp_scl$scl_filt_sm[trial_end_ind[150]] - tmp_scl$scl_filt_sm[trial_start_ind[101]],
