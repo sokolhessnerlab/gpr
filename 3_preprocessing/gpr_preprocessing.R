@@ -210,7 +210,9 @@ cat('Loading and processing data.\n');
 raw_qualtrics_data <- read.csv(qualfn[length(qualfn)])
 raw_qualtrics_data = raw_qualtrics_data[-1:-6,]
 num_qualtrics_data = suppressWarnings(as.data.frame(apply(raw_qualtrics_data,2,as.numeric)))
-num_psq_data = read.csv(psqfn[length(psqfn)])
+raw_psq_data = read.csv(psqfn[length(psqfn)])
+num_psq_data = suppressWarnings(as.data.frame(apply(raw_psq_data,2,as.numeric)))
+write.csv(num_psq_data, file=sprintf('psq_filetest.csv'))
 # Warnings suppressed b/c of multiple conversion-to-NA errors
 
 number_of_qualtrics_subjects = nrow(num_qualtrics_data)
@@ -441,6 +443,8 @@ for(s in 1:number_of_subjects){
     data_subjlevel_long$age[long_ind] = data_subjlevel_wide$age[s]
   }
   
+  # WIDE Dataframe for PSQ data
+  
   if(subject_IDs[s] %in% num_psq_data$subID){
     
     psq_rowInd = which(subject_IDs[s] == num_psq_data$subID)
@@ -455,7 +459,29 @@ for(s in 1:number_of_subjects){
     
     data_subjlevel_wide$psq_goal_influence[s] = num_psq_data$A5[psq_rowInd];
     
-    data_subjlevel_wide$psq_aware[s] = num_psq_data$A6[psq_rowInd];
+    data_subjlevel_wide$psq_bonus_aware[s] = num_psq_data$A6[psq_rowInd];
+    
+    data_subjlevel_wide$psq_bonus_influence[s] = num_psq_data$A7[psq_rowInd];
+    
+    data_subjlevel_wide$psq_goal_influence_effort[s] = num_psq_data$B1a[psq_rowInd];
+    
+    data_subjlevel_wide$psq_goal_influence_speed[s] = num_psq_data$B1b[psq_rowInd];
+    
+    data_subjlevel_wide$psq_goal_influence_distract[s] = num_psq_data$B1c[psq_rowInd];
+    
+    data_subjlevel_wide$psq_goal_influence_anxiety[s] = num_psq_data$B1d[psq_rowInd];
+    
+    data_subjlevel_wide$psq_goal_influence_engage[s] = num_psq_data$B1e[psq_rowInd];
+    
+    data_subjlevel_wide$psq_bonus_influence_effort[s] = num_psq_data$B2a[psq_rowInd];
+    
+    data_subjlevel_wide$psq_bonus_influence_speed[s] = num_psq_data$B2b[psq_rowInd];
+    
+    data_subjlevel_wide$psq_bonus_influence_distract[s] = num_psq_data$B2c[psq_rowInd];
+    
+    data_subjlevel_wide$psq_bonus_influence_anxiety[s] = num_psq_data$B2d[psq_rowInd];
+    
+    data_subjlevel_wide$psq_bonus_influence_engage[s] = num_psq_data$B2e[psq_rowInd];
     
   }
     
