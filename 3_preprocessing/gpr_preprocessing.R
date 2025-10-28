@@ -9,9 +9,9 @@
 
 # STEP 1: SET YOUR WORKING DIRECTORY! ----
 # On PSH's computers...
-setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
+#setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
 # On JB's computers...
-# setwd('/Users/justinblake/Documents/GitHub/gpr/');
+setwd('/Users/justinblake/Documents/GitHub/gpr/');
 
 # STEP 2: then run from here on the same ----
 config = config::get();
@@ -25,6 +25,7 @@ digitspanfn = dir(pattern = glob2rx('*gprDigitSpan*.csv'),full.names = T, recurs
 goalfn = dir(pattern = glob2rx('rdmDatasub*_gprBonusCompensation_*.csv'),full.names = T, recursive = T);
 sclfn = dir(pattern = glob2rx('gpr*25_3.txt'),full.names = T, recursive = T);
 qualfn = dir(pattern = glob2rx('gprQualtricsData_values_*.csv'),full.names = T, recursive = T);
+psqfn = dir(pattern = glob2rx('gprPSQQuant_*.csv'), full.names = T, recursive = T);
 
 all_dirs = dir(pattern = glob2rx('gpr???')); # three-numbered item names
 subject_IDs = c();
@@ -127,6 +128,23 @@ column_names_subjlevel_wide = c(
   'bis_overall',
   'bisbas_overall', 
   'age',
+  'psq_stress', #A1
+  'psq_motivate', #A2
+  'psq_overall_difficult', #A3
+  'psq_goal_aware', #A4
+  'psq_goal_influence', #A5 
+  'psq_bonus_aware', #A6
+  'psq_bonus_influence', #A7
+  'psq_goal_influence_effort', #B1a
+  'psq_goal_influence_speed', #B1b
+  'psq_goal_influence_distract', #B1c
+  'psq_goal_influence_anxiety', #B1d
+  'psq_goal_influence_engage', #B1e
+  'psq_bonus_influence_effort', #B2a
+  'psq_bonus_influence_speed', #B2b
+  'psq_bonus_influence_distract', #B2c
+  'psq_bonus_influence_anxiety', #B2d
+  'psq_bonus_influence_engage', #B2e
   # 'gender', # NOT INCLUDING THESE B/C NO PRIOR HYPOTHESES, AND HARD TO USE AS ANALYSIS VARIABLE
   # 'ethnicity',
   # 'race',
@@ -155,6 +173,23 @@ column_names_subjlevel_long = c(
   'bis_overall',
   'bisbas_overall',
   'age',
+  'psq_stress', #A1
+  'psq_motivate', #A2
+  'psq_overall_difficult', #A3
+  'psq_goal_aware', #A4
+  'psq_goal_influence', #A5 
+  'psq_bonus_aware', #A6
+  'psq_bonus_influence', #A7
+  'psq_goal_influence_effort', #B1a
+  'psq_goal_influence_speed', #B1b
+  'psq_goal_influence_distract', #B1c
+  'psq_goal_influence_anxiety', #B1d
+  'psq_goal_influence_engage', #B1e
+  'psq_bonus_influence_effort', #B2a
+  'psq_bonus_influence_speed', #B2b
+  'psq_bonus_influence_distract', #B2c
+  'psq_bonus_influence_anxiety', #B2d
+  'psq_bonus_influence_engage', #B2e
   'blockmeanscl', # mean SCL value in this block
   'blockslopescl', # slope of the SCL across this block
   'changebeforescl' # change of the SCL from 30 seconds before the block begins to onset of first choice, i.e. during instruction
@@ -175,6 +210,7 @@ cat('Loading and processing data.\n');
 raw_qualtrics_data <- read.csv(qualfn[length(qualfn)])
 raw_qualtrics_data = raw_qualtrics_data[-1:-6,]
 num_qualtrics_data = suppressWarnings(as.data.frame(apply(raw_qualtrics_data,2,as.numeric)))
+num_psq_data = read.csv(psqfn[length(psqfn)])
 # Warnings suppressed b/c of multiple conversion-to-NA errors
 
 number_of_qualtrics_subjects = nrow(num_qualtrics_data)
@@ -405,7 +441,27 @@ for(s in 1:number_of_subjects){
     data_subjlevel_long$age[long_ind] = data_subjlevel_wide$age[s]
   }
   
+  if(subject_IDs[s] %in% num_psq_data$subID){
+    
+    psq_rowInd = which(subject_IDs[s] == num_psq_data$subID)
   
+    data_subjlevel_wide$psq_stress[s] = num_psq_data$A1[psq_rowInd];
+    
+    data_subjlevel_wide$psq_motivate[s] = num_psq_data$A2[psq_rowInd];
+    
+    data_subjlevel_wide$psq_overall_difficult[s] = num_psq_data$A3[psq_rowInd];
+    
+    data_subjlevel_wide$psq_goal_aware[s] = num_psq_data$A4[psq_rowInd];
+    
+    data_subjlevel_wide$psq_goal_influence[s] = num_psq_data$A5[psq_rowInd];
+    
+    data_subjlevel_wide$psq_aware[s] = num_psq_data$A6[psq_rowInd];
+    
+  }
+    
+    
+  
+   
   ## SCL DATA PROCESSING ----
   
   cat(', SCL')
