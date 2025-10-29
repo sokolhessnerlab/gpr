@@ -9,9 +9,9 @@
 
 # STEP 1: SET YOUR WORKING DIRECTORY! ----
 # On PSH's computers...
-#setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
+setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
 # On JB's computers...
-setwd('/Users/justinblake/Documents/GitHub/gpr/');
+# setwd('/Users/justinblake/Documents/GitHub/gpr/');
 
 # STEP 2: then run from here on the same ----
 config = config::get();
@@ -483,6 +483,29 @@ for(s in 1:number_of_subjects){
     
     data_subjlevel_wide$psq_bonus_influence_engage[s] = num_psq_data$B2e[psq_rowInd];
     
+    
+    # Put them into the LONG dataframe as well
+    
+    long_ind = data_subjlevel_long$subjectnumber == subject_IDs[s];
+    data_subjlevel_long$psq_stress[long_ind] = data_subjlevel_wide$psq_stress[s]
+    data_subjlevel_long$psq_motivate[long_ind] = data_subjlevel_wide$psq_motivate[s]
+    data_subjlevel_long$psq_overall_difficult[long_ind] = data_subjlevel_wide$psq_overall_difficult[s]
+    data_subjlevel_long$psq_goal_aware[long_ind] = data_subjlevel_wide$psq_goal_aware[s]
+    data_subjlevel_long$psq_goal_influence[long_ind] = data_subjlevel_wide$psq_goal_influence[s]
+    data_subjlevel_long$psq_bonus_aware[long_ind] = data_subjlevel_wide$psq_bonus_aware[s]
+    data_subjlevel_long$psq_bonus_influence[long_ind] = data_subjlevel_wide$psq_bonus_influence[s]
+    
+    data_subjlevel_long$psq_goal_influence_effort[long_ind] = data_subjlevel_wide$psq_goal_influence_effort[s]
+    data_subjlevel_long$psq_goal_influence_speed[long_ind] = data_subjlevel_wide$psq_goal_influence_speed[s]
+    data_subjlevel_long$psq_goal_influence_distract[long_ind] = data_subjlevel_wide$psq_goal_influence_distract[s]
+    data_subjlevel_long$psq_goal_influence_anxiety[long_ind] = data_subjlevel_wide$psq_goal_influence_anxiety[s]
+    data_subjlevel_long$psq_goal_influence_engage[long_ind] = data_subjlevel_wide$psq_goal_influence_engage[s]
+    
+    data_subjlevel_long$psq_bonus_influence_effort[long_ind] = data_subjlevel_wide$psq_bonus_influence_effort[s]
+    data_subjlevel_long$psq_bonus_influence_speed[long_ind] = data_subjlevel_wide$psq_bonus_influence_speed[s]
+    data_subjlevel_long$psq_bonus_influence_distract[long_ind] = data_subjlevel_wide$psq_bonus_influence_distract[s]
+    data_subjlevel_long$psq_bonus_influence_anxiety[long_ind] = data_subjlevel_wide$psq_bonus_influence_anxiety[s]
+    data_subjlevel_long$psq_bonus_influence_engage[long_ind] = data_subjlevel_wide$psq_bonus_influence_engage[s]
   }
     
     
