@@ -43,8 +43,10 @@ number_of_subjects = length(subject_IDs)
 # - RTs (too fast)
 # - qualtrics attention check
 # - button press (e.g. all left; or all alternating)
-# - 
 
+# Need a separate assessment of whether SCL is "good enough" to be used?
+#   Variability in SCL or in change in SCL over time?
+#   Mean levels? 
 
 
 # STEP 4: ANALYZE ----
