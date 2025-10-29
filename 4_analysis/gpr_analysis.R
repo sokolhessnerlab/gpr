@@ -14,10 +14,9 @@ rm(list = ls())
 # On JB's computers...
 setwd('/Users/justinblake/Documents/GitHub/gpr/');
 
-# STEP 2: then run from here on the same ----
+# STEP 2: Load pre-processed data files ----
 config = config::get();
 
-# STEP 3: Load pre-processed data files
 setwd(config$path$data$processed)
 
 dmfn = dir(pattern = glob2rx('gpr_processed_decisionmaking_data_*.csv'),full.names = T, recursive = T);
@@ -37,7 +36,7 @@ number_of_dm_trials_per_person = num_rdm_trials * num_rdm_blocks; # static = 200
 subject_IDs = unique(data_dm$subjectnumber)
 number_of_subjects = length(subject_IDs)
 
-# Quality Assurance
+# STEP 3: Quality Assurance ----
 
 # Use...
 # - percent risky/safe choices
@@ -49,6 +48,9 @@ number_of_subjects = length(subject_IDs)
 
 
 # STEP 4: ANALYZE ----
+
+## 1. PERSON-LEVEL ----
+# Who are our subjects? 
 
 # Working Memory
 # FS & BS max number_digits/length when correct (BEST SPAN)
@@ -84,3 +86,13 @@ lines(x = c(0, 12), y = c(0, 12))
 best_span_overall = rowMeans(cbind(best_span_FS,best_span_BS))
 
 hist(best_span_overall)
+
+
+## 2. BLOCK-LEVEL ----
+# What happened in the different blocks?
+
+
+## 3. TRIAL-LEVEL ----
+# What happened across trials? 
+# Why/how did trial events shape block events? 
+
