@@ -10,9 +10,9 @@ rm(list = ls())
 
 # STEP 1: SET YOUR WORKING DIRECTORY! ----
 # On PSH's computers...
-#setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
+setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
 # On JB's computers...
-setwd('/Users/justinblake/Documents/GitHub/gpr/');
+# setwd('/Users/justinblake/Documents/GitHub/gpr/');
 
 # STEP 2: Load pre-processed data files ----
 config = config::get();
@@ -38,11 +38,84 @@ number_of_subjects = length(subject_IDs)
 
 # STEP 3: Quality Assurance ----
 
-# Use...
-# - percent risky/safe choices
-# - RTs (too fast)
-# - qualtrics attention check
-# - button press (e.g. all left; or all alternating)
+## 3.1: EXCLUSION: RTs ----
+
+mean_rts = array(dim = c(number_of_subjects,1));
+
+for (subj in 1:number_of_subjects){
+  tmpdata = data_dm[data_dm$subjectnumber == subj,];
+  
+  mean_rts[subj] = mean(tmpdata$reactiontime, na.rm = T)
+}
+
+keep_dm_rt = mean_rts > 0.85; # excludes 3 people (9, 22, 57)
+
+mean_rts[keep_dm_rt]
+hist(mean_rts[keep_dm_rt]) # histogram of mean rts
+mean(mean_rts[keep_dm_rt]) # mean rt 1.59362 seconds (4/4/24)
+
+## 3.2: EXCLUSION: % RISKY/SAFE ----
+# Non-Check Trials only
+
+mean_risky = array(dim = c(number_of_subjects,1));
+
+for (subj in 1:number_of_subjects){
+  tmpdata = data_dm[data_dm$subjectnumber == subj,];
+  
+  mean_risky[subj] = mean(tmpdata$choice[tmpdata$ischecktrial == 0], na.rm = T)
+}
+
+keep_dm_prisky = (mean_risky < 0.95) & (mean_risky > .05); # does not exclude anyone
+
+hist(mean_risky[keep_dm_prisky], xlim = c(0,1), breaks = 15)
+mean(mean_risky[keep_dm_prisky])
+
+## 3.3: EXCLUSION: Check Trials ----
+# How did subjects do on check trials that they did succcessfully answer
+
+check_trial_failurerate = array(dim = c(number_of_subjects,1));
+
+for (subj in 1:number_of_subjects){
+  tmpdata = data_dm[data_dm$subjectnumber == subj,];
+  check_trial_index = which((tmpdata$ischecktrial==1) & is.finite(tmpdata$reactiontime));
+  correct_answers = (0.5 * tmpdata$riskyopt1[check_trial_index] +
+                       0.5 * tmpdata$riskyopt2[check_trial_index]) > tmpdata$safe[check_trial_index];
+  check_trial_failurerate[subj] = length(which(!tmpdata$choice[check_trial_index] == correct_answers))/length(check_trial_index);
+  
+  # Plot the choice data
+  plot(tmpdata$riskyopt1[tmpdata$choice == 1],tmpdata$safe[tmpdata$choice == 1], col = 'green',
+       xlab = 'Risky Gain $', ylab = 'Safe $', main = paste0('All Subjects; Subj ', subj),
+       xlim = c(0,30), ylim = c(0,12))
+  points(tmpdata$riskyopt1[tmpdata$choice == 0],tmpdata$safe[tmpdata$choice == 0], col = 'red')
+}
+
+check_trial_criterion = 0.2; # The maximum percent of check trials that can be missed
+# (there were 40 check trials)
+# chance is 0.5, perfect is 0.0.
+
+keep_check_trial = check_trial_failurerate <= check_trial_criterion; # 2 did not meet criteria: 60, 63
+
+## 3.4: EXCLUSION: Qualtrics Attention Check ----
+
+keep_qualAC = data_subjlevel_wide$attn_check_correct == 1
+
+## 3.5: Combine into a single keep_participants variable ----
+
+keep_participants = which(keep_dm_rt & keep_dm_prisky & keep_check_trial & keep_qualAC)
+
+
+# Create clean data frames for data!
+clean_data_dm = data_dm[data_dm$subjectnumber %in% keep_participants,]
+clean_data_wm = data_wm[data_wm$subjectnumber %in% keep_participants,]
+clean_data_subjlevel_wide = data_subjlevel_wide[data_subjlevel_wide$subjectnumber %in% keep_participants,]
+clean_data_subjlevel_long = data_subjlevel_long[data_subjlevel_long$subjectnumber %in% keep_participants,]
+
+number_of_clean_subjects = length(keep_participants);
+number_of_clean_subjects # 66 participants
+
+# # Create a re-scaled version of trial number for use in subsequent analyses
+# clean_data_dm$trialnumberRS = clean_data_dm$trialnumber/max(clean_data_dm$trialnumber)
+
 
 # Need a separate assessment of whether SCL is "good enough" to be used?
 #   Variability in SCL or in change in SCL over time?
@@ -54,29 +127,28 @@ number_of_subjects = length(subject_IDs)
 ## 1. PERSON-LEVEL ----
 # Who are our subjects? 
 
-# Working Memory
+
+### Working Memory Capacity ----
+
 # FS & BS max number_digits/length when correct (BEST SPAN)
 # Q: is there a difference in max number of digits correct in FS vs BS (comparing fs max digit length correct to bs)
-best_span_FS = array(dim = c(number_of_subjects,1));
-best_span_BS = array(dim = c(number_of_subjects,1));
+best_span_FS = array(dim = c(number_of_clean_subjects,1));
+best_span_BS = array(dim = c(number_of_clean_subjects,1));
 
-for (s in 1:number_of_subjects){
-  # subj_id = keep_participants[subj]
-  # tmpdata = data_wm[data_wm$subjectnumber == subj_id,]
-  # best_span_FS[subj] = max(tmpdata$number_digits[(tmpdata$forward1backward0 == 1) & (tmpdata$correct == 1)], na.rm = T);
-  # best_span_BS[subj] = max(tmpdata$number_digits[(tmpdata$forward1backward0 == 0) & (tmpdata$correct == 1)], na.rm = T);
-  subj_id = subject_IDs[s]
-  tmpdata = data_wm[data_wm$subjectnumber == subj_id,]
+for (s in 1:number_of_clean_subjects){
+  subj_id = keep_participants[s]
+  tmpdata = clean_data_wm[clean_data_wm$subjectnumber == subj_id,]
   best_span_FS[s] = max(tmpdata$number_digits[(tmpdata$forward1backward0 == 1) & (tmpdata$correct == 1)], na.rm = T);
   best_span_BS[s] = max(tmpdata$number_digits[(tmpdata$forward1backward0 == 0) & (tmpdata$correct == 1)], na.rm = T);
 }
 
 t.test(best_span_FS, best_span_BS, paired = T);
-#A: yes, significant difference between max digit number/length FS correct compared to BS correct (10/8/25)!
-#   Indicates that people have different capcities FS and BS
+#A: yes, significant difference between max digit number/length FS correct compared to BS correct
+#   Indicates that people have different capacities FS and BS
 
 cor.test(best_span_BS,best_span_FS)
-#A: yes, very correlated (r = 0.77, p = 4.5e-10)! 
+#A: yes, very correlated (r = 0.76, p = p = 2.0e-13)! 
+
 plot(best_span_BS, best_span_FS, 
      pch = 19, col = rgb(.5, .5, .5, .3), 
      xlim = c(0, 12.5), ylim = c(0, 12.5), cex = 2.5,
@@ -86,8 +158,25 @@ lines(x = c(0, 12), y = c(0, 12))
 
 # Collapse spans into a single span measure
 best_span_overall = rowMeans(cbind(best_span_FS,best_span_BS))
+mean(best_span_overall) # 7.45
 
-hist(best_span_overall)
+hist(best_span_overall, breaks = 15)
+
+# JUSTIN:
+# 1. INSERT WMC VALUE INTO DM AND SUBJLEVEL ARRAYS
+# 2. BUILD CORRELATION MATRIX WITH MAJOR ITEMS FROM SUBJLEVEL_WIDE & START TO INVESTIGATE THAT
+# 3. START TO INVESTIGATE BONUS & GOAL AWARENESS & INFLUENCE
+
+
+# Do big correlation matrix of major individual difference terms? 
+# plot(cbind(clean_data_survey[,c('stais','stait','SNS','PSS')],clean_data_complexspan['compositeSpanScore']));
+# 
+# library(corrplot)
+# cor_matrix = cor(cbind(clean_data_survey[,c('NCS','IUS','SNS','PSS')],clean_data_complexspan['compositeSpanScore']),
+#                  use = 'complete.obs');
+# corrplot(cor_matrix, type = 'lower')
+
+
 
 
 ## 2. BLOCK-LEVEL ----
