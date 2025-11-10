@@ -10,9 +10,9 @@ rm(list = ls())
 
 # STEP 1: SET YOUR WORKING DIRECTORY! ----
 # On PSH's computers...
-setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
+#setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
 # On JB's computers...
-# setwd('/Users/justinblake/Documents/GitHub/gpr/');
+setwd('/Users/justinblake/Documents/GitHub/gpr/');
 
 # STEP 2: Load pre-processed data files ----
 config = config::get();
@@ -167,7 +167,55 @@ hist(best_span_overall, breaks = 15)
 # 2. BUILD CORRELATION MATRIX WITH MAJOR ITEMS FROM SUBJLEVEL_WIDE & START TO INVESTIGATE THAT
 # 3. START TO INVESTIGATE BONUS & GOAL AWARENESS & INFLUENCE
 
+length(best_span_overall)
 
+clean_data_dm$best_span_overall = NA #got some help from the internet, not entirely sure why the NA; something to do with na.rm?
+clean_data_subjlevel_wide$best_span_overall = NA
+clean_data_subjlevel_long$best_span_overall = NA
+
+for (s in 1:length(keep_participants)) {
+  subj_id = keep_participants[s]
+  wmc_val = best_span_overall[s]
+  
+  clean_data_dm$best_span_overall[clean_data_dm$subjectnumber == subj_id] = wmc_val
+  clean_data_subjlevel_wide$best_span_overall[clean_data_subjlevel_wide$subjectnumber == subj_id] = wmc_val
+}
+
+#Summary is to see that the above code worked
+#summary(clean_data_dm$best_span_overall)
+#summary(clean_data_subjlevel_wide$best_span_overall)
+
+major_items = c('stais',
+                'stait',
+                'rrs_overall',
+                'bisbas_overall',
+                'totalcompensation',
+                'psq_stress', 
+                'psq_motivate',
+                'psq_overall_difficult',
+                'psq_goal_aware',
+                'psq_goal_influence', 
+                'psq_bonus_aware',
+                'psq_bonus_influence',
+                'psq_goal_influence_effort',
+                'psq_goal_influence_speed',
+                'psq_goal_influence_distract',
+                'psq_goal_influence_anxiety',
+                'psq_goal_influence_engage',
+                'psq_bonus_influence_effort',
+                'psq_bonus_influence_speed',
+                'psq_bonus_influence_distract',
+                'psq_bonus_influence_anxiety',
+                'psq_bonus_influence_engage')
+
+subj_wide_subset = clean_data_subjlevel_wide[, major_items]
+subj_wide_subset = na.omit(subj_wide_subset)
+cor_matrix = cor(subj_wide_subset)
+
+print(round(cor_matrix, 2))
+
+
+  
 # Do big correlation matrix of major individual difference terms? 
 # plot(cbind(clean_data_survey[,c('stais','stait','SNS','PSS')],clean_data_complexspan['compositeSpanScore']));
 # 
@@ -175,8 +223,6 @@ hist(best_span_overall, breaks = 15)
 # cor_matrix = cor(cbind(clean_data_survey[,c('NCS','IUS','SNS','PSS')],clean_data_complexspan['compositeSpanScore']),
 #                  use = 'complete.obs');
 # corrplot(cor_matrix, type = 'lower')
-
-
 
 
 ## 2. BLOCK-LEVEL ----
