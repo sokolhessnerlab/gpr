@@ -10,9 +10,9 @@ rm(list = ls())
 
 # STEP 1: SET YOUR WORKING DIRECTORY! ----
 # On PSH's computers...
-#setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
+setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
 # On JB's computers...
-setwd('/Users/justinblake/Documents/GitHub/gpr/');
+# setwd('/Users/justinblake/Documents/GitHub/gpr/');
 
 # STEP 2: Load pre-processed data files ----
 config = config::get();
@@ -208,7 +208,7 @@ for (s in 1:length(keep_participants)) {
 #                 'psq_bonus_influence_anxiety',
 #                 'psq_bonus_influence_engage')
 
-major_items = c('totalcompensation',
+cor_items = c('totalcompensation',
                  'stais',
                  'stait',
                  'bis_overall',
@@ -222,14 +222,18 @@ major_items = c('totalcompensation',
                  'round3bonusreceived01',
                  'round4bonusreceived01')
 
-subj_wide_subset = clean_data_subjlevel_wide[, major_items]
-subj_wide_subset = na.omit(subj_wide_subset)
-cor_matrix = cor(subj_wide_subset)
+
+cor_matrix = cor(clean_data_subjlevel_wide[,cor_items])
+cor_p = cor.mtest(clean_data_subjlevel_wide[,cor_items], conf.level = 0.95)$p
 
 print(round(cor_matrix, 2))
 
 
-  
+library(corrplot)
+corrplot(cor_matrix, type = 'lower', col = rev(COL2('RdBu')),
+         p.mat = cor_p, sig.level = 0.05, insig='blank',
+         addCoef.col ='black', number.cex = 1, diag=FALSE)
+
 # Do big correlation matrix of major individual difference terms? 
 # plot(cbind(clean_data_survey[,c('stais','stait','SNS','PSS')],clean_data_complexspan['compositeSpanScore']));
 # 
