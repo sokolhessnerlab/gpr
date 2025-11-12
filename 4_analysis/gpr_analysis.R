@@ -169,7 +169,7 @@ hist(best_span_overall, breaks = 15)
 
 length(best_span_overall)
 
-clean_data_dm$best_span_overall = NA #got some help from the internet, not entirely sure why the NA; something to do with na.rm?
+clean_data_dm$best_span_overall = NA 
 clean_data_subjlevel_wide$best_span_overall = NA
 clean_data_subjlevel_long$best_span_overall = NA
 
@@ -233,6 +233,8 @@ library(corrplot)
 corrplot(cor_matrix, type = 'lower', col = rev(COL2('RdBu')),
          p.mat = cor_p, sig.level = 0.05, insig='blank',
          addCoef.col ='black', number.cex = 1, diag=FALSE)
+
+plot(clean_data_subjlevel_wide[,cor_items])
 
 # Do big correlation matrix of major individual difference terms? 
 # plot(cbind(clean_data_survey[,c('stais','stait','SNS','PSS')],clean_data_complexspan['compositeSpanScore']));
