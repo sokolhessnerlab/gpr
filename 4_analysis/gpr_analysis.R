@@ -10,9 +10,9 @@ rm(list = ls())
 
 # STEP 1: SET YOUR WORKING DIRECTORY! ----
 # On PSH's computers...
-setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
+#setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
 # On JB's computers...
-# setwd('/Users/justinblake/Documents/GitHub/gpr/');
+setwd('/Users/justinblake/Documents/GitHub/gpr/');
 
 # STEP 2: Load pre-processed data files ----
 config = config::get();
@@ -223,6 +223,7 @@ cor_items = c('totalcompensation',
                  'round4bonusreceived01')
 
 
+
 cor_matrix = cor(clean_data_subjlevel_wide[,cor_items])
 cor_p = cor.mtest(clean_data_subjlevel_wide[,cor_items], conf.level = 0.95)$p
 
@@ -235,6 +236,40 @@ corrplot(cor_matrix, type = 'lower', col = rev(COL2('RdBu')),
          addCoef.col ='black', number.cex = 1, diag=FALSE)
 
 plot(clean_data_subjlevel_wide[,cor_items])
+
+library(dplyr)
+library(tidyr)
+
+round_data <- clean_data_subjlevel_wide %>%
+  select(subjectnumber,
+         round1bonusreceived01, round2bonusreceived01,
+         round3bonusreceived01, round4bonusreceived01,
+         round1earnings, round2earnings,
+         round3earnings, round4earnings) %>%
+  pivot_longer(
+    cols = starts_with("round"),
+    names_to = c("round", ".value"),
+    names_pattern = "(round[1-4])(.*)"
+  )
+
+round_data <- round_data %>%
+  arrange(subjectnumber, round) %>%
+  group_by(subjectnumber) %>%
+  mutate(previous_success = lag(bonusreceived01))
+
+round_data %>%
+  group_by(previous_success) %>%
+  summarize(mean_earnings = mean(earnings, na.rm = TRUE),
+            sd_earnings = sd(earnings, na.rm = TRUE),
+            n = n())
+
+t.test(earnings ~ previous_success, data = round_data)
+
+boxplot(earnings ~ previous_success, data = round_data,
+        names = c("Failed previous round", "Succeeded previous round"),
+        ylab = "Earnings on current round")
+
+
 
 # Do big correlation matrix of major individual difference terms? 
 # plot(cbind(clean_data_survey[,c('stais','stait','SNS','PSS')],clean_data_complexspan['compositeSpanScore']));
