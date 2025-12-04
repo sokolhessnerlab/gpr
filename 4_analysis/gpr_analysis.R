@@ -237,6 +237,7 @@ corrplot(cor_matrix, type = 'lower', col = rev(COL2('RdBu')),
 
 plot(clean_data_subjlevel_wide[,cor_items])
 
+# Previous success or failure effects on next round earnings
 library(dplyr)
 library(tidyr)
 
@@ -269,6 +270,19 @@ boxplot(earnings ~ previous_success, data = round_data,
         names = c("Failed previous round", "Succeeded previous round"),
         ylab = "Earnings on current round")
 
+# Correlation between total compensation and best span overall / working memory
+cor.test(clean_data_subjlevel_wide$best_span_overall,
+         clean_data_subjlevel_wide$totalcompensation)
+
+plot(clean_data_subjlevel_wide$best_span_overall,
+     clean_data_subjlevel_wide$totalcompensation,
+     pch = 19, col = rgb(0,0,0,0.4),
+     xlab = "Working Memory: Best Span",
+     ylab = "Total Compensation",
+     main = "Correlation Between Working Memory and Earnings")
+abline(lm(totalcompensation ~ best_span_overall,
+          data = clean_data_subjlevel_wide),
+       lwd = 2)
 
 
 # Do big correlation matrix of major individual difference terms? 
