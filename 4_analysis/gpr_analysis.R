@@ -279,10 +279,39 @@ plot(clean_data_subjlevel_wide$best_span_overall,
      pch = 19, col = rgb(0,0,0,0.4),
      xlab = "Working Memory: Best Span",
      ylab = "Total Compensation",
-     main = "Correlation Between Working Memory and Earnings")
+     main = "Correlation Between Best Span and Earnings")
 abline(lm(totalcompensation ~ best_span_overall,
           data = clean_data_subjlevel_wide),
        lwd = 2)
+
+# Correlation between total compensation and bonus awareness
+cor.test(clean_data_subjlevel_wide$psq_bonus_aware,
+         clean_data_subjlevel_wide$totalcompensation)
+
+plot(clean_data_subjlevel_wide$psq_bonus_aware,
+     clean_data_subjlevel_wide$totalcompensation,
+     pch = 19, col = rgb(0,0,0,0.4),
+     xlab = "Bonus Awareness",
+     ylab = "Total Compensation",
+     main = "Correlation Between Bonus Awareness and Earnings")
+abline(lm(totalcompensation ~ psq_bonus_aware,
+          data = clean_data_subjlevel_wide),
+       lwd = 2)
+
+# Correlation between total compensation and goal awareness
+cor.test(clean_data_subjlevel_wide$psq_goal_aware,
+         clean_data_subjlevel_wide$totalcompensation)
+
+plot(clean_data_subjlevel_wide$psq_goal_aware,
+     clean_data_subjlevel_wide$totalcompensation,
+     pch = 19, col = rgb(0,0,0,0.4),
+     xlab = "Goal Awareness",
+     ylab = "Total Compensation",
+     main = "Correlation Between Goal Awareness and Earnings")
+abline(lm(totalcompensation ~ psq_goal_aware,
+          data = clean_data_subjlevel_wide),
+       lwd = 2)
+
 
 
 # Do big correlation matrix of major individual difference terms? 
