@@ -312,6 +312,41 @@ abline(lm(totalcompensation ~ psq_goal_aware,
           data = clean_data_subjlevel_wide),
        lwd = 2)
 
+#Risky Choices vs. Goal and Bonus Levels
+library(dplyr)
+
+risk_by_condition <- clean_data_dm %>%
+  filter(ischecktrial == 0) %>%            # exclude check trials
+  group_by(subjectnumber, curr_goal, curr_bonus) %>%
+  summarize(
+    prop_risky = mean(choice, na.rm = TRUE),
+    n_trials   = n(),
+    .groups = "drop"
+  )
+
+risk_summary <- risk_by_condition %>%
+  group_by(curr_goal, curr_bonus) %>%
+  summarize(
+    mean_prop_risky = mean(prop_risky, na.rm = TRUE),
+    se = sd(prop_risky, na.rm = TRUE) / sqrt(n()),
+    .groups = "drop"
+  )
+
+with(risk_summary,
+     interaction.plot(
+       x.factor = curr_goal,
+       trace.factor = curr_bonus,
+       response = mean_prop_risky,
+       ylab = "Proportion Risky Choices",
+       xlab = "Goal Level",
+       trace.label = "Bonus Level",
+       col = 1:4,
+       lwd = 2
+     ))
+
+
+
+
 
 
 # Do big correlation matrix of major individual difference terms? 
