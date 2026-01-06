@@ -316,7 +316,7 @@ abline(lm(totalcompensation ~ psq_goal_aware,
 library(dplyr)
 
 risk_by_condition <- clean_data_dm %>%
-  filter(ischecktrial == 0) %>%            # exclude check trials
+  filter(ischecktrial == 0) %>%  
   group_by(subjectnumber, curr_goal, curr_bonus) %>%
   summarize(
     prop_risky = mean(choice, na.rm = TRUE),
