@@ -10,9 +10,9 @@ rm(list = ls())
 
 # STEP 1: SET YOUR WORKING DIRECTORY! ----
 # On PSH's computers...
-#setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
+setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
 # On JB's computers...
-setwd('/Users/justinblake/Documents/GitHub/gpr/');
+# setwd('/Users/justinblake/Documents/GitHub/gpr/');
 
 # STEP 2: Load pre-processed data files ----
 config = config::get();
@@ -114,8 +114,8 @@ number_of_clean_subjects = length(keep_participants);
 number_of_clean_subjects # 66 participants
 
 # # Create a re-scaled version of trial number for use in subsequent analyses
-# clean_data_dm$trialnumberRS = clean_data_dm$trialnumber/max(clean_data_dm$trialnumber)
-
+clean_data_dm$trialnumber_overallRS = clean_data_dm$trialnumber_overall/max(clean_data_dm$trialnumber_overall)
+clean_data_dm$trialnumber_blockRS = clean_data_dm$trialnumber_block/max(clean_data_dm$trialnumber_block)
 
 # Need a separate assessment of whether SCL is "good enough" to be used?
 #   Variability in SCL or in change in SCL over time?
@@ -167,7 +167,7 @@ hist(best_span_overall, breaks = 15)
 # 2. BUILD CORRELATION MATRIX WITH MAJOR ITEMS FROM SUBJLEVEL_WIDE & START TO INVESTIGATE THAT
 # 3. START TO INVESTIGATE BONUS & GOAL AWARENESS & INFLUENCE
 
-length(best_span_overall)
+length(best_span_overall) # checking that it's 66 long! 
 
 clean_data_dm$best_span_overall = NA 
 clean_data_subjlevel_wide$best_span_overall = NA
@@ -182,8 +182,9 @@ for (s in 1:length(keep_participants)) {
 }
 
 #Summary is to see that the above code worked
-#summary(clean_data_dm$best_span_overall)
-#summary(clean_data_subjlevel_wide$best_span_overall)
+# summary(clean_data_dm$best_span_overall)
+# # summary(clean_data_dm$best_span_overall[clean_data_dm$trialnumber_overall == 1])
+# summary(clean_data_subjlevel_wide$best_span_overall)
 
 # major_items = c('stais',
 #                 'stait',
@@ -221,8 +222,7 @@ cor_items = c('totalcompensation',
                  'round2bonusreceived01',
                  'round3bonusreceived01',
                  'round4bonusreceived01')
-
-
+library(corrplot)
 
 cor_matrix = cor(clean_data_subjlevel_wide[,cor_items])
 cor_p = cor.mtest(clean_data_subjlevel_wide[,cor_items], conf.level = 0.95)$p
@@ -230,12 +230,38 @@ cor_p = cor.mtest(clean_data_subjlevel_wide[,cor_items], conf.level = 0.95)$p
 print(round(cor_matrix, 2))
 
 
-library(corrplot)
 corrplot(cor_matrix, type = 'lower', col = rev(COL2('RdBu')),
          p.mat = cor_p, sig.level = 0.05, insig='blank',
          addCoef.col ='black', number.cex = 1, diag=FALSE)
 
 plot(clean_data_subjlevel_wide[,cor_items])
+
+# SUMMARY: 
+# - State, trait, rumination, and behavioral inhibition (-) are all
+#   correlated with each other. 
+# - Potentially study-level patterns or shifts in behavior. Maybe
+#   earnings become more stable/less variable in later rounds?
+
+# TO DO's
+# - Histogram earnings across rounds (or density plot?) to examine var
+# - test variances in earnings across rounds
+
+
+
+
+
+# Do big correlation matrix of major individual difference terms? 
+# plot(cbind(clean_data_survey[,c('stais','stait','SNS','PSS')],clean_data_complexspan['compositeSpanScore']));
+# 
+# library(corrplot)
+# cor_matrix = cor(cbind(clean_data_survey[,c('NCS','IUS','SNS','PSS')],clean_data_complexspan['compositeSpanScore']),
+#                  use = 'complete.obs');
+# corrplot(cor_matrix, type = 'lower')
+
+
+## 2. BLOCK-LEVEL ----
+# What happened in the different blocks?
+
 
 # Previous success or failure effects on next round earnings
 library(dplyr)
@@ -345,21 +371,6 @@ with(risk_summary,
      ))
 
 
-
-
-
-
-# Do big correlation matrix of major individual difference terms? 
-# plot(cbind(clean_data_survey[,c('stais','stait','SNS','PSS')],clean_data_complexspan['compositeSpanScore']));
-# 
-# library(corrplot)
-# cor_matrix = cor(cbind(clean_data_survey[,c('NCS','IUS','SNS','PSS')],clean_data_complexspan['compositeSpanScore']),
-#                  use = 'complete.obs');
-# corrplot(cor_matrix, type = 'lower')
-
-
-## 2. BLOCK-LEVEL ----
-# What happened in the different blocks?
 
 
 ## 3. TRIAL-LEVEL ----
