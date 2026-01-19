@@ -352,6 +352,25 @@ median(clean_data_subjlevel_wide$age, na.rm = TRUE)
 
 #table(clean_data_subjlevel_wide$race, clean_data_subjlevel_wide$ethnicity, clean_data_subjlevel_wide$gender)
 
+#Correlation for psq motivation and goal/bonus awareness and impact
+motiv_cor_items = c('psq_motivate',
+                    'psq_goal_aware',
+                    'psq_goal_influence', 
+                    'psq_bonus_aware',
+                    'psq_bonus_influence')
+
+motiv_cor_matrix = cor(clean_data_subjlevel_wide[,motiv_cor_items])
+motiv_cor_p = cor.mtest(clean_data_subjlevel_wide[,motiv_cor_items], conf.level = 0.95)$p
+
+print(round(motiv_cor_matrix, 2))
+
+
+corrplot(motiv_cor_matrix, type = 'lower', col = rev(COL2('RdBu')),
+         p.mat = motiv_cor_p, sig.level = 0.05, insig='blank',
+         addCoef.col ='black', number.cex = 1, diag=FALSE)
+
+plot(clean_data_subjlevel_wide[,motiv_cor_items])
+
 
 
 
