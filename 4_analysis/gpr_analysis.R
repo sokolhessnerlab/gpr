@@ -300,6 +300,25 @@ corrplot(bonusinf_cor_matrix, type = 'lower', col = rev(COL2('RdBu')),
 
 plot(clean_data_subjlevel_wide[,bonusinf_cor_items])
 
+#Correlation for psq_goal_influence items
+goalinf_cor_items = c('psq_goal_influence_effort',
+                      'psq_goal_influence_speed',
+                      'psq_goal_influence_distract',
+                      'psq_goal_influence_anxiety',
+                      'psq_goal_influence_engage')
+
+goalinf_cor_matrix = cor(clean_data_subjlevel_wide[,goalinf_cor_items])
+goalinf_cor_p = cor.mtest(clean_data_subjlevel_wide[,goalinf_cor_items], conf.level = 0.95)$p
+
+print(round(goalinf_cor_matrix, 2))
+
+
+corrplot(goalinf_cor_matrix, type = 'lower', col = rev(COL2('RdBu')),
+         p.mat = goalinf_cor_p, sig.level = 0.05, insig='blank',
+         addCoef.col ='black', number.cex = 1, diag=FALSE)
+
+plot(clean_data_subjlevel_wide[,goalinf_cor_items])
+
 
 
 
