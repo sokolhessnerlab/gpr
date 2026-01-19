@@ -347,6 +347,11 @@ mean(clean_data_subjlevel_wide$age, na.rm = TRUE)
 sd(clean_data_subjlevel_wide$age, na.rm = TRUE)
 median(clean_data_subjlevel_wide$age, na.rm = TRUE)
 
+#Description of Race, Ethnicity, and Gender Data for Methods
+#prop.table(table(clean_data_subjlevel_wide$race, clean_data_subjlevel_wide$ethnicity, clean_data_subjlevel_wide$gender)) * 100
+
+#table(clean_data_subjlevel_wide$race, clean_data_subjlevel_wide$ethnicity, clean_data_subjlevel_wide$gender)
+
 
 
 
