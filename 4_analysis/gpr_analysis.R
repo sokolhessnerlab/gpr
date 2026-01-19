@@ -10,9 +10,9 @@ rm(list = ls())
 
 # STEP 1: SET YOUR WORKING DIRECTORY! ----
 # On PSH's computers...
-setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
+#setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
 # On JB's computers...
-# setwd('/Users/justinblake/Documents/GitHub/gpr/');
+setwd('/Users/justinblake/Documents/GitHub/gpr/');
 
 # STEP 2: Load pre-processed data files ----
 config = config::get();
@@ -245,6 +245,25 @@ plot(clean_data_subjlevel_wide[,cor_items])
 # TO DO's
 # - Histogram earnings across rounds (or density plot?) to examine var
 # - test variances in earnings across rounds
+
+#Correlation for the bas items
+bas_cor_items = c('bas_drive',
+                  'bas_fun',
+                  'bas_reward')
+
+bas_cor_matrix = cor(clean_data_subjlevel_wide[,bas_cor_items])
+bas_cor_p = cor.mtest(clean_data_subjlevel_wide[,bas_cor_items], conf.level = 0.95)$p
+
+print(round(bas_cor_matrix, 2))
+
+
+corrplot(bas_cor_matrix, type = 'lower', col = rev(COL2('RdBu')),
+         p.mat = bas_cor_p, sig.level = 0.05, insig='blank',
+         addCoef.col ='black', number.cex = 1, diag=FALSE)
+
+plot(clean_data_subjlevel_wide[,bas_cor_items])
+
+
 
 
 
