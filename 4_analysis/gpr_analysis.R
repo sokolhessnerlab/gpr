@@ -319,6 +319,26 @@ corrplot(goalinf_cor_matrix, type = 'lower', col = rev(COL2('RdBu')),
 
 plot(clean_data_subjlevel_wide[,goalinf_cor_items])
 
+#Correlation for goal and bonus anxiety with stais/t
+anxiety_cor_items = c('stais',
+                      'stait',
+                      'psq_goal_influence_anxiety',
+                      'psq_bonus_influence_anxiety')
+
+anxiety_cor_matrix = cor(clean_data_subjlevel_wide[,anxiety_cor_items])
+anxiety_cor_p = cor.mtest(clean_data_subjlevel_wide[,anxiety_cor_items], conf.level = 0.95)$p
+
+print(round(anxiety_cor_matrix, 2))
+
+
+corrplot(anxiety_cor_matrix, type = 'lower', col = rev(COL2('RdBu')),
+         p.mat = anxiety_cor_p, sig.level = 0.05, insig='blank',
+         addCoef.col ='black', number.cex = 1, diag=FALSE)
+
+plot(clean_data_subjlevel_wide[,anxiety_cor_items])
+
+
+
 
 
 
