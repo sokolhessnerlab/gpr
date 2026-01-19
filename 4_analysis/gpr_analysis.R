@@ -338,6 +338,14 @@ corrplot(anxiety_cor_matrix, type = 'lower', col = rev(COL2('RdBu')),
 plot(clean_data_subjlevel_wide[,anxiety_cor_items])
 
 
+#Description of Age Data for Methods
+summary(clean_data_subjlevel_wide)
+
+summary(clean_data_subjlevel_wide[, c("age")])
+
+mean(clean_data_subjlevel_wide$age, na.rm = TRUE)
+sd(clean_data_subjlevel_wide$age, na.rm = TRUE)
+median(clean_data_subjlevel_wide$age, na.rm = TRUE)
 
 
 
