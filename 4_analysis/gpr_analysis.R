@@ -281,6 +281,25 @@ corrplot(rrs_cor_matrix, type = 'lower', col = rev(COL2('RdBu')),
 plot(clean_data_subjlevel_wide[,rrs_cor_items])
 
 
+#Correlation for psq_bonus_influence items
+bonusinf_cor_items = c('psq_bonus_influence_effort',
+                       'psq_bonus_influence_speed',
+                       'psq_bonus_influence_distract',
+                       'psq_bonus_influence_anxiety',
+                       'psq_bonus_influence_engage')
+
+bonusinf_cor_matrix = cor(clean_data_subjlevel_wide[,bonusinf_cor_items])
+bonusinf_cor_p = cor.mtest(clean_data_subjlevel_wide[,bonusinf_cor_items], conf.level = 0.95)$p
+
+print(round(bonusinf_cor_matrix, 2))
+
+
+corrplot(bonusinf_cor_matrix, type = 'lower', col = rev(COL2('RdBu')),
+         p.mat = bonusinf_cor_p, sig.level = 0.05, insig='blank',
+         addCoef.col ='black', number.cex = 1, diag=FALSE)
+
+plot(clean_data_subjlevel_wide[,bonusinf_cor_items])
+
 
 
 
