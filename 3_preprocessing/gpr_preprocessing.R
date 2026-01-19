@@ -9,9 +9,9 @@
 
 # STEP 1: SET YOUR WORKING DIRECTORY! ----
 # On PSH's computers...
-setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
+#setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
 # On JB's computers...
-# setwd('/Users/justinblake/Documents/GitHub/gpr/');
+setwd('/Users/justinblake/Documents/GitHub/gpr/');
 
 # STEP 2: then run from here on the same ----
 config = config::get();
@@ -145,9 +145,9 @@ column_names_subjlevel_wide = c(
   'psq_bonus_influence_distract', #B2c
   'psq_bonus_influence_anxiety', #B2d
   'psq_bonus_influence_engage', #B2e
-  # 'gender', # NOT INCLUDING THESE B/C NO PRIOR HYPOTHESES, AND HARD TO USE AS ANALYSIS VARIABLE
-  # 'ethnicity',
-  # 'race',
+  #'gender', # NOT INCLUDING THESE B/C NO PRIOR HYPOTHESES, AND HARD TO USE AS ANALYSIS VARIABLE
+  #'ethnicity',
+  #'race',
   # 'highest_degree_attained',      
   # 'political_orientation',        
   # 'first_generation',             
