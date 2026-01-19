@@ -263,7 +263,22 @@ corrplot(bas_cor_matrix, type = 'lower', col = rev(COL2('RdBu')),
 
 plot(clean_data_subjlevel_wide[,bas_cor_items])
 
+#Correlation for rrs items
+rrs_cor_items = c('rrs_brood',
+                  'rrs_reflection',
+                  'rrs_overall')
 
+rrs_cor_matrix = cor(clean_data_subjlevel_wide[,rrs_cor_items])
+rrs_cor_p = cor.mtest(clean_data_subjlevel_wide[,rrs_cor_items], conf.level = 0.95)$p
+
+print(round(rrs_cor_matrix, 2))
+
+
+corrplot(rrs_cor_matrix, type = 'lower', col = rev(COL2('RdBu')),
+         p.mat = rrs_cor_p, sig.level = 0.05, insig='blank',
+         addCoef.col ='black', number.cex = 1, diag=FALSE)
+
+plot(clean_data_subjlevel_wide[,rrs_cor_items])
 
 
 
