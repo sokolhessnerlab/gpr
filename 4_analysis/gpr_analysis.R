@@ -371,6 +371,12 @@ corrplot(motiv_cor_matrix, type = 'lower', col = rev(COL2('RdBu')),
 
 plot(clean_data_subjlevel_wide[,motiv_cor_items])
 
+#Summary 1/19/26:
+# - Correlations to be taken with a grain of salt because of the limited choice options (1-7)
+# - RRS items pretty similar, can  just be looked at for its overall score and not sub scores
+# - BAS items have a bit of a weaker positive correlation, but still very similar relationships
+# - Can't see the color plot for the psq data, something wrong with the diagonals that couldn't figure out,
+#   and also a little hard to tell what the relationships are because of limited choice options
 
 
 
