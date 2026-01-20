@@ -10,9 +10,9 @@ rm(list = ls())
 
 # STEP 1: SET YOUR WORKING DIRECTORY! ----
 # On PSH's computers...
-#setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
+setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
 # On JB's computers...
-setwd('/Users/justinblake/Documents/GitHub/gpr/');
+# setwd('/Users/justinblake/Documents/GitHub/gpr/');
 
 # STEP 2: Load pre-processed data files ----
 config = config::get();
@@ -249,7 +249,10 @@ plot(clean_data_subjlevel_wide[,cor_items])
 #Correlation for the bas items
 bas_cor_items = c('bas_drive',
                   'bas_fun',
-                  'bas_reward')
+                  'bas_reward',
+                  'bas_overall',
+                  'bis_overall',
+                  'bisbas_ratio')
 
 bas_cor_matrix = cor(clean_data_subjlevel_wide[,bas_cor_items])
 bas_cor_p = cor.mtest(clean_data_subjlevel_wide[,bas_cor_items], conf.level = 0.95)$p
@@ -262,6 +265,14 @@ corrplot(bas_cor_matrix, type = 'lower', col = rev(COL2('RdBu')),
          addCoef.col ='black', number.cex = 1, diag=FALSE)
 
 plot(clean_data_subjlevel_wide[,bas_cor_items])
+
+# TAKEAWAY: BAS and BIS appear to be largely independent axes. Could be used 
+# simultaneously to capture inhibition and activation tendencies, but the RATIO
+# (which uses both BAS and BIS overall scores) is well correlated with both and
+# can be used as a single metric for ease of analysis. 
+#
+# TLDR: USE RATIO, and then unpack to BAS or BIS overall if interesting findings or
+# motivated by hypothesis. 
 
 #Correlation for rrs items
 rrs_cor_items = c('rrs_brood',
@@ -280,9 +291,12 @@ corrplot(rrs_cor_matrix, type = 'lower', col = rev(COL2('RdBu')),
 
 plot(clean_data_subjlevel_wide[,rrs_cor_items])
 
+# TAKEAWAY: Use rrs_overall, as its HIGHLY correlated with subscales.
+# Subscales themselves likely not useful. 
 
 #Correlation for psq_bonus_influence items
-bonusinf_cor_items = c('psq_bonus_influence_effort',
+bonusinf_cor_items = c('psq_bonus_influence',
+                       'psq_bonus_influence_effort',
                        'psq_bonus_influence_speed',
                        'psq_bonus_influence_distract',
                        'psq_bonus_influence_anxiety',
@@ -300,8 +314,22 @@ corrplot(bonusinf_cor_matrix, type = 'lower', col = rev(COL2('RdBu')),
 
 plot(clean_data_subjlevel_wide[,bonusinf_cor_items])
 
+# TAKEAWAY: The bonus value has a similar influence across people on effort, speed, 
+# anxiety, and engagement (so they're all highly correlated), but less consistently
+# influences distraction. 
+#
+# The people who are distracted (high ratings on bonus distraction) have high effort,
+# speed, anxiety, and engagement, but the people with low distraction can have
+# high or low levels of those 4 things. THUS, lower correlation. Could this be
+# a phenotype thing (i.e. about who the high-distraction people are vs. who
+# the low-distraction people are). 
+#
+# TLDR: Could use OVERALL to represent all of speed/engage/anx/effort.
+# Distraction might be different (~1/3 is distracted, 1/3 is not).
+
 #Correlation for psq_goal_influence items
-goalinf_cor_items = c('psq_goal_influence_effort',
+goalinf_cor_items = c('psq_goal_influence',
+                      'psq_goal_influence_effort',
                       'psq_goal_influence_speed',
                       'psq_goal_influence_distract',
                       'psq_goal_influence_anxiety',
@@ -319,11 +347,21 @@ corrplot(goalinf_cor_matrix, type = 'lower', col = rev(COL2('RdBu')),
 
 plot(clean_data_subjlevel_wide[,goalinf_cor_items])
 
+# Takeaway: relationships between ratings are +ve but much weaker - changes in one don't
+# necessarily mean changes in the others. Again, distraction is slightly different 
+# from the others (weakest relationships, except w/ anxiety). 
+#
+# TLDR: Effect of goals on ratings of effort/speed/distraction/anxiety/engagement
+# are more heterogeneous (compared to the effect of the bonus). If we see high
+# variation in some kind of goal effect behaviorally, could turn to these measures.
+
+
 #Correlation for goal and bonus anxiety with stais/t
 anxiety_cor_items = c('stais',
                       'stait',
                       'psq_goal_influence_anxiety',
-                      'psq_bonus_influence_anxiety')
+                      'psq_bonus_influence_anxiety',
+                      'psq_stress')
 
 anxiety_cor_matrix = cor(clean_data_subjlevel_wide[,anxiety_cor_items])
 anxiety_cor_p = cor.mtest(clean_data_subjlevel_wide[,anxiety_cor_items], conf.level = 0.95)$p
@@ -336,21 +374,16 @@ corrplot(anxiety_cor_matrix, type = 'lower', col = rev(COL2('RdBu')),
          addCoef.col ='black', number.cex = 1, diag=FALSE)
 
 plot(clean_data_subjlevel_wide[,anxiety_cor_items])
+# stress has stronger relationships to pressure than anxiety does! 
 
+# TAKEAWAY: all positive relationships (except goal influence on anxiety w/ stait),
+# suggesting that the experience of anxiety in this task is linked to state & 
+# trait estimates of anxiety (so it manifests in the task to some degree). 
+#
+# TLDR: anxiety metrics may be interrelated (and people who experience goal 
+# pressure are also likely to experience bonus pressure, and these might be
+# related to anxiety [state or trait])
 
-#Description of Age Data for Methods
-summary(clean_data_subjlevel_wide)
-
-summary(clean_data_subjlevel_wide[, c("age")])
-
-mean(clean_data_subjlevel_wide$age, na.rm = TRUE)
-sd(clean_data_subjlevel_wide$age, na.rm = TRUE)
-median(clean_data_subjlevel_wide$age, na.rm = TRUE)
-
-#Description of Race, Ethnicity, and Gender Data for Methods
-#prop.table(table(clean_data_subjlevel_wide$race, clean_data_subjlevel_wide$ethnicity, clean_data_subjlevel_wide$gender)) * 100
-
-#table(clean_data_subjlevel_wide$race, clean_data_subjlevel_wide$ethnicity, clean_data_subjlevel_wide$gender)
 
 #Correlation for psq motivation and goal/bonus awareness and impact
 motiv_cor_items = c('psq_motivate',
@@ -371,13 +404,86 @@ corrplot(motiv_cor_matrix, type = 'lower', col = rev(COL2('RdBu')),
 
 plot(clean_data_subjlevel_wide[,motiv_cor_items])
 
-#Summary 1/19/26:
-# - Correlations to be taken with a grain of salt because of the limited choice options (1-7)
-# - RRS items pretty similar, can  just be looked at for its overall score and not sub scores
-# - BAS items have a bit of a weaker positive correlation, but still very similar relationships
-# - Can't see the color plot for the psq data, something wrong with the diagonals that couldn't figure out,
-#   and also a little hard to tell what the relationships are because of limited choice options
+# TAKEAWAY: Goal awareness/influence are highly related (as are bonus awareness/
+# influence), but beyond that, relationships are weak (if present at all).
 
+
+overall_cor_items = c('bisbas_ratio', # positive = mostly BIS, negative = mostly BAS
+                      'rrs_overall',
+                      'psq_stress',
+                      'psq_bonus_influence',
+                      'best_span_overall',
+                      'totalcompensation')
+
+overall_cor_matrix = cor(clean_data_subjlevel_wide[,overall_cor_items])
+overall_cor_p = cor.mtest(clean_data_subjlevel_wide[,overall_cor_items], conf.level = 0.95)$p
+
+print(round(overall_cor_matrix, 2))
+
+
+corrplot(overall_cor_matrix, type = 'lower', col = rev(COL2('RdBu')),
+         p.mat = overall_cor_p, sig.level = 0.05, insig='blank',
+         addCoef.col ='black', number.cex = 1, diag=FALSE)
+
+# BISBAS Ratio is negatively correlated with RRS; people mostly driven by BAS
+# are high in rumination. People high on rumination are low on BIS and high on BAS.
+
+plot(clean_data_subjlevel_wide[,overall_cor_items])
+
+# TAKEAWAY: Very few relationships! Largely independent factors. The only related 
+# things are 3: RRS & stress (+ve), bonus influence & stress (+ve), and 
+# bisbas ratio & RRS (-ve and strong)
+#
+# NOTE: NO goal ratings in this corr matrix due to heterogeneity. 
+#
+# TLDR: We have a bunch of mostly independent factors to use in analysis. Be 
+# wary of RRS vs. BISBAS Ratio. 
+
+hist(clean_data_subjlevel_wide$bisbas_overall, col = 'red')
+# xlim = c(20, 55)
+
+hist(clean_data_subjlevel_wide$rrs_overall, col = 'blue')
+
+hist(clean_data_subjlevel_wide$psq_stress, col = 'black')
+
+hist(clean_data_subjlevel_wide$psq_bonus_influence, col = 'green')
+
+hist(clean_data_subjlevel_wide$best_span_overall, col = 'purple')
+
+hist(clean_data_subjlevel_wide$totalcompensation, col = 'pink')
+
+
+
+summary(clean_data_subjlevel_wide$psq_overall_difficult)
+
+hist(clean_data_subjlevel_wide$psq_overall_difficult,
+     breaks = (seq(from = 0.5, to = 7.5, by = 1))) # use this to create more effective histogram graphs.
+# Mean difficulty was 3.5 from 1-7, indicating moderate
+# difficulty in making choices in the task. 
+
+
+#Summary 1/19/26:
+# - RRS items pretty similar, can  just be looked at for its overall score and not sub scores
+# - BAS items have a bit of a weaker positive correlation, but still very similar relationships. use
+#   BISBAS Overall! 
+# - Bonus, just use overall influence (b/c consistent across others)
+# - Goal, unclear what to use. Lots of variability/inconsistency. 
+
+
+
+
+#Description of Age Data for Methods
+# summary(clean_data_subjlevel_wide[, c("age", "stait")])
+summary(clean_data_subjlevel_wide$age)
+
+mean(clean_data_subjlevel_wide$age, na.rm = TRUE)
+sd(clean_data_subjlevel_wide$age, na.rm = TRUE)
+median(clean_data_subjlevel_wide$age, na.rm = TRUE)
+
+#Description of Race, Ethnicity, and Gender Data for Methods
+#prop.table(table(clean_data_subjlevel_wide$race, clean_data_subjlevel_wide$ethnicity, clean_data_subjlevel_wide$gender)) * 100
+
+#table(clean_data_subjlevel_wide$race, clean_data_subjlevel_wide$ethnicity, clean_data_subjlevel_wide$gender)
 
 
 # Do big correlation matrix of major individual difference terms? 
