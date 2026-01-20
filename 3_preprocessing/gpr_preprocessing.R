@@ -9,9 +9,9 @@
 
 # STEP 1: SET YOUR WORKING DIRECTORY! ----
 # On PSH's computers...
-#setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
+setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
 # On JB's computers...
-setwd('/Users/justinblake/Documents/GitHub/gpr/');
+# setwd('/Users/justinblake/Documents/GitHub/gpr/');
 
 # STEP 2: then run from here on the same ----
 config = config::get();
@@ -126,7 +126,8 @@ column_names_subjlevel_wide = c(
   'bas_fun',
   'bas_reward',
   'bis_overall',
-  'bisbas_overall', 
+  'bas_overall', 
+  'bisbas_ratio',
   'age',
   'psq_stress', #A1
   'psq_motivate', #A2
@@ -171,7 +172,8 @@ column_names_subjlevel_long = c(
   'bas_fun',
   'bas_reward',
   'bis_overall',
-  'bisbas_overall',
+  'bas_overall',
+  'bisbas_ratio',
   'age',
   'psq_stress', #A1
   'psq_motivate', #A2
@@ -423,8 +425,10 @@ for(s in 1:number_of_subjects){
                                               num_qualtrics_data$GPR.BIS.BAS_22[qual_rowInd] +
                                               num_qualtrics_data$GPR.BIS.BAS_24[qual_rowInd];
     
-    data_subjlevel_wide$bisbas_overall[s] = data_subjlevel_wide$bis_overall[s] + data_subjlevel_wide$bas_drive[s] + data_subjlevel_wide$bas_fun[s] + data_subjlevel_wide$bas_reward[s]
+    data_subjlevel_wide$bas_overall[s] = data_subjlevel_wide$bas_drive[s] + data_subjlevel_wide$bas_fun[s] + data_subjlevel_wide$bas_reward[s]
                                         
+    data_subjlevel_wide$bisbas_ratio[s] = (data_subjlevel_wide$bis_overall[s] - data_subjlevel_wide$bas_overall[s])/(data_subjlevel_wide$bis_overall[s] + data_subjlevel_wide$bas_overall[s])
+    
     data_subjlevel_wide$qualtrics_duration[s] = num_qualtrics_data$Duration..in.seconds.[qual_rowInd]
     
     # Put them into the LONG dataframe as well
@@ -439,7 +443,8 @@ for(s in 1:number_of_subjects){
     data_subjlevel_long$bas_fun[long_ind] = data_subjlevel_wide$bas_fun[s]
     data_subjlevel_long$bas_reward[long_ind] = data_subjlevel_wide$bas_reward[s]
     data_subjlevel_long$bis_overall[long_ind] = data_subjlevel_wide$bis_overall[s]
-    data_subjlevel_long$bisbas_overall[long_ind] = data_subjlevel_wide$bisbas_overall[s]
+    data_subjlevel_long$bas_overall[long_ind] = data_subjlevel_wide$bas_overall[s]
+    data_subjlevel_long$bisbas_ratio[long_ind] = data_subjlevel_wide$bisbas_ratio[s]
     data_subjlevel_long$age[long_ind] = data_subjlevel_wide$age[s]
   }
   
