@@ -399,31 +399,31 @@ for(s in 1:number_of_subjects){
     data_subjlevel_wide$rrs_overall[s] = data_subjlevel_wide$rrs_brood[s] + data_subjlevel_wide$rrs_reflection[s]
 
 
-    data_subjlevel_wide$bas_drive[s] =  num_qualtrics_data$GPR.BIS.BAS_3[qual_rowInd] +
-                                        num_qualtrics_data$GPR.BIS.BAS_9[qual_rowInd] +
-                                        num_qualtrics_data$GPR.BIS.BAS_12[qual_rowInd]
-                                        num_qualtrics_data$GPR.BIS.BAS_21[qual_rowInd];
+    data_subjlevel_wide$bas_drive[s] =  5 - num_qualtrics_data$GPR.BIS.BAS_3[qual_rowInd] +
+                                        5 - num_qualtrics_data$GPR.BIS.BAS_9[qual_rowInd] +
+                                        5 - num_qualtrics_data$GPR.BIS.BAS_12[qual_rowInd]
+                                        5 - num_qualtrics_data$GPR.BIS.BAS_21[qual_rowInd];
     
     
-    data_subjlevel_wide$bas_fun[s] =  num_qualtrics_data$GPR.BIS.BAS_5[qual_rowInd] +
-                                      num_qualtrics_data$GPR.BIS.BAS_10[qual_rowInd] +
-                                      num_qualtrics_data$GPR.BIS.BAS_15[qual_rowInd] +
-                                      num_qualtrics_data$GPR.BIS.BAS_20[qual_rowInd];
+    data_subjlevel_wide$bas_fun[s] =  5 - num_qualtrics_data$GPR.BIS.BAS_5[qual_rowInd] +
+                                      5 - num_qualtrics_data$GPR.BIS.BAS_10[qual_rowInd] +
+                                      5 - num_qualtrics_data$GPR.BIS.BAS_15[qual_rowInd] +
+                                      5 - num_qualtrics_data$GPR.BIS.BAS_20[qual_rowInd];
 
     data_subjlevel_wide$bas_reward[s] = 5 - num_qualtrics_data$GPR.BIS.BAS_4[qual_rowInd] +
-                                            num_qualtrics_data$GPR.BIS.BAS_7[qual_rowInd] +
-                                            num_qualtrics_data$GPR.BIS.BAS_14[qual_rowInd] +
-                                            num_qualtrics_data$GPR.BIS.BAS_18[qual_rowInd] +
-                                            num_qualtrics_data$GPR.BIS.BAS_23[qual_rowInd];
+                                        5 - num_qualtrics_data$GPR.BIS.BAS_7[qual_rowInd] +
+                                        5 - num_qualtrics_data$GPR.BIS.BAS_14[qual_rowInd] +
+                                        5 - num_qualtrics_data$GPR.BIS.BAS_18[qual_rowInd] +
+                                        5 - num_qualtrics_data$GPR.BIS.BAS_23[qual_rowInd];
                                   
      
-    data_subjlevel_wide$bis_overall[s] =  5 - num_qualtrics_data$GPR.BIS.BAS_2[qual_rowInd] +
-                                              num_qualtrics_data$GPR.BIS.BAS_8[qual_rowInd] +
-                                              num_qualtrics_data$GPR.BIS.BAS_13[qual_rowInd] +
-                                              num_qualtrics_data$GPR.BIS.BAS_16[qual_rowInd] +
-                                              num_qualtrics_data$GPR.BIS.BAS_19[qual_rowInd] +
-                                              num_qualtrics_data$GPR.BIS.BAS_22[qual_rowInd] +
-                                              num_qualtrics_data$GPR.BIS.BAS_24[qual_rowInd];
+    data_subjlevel_wide$bis_overall[s] =  num_qualtrics_data$GPR.BIS.BAS_2[qual_rowInd] +
+                                          5 - num_qualtrics_data$GPR.BIS.BAS_8[qual_rowInd] +
+                                          5 - num_qualtrics_data$GPR.BIS.BAS_13[qual_rowInd] +
+                                          5 - num_qualtrics_data$GPR.BIS.BAS_16[qual_rowInd] +
+                                          5 - num_qualtrics_data$GPR.BIS.BAS_19[qual_rowInd] +
+                                          num_qualtrics_data$GPR.BIS.BAS_22[qual_rowInd] +
+                                          5 - num_qualtrics_data$GPR.BIS.BAS_24[qual_rowInd];
     
     data_subjlevel_wide$bas_overall[s] = data_subjlevel_wide$bas_drive[s] + data_subjlevel_wide$bas_fun[s] + data_subjlevel_wide$bas_reward[s]
                                         
