@@ -10,9 +10,9 @@ rm(list = ls())
 
 # STEP 1: SET YOUR WORKING DIRECTORY! ----
 # On PSH's computers...
-setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
+#setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
 # On JB's computers...
-# setwd('/Users/justinblake/Documents/GitHub/gpr/');
+setwd('/Users/justinblake/Documents/GitHub/gpr/');
 
 # STEP 2: Load pre-processed data files ----
 config = config::get();
@@ -439,12 +439,13 @@ plot(clean_data_subjlevel_wide[,overall_cor_items])
 # TLDR: We have a bunch of mostly independent factors to use in analysis. Be 
 # wary of RRS vs. BISBAS Ratio. 
 
-hist(clean_data_subjlevel_wide$bisbas_overall, col = 'red')
+hist(clean_data_subjlevel_wide$bisbas_ratio, col = 'red')
 # xlim = c(20, 55)
 
 hist(clean_data_subjlevel_wide$rrs_overall, col = 'blue')
 
-hist(clean_data_subjlevel_wide$psq_stress, col = 'black')
+hist(clean_data_subjlevel_wide$psq_stress, col = 'black',
+     breaks = (seq(from = 0.5, to = 7.5, by = 1)))
 
 hist(clean_data_subjlevel_wide$psq_bonus_influence, col = 'green')
 
