@@ -10,9 +10,9 @@ rm(list = ls())
 
 # STEP 1: SET YOUR WORKING DIRECTORY! ----
 # On PSH's computers...
-#setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
+setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
 # On JB's computers...
-setwd('/Users/justinblake/Documents/GitHub/gpr/');
+# setwd('/Users/justinblake/Documents/GitHub/gpr/');
 
 # STEP 2: Load pre-processed data files ----
 config = config::get();
@@ -35,6 +35,10 @@ number_of_dm_trials_per_person = num_rdm_trials * num_rdm_blocks; # static = 200
 
 subject_IDs = unique(data_dm$subjectnumber)
 number_of_subjects = length(subject_IDs)
+
+library(lme4)
+library(lmerTest)
+library(corrplot)
 
 # STEP 3: Quality Assurance ----
 
@@ -222,7 +226,6 @@ cor_items = c('totalcompensation',
                  'round2bonusreceived01',
                  'round3bonusreceived01',
                  'round4bonusreceived01')
-library(corrplot)
 
 cor_matrix = cor(clean_data_subjlevel_wide[,cor_items])
 cor_p = cor.mtest(clean_data_subjlevel_wide[,cor_items], conf.level = 0.95)$p
@@ -382,7 +385,8 @@ plot(clean_data_subjlevel_wide[,anxiety_cor_items])
 #
 # TLDR: anxiety metrics may be interrelated (and people who experience goal 
 # pressure are also likely to experience bonus pressure, and these might be
-# related to anxiety [state or trait])
+# related to anxiety [state or trait]). STRESS measure is strongly related to
+# task-specific anxiety, and correlated with State Anx, so use that? 
 
 
 #Correlation for psq motivation and goal/bonus awareness and impact
@@ -453,6 +457,9 @@ hist(clean_data_subjlevel_wide$best_span_overall, col = 'purple')
 
 hist(clean_data_subjlevel_wide$totalcompensation, col = 'pink')
 
+# TODO: Use xlim = c(XL,XU) to define lower and upper limits on the 
+# x-values in these graphs so they represent not just the distribution but the
+# possible scores. 
 
 
 summary(clean_data_subjlevel_wide$psq_overall_difficult)
@@ -469,6 +476,13 @@ hist(clean_data_subjlevel_wide$psq_overall_difficult,
 #   BISBAS Overall! 
 # - Bonus, just use overall influence (b/c consistent across others)
 # - Goal, unclear what to use. Lots of variability/inconsistency. 
+
+# MAIN INDIVIDUAL DIFFERENCE MEASURES:
+# - RRS (overall)
+# - BISBAS Ratio (can break down if need be)
+# - Bonus (psq_bonus_influence)
+# - WMC (best_span_overall)
+# - Stress (psq_stress) (can break down into state, trait, and stress)
 
 
 
@@ -487,17 +501,56 @@ median(clean_data_subjlevel_wide$age, na.rm = TRUE)
 #table(clean_data_subjlevel_wide$race, clean_data_subjlevel_wide$ethnicity, clean_data_subjlevel_wide$gender)
 
 
-# Do big correlation matrix of major individual difference terms? 
-# plot(cbind(clean_data_survey[,c('stais','stait','SNS','PSS')],clean_data_complexspan['compositeSpanScore']));
-# 
-# library(corrplot)
-# cor_matrix = cor(cbind(clean_data_survey[,c('NCS','IUS','SNS','PSS')],clean_data_complexspan['compositeSpanScore']),
-#                  use = 'complete.obs');
-# corrplot(cor_matrix, type = 'lower')
+
 
 
 ## 2. BLOCK-LEVEL ----
+
 # What happened in the different blocks?
+clean_data_subjlevel_long$bonusatstakeP1N1 = as.numeric(clean_data_subjlevel_long$bonusatstake == 100) - 
+  as.numeric(clean_data_subjlevel_long$bonusatstake == 25)
+
+clean_data_subjlevel_long$goallevelP1N1 = as.numeric(clean_data_subjlevel_long$goallevel == 420.79) - 
+  as.numeric(clean_data_subjlevel_long$goallevel == 349.85)
+
+
+# Earnings By BLock
+plot(clean_data_subjlevel_long$earnings, col = clean_data_subjlevel_long$subjectnumber, pch = 16)
+hist(clean_data_subjlevel_long$earnings, main = "Blockwise Earnings", xlab = "Dollars")
+# variability across people & blocks, all in a similar range of 300-500
+
+model_earnings = lmer(earnings ~ 1 + roundnum * bonusatstakeP1N1 * goallevelP1N1 + (1 | subjectnumber), 
+                      data = clean_data_subjlevel_long)
+summary(model_earnings)
+# Fixed effects:
+#                                         Estimate Std. Error       df t value Pr(>|t|)    
+# (Intercept)                             404.0219     6.6583 255.8946  60.679   <2e-16 ***
+# roundnum                                  1.7617     2.3183 192.0883   0.760   0.4482    
+# bonusatstakeP1N1                          5.3711     6.7202 253.1595   0.799   0.4249    
+# goallevelP1N1                            13.2025     6.7315 253.9021   1.961   0.0509 .  
+# roundnum:bonusatstakeP1N1                -2.1214     2.4802 255.8557  -0.855   0.3932    
+# roundnum:goallevelP1N1                   -5.4210     2.4851 255.9893  -2.181   0.0301 *  
+# bonusatstakeP1N1:goallevelP1N1            1.8456     6.6964 251.2596   0.276   0.7831    
+# roundnum:bonusatstakeP1N1:goallevelP1N1  -0.5389     2.4699 255.0835  -0.218   0.8275    
+
+# Might be some complex things going on with GOAL LEVELS and BLOCK NUMBERS (TIME).
+# Looks like effect of goal is initially positive, but then *flips* by final block.
+# Backfiring?? 
+
+# Effect of goal level as a function of block number:
+# 	            1	    2	      3	      4
+# low (-1)	-6.0198	1.1629	8.3456	15.5283
+# high (+1)	9.5432	5.8839	2.2246	-1.4347
+
+
+# TODO:
+# 1. Check this with EXPECTED EARNINGS instead to eliminate role of chance.
+# 2. Look at goal attainment (logistic)
+# 3. Look at trials-to-goal (when attained)
+# 4. Remove RFX? Do better? Compare to lmer
+# 5. somehow..... variance.... ? 
+
+
 
 
 # Previous success or failure effects on next round earnings
