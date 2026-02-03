@@ -483,8 +483,10 @@ hist(clean_data_subjlevel_wide$best_span_overall,
      xlab = "Best Span Overall",
      ylab = "Frequency",
      main = "Best Span Overall",
-     xlim = c(4.5, 11),
-     ylim = c(0, 25))
+     xlim = c(4, 12),
+     ylim = c(0, 25),
+     xaxt = 'n',
+     axis(1, at = 4:12))
 
 hist(clean_data_subjlevel_wide$totalcompensation,
      col = 'pink',
