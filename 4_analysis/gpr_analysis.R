@@ -460,21 +460,40 @@ hist(clean_data_subjlevel_wide$rrs_overall,
 hist(clean_data_subjlevel_wide$psq_stress,
      col = 'black',
      breaks = (seq(from = 0.5, to = 7.5, by = 1)),
+     border = "white",
      xlab = "Stress Level",
      ylab = "Frequency",
      main = "Stress Score",
      xlim = c(0, 7),
      ylim = c(0, 20))
 
-hist(clean_data_subjlevel_wide$psq_bonus_influence, col = 'green')
+hist(clean_data_subjlevel_wide$psq_bonus_influence,
+     col = 'green',
+     breaks = (seq(from = 0.5, to = 7.5, by = 1)),
+     xlab = "Bonus Influence",
+     ylab = "Frequency",
+     main = "Bonus Influence",
+     xlim = c(0, 7),
+     ylim = c(0, 15))
+#The far right boundary cuts offthe last histogram bar, couldn't figure out how to change that.
 
-hist(clean_data_subjlevel_wide$best_span_overall, col = 'purple')
+hist(clean_data_subjlevel_wide$best_span_overall,
+     col = 'purple',
+     breaks = (seq(from = 0.5, to = 11.5, by = 1)),
+     xlab = "Best Span Overall",
+     ylab = "Frequency",
+     main = "Best Span Overall",
+     xlim = c(4.5, 11),
+     ylim = c(0, 25))
 
-hist(clean_data_subjlevel_wide$totalcompensation, col = 'pink')
-
-# TODO: Use xlim = c(XL,XU) to define lower and upper limits on the 
-# x-values in these graphs so they represent not just the distribution but the
-# possible scores. 
+hist(clean_data_subjlevel_wide$totalcompensation,
+     col = 'pink',
+     breaks = (seq(from = 1500, to = 2200, by = 100)),
+     xlab = "Total Compensation (Dollars)",
+     ylab = "Frequency",
+     main = "Total Compensation",
+     xlim = c(1500, 2200),
+     ylim = c(0, 20))
 
 
 summary(clean_data_subjlevel_wide$psq_overall_difficult)
