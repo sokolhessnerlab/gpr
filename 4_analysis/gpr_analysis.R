@@ -483,14 +483,15 @@ hist(clean_data_subjlevel_wide$psq_bonus_influence,
 
 hist(clean_data_subjlevel_wide$best_span_overall,
      col = 'purple',
-     breaks = (seq(from = 0.5, to = 11.5, by = 1)),
+     breaks = seq(4.5, 11.5, by = 1),
      xlab = "Best Span Overall",
      ylab = "Frequency",
      main = "Best Span Overall",
      xlim = c(4, 12),
      ylim = c(0, 25),
-     xaxt = 'n',
-     axis(1, at = 4:12))
+     xaxt = 'n')
+axis(1, at = 4:12)
+
 
 hist(clean_data_subjlevel_wide$totalcompensation,
      col = 'pink',
@@ -500,8 +501,8 @@ hist(clean_data_subjlevel_wide$totalcompensation,
      main = "Total Compensation",
      xlim = c(1400, 2200),
      ylim = c(0, 20),
-     xaxt = 'n',
-     axis(1, at = seq(1400, 2200, by = 100)))
+     xaxt = 'n')
+axis(1, at = seq(1400, 2200, by = 100))
 
 
 summary(clean_data_subjlevel_wide$psq_overall_difficult)
