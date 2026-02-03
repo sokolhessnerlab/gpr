@@ -490,12 +490,14 @@ hist(clean_data_subjlevel_wide$best_span_overall,
 
 hist(clean_data_subjlevel_wide$totalcompensation,
      col = 'pink',
-     breaks = (seq(from = 1500, to = 2200, by = 100)),
+     breaks = (seq(from = 1450, to = 2250, by = 100)),
      xlab = "Total Compensation (Dollars)",
      ylab = "Frequency",
      main = "Total Compensation",
-     xlim = c(1500, 2200),
-     ylim = c(0, 20))
+     xlim = c(1400, 2200),
+     ylim = c(0, 20),
+     xaxt = 'n',
+     axis(1, at = seq(1400, 2200, by = 100)))
 
 
 summary(clean_data_subjlevel_wide$psq_overall_difficult)
