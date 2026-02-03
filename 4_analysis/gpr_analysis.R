@@ -10,9 +10,9 @@ rm(list = ls())
 
 # STEP 1: SET YOUR WORKING DIRECTORY! ----
 # On PSH's computers...
-#setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
+setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
 # On JB's computers...
-setwd('/Users/justinblake/Documents/GitHub/gpr/');
+# setwd('/Users/justinblake/Documents/GitHub/gpr/');
 
 # STEP 2: Load pre-processed data files ----
 config = config::get();
@@ -165,11 +165,6 @@ best_span_overall = rowMeans(cbind(best_span_FS,best_span_BS))
 mean(best_span_overall) # 7.45
 
 hist(best_span_overall, breaks = 15)
-
-# JUSTIN:
-# 1. INSERT WMC VALUE INTO DM AND SUBJLEVEL ARRAYS
-# 2. BUILD CORRELATION MATRIX WITH MAJOR ITEMS FROM SUBJLEVEL_WIDE & START TO INVESTIGATE THAT
-# 3. START TO INVESTIGATE BONUS & GOAL AWARENESS & INFLUENCE
 
 length(best_span_overall) # checking that it's 66 long! 
 
@@ -445,7 +440,7 @@ plot(clean_data_subjlevel_wide[,overall_cor_items])
 
 hist(clean_data_subjlevel_wide$bisbas_ratio,
      col = "red",
-     breaks = (seq(from = -0.6, to = 0.1, by = 0.1)),
+     breaks = (seq(from = -0.65, to = 0.1, by = 0.1)),
      xlab = "BIS/BAS Ratio",
      ylab = "Frequency",
      main = "BIS/BAS Ratio",
@@ -453,13 +448,12 @@ hist(clean_data_subjlevel_wide$bisbas_ratio,
 
 hist(clean_data_subjlevel_wide$rrs_overall,
      col = 'blue',
-     breaks = (seq(from = 9.5, to = 40, by = 5)),
+     breaks = (seq(from = 7.5, to = 40, by = 5)),
      xlab = "RRS Score",
      ylab = "Frequency",
      main = "RRS Score",
      xlim = c(6, 40),
-     ylim = c(0, 20))
-#X-axis still looking a little weird, but unsure how to necessarily change it further.
+     ylim = c(0, 25))
 
 hist(clean_data_subjlevel_wide$psq_stress,
      col = 'black',
@@ -468,7 +462,7 @@ hist(clean_data_subjlevel_wide$psq_stress,
      xlab = "Stress Level",
      ylab = "Frequency",
      main = "Stress Score",
-     xlim = c(0, 7),
+     xlim = c(0.5, 7.5),
      ylim = c(0, 20))
 
 hist(clean_data_subjlevel_wide$psq_bonus_influence,
@@ -477,9 +471,9 @@ hist(clean_data_subjlevel_wide$psq_bonus_influence,
      xlab = "Bonus Influence",
      ylab = "Frequency",
      main = "Bonus Influence",
-     xlim = c(0, 7),
+     xlim = c(0.5, 7.5),
      ylim = c(0, 15))
-#The far right boundary cuts offthe last histogram bar, couldn't figure out how to change that.
+#The far right boundary cuts off the last histogram bar, couldn't figure out how to change that.
 
 hist(clean_data_subjlevel_wide$best_span_overall,
      col = 'purple',
@@ -489,20 +483,18 @@ hist(clean_data_subjlevel_wide$best_span_overall,
      main = "Best Span Overall",
      xlim = c(4, 12),
      ylim = c(0, 25),
-     xaxt = 'n')
-axis(1, at = 4:12)
+     xaxt = 'n'); axis(1, at = 4:12)
 
 
 hist(clean_data_subjlevel_wide$totalcompensation,
      col = 'pink',
      breaks = (seq(from = 1450, to = 2250, by = 100)),
-     xlab = "Total Compensation (Dollars)",
+     xlab = "Dollars",
      ylab = "Frequency",
      main = "Total Compensation",
      xlim = c(1400, 2200),
      ylim = c(0, 20),
-     xaxt = 'n')
-axis(1, at = seq(1400, 2200, by = 100))
+     xaxt = 'n'); axis(1, at = seq(1400, 2200, by = 100))
 
 
 summary(clean_data_subjlevel_wide$psq_overall_difficult)
@@ -556,25 +548,27 @@ clean_data_subjlevel_long$bonusatstakeP1N1 = as.numeric(clean_data_subjlevel_lon
 clean_data_subjlevel_long$goallevelP1N1 = as.numeric(clean_data_subjlevel_long$goallevel == 420.79) - 
   as.numeric(clean_data_subjlevel_long$goallevel == 349.85)
 
+clean_data_subjlevel_long$roundnum0123 = clean_data_subjlevel_long$roundnum - 1
+
 
 # Earnings By BLock
 plot(clean_data_subjlevel_long$earnings, col = clean_data_subjlevel_long$subjectnumber, pch = 16)
 hist(clean_data_subjlevel_long$earnings, main = "Blockwise Earnings", xlab = "Dollars")
 # variability across people & blocks, all in a similar range of 300-500
 
-model_earnings = lmer(earnings ~ 1 + roundnum * bonusatstakeP1N1 * goallevelP1N1 + (1 | subjectnumber), 
+model_earnings = lmer(earnings ~ 1 + roundnum0123 * bonusatstakeP1N1 * goallevelP1N1 + (1 | subjectnumber), 
                       data = clean_data_subjlevel_long)
 summary(model_earnings)
 # Fixed effects:
-#                                         Estimate Std. Error       df t value Pr(>|t|)    
-# (Intercept)                             404.0219     6.6583 255.8946  60.679   <2e-16 ***
-# roundnum                                  1.7617     2.3183 192.0883   0.760   0.4482    
-# bonusatstakeP1N1                          5.3711     6.7202 253.1595   0.799   0.4249    
-# goallevelP1N1                            13.2025     6.7315 253.9021   1.961   0.0509 .  
-# roundnum:bonusatstakeP1N1                -2.1214     2.4802 255.8557  -0.855   0.3932    
-# roundnum:goallevelP1N1                   -5.4210     2.4851 255.9893  -2.181   0.0301 *  
-# bonusatstakeP1N1:goallevelP1N1            1.8456     6.6964 251.2596   0.276   0.7831    
-# roundnum:bonusatstakeP1N1:goallevelP1N1  -0.5389     2.4699 255.0835  -0.218   0.8275    
+#                                             Estimate Std. Error       df t value Pr(>|t|)    
+# (Intercept)                                 405.7835     4.7788 204.2097  84.914   <2e-16 ***
+# roundnum0123                                  1.7617     2.3183 192.0883   0.760   0.4482    
+# bonusatstakeP1N1                              3.2498     4.5339 245.7442   0.717   0.4742    
+# goallevelP1N1                                 7.7815     4.5399 246.8870   1.714   0.0878 .  
+# roundnum0123:bonusatstakeP1N1                -2.1214     2.4802 255.8557  -0.855   0.3932    
+# roundnum0123:goallevelP1N1                   -5.4210     2.4851 255.9893  -2.181   0.0301 *  
+# bonusatstakeP1N1:goallevelP1N1                1.3067     4.5211 243.1604   0.289   0.7728    
+# roundnum0123:bonusatstakeP1N1:goallevelP1N1  -0.5389     2.4699 255.0835  -0.218   0.8275    
 
 # Might be some complex things going on with GOAL LEVELS and BLOCK NUMBERS (TIME).
 # Looks like effect of goal is initially positive, but then *flips* by final block.
@@ -586,12 +580,82 @@ summary(model_earnings)
 # high (+1)	9.5432	5.8839	2.2246	-1.4347
 
 
+
+
+
+model_goalattainment = glmer(bonusreceived01 ~ 1 + roundnum0123 * bonusatstakeP1N1 * goallevelP1N1 + (1 | subjectnumber), 
+                      data = clean_data_subjlevel_long, family = 'binomial')
+summary(model_goalattainment)
+
+# Expected probabilities were:
+# High goal level: 60th percentile of earnings (which means 40% surpass this)
+# Low goal level: 10th percentile of earnings (which means 90% surpass this)
+
+
+#Fixed effects:
+#                                             Estimate Std. Error z value Pr(>|z|)    
+# (Intercept)                                  0.61652    0.27166   2.269 0.023240 *  
+# roundnum0123                                 0.47710    0.22220   2.147 0.031778 *  
+# bonusatstakeP1N1                            -0.05945    0.26656  -0.223 0.823517    
+# goallevelP1N1                               -0.95801    0.27878  -3.436 0.000589 ***
+# roundnum0123:bonusatstakeP1N1                0.12564    0.22347   0.562 0.573950    
+# roundnum0123:goallevelP1N1                  -0.50231    0.22330  -2.249 0.024483 *  
+# bonusatstakeP1N1:goallevelP1N1              -0.17667    0.26646  -0.663 0.507312    
+# roundnum0123:bonusatstakeP1N1:goallevelP1N1 -0.01171    0.22341  -0.052 0.958204    
+
+# Two effects: 
+# 1. People are more likely to achieve goals with increasing time in the task
+# 2. High goals are harder to reach
+# 3. With increasing time, people reach more low goals and fewer high goals
+#
+# Inspecting the implied betas shows that there is NO CHANGE in high goal level
+# attainment, but that low level goals are attained much more frequently with 
+# time in the task. 
+
+# LINEAR MODELED PREDICTED PROBABILITIES
+# 	                1	        2	          3	          4
+# high goal	0.415447584	0.409338658	0.403257592	0.397206114
+# low goal	0.828428437	0.927837762	0.971621927	0.989150849
+
+# Low Level Goal Attainment
+# Overall
+mean(clean_data_subjlevel_long$bonusreceived01[clean_data_subjlevel_long$goallevel < 400])
+
+# Rounds... 
+mean(clean_data_subjlevel_long$bonusreceived01[(clean_data_subjlevel_long$goallevel < 400) & 
+                                                 (clean_data_subjlevel_long$roundnum == 1)])
+mean(clean_data_subjlevel_long$bonusreceived01[(clean_data_subjlevel_long$goallevel < 400) & 
+                                                 (clean_data_subjlevel_long$roundnum == 2)])
+mean(clean_data_subjlevel_long$bonusreceived01[(clean_data_subjlevel_long$goallevel < 400) & 
+                                                 (clean_data_subjlevel_long$roundnum == 3)])
+mean(clean_data_subjlevel_long$bonusreceived01[(clean_data_subjlevel_long$goallevel < 400) & 
+                                                 (clean_data_subjlevel_long$roundnum == 4)])
+# Data-derived probabilities for LOW:
+# .848, .875, .971, 1.0 (!!)
+
+# Rounds... 
+mean(clean_data_subjlevel_long$bonusreceived01[(clean_data_subjlevel_long$goallevel > 400) & 
+                                                 (clean_data_subjlevel_long$roundnum == 1)])
+mean(clean_data_subjlevel_long$bonusreceived01[(clean_data_subjlevel_long$goallevel > 400) & 
+                                                 (clean_data_subjlevel_long$roundnum == 2)])
+mean(clean_data_subjlevel_long$bonusreceived01[(clean_data_subjlevel_long$goallevel > 400) & 
+                                                 (clean_data_subjlevel_long$roundnum == 3)])
+mean(clean_data_subjlevel_long$bonusreceived01[(clean_data_subjlevel_long$goallevel > 400) & 
+                                                 (clean_data_subjlevel_long$roundnum == 4)])
+# Data-derived probabilities for HIGH:
+# .45, .41, .29, .47
+
+
+# Easy goals are met more often with time; hard goals are not affected. Bonuses
+# have no effect on goal attainment.
+
+
 # TODO:
 # 1. Check this with EXPECTED EARNINGS instead to eliminate role of chance.
-# 2. Look at goal attainment (logistic)
 # 3. Look at trials-to-goal (when attained)
 # 4. Remove RFX? Do better? Compare to lmer
 # 5. somehow..... variance.... ? 
+# 6. Calculate model-free, data-derived mean earnings
 
 
 
