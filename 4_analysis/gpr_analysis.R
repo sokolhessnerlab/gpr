@@ -445,6 +445,7 @@ plot(clean_data_subjlevel_wide[,overall_cor_items])
 
 hist(clean_data_subjlevel_wide$bisbas_ratio,
      col = "red",
+     breaks = (seq(from = -0.6, to = 0.1, by = 0.1)),
      xlab = "BIS/BAS Ratio",
      ylab = "Frequency",
      main = "BIS/BAS Ratio",
@@ -452,10 +453,13 @@ hist(clean_data_subjlevel_wide$bisbas_ratio,
 
 hist(clean_data_subjlevel_wide$rrs_overall,
      col = 'blue',
+     breaks = (seq(from = 9.5, to = 40, by = 5)),
      xlab = "RRS Score",
      ylab = "Frequency",
      main = "RRS Score",
+     xlim = c(6, 40),
      ylim = c(0, 20))
+#X-axis still looking a little weird, but unsure how to necessarily change it further.
 
 hist(clean_data_subjlevel_wide$psq_stress,
      col = 'black',
