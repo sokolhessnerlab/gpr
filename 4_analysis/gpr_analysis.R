@@ -10,9 +10,9 @@ rm(list = ls())
 
 # STEP 1: SET YOUR WORKING DIRECTORY! ----
 # On PSH's computers...
-setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
+#setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
 # On JB's computers...
-# setwd('/Users/justinblake/Documents/GitHub/gpr/');
+setwd('/Users/justinblake/Documents/GitHub/gpr/');
 
 # STEP 2: Load pre-processed data files ----
 config = config::get();
@@ -767,7 +767,20 @@ with(risk_summary,
        lwd = 2
      ))
 
+# RRS summary data
+summary(clean_data_subjlevel_wide$rrs_overall)
+mean(clean_data_subjlevel_wide$rrs_overall, na.rm = TRUE)
+sd(clean_data_subjlevel_wide$rrs_overall, na.rm = TRUE)
 
+# BIS/BAS ratio summary data
+summary(clean_data_subjlevel_wide$bisbas_ratio)
+mean(clean_data_subjlevel_wide$bisbas_ratio, na.rm = TRUE)
+sd(clean_data_subjlevel_wide$bisbas_ratio, na.rm = TRUE)
+
+# Working memory (best span) summary data
+summary(clean_data_subjlevel_wide$best_span_overall)
+mean(clean_data_subjlevel_wide$best_span_overall, na.rm = TRUE)
+sd(clean_data_subjlevel_wide$best_span_overall, na.rm = TRUE)
 
 
 ## 3. TRIAL-LEVEL ----
