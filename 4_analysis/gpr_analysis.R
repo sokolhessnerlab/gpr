@@ -782,6 +782,20 @@ summary(clean_data_subjlevel_wide$best_span_overall)
 mean(clean_data_subjlevel_wide$best_span_overall, na.rm = TRUE)
 sd(clean_data_subjlevel_wide$best_span_overall, na.rm = TRUE)
 
+# PSQ Overall Difficulty summary data
+summary(clean_data_subjlevel_wide$psq_overall_difficult)
+mean(clean_data_subjlevel_wide$psq_overall_difficult, na.rm = TRUE)
+sd(clean_data_subjlevel_wide$psq_overall_difficult, na.rm = TRUE)
+
+# STAIS summary data
+summary(clean_data_subjlevel_wide$stais)
+mean(clean_data_subjlevel_wide$stais, na.rm = TRUE)
+sd(clean_data_subjlevel_wide$stais, na.rm = TRUE)
+
+# STAIT summary data
+summary(clean_data_subjlevel_wide$stait)
+mean(clean_data_subjlevel_wide$stait, na.rm = TRUE)
+sd(clean_data_subjlevel_wide$stait, na.rm = TRUE)
 
 ## 3. TRIAL-LEVEL ----
 # What happened across trials? 
