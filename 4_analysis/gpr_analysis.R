@@ -797,6 +797,34 @@ summary(clean_data_subjlevel_wide$stait)
 mean(clean_data_subjlevel_wide$stait, na.rm = TRUE)
 sd(clean_data_subjlevel_wide$stait, na.rm = TRUE)
 
+# Motivate summary data
+summary(clean_data_subjlevel_wide$psq_motivate)
+mean(clean_data_subjlevel_wide$psq_motivate, na.rm = TRUE)
+sd(clean_data_subjlevel_wide$psq_motivate, na.rm = TRUE)
+
+# Goal influence summary data
+summary(clean_data_subjlevel_wide$psq_goal_influence)
+mean(clean_data_subjlevel_wide$psq_goal_influence, na.rm = TRUE)
+sd(clean_data_subjlevel_wide$psq_goal_influence, na.rm = TRUE)
+
+# Bonus influence summary data
+summary(clean_data_subjlevel_wide$psq_bonus_influence)
+mean(clean_data_subjlevel_wide$psq_bonus_influence, na.rm = TRUE)
+sd(clean_data_subjlevel_wide$psq_bonus_influence, na.rm = TRUE)
+
+# Total compensation summary data
+summary(clean_data_subjlevel_wide$totalcompensation)
+mean(clean_data_subjlevel_wide$totalcompensation, na.rm = TRUE)
+sd(clean_data_subjlevel_wide$totalcompensation, na.rm = TRUE)
+
+# ANOVA for block number effect on earnings
+anova_model <- aov(earnings ~ roundnum0123 + Error(subjectnumber/roundnum0123),
+                   data = clean_data_subjlevel_long)
+
+summary(anova_model)
+
+
+
 ## 3. TRIAL-LEVEL ----
 # What happened across trials? 
 # Why/how did trial events shape block events? 
