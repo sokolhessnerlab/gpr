@@ -678,10 +678,11 @@ mean(clean_data_subjlevel_long$bonusreceived01[(clean_data_subjlevel_long$goalle
 
 
 # TODO:
+# 0. Run analysis on expected earnings
+# 1. Calculate model-free, data-derived mean earnings
+# 2. Remove RFX? Do better? Compare to lmer
 # 3. Look at trials-to-goal (when attained)
-# 4. Remove RFX? Do better? Compare to lmer
-# 5. somehow..... variance.... ? 
-# 6. Calculate model-free, data-derived mean earnings
+# 4. somehow..... variance.... ? 
 
 
 
