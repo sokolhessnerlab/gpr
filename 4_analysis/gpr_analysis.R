@@ -10,9 +10,9 @@ rm(list = ls())
 
 # STEP 1: SET YOUR WORKING DIRECTORY! ----
 # On PSH's computers...
-#setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
+setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
 # On JB's computers...
-setwd('/Users/justinblake/Documents/GitHub/gpr/');
+# setwd('/Users/justinblake/Documents/GitHub/gpr/');
 
 # STEP 2: Load pre-processed data files ----
 config = config::get();
@@ -574,11 +574,36 @@ summary(model_earnings)
 # Looks like effect of goal is initially positive, but then *flips* by final block.
 # Backfiring?? 
 
-# Effect of goal level as a function of block number:
+# Effect of goal level on earnings as a function of block number:
 # 	            1	    2	      3	      4
 # low (-1)	-6.0198	1.1629	8.3456	15.5283
-# high (+1)	9.5432	5.8839	2.2246	-1.4347
+# high (+1)	 9.5432	5.8839	2.2246	-1.4347
 
+
+# PROBLEM: Earnings are variable b/c of high role of chance
+# SOLUTION: Use expected earnings (i.e. EV of choice) instead!
+
+# Calculate Expected Earnings
+
+for (sn in 1:number_of_clean_subjects){
+  
+  tmp_subj_id = keep_participants[sn];
+  tmp_dm_data = clean_data_dm[clean_data_dm$subjectnumber == tmp_subj_id,]
+  
+  for (bn in 1:4){
+    
+    tmp_blk_data = tmp_dm_data[tmp_dm_data$roundnumber == bn,]
+    
+    tmp_exp_earnings = sum(tmp_blk_data$safe[tmp_blk_data$choice == 0], na.rm = T) + 
+      sum((tmp_blk_data$riskyopt1*.5 + tmp_blk_data$riskyopt2*.5)*tmp_blk_data$choice, na.rm = T)
+    
+    clean_data_subjlevel_long$expected_earnings[(clean_data_subjlevel_long$subjectnumber == tmp_subj_id) & 
+                                                  (clean_data_subjlevel_long$roundnum == bn)] = tmp_exp_earnings
+  }
+}
+
+# Model it
+# REGRESSION GOES HERE, JUSTIN!
 
 
 
@@ -650,8 +675,9 @@ mean(clean_data_subjlevel_long$bonusreceived01[(clean_data_subjlevel_long$goalle
 # have no effect on goal attainment.
 
 
+
+
 # TODO:
-# 1. Check this with EXPECTED EARNINGS instead to eliminate role of chance.
 # 3. Look at trials-to-goal (when attained)
 # 4. Remove RFX? Do better? Compare to lmer
 # 5. somehow..... variance.... ? 
