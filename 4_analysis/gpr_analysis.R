@@ -605,7 +605,19 @@ for (sn in 1:number_of_clean_subjects){
 # Model it
 # REGRESSION GOES HERE, JUSTIN!
 
-
+expected_earnings = lmer(expected_earnings ~ 1 + roundnum0123 * bonusatstakeP1N1 * goallevelP1N1 + (1 | subjectnumber), 
+                      data = clean_data_subjlevel_long)
+summary(expected_earnings)
+# Fixed effects:
+#                                               Estimate Std. Error       df t value Pr(>|t|)    
+#   (Intercept)                                 408.6288     1.2633 101.8902 323.471  < 2e-16 ***
+#   roundnum0123                                  1.4733     0.3893 190.9292   3.785 0.000206 ***
+#   bonusatstakeP1N1                              1.9667     0.8166 210.2679   2.408 0.016893 *  
+#   goallevelP1N1                                 0.6853     0.8199 211.0576   0.836 0.404197    
+#   roundnum0123:bonusatstakeP1N1                -0.9954     0.4607 217.6368  -2.161 0.031813 *  
+#   roundnum0123:goallevelP1N1                   -0.2311     0.4632 218.6150  -0.499 0.618372    
+#   bonusatstakeP1N1:goallevelP1N1               -0.9706     0.8100 208.6500  -1.198 0.232137    
+#   roundnum0123:bonusatstakeP1N1:goallevelP1N1   0.3052     0.4555 215.6152   0.670 0.503479 
 
 
 model_goalattainment = glmer(bonusreceived01 ~ 1 + roundnum0123 * bonusatstakeP1N1 * goallevelP1N1 + (1 | subjectnumber), 
