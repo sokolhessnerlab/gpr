@@ -862,6 +862,12 @@ anova_model <- aov(earnings ~ roundnum0123 + Error(subjectnumber/roundnum0123),
 
 summary(anova_model)
 
+# Power analysis
+install.packages("pwr")
+library(pwr)
+
+pwr.t.test(n = 66, d = 0.5, sig.level = 0.05, type = "paired")
+
 
 
 ## 3. TRIAL-LEVEL ----
