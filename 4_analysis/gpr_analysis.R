@@ -868,6 +868,11 @@ library(pwr)
 
 pwr.t.test(n = 66, d = 0.5, sig.level = 0.05, type = "paired")
 
+#STAI Cronbach's Alpha
+#RRS Cronbach's Alpha
+#BIS/BAS Cronbach's Alpha
+#Working Memory Cronbach's Alpha
+
 
 
 ## 3. TRIAL-LEVEL ----
