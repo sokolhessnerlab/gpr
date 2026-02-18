@@ -873,6 +873,11 @@ pwr.t.test(n = 66, d = 0.5, sig.level = 0.05, type = "paired")
 #BIS/BAS Cronbach's Alpha
 #Working Memory Cronbach's Alpha
 
+#Total Compensation Scaled
+clean_data_subjlevel_wide$total_comp_scaled = clean_data_subjlevel_wide$totalcompensation * 0.009
+summary(clean_data_subjlevel_wide$total_comp_scaled)
+sd(clean_data_subjlevel_wide$total_comp_scaled, na.rm = TRUE)
+
 
 
 ## 3. TRIAL-LEVEL ----
