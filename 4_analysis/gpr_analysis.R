@@ -866,8 +866,6 @@ summary(anova_model)
 install.packages("pwr")
 library(pwr)
 
-#pwr.t.test(n = 66, d = 0.5, sig.level = 0.05, type = "paired")
-
 pwr.t.test(n = 66,
            power = 0.80,
            sig.level = 0.05,
