@@ -868,10 +868,6 @@ library(pwr)
 
 pwr.t.test(n = 66, d = 0.5, sig.level = 0.05, type = "paired")
 
-#STAI Cronbach's Alpha
-#RRS Cronbach's Alpha
-#BIS/BAS Cronbach's Alpha
-#Working Memory Cronbach's Alpha
 
 #Total Compensation Scaled
 clean_data_subjlevel_wide$total_comp_scaled = clean_data_subjlevel_wide$totalcompensation * 0.009
