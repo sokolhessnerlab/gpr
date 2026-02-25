@@ -619,15 +619,42 @@ summary(expected_earnings)
 #   bonusatstakeP1N1:goallevelP1N1               -0.9706     0.8100 208.6500  -1.198 0.232137    
 #   roundnum0123:bonusatstakeP1N1:goallevelP1N1   0.3052     0.4555 215.6152   0.670 0.503479 
 
+# INTERPRETATION: 
+# People may be moving toward risk neutrality on high-bonus blocks vs. low-bonus blocks. Doing so
+# (from either risk averse or risk seeking baselines) would produce a higher expected earnings value
+# on those blocks. 
+#
+# NOTE: The effect is strongest in block 1, weaker in block 2, non-existant in block 3, and might reverse 
+# in block 4. 
+# 
+# FOR FUTURE: Verify with block-level averages. 
+
+# STRANGE PATTERN:
+# Actual earnings show effects of goals that change across blocks (but not bonuses).
+# Expected earnings show effects of bonuses that change across blocks (but not goals).
+#
+# Resolution: Are these analyses looking at different things (or in a different way?).
+
+
+
 
 model_goalattainment = glmer(bonusreceived01 ~ 1 + roundnum0123 * bonusatstakeP1N1 * goallevelP1N1 + (1 | subjectnumber), 
                       data = clean_data_subjlevel_long, family = 'binomial')
 summary(model_goalattainment)
 
+model_goalattainment_ffx = glm(bonusreceived01 ~ 1 + roundnum0123 * bonusatstakeP1N1 * goallevelP1N1, 
+                               data = clean_data_subjlevel_long, family = 'binomial')
+summary(model_goalattainment_ffx)
+
+anova(model_goalattainment, model_goalattainment_ffx)
+# NOTE: The RFX regression does not perform significantly better (p = 0.66) compared to the FFX 
+# regression, implying that the RFX are not necessary (though note the pattern of findings
+# is the same).
+
+
 # Expected probabilities were:
 # High goal level: 60th percentile of earnings (which means 40% surpass this)
 # Low goal level: 10th percentile of earnings (which means 90% surpass this)
-
 
 #Fixed effects:
 #                                             Estimate Std. Error z value Pr(>|z|)    
@@ -651,8 +678,8 @@ summary(model_goalattainment)
 
 # LINEAR MODELED PREDICTED PROBABILITIES
 # 	                1	        2	          3	          4
-# high goal	0.415447584	0.409338658	0.403257592	0.397206114
-# low goal	0.828428437	0.927837762	0.971621927	0.989150849
+# high goal	0.415447584	0.409338658	0.403257592	0.397206114     (EXPECTED ACHIEVEMENT = 40%)
+# low goal	0.828428437	0.927837762	0.971621927	0.989150849     (EXPECTED ACHIEVEMENT = 90%)
 
 # Low Level Goal Attainment
 # Overall
@@ -690,9 +717,7 @@ mean(clean_data_subjlevel_long$bonusreceived01[(clean_data_subjlevel_long$goalle
 
 
 # TODO:
-# 0. Run analysis on expected earnings
 # 1. Calculate model-free, data-derived mean earnings
-# 2. Remove RFX? Do better? Compare to lmer
 # 3. Look at trials-to-goal (when attained)
 # 4. somehow..... variance.... ? 
 
@@ -863,7 +888,7 @@ anova_model <- aov(earnings ~ roundnum0123 + Error(subjectnumber/roundnum0123),
 summary(anova_model)
 
 # Power analysis
-install.packages("pwr")
+# install.packages("pwr")
 library(pwr)
 
 pwr.t.test(n = 66,
@@ -882,4 +907,37 @@ sd(clean_data_subjlevel_wide$total_comp_scaled, na.rm = TRUE)
 ## 3. TRIAL-LEVEL ----
 # What happened across trials? 
 # Why/how did trial events shape block events? 
+
+clean_data_subjlevel_long$prisky_overall = NA;
+clean_data_subjlevel_long$decisiontime_overall = NA;
+prisky_subblocks = array(data = NA, dim = c(number_of_clean_subjects, 4, 5)); # no. of subj x no. of blocks x subblock
+
+for (s in 1:number_of_clean_subjects){
+  subj_id = keep_participants[s]
+  tmpdata = clean_data_dm[clean_data_dm$subjectnumber == subj_id,]
+  
+  for (b in 1:4) {
+    clean_data_subjlevel_long$prisky_overall[(clean_data_subjlevel_long$subjectnumber == subj_id) & 
+                                               (clean_data_subjlevel_long$roundnum == b)] = mean(tmpdata$choice[tmpdata$roundnumber == b], na.rm = T)
+    clean_data_subjlevel_long$decisiontime_overall[(clean_data_subjlevel_long$subjectnumber == subj_id) & 
+                                               (clean_data_subjlevel_long$roundnum == b)] = mean(tmpdata$reactiontime[tmpdata$roundnumber == b], na.rm = T)
+  }
+}
+
+# TO DO HERE:
+# - make new subblock data frame for subblock RTs & risky choices
+# - do regressions on prisky overall and by subblock (follow up with means)
+# - move on to goal-related analyses.
+
+
+
+# Things We Could Analyze
+# 1. proportion risky choices (overall; separate windows; sliding window; with respect to goal attainment)
+#      could do with respect to choices before/after goal or dollars before/after goal
+# 2. decision times (same as p(risky choices))
+# 3. context effects (effect of previous outcomes on subsequent choices)
+# 
+# Deeper options:
+#   - calculate rho on a per block or sub-block level
+#   - with rhos, calculate subjective difficulty, and do CGT/CGE/EDI analyses
 
