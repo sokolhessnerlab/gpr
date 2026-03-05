@@ -913,12 +913,13 @@ clean_data_subjlevel_long$decisiontime_overall = NA;
 nsubblocks = 5 # ENSURE THAT THIS NUMBER DIVIDES EVENLY INTO 50
 nsub_divfactor = 50/nsubblocks;
 subblocks_colnames = c('subjectnumber',
-                              'roundnum',
-                              'subblocknum',
-                              'prisky',
-                              'bonusatstakeP1N1',
-                              'goallevelP1N1')
-subblocks_long = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects*4*nsubblocks, length(prisky_subblocks_colnames)))); # no. of subj x no. of blocks x subblock
+                       'roundnum',
+                       'subblocknum',
+                       'prisky',
+                       'rt',
+                       'bonusatstakeP1N1',
+                       'goallevelP1N1')
+subblocks_long = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects*4*nsubblocks, length(subblocks_colnames)))); # no. of subj x no. of blocks x subblock
 colnames(subblocks_long) = subblocks_colnames
 
 subblocks_long$subjectnumber = rep(keep_participants, each = 4 * nsubblocks)
@@ -946,9 +947,13 @@ for (s in 1:number_of_clean_subjects){
                 (subblocks_long$subblocknum == sb)
       subblocks_long$prisky[tmp_ind] = mean(tmpdata$choice[(tmpdata$roundnumber == b) & 
                                                             tmpdata$trialnumber_block == ((sb-1)*nsub_divfactor+1):(sb*nsub_divfactor)], na.rm = T)
+      subblocks_long$rt[tmp_ind] = mean(tmpdata$reactiontime[(tmpdata$roundnumber == b) & 
+                                                             tmpdata$trialnumber_block == ((sb-1)*nsub_divfactor+1):(sb*nsub_divfactor)], na.rm = T)
     }
   }
 }
+
+subblocks_long$sqrtrt = sqrt(subblocks_long$rt)
 
 # for overall sub-block p(risky)
 mean_prisky_subblock = array(data = NA, dim = c(nsubblocks,1))
@@ -967,8 +972,28 @@ mean_prisky_bonus_x_subblock = array(data = NA, dim = c(nsubblocks,2))
 sem_prisky_bonus_x_subblock = array(data = NA, dim = c(nsubblocks,2))
 
 
+# For Decision Times
+# for overall sub-block rt
+mean_rt_subblock = array(data = NA, dim = c(nsubblocks,1))
+sem_rt_subblock = array(data = NA, dim = c(nsubblocks,1))
+
+# subblock rt by round number
+mean_rt_round_x_subblock = array(data = NA, dim = c(nsubblocks,4))
+sem_rt_round_x_subblock = array(data = NA, dim = c(nsubblocks,4))
+
+# subblock rt by GOAL LEVEL
+mean_rt_goal_x_subblock = array(data = NA, dim = c(nsubblocks,2))
+sem_rt_goal_x_subblock = array(data = NA, dim = c(nsubblocks,2))
+
+# subblock rt by BONUS
+mean_rt_bonus_x_subblock = array(data = NA, dim = c(nsubblocks,2))
+sem_rt_bonus_x_subblock = array(data = NA, dim = c(nsubblocks,2))
+
+
 
 for (sb in 1:nsubblocks){
+  # P(Risky) 
+  # Overall
   mean_prisky_subblock[sb] = mean(subblocks_long$prisky[subblocks_long$subblocknum == sb])
   sem_prisky_subblock[sb] = sd(subblocks_long$prisky[subblocks_long$subblocknum == sb])/sqrt(number_of_clean_subjects)
   
@@ -987,9 +1012,32 @@ for (sb in 1:nsubblocks){
   sem_prisky_bonus_x_subblock[sb,2] = sd(subblocks_long$prisky[(subblocks_long$subblocknum == sb) & (subblocks_long$bonusatstakeP1N1 == -1)])/sqrt(number_of_clean_subjects)
   
   
+  # Decision Time
+  # Overall
+  mean_rt_subblock[sb] = mean(subblocks_long$sqrtrt[subblocks_long$subblocknum == sb])
+  sem_rt_subblock[sb] = sd(subblocks_long$sqrtrt[subblocks_long$subblocknum == sb])/sqrt(number_of_clean_subjects)
+  
+  # High goal
+  mean_rt_goal_x_subblock[sb,1] = mean(subblocks_long$sqrtrt[(subblocks_long$subblocknum == sb) & (subblocks_long$goallevelP1N1 == 1)])
+  sem_rt_goal_x_subblock[sb,1] = sd(subblocks_long$sqrtrt[(subblocks_long$subblocknum == sb) & (subblocks_long$goallevelP1N1 == 1)])/sqrt(number_of_clean_subjects)
+  # Low goal
+  mean_rt_goal_x_subblock[sb,2] = mean(subblocks_long$sqrtrt[(subblocks_long$subblocknum == sb) & (subblocks_long$goallevelP1N1 == -1)])
+  sem_rt_goal_x_subblock[sb,2] = sd(subblocks_long$sqrtrt[(subblocks_long$subblocknum == sb) & (subblocks_long$goallevelP1N1 == -1)])/sqrt(number_of_clean_subjects)
+  
+  # High Bonus
+  mean_rt_bonus_x_subblock[sb,1] = mean(subblocks_long$sqrtrt[(subblocks_long$subblocknum == sb) & (subblocks_long$bonusatstakeP1N1 == 1)])
+  sem_rt_bonus_x_subblock[sb,1] = sd(subblocks_long$sqrtrt[(subblocks_long$subblocknum == sb) & (subblocks_long$bonusatstakeP1N1 == 1)])/sqrt(number_of_clean_subjects)
+  # Low Bonus
+  mean_rt_bonus_x_subblock[sb,2] = mean(subblocks_long$sqrtrt[(subblocks_long$subblocknum == sb) & (subblocks_long$bonusatstakeP1N1 == -1)])
+  sem_rt_bonus_x_subblock[sb,2] = sd(subblocks_long$sqrtrt[(subblocks_long$subblocknum == sb) & (subblocks_long$bonusatstakeP1N1 == -1)])/sqrt(number_of_clean_subjects)
+  
   for (b in 1:4){
+    # P(risky)
     mean_prisky_round_x_subblock[sb,b] = mean(subblocks_long$prisky[(subblocks_long$subblocknum == sb) & (subblocks_long$roundnum == b)])
     sem_prisky_round_x_subblock[sb,b] = sd(subblocks_long$prisky[(subblocks_long$subblocknum == sb) & (subblocks_long$roundnum == b)])/sqrt(number_of_clean_subjects)
+    # Decision Time
+    mean_rt_round_x_subblock[sb,b] = mean(subblocks_long$sqrtrt[(subblocks_long$subblocknum == sb) & (subblocks_long$roundnum == b)])
+    sem_rt_round_x_subblock[sb,b] = sd(subblocks_long$sqrtrt[(subblocks_long$subblocknum == sb) & (subblocks_long$roundnum == b)])/sqrt(number_of_clean_subjects)
   }
 }
 
@@ -1059,12 +1107,113 @@ legend("bottomleft",
        col = c('blue4','blue2'),
        lty = 1, lwd = 4)
 
+
+# Decision Time
+plot(mean_rt_subblock, type = 'l', ylim = c(1.05, 1.15), lwd = 4,
+     xlab = 'Sub-block (10 trials)', ylab = 'mean sqrt(RT) +/- SEM',
+     main = 'Decision Times as a function of sub-block portion')
+arrows(x0 = 1:5, 
+       y0 = mean_rt_subblock - sem_rt_subblock, 
+       y1 = mean_rt_subblock + sem_rt_subblock,
+       length = 0)
+
+blk_col_vect = c('red','orange','yellow','green')
+
+plot(mean_rt_round_x_subblock[,1], type = 'l', 
+     ylim = c(1, 1.25), xlim = c(1,20), lwd = 4, col = blk_col_vect[1],
+     xlab = 'block (color) x subblock', ylab = 'mean sqrt(RT) +/- SEM', main = 'Decision Times as a function of block & sub-block portion')
+arrows(x0 = 1:5, 
+       y0 = mean_rt_round_x_subblock[,1] - sem_rt_round_x_subblock[,1], 
+       y1 = mean_rt_round_x_subblock[,1] + sem_rt_round_x_subblock[,1],
+       length = 0)
+
+for (b in 2:4){
+  lines(x = (1:5)+(b-1)*5, y = mean_rt_round_x_subblock[,b], lwd = 4, col = blk_col_vect[b])
+  arrows(x0 = (1:5)+(b-1)*5, 
+         y0 = mean_rt_round_x_subblock[,b] - sem_rt_round_x_subblock[,b], 
+         y1 = mean_rt_round_x_subblock[,b] + sem_rt_round_x_subblock[,b],
+         length = 0)
+}
+legend("bottomleft",
+       legend = c('Block 1','Block 2', 'Block 3', 'Block 4'),
+       col = blk_col_vect,
+       lty = 1, lwd = 4)
+
+
+plot(mean_rt_goal_x_subblock[,1], type = 'l', 
+     ylim = c(1, 1.2), lwd = 4, col = 'darkorchid4',
+     xlab = 'subblock', ylab = 'mean sqrt(RT) +/- SEM', main = 'Decision Times as a function of GOAL level')
+arrows(x0 = 1:5, 
+       y0 = mean_rt_goal_x_subblock[,1] - sem_rt_goal_x_subblock[,1], 
+       y1 = mean_rt_goal_x_subblock[,1] + sem_rt_goal_x_subblock[,1],
+       length = 0)
+lines(x = (1:5) + .1, y = mean_rt_goal_x_subblock[,2], lwd = 4, col = 'darkorchid2')
+arrows(x0 = (1:5) + .1, 
+       y0 = mean_rt_goal_x_subblock[,2] - sem_rt_goal_x_subblock[,2], 
+       y1 = mean_rt_goal_x_subblock[,2] + sem_rt_goal_x_subblock[,2],
+       length = 0)
+legend("bottomleft",
+       legend = c('High Goal','Low Goal'),
+       col = c('darkorchid4','darkorchid2'),
+       lty = 1, lwd = 4)
+
+
+plot(mean_rt_bonus_x_subblock[,1], type = 'l', 
+     ylim = c(1, 1.2), lwd = 4, col = 'blue4',
+     xlab = 'subblock', ylab = 'mean sqrt(RT) +/- SEM', main = 'Decision Times as a function of BONUS level')
+arrows(x0 = 1:5, 
+       y0 = mean_rt_bonus_x_subblock[,1] - sem_rt_bonus_x_subblock[,1], 
+       y1 = mean_rt_bonus_x_subblock[,1] + sem_rt_bonus_x_subblock[,1],
+       length = 0)
+lines(x = (1:5) + .1, y = mean_rt_bonus_x_subblock[,2], lwd = 4, col = 'blue2')
+arrows(x0 = (1:5) + .1, 
+       y0 = mean_rt_bonus_x_subblock[,2] - sem_rt_bonus_x_subblock[,2], 
+       y1 = mean_rt_bonus_x_subblock[,2] + sem_rt_bonus_x_subblock[,2],
+       length = 0)
+legend("bottomleft",
+       legend = c('High Bonus','Low Bonus'),
+       col = c('blue4','blue2'),
+       lty = 1, lwd = 4)
+
+
 # INTERPRETATION NOTES HERE
 
 
 
+
+# Trials Proximal to Goal Attainment (and not)
+
+# No-Goal Blocks
+# First, look at blocks where goals were NOT attained
+nfinaltrials = 20 # number of trials at the end of the block to look at
+
+trial_columns = c()
+for (t in 1:nfinaltrials){
+  newt = paste0('trial', t, sep = "")
+  trial_columns = c(trial_columns, newt)
+}
+
+other_columns = c('subjectnumber',
+                  'roundnum',
+                  'bonusatstakeP1N1',
+                  'goallevelP1N1')
+
+nogoal_finalchoices = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects*4, length(trial_columns) + length(other_columns))))
+colnames(nogoal_finalchoices) = c(other_columns, trial_columns)
+
+nogoal_finalchoices$subjectnumber = rep(keep_participants, each = 4)
+nogoal_finalchoices$roundnum = rep(1:4)
+
+for (s in 1:number_of_clean_subjects){
+  subj_id = keep_participants[s]
+  tmpdata = clean_data_dm[clean_data_dm$subjectnumber == subj_id,]
+  
+  for (b in 1:4){
+    # in here we extract the information we need on a per-block basis!
+  }
+}
+
 # TO DO HERE:
-# - do subblock analysis for RTs
 # - do regressions on prisky overall and by subblock (follow up with means)
 # - move on to goal-related analyses.
 
