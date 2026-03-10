@@ -908,6 +908,8 @@ sd(clean_data_subjlevel_wide$total_comp_scaled, na.rm = TRUE)
 # What happened across trials? 
 # Why/how did trial events shape block events? 
 
+### Sub-block analysis (prisky + rt) ----
+#### calculation ----
 clean_data_subjlevel_long$prisky_overall = NA;
 clean_data_subjlevel_long$decisiontime_overall = NA;
 nsubblocks = 5 # ENSURE THAT THIS NUMBER DIVIDES EVENLY INTO 50
@@ -1041,6 +1043,7 @@ for (sb in 1:nsubblocks){
   }
 }
 
+#### plotting ----
 plot(mean_prisky_subblock, type = 'l', ylim = c(0.45, 0.6), lwd = 4,
      xlab = 'Sub-block (10 trials)', ylab = 'mean p(risky) +/- SEM',
      main = 'Risky choices as a function of sub-block portion')
@@ -1072,15 +1075,15 @@ legend("bottomleft",
        lty = 1, lwd = 4)
 
 
-plot(mean_prisky_goal_x_subblock[,1], type = 'l', 
+plot(x = (1:5) - 0.05, y = mean_prisky_goal_x_subblock[,1], type = 'l', 
      ylim = c(0.45, 0.6), lwd = 4, col = 'darkorchid4',
      xlab = 'subblock', ylab = 'mean p(risky) +/- SEM', main = 'Risky choices as a function of GOAL level')
-arrows(x0 = 1:5, 
+arrows(x0 = (1:5) - 0.05, 
        y0 = mean_prisky_goal_x_subblock[,1] - sem_prisky_goal_x_subblock[,1], 
        y1 = mean_prisky_goal_x_subblock[,1] + sem_prisky_goal_x_subblock[,1],
        length = 0)
-lines(x = (1:5) + .1, y = mean_prisky_goal_x_subblock[,2], lwd = 4, col = 'darkorchid2')
-arrows(x0 = (1:5) + .1, 
+lines(x = (1:5) + .05, y = mean_prisky_goal_x_subblock[,2], lwd = 4, col = 'darkorchid2')
+arrows(x0 = (1:5) + .05, 
        y0 = mean_prisky_goal_x_subblock[,2] - sem_prisky_goal_x_subblock[,2], 
        y1 = mean_prisky_goal_x_subblock[,2] + sem_prisky_goal_x_subblock[,2],
        length = 0)
@@ -1090,15 +1093,15 @@ legend("bottomleft",
        lty = 1, lwd = 4)
 
 
-plot(mean_prisky_bonus_x_subblock[,1], type = 'l', 
+plot(x = (1:5) - 0.05, mean_prisky_bonus_x_subblock[,1], type = 'l', 
      ylim = c(0.45, 0.6), lwd = 4, col = 'blue4',
      xlab = 'subblock', ylab = 'mean p(risky) +/- SEM', main = 'Risky choices as a function of BONUS level')
-arrows(x0 = 1:5, 
+arrows(x0 = (1:5) - 0.05, 
        y0 = mean_prisky_bonus_x_subblock[,1] - sem_prisky_bonus_x_subblock[,1], 
        y1 = mean_prisky_bonus_x_subblock[,1] + sem_prisky_bonus_x_subblock[,1],
        length = 0)
-lines(x = (1:5) + .1, y = mean_prisky_bonus_x_subblock[,2], lwd = 4, col = 'blue2')
-arrows(x0 = (1:5) + .1, 
+lines(x = (1:5) + .05, y = mean_prisky_bonus_x_subblock[,2], lwd = 4, col = 'blue2')
+arrows(x0 = (1:5) + .05, 
        y0 = mean_prisky_bonus_x_subblock[,2] - sem_prisky_bonus_x_subblock[,2], 
        y1 = mean_prisky_bonus_x_subblock[,2] + sem_prisky_bonus_x_subblock[,2],
        length = 0)
@@ -1140,15 +1143,15 @@ legend("bottomleft",
        lty = 1, lwd = 4)
 
 
-plot(mean_rt_goal_x_subblock[,1], type = 'l', 
+plot(x = (1:5) - 0.05, y = mean_rt_goal_x_subblock[,1], type = 'l', 
      ylim = c(1, 1.2), lwd = 4, col = 'darkorchid4',
      xlab = 'subblock', ylab = 'mean sqrt(RT) +/- SEM', main = 'Decision Times as a function of GOAL level')
-arrows(x0 = 1:5, 
+arrows(x0 = (1:5) - 0.05, 
        y0 = mean_rt_goal_x_subblock[,1] - sem_rt_goal_x_subblock[,1], 
        y1 = mean_rt_goal_x_subblock[,1] + sem_rt_goal_x_subblock[,1],
        length = 0)
-lines(x = (1:5) + .1, y = mean_rt_goal_x_subblock[,2], lwd = 4, col = 'darkorchid2')
-arrows(x0 = (1:5) + .1, 
+lines(x = (1:5) + .05, y = mean_rt_goal_x_subblock[,2], lwd = 4, col = 'darkorchid2')
+arrows(x0 = (1:5) + .05, 
        y0 = mean_rt_goal_x_subblock[,2] - sem_rt_goal_x_subblock[,2], 
        y1 = mean_rt_goal_x_subblock[,2] + sem_rt_goal_x_subblock[,2],
        length = 0)
@@ -1158,15 +1161,15 @@ legend("bottomleft",
        lty = 1, lwd = 4)
 
 
-plot(mean_rt_bonus_x_subblock[,1], type = 'l', 
+plot(x = (1:5) - 0.05, y = mean_rt_bonus_x_subblock[,1], type = 'l', 
      ylim = c(1, 1.2), lwd = 4, col = 'blue4',
      xlab = 'subblock', ylab = 'mean sqrt(RT) +/- SEM', main = 'Decision Times as a function of BONUS level')
-arrows(x0 = 1:5, 
+arrows(x0 = (1:5) - 0.05, 
        y0 = mean_rt_bonus_x_subblock[,1] - sem_rt_bonus_x_subblock[,1], 
        y1 = mean_rt_bonus_x_subblock[,1] + sem_rt_bonus_x_subblock[,1],
        length = 0)
-lines(x = (1:5) + .1, y = mean_rt_bonus_x_subblock[,2], lwd = 4, col = 'blue2')
-arrows(x0 = (1:5) + .1, 
+lines(x = (1:5) + .05, y = mean_rt_bonus_x_subblock[,2], lwd = 4, col = 'blue2')
+arrows(x0 = (1:5) + .05, 
        y0 = mean_rt_bonus_x_subblock[,2] - sem_rt_bonus_x_subblock[,2], 
        y1 = mean_rt_bonus_x_subblock[,2] + sem_rt_bonus_x_subblock[,2],
        length = 0)
@@ -1181,16 +1184,18 @@ legend("bottomleft",
 
 
 
-# Trials Proximal to Goal Attainment (and not)
+### Trials Proximal to Goal Attainment (and not) ----
 
-# No-Goal Blocks
+#### p(risky) ----
+
+##### No-Goal Blocks ----
 # First, look at blocks where goals were NOT attained
 nfinaltrials = 20 # number of trials at the end of the block to look at
 
-trial_columns = c()
+trial_columns_nogoal = c()
 for (t in 1:nfinaltrials){
   newt = paste0('trial', t, sep = "")
-  trial_columns = c(trial_columns, newt)
+  trial_columns_nogoal = c(trial_columns_nogoal, newt)
 }
 
 other_columns = c('subjectnumber',
@@ -1199,7 +1204,7 @@ other_columns = c('subjectnumber',
                   'goallevelP1N1')
 
 nogoal_finalchoices = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects*4, length(trial_columns) + length(other_columns))))
-colnames(nogoal_finalchoices) = c(other_columns, trial_columns)
+colnames(nogoal_finalchoices) = c(other_columns, trial_columns_nogoal)
 
 nogoal_finalchoices$subjectnumber = rep(keep_participants, each = 4)
 nogoal_finalchoices$roundnum = rep(1:4)
@@ -1210,8 +1215,55 @@ for (s in 1:number_of_clean_subjects){
   
   for (b in 1:4){
     # in here we extract the information we need on a per-block basis!
+    
+    # conditional - if the goal was NOT met...
+    
+    # ... then put in the last however many trials' worth of choices
   }
 }
+
+
+
+##### Yes-Goal Blocks ----
+# Second, look at blocks where goals WERE attained
+ntrialsprior = 11 # this number INCLUDES THE TRIAL ON WHICH THE GOAL WAS MET/SURPASSED
+ntrialsafter = 10 # starting with the first trial AFTER the goal was met/surpassed
+nproximaltrials = ntrialsprior + ntrialsafter # number of trials to look at
+
+
+trial_columns_yesgoal = c()
+for (t in 1:ntrialsprior){
+  newt = paste0('trialminus', ntrialsprior-t, sep = "")
+  trial_columns_yesgoal = c(trial_columns_yesgoal, newt)
+}
+for (t in 1:ntrialsafter){
+  newt = paste0('trialplus', t, sep = "")
+  trial_columns_yesgoal = c(trial_columns_yesgoal, newt)
+}
+trial_columns_yesgoal[ntrialsprior] = 'trial0'
+
+
+other_columns = c('subjectnumber',
+                  'roundnum',
+                  'bonusatstakeP1N1',
+                  'goallevelP1N1')
+
+yesgoal_finalchoices = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects*4, length(trial_columns_yesgoal) + length(other_columns))))
+colnames(yesgoal_finalchoices) = c(other_columns, trial_columns_yesgoal)
+
+yesgoal_finalchoices$subjectnumber = rep(keep_participants, each = 4)
+yesgoal_finalchoices$roundnum = rep(1:4)
+
+for (s in 1:number_of_clean_subjects){
+  subj_id = keep_participants[s]
+  tmpdata = clean_data_dm[clean_data_dm$subjectnumber == subj_id,]
+  
+  for (b in 1:4){
+    # in here we extract the information we need on a per-block basis!
+  }
+}
+
+
 
 # TO DO HERE:
 # - do regressions on prisky overall and by subblock (follow up with means)
