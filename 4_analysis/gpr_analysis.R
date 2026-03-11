@@ -178,6 +178,7 @@ for (s in 1:length(keep_participants)) {
   
   clean_data_dm$best_span_overall[clean_data_dm$subjectnumber == subj_id] = wmc_val
   clean_data_subjlevel_wide$best_span_overall[clean_data_subjlevel_wide$subjectnumber == subj_id] = wmc_val
+  clean_data_subjlevel_long$best_span_overall[clean_data_subjlevel_long$subjectnumber == subj_id] = wmc_val
 }
 
 #Summary is to see that the above code worked
@@ -208,6 +209,7 @@ for (s in 1:length(keep_participants)) {
 #                 'psq_bonus_influence_anxiety',
 #                 'psq_bonus_influence_engage')
 
+### Other Indiv Diffs ----
 cor_items = c('totalcompensation',
                  'stais',
                  'stait',
@@ -244,6 +246,8 @@ plot(clean_data_subjlevel_wide[,cor_items])
 # - Histogram earnings across rounds (or density plot?) to examine var
 # - test variances in earnings across rounds
 
+#### BIS-BAS ----
+
 #Correlation for the bas items
 bas_cor_items = c('bas_drive',
                   'bas_fun',
@@ -272,6 +276,7 @@ plot(clean_data_subjlevel_wide[,bas_cor_items])
 # TLDR: USE RATIO, and then unpack to BAS or BIS overall if interesting findings or
 # motivated by hypothesis. 
 
+#### RRS ----
 #Correlation for rrs items
 rrs_cor_items = c('rrs_brood',
                   'rrs_reflection',
@@ -292,6 +297,7 @@ plot(clean_data_subjlevel_wide[,rrs_cor_items])
 # TAKEAWAY: Use rrs_overall, as its HIGHLY correlated with subscales.
 # Subscales themselves likely not useful. 
 
+#### PSQ Bonus Influence ----
 #Correlation for psq_bonus_influence items
 bonusinf_cor_items = c('psq_bonus_influence',
                        'psq_bonus_influence_effort',
@@ -325,6 +331,7 @@ plot(clean_data_subjlevel_wide[,bonusinf_cor_items])
 # TLDR: Could use OVERALL to represent all of speed/engage/anx/effort.
 # Distraction might be different (~1/3 is distracted, 1/3 is not).
 
+#### PSQ Goal Influence ----
 #Correlation for psq_goal_influence items
 goalinf_cor_items = c('psq_goal_influence',
                       'psq_goal_influence_effort',
@@ -354,6 +361,7 @@ plot(clean_data_subjlevel_wide[,goalinf_cor_items])
 # variation in some kind of goal effect behaviorally, could turn to these measures.
 
 
+#### Anxiety/Stress ----
 #Correlation for goal and bonus anxiety with stais/t
 anxiety_cor_items = c('stais',
                       'stait',
@@ -384,6 +392,7 @@ plot(clean_data_subjlevel_wide[,anxiety_cor_items])
 # task-specific anxiety, and correlated with State Anx, so use that? 
 
 
+#### Motivation, Aware, Infl ----
 #Correlation for psq motivation and goal/bonus awareness and impact
 motiv_cor_items = c('psq_motivate',
                     'psq_goal_aware',
@@ -407,6 +416,7 @@ plot(clean_data_subjlevel_wide[,motiv_cor_items])
 # influence), but beyond that, relationships are weak (if present at all).
 
 
+### Main Indiv Diffs ----
 overall_cor_items = c('bisbas_ratio', # positive = mostly BIS, negative = mostly BAS
                       'rrs_overall',
                       'psq_stress',
@@ -1189,6 +1199,8 @@ legend("bottomleft",
 
 # INTERPRETATION NOTES HERE
 
+# Could do additional regressions to quantify these findings & explore e.g. interactions? 
+
 
 
 
@@ -1246,6 +1258,7 @@ ntrialsprior = 10 # this number DOES NOT include THE TRIAL ON WHICH THE GOAL WAS
 ntrialsafter = 10 # starting with the first trial AFTER the goal was met/surpassed
 nproximaltrials = ntrialsprior + 1 + ntrialsafter # number of trials to look at
 
+clean_data_subjlevel_long$trialgoalmet = NA
 
 trial_columns_yesgoal = c()
 for (t in ntrialsprior:1){
@@ -1277,6 +1290,12 @@ colnames(mean_yesgoal_finalchoices) = c('subjectnumber', trial_columns_yesgoal)
 
 mean_yesgoal_finalchoices$subjectnumber = keep_participants
 
+meanbyGL_yesgoal_finalchoices = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects*2, length(trial_columns_yesgoal) + 2)))
+colnames(meanbyGL_yesgoal_finalchoices) = c('subjectnumber', 'goallevelP1N1', trial_columns_yesgoal)
+meanbyGL_yesgoal_finalchoices$subjectnumber = rep(keep_participants, each = 2)
+meanbyGL_yesgoal_finalchoices$goallevelP1N1 = rep(c(1,-1), number_of_clean_subjects)
+
+mean_yesgoal_finalchoices$subjectnumber = keep_participants
 
 for (s in 1:number_of_clean_subjects){
   subj_id = keep_participants[s]
@@ -1295,6 +1314,8 @@ for (s in 1:number_of_clean_subjects){
       # identify trial number where they met/exceeded the goal
       ind_goalmet = min(tmpblkdata$trialnumber_block[tmpblkdata$round_earnings >= unique(tmpblkdata$curr_goal)])
       
+      clean_data_subjlevel_long$trialgoalmet[cleanlongInd] = ind_goalmet
+      
       # identify the trial numbers to extract from the data
       trials_to_extract = (ind_goalmet - ntrialsprior):min(ind_goalmet + ntrialsafter, 50)
       
@@ -1311,17 +1332,29 @@ for (s in 1:number_of_clean_subjects){
   }
   mean_yesgoal_finalchoices[s, trial_columns_yesgoal] = 
     colMeans(yesgoal_finalchoices[yesgoal_finalchoices$subjectnumber == subj_id, trial_columns_yesgoal], na.rm = T)
+  meanbyGL_yesgoal_finalchoices[(meanbyGL_yesgoal_finalchoices$subjectnumber == subj_id) & 
+                                (meanbyGL_yesgoal_finalchoices$goallevelP1N1 == 1), trial_columns_yesgoal] = 
+    colMeans(yesgoal_finalchoices[(yesgoal_finalchoices$subjectnumber == subj_id) & 
+                                  (yesgoal_finalchoices$goallevelP1N1 == 1), trial_columns_yesgoal], na.rm = T)
+  meanbyGL_yesgoal_finalchoices[(meanbyGL_yesgoal_finalchoices$subjectnumber == subj_id) & 
+                                  (meanbyGL_yesgoal_finalchoices$goallevelP1N1 == -1), trial_columns_yesgoal] = 
+    colMeans(yesgoal_finalchoices[(yesgoal_finalchoices$subjectnumber == subj_id) & 
+                                    (yesgoal_finalchoices$goallevelP1N1 == -1), trial_columns_yesgoal], na.rm = T)
 }
 
 m_prisky_yesgoal = colMeans(mean_yesgoal_finalchoices[,trial_columns_yesgoal], na.rm = T)
-
-# NEED TO FIX; this "number of subjects" is not correct
 sem_prisky_yesgoal = apply(mean_yesgoal_finalchoices[, trial_columns_yesgoal], 2, sd, na.rm = T)/
   sqrt(colSums(mean_yesgoal_finalchoices[, trial_columns_yesgoal]*0+1, na.rm = T))
 
+m_prisky_yesgoal_highGL = colMeans(meanbyGL_yesgoal_finalchoices[meanbyGL_yesgoal_finalchoices$goallevelP1N1 == 1,trial_columns_yesgoal], na.rm = T)
+sem_prisky_yesgoal_highGL = apply(meanbyGL_yesgoal_finalchoices[meanbyGL_yesgoal_finalchoices$goallevelP1N1 == 1, trial_columns_yesgoal], 2, sd, na.rm = T)/
+  sqrt(colSums(meanbyGL_yesgoal_finalchoices[meanbyGL_yesgoal_finalchoices$goallevelP1N1 == 1, trial_columns_yesgoal]*0+1, na.rm = T))
 
+m_prisky_yesgoal_lowGL = colMeans(meanbyGL_yesgoal_finalchoices[meanbyGL_yesgoal_finalchoices$goallevelP1N1 == -1,trial_columns_yesgoal], na.rm = T)
+sem_prisky_yesgoal_lowGL = apply(meanbyGL_yesgoal_finalchoices[meanbyGL_yesgoal_finalchoices$goallevelP1N1 == -1, trial_columns_yesgoal], 2, sd, na.rm = T)/
+  sqrt(colSums(meanbyGL_yesgoal_finalchoices[meanbyGL_yesgoal_finalchoices$goallevelP1N1 == -1, trial_columns_yesgoal]*0+1, na.rm = T))
 
-# Plot it
+# Plot it: OVERALL
 plot(x = -ntrialsprior:ntrialsafter, y = m_prisky_yesgoal,
      type = 'l', lwd = 3, xlab = 'Trials relative to goal achievement', ylab = ('p(risky)'),
      ylim = c(0.3, 0.7), main = 'Risky Choices by Proximity to Goal Achievement')
@@ -1337,13 +1370,54 @@ polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
 # NOTE: An unequal # of subjects contribute to these points after goal attainment, AND
 # an unequal # of blocks/subject. Only the former is accounted for by the SEM calculation.
 
+
+# HIGH GOAL:
+plot(x = -ntrialsprior:ntrialsafter, y = m_prisky_yesgoal_highGL,
+     type = 'l', lwd = 3, xlab = 'Trials relative to goal achievement', ylab = ('p(risky)'),
+     ylim = c(0.2, 1), main = 'Risky Choices by Proximity to Goal Achievement',
+     col = 'darkorchid4')
+polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
+        y = c(m_prisky_yesgoal_highGL + sem_prisky_yesgoal_highGL, rev(m_prisky_yesgoal_highGL - sem_prisky_yesgoal_highGL)),
+        col = rgb(t(col2rgb('darkorchid4')), alpha = 51, maxColorValue = 255))
+lines(x = -ntrialsprior:ntrialsafter, y = m_prisky_yesgoal_lowGL,
+      lwd = 3, col = 'darkorchid2')
+polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
+        y = c(m_prisky_yesgoal_lowGL + sem_prisky_yesgoal_lowGL, rev(m_prisky_yesgoal_lowGL - sem_prisky_yesgoal_lowGL)),
+        col = rgb(t(col2rgb('darkorchid2')), alpha = 51, maxColorValue = 255))
+abline(v = 0, col = 'black', lwd = 1, lty = 'dashed')
+abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
+legend("bottomleft",
+       legend = c('High Goal','Low Goal'),
+       col = c('darkorchid4','darkorchid2'),
+       lty = 1, lwd = 4)
+
 # If we want to use regression on this, need to reshape into LONG format, and include a
 # new variable "postGoal" that identifies choices made after meeting/exceeding the goal.
 # Could also just do that in the clean_data_dm dataframe itself! 
 
 # TAKEAWAY: 
 # Risk-taking drops immediately before reaching the goal, and dramatically increases 
-# IMMEDIATELY after reaching the goal.
+# IMMEDIATELY after reaching the goal. This pattern is exacerbated under high vs. low 
+# goals. 
+
+
+###### Supplemental Analysis ----
+# looking at trialgoalmet
+sum(is.finite(clean_data_subjlevel_long$trialgoalmet[clean_data_subjlevel_long$goallevelP1N1 == 1]))
+sum(is.finite(clean_data_subjlevel_long$trialgoalmet[clean_data_subjlevel_long$goallevelP1N1 == -1]))
+
+mean(clean_data_subjlevel_long$trialgoalmet[clean_data_subjlevel_long$goallevelP1N1 == 1], na.rm = T)
+mean(clean_data_subjlevel_long$trialgoalmet[clean_data_subjlevel_long$goallevelP1N1 == -1], na.rm = T)
+
+var(clean_data_subjlevel_long$trialgoalmet[clean_data_subjlevel_long$goallevelP1N1 == 1], na.rm = T)
+var(clean_data_subjlevel_long$trialgoalmet[clean_data_subjlevel_long$goallevelP1N1 == -1], na.rm = T)
+
+# People met the goal 54/132 times when goals were high, 122/132 when they were low. 
+# They met that goal on trial 47 (high goal) vs. 43 (low goal) WHEN it was met.
+# The variance in that number was 8.6 (high goal) vs. 16.4 (low goal) WHEN it was met. 
+#   ... this variance calc. might be problematic: closer to boundary (50) might = low var
+
+
 
 
 #### Decision Time by Goal Proximity ----
@@ -1427,9 +1501,218 @@ polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
 
 
 
-# TO DO HERE:
-# - do regressions on prisky overall and by subblock (follow up with means)
-# - move on to goal-related analyses.
+## 4. RHO ESTIMATES ----
+# What are the computational model estimates of behavior?
+# Can modified models capture some of what we see behaviorally? 
+
+### Function Definitions ----
+# Function to calculate choice probabilities
+choice_probability <- function(parameters, choiceset) {
+  # A function to calculate the probability of taking a risky option
+  # using a prospect theory model.
+  # Assumes parameters are [rho, mu] as used in S-H 2009, 2013, 2015, etc.
+  # Assumes choiceset has columns riskyoption1, riskyoption2, and safeoption
+  #
+  # PSH 2026
+  
+  # extract  parameters
+  rho = as.double(parameters[1]); # risk attitudes
+  mu = as.double(parameters[2]); # choice consistency
+  
+  # Correct parameter bounds
+  if(rho <= 0){
+    rho = .Machine$double.eps;
+  }
+  
+  if(mu < 0){
+    mu = 0;
+  }
+  
+  # calculate utility of the two options
+  utility_risky_option = 0.5 * choiceset$riskyoption1^rho +
+    0.5 * choiceset$riskyoption2^rho;
+  utility_safe_option = choiceset$safeoption^rho;
+  
+  # normalize values using this term
+  div <- max(choiceset[,1:3])^rho; # decorrelates rho & mu
+  
+  # calculate the probability of selecting the risky option
+  p = 1/(1+exp(-mu/div*(utility_risky_option - utility_safe_option)));
+  
+  return(p)
+}
+
+# Likelihood function
+negLLprospect_gpr_basic <- function(parameters,choiceset,choices) {
+  # A negative log likelihood function for a prospect-theory estimation.
+  # Assumes parameters are [rho, mu] as used in S-H 2009, 2013, 2015, etc.
+  # Assumes choiceset has columns riskyoption1, riskyoption2, and safeoption
+  # Assumes choices are binary/logical, with 1 = risky, 0 = safe.
+  #
+  # Peter Sokol-Hessner
+  # July 2026
+  
+  choiceP = choice_probability(parameters, choiceset);
+  
+  likelihood = choices * choiceP + (1 - choices) * (1-choiceP);
+  likelihood[likelihood == 0] = 0.000000000000001; # 1e-15, i.e. 14 zeros followed by a 1
+  
+  nll <- -sum(log(likelihood));
+  return(nll)
+}
+
+
+## Optimization ############################################
+eps = .Machine$double.eps;
+lower_bounds = c(eps, 0); # R, M
+upper_bounds = c(2,80);
+number_of_parameters = length(lower_bounds);
+
+# Create placeholders for parameters, errors, NLL (and anything else you want)
+number_of_iterations = 200; # 100 or more
+estimated_parameters = array(dim = c(number_of_clean_subjects, 2, 4));
+estimated_parameter_errors = array(dim = c(number_of_clean_subjects, 2, 4));
+NLLs = array(dim = c(number_of_clean_subjects,4));
+
+clean_data_dm$all_choiceP = NA;
+clean_data_subjlevel_long$rho = NA;
+clean_data_subjlevel_long$mu = NA;
+clean_data_subjlevel_long$rhoSE = NA;
+clean_data_subjlevel_long$muSE = NA;
+clean_data_subjlevel_long$nll = NA;
+
+cat('Beginning Optimization\n')
+
+for (subj in 1:number_of_clean_subjects){
+  subj_id = keep_participants[subj];
+  cat(paste0('\nSubject ',subj_id,', round 0'))
+  
+  for (b in 1:4){
+    cat(paste0('\b',b))
+    
+    all_choice_ind = (clean_data_dm$subjectnumber == subj_id) & 
+                     (clean_data_dm$roundnumber == b) & 
+                     is.finite(clean_data_dm$choice)
+    
+    tmpdata = clean_data_dm[all_choice_ind,]; # defines this person's data for this block
+    
+    temp_parameters = array(dim = c(number_of_iterations,number_of_parameters));
+    temp_hessians = array(dim = c(number_of_iterations,number_of_parameters,number_of_parameters));
+    temp_NLLs = array(dim = c(number_of_iterations,1));
+    
+    choiceset = as.data.frame(cbind(tmpdata$riskyopt1, tmpdata$riskyopt2, tmpdata$safe));
+    colnames(choiceset) <- c('riskyoption1', 'riskyoption2', 'safeoption');
+    
+    # tic() # start the timer
+    
+    for(iter in 1:number_of_iterations){
+      # Randomly set initial values within supported values
+      # using uniformly-distributed values. Many ways to do this!
+      
+      initial_values = runif(number_of_parameters, min = lower_bounds, max = upper_bounds)
+      
+      temp_output = optim(initial_values, negLLprospect_gpr_basic,
+                          choiceset = choiceset,
+                          choices = tmpdata$choice,
+                          lower = lower_bounds,
+                          upper = upper_bounds,
+                          method = "L-BFGS-B",
+                          hessian = T)
+      
+      # Store the output we need access to later
+      temp_parameters[iter,] = temp_output$par; # parameter values
+      temp_hessians[iter,,] = temp_output$hessian; # SEs
+      temp_NLLs[iter,] = temp_output$value; # the NLLs
+    }
+    
+    # Compare output; select the best one
+    NLLs[subj, b] = min(temp_NLLs); # the best NLL for this person
+    best_ind = which(temp_NLLs == NLLs[subj, b])[1]; # the index of that NLL
+    
+    estimated_parameters[subj,,b] = temp_parameters[best_ind,] # the parameters
+    estimated_parameter_errors[subj,,b] = sqrt(diag(solve(temp_hessians[best_ind,,]))); # the SEs
+    
+    clean_data_subjlevel_long$rho[(clean_data_subjlevel_long$subjectnumber == subj_id) & 
+                                  (clean_data_subjlevel_long$roundnum == b)] = estimated_parameters[subj,1,b]
+    clean_data_subjlevel_long$mu[(clean_data_subjlevel_long$subjectnumber == subj_id) & 
+                                 (clean_data_subjlevel_long$roundnum == b)] = estimated_parameters[subj,2,b]
+
+    clean_data_subjlevel_long$rhoSE[(clean_data_subjlevel_long$subjectnumber == subj_id) & 
+                                    (clean_data_subjlevel_long$roundnum == b)] = estimated_parameter_errors[subj,1,b]
+    clean_data_subjlevel_long$muSE[(clean_data_subjlevel_long$subjectnumber == subj_id) & 
+                                   (clean_data_subjlevel_long$roundnum == b)] = estimated_parameter_errors[subj,2,b]
+    
+    clean_data_subjlevel_long$nll[(clean_data_subjlevel_long$subjectnumber == subj_id) & 
+                                  (clean_data_subjlevel_long$roundnum == b)] = NLLs[subj, b]
+    
+    # Calculating all choice probabilities for this participant, given best-fit parameters
+    clean_data_dm$all_choiceP[all_choice_ind] = choice_probability(temp_parameters[best_ind,],choiceset);
+  }
+}
+cat('\nDone.\n')
+
+# Vary by condition?
+boxplot(rho ~ goallevelP1N1 * bonusatstakeP1N1, data = clean_data_subjlevel_long)
+# Looks like low vs. high goals may have a weak effect (higher rho w/ higher goals)?
+rho_lmer = lmer(rho ~ 1 + goallevelP1N1 * bonusatstakeP1N1 + (1 | subjectnumber), 
+                data = clean_data_subjlevel_long )
+summary(rho_lmer)
+rho_lm = lm(rho ~ 1 + goallevelP1N1 * bonusatstakeP1N1, 
+                data = clean_data_subjlevel_long )
+summary(rho_lm)
+
+AIC(rho_lmer) # LOWER/BETTER
+AIC(rho_lm)
+# Neither model finds any significant effect of goal, bonus, or their interaction
+# THOUGH the RFX model finds a trending goal x bonus interaction, p = 0.06
+# The interaction would indicate that high goal & bonus pressure raises risk-seeking
+# more than either alone would predict. 
+#
+# POSSIBLE ROLE FOR AN INDIV-DIFF COVARIATE? 
+
+# MAIN INDIVIDUAL DIFFERENCE MEASURES:
+# - RRS (overall)
+# - BISBAS Ratio (can break down if need be)
+# - Bonus (psq_bonus_influence)
+# - WMC (best_span_overall)
+# - Stress (psq_stress) (can break down into state, trait, and stress)
+
+rho_lm_rrs = lm(rho ~ 1 + goallevelP1N1 * bonusatstakeP1N1 * rrs_overall, 
+            data = clean_data_subjlevel_long )
+summary(rho_lm_rrs)
+# nothing
+
+rho_lm_bisbas_ratio = lm(rho ~ 1 + goallevelP1N1 * bonusatstakeP1N1 * bisbas_ratio, 
+                data = clean_data_subjlevel_long )
+summary(rho_lm_bisbas_ratio)
+# BIS-BAS ratio positively predicts rho
+
+rho_lm_span = lm(rho ~ 1 + goallevelP1N1 * bonusatstakeP1N1 * best_span_overall, 
+                data = clean_data_subjlevel_long )
+summary(rho_lm_span)
+# nothing
+
+rho_lm_stress = lm(rho ~ 1 + goallevelP1N1 * bonusatstakeP1N1 * psq_stress, 
+                 data = clean_data_subjlevel_long )
+summary(rho_lm_stress)
+# nothing
+
+rho_lm_influence = lm(rho ~ 1 + goallevelP1N1 * psq_goal_influence +
+                        bonusatstakeP1N1 * psq_bonus_influence, 
+                   data = clean_data_subjlevel_long )
+summary(rho_lm_influence)
+# Bonus influence alone predicts higher rho
+
+# TAKEAWAYS: No individual difference terms interact with goal or bonus levels to change rho.
+
+# Next step options:
+# 1. Modify the model to capture changes in risk attitudes. Changes...
+#   ... within round
+#   ... across rounds
+#   ... after goal attainment
+#   ... before goal attainment
+
+
 
 
 
