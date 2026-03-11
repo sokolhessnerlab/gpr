@@ -908,6 +908,14 @@ sd(clean_data_subjlevel_wide$total_comp_scaled, na.rm = TRUE)
 # What happened across trials? 
 # Why/how did trial events shape block events? 
 
+# Create a Post-Goal variable (1 where their earnings are at or above the goal, 0 elsewhere)
+clean_data_dm$postgoal = as.numeric(clean_data_dm$round_earnings >= clean_data_dm$curr_goal)
+# NOTE: THIS INCLUDES THE TRIAL ON WHICH THEY REACHED THE GOAL
+
+clean_data_dm$postpostgoal = c(0, clean_data_dm$postgoal[1:(length(clean_data_dm$postgoal)-1)])
+clean_data_dm$postpostgoal[clean_data_dm$trialnumber_block == 1] = 0
+# NOTE: THIS ONLY INCLUDES TRIALS AFTER THAT ON WHICH THEY MET THE GOAL
+
 ### Sub-block analysis (prisky + rt) ----
 #### calculation ----
 clean_data_subjlevel_long$prisky_overall = NA;
@@ -1186,7 +1194,7 @@ legend("bottomleft",
 
 ### Trials Proximal to Goal Attainment (and not) ----
 
-#### p(risky) ----
+#### p(Risky) by Goal Proximity ----
 
 ##### No-Goal Blocks ----
 # First, look at blocks where goals were NOT attained
@@ -1203,7 +1211,7 @@ other_columns = c('subjectnumber',
                   'bonusatstakeP1N1',
                   'goallevelP1N1')
 
-nogoal_finalchoices = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects*4, length(trial_columns) + length(other_columns))))
+nogoal_finalchoices = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects*4, length(trial_columns_nogoal) + length(other_columns))))
 colnames(nogoal_finalchoices) = c(other_columns, trial_columns_nogoal)
 
 nogoal_finalchoices$subjectnumber = rep(keep_participants, each = 4)
@@ -1215,32 +1223,42 @@ for (s in 1:number_of_clean_subjects){
   
   for (b in 1:4){
     # in here we extract the information we need on a per-block basis!
+    # JUSTIN DOES! 
+    
+    # extract goal level info and bonus level info
+    # (this one is about moving this info from one place to another)
     
     # conditional - if the goal was NOT met...
-    
-    # ... then put in the last however many trials' worth of choices
+    # if(conditionalstatement){
+    #   actionstobetaken (... then put in the last however many trials' worth of choices)
+    # }
   }
+  
+  # insert per-person means here? 
+  
 }
 
 
 
 ##### Yes-Goal Blocks ----
 # Second, look at blocks where goals WERE attained
-ntrialsprior = 11 # this number INCLUDES THE TRIAL ON WHICH THE GOAL WAS MET/SURPASSED
+ntrialsprior = 10 # this number DOES NOT include THE TRIAL ON WHICH THE GOAL WAS MET/SURPASSED
 ntrialsafter = 10 # starting with the first trial AFTER the goal was met/surpassed
-nproximaltrials = ntrialsprior + ntrialsafter # number of trials to look at
+nproximaltrials = ntrialsprior + 1 + ntrialsafter # number of trials to look at
 
 
 trial_columns_yesgoal = c()
-for (t in 1:ntrialsprior){
-  newt = paste0('trialminus', ntrialsprior-t, sep = "")
+for (t in ntrialsprior:1){
+  newt = paste0('trialminus', t, sep = "")
   trial_columns_yesgoal = c(trial_columns_yesgoal, newt)
 }
+
+trial_columns_yesgoal = c(trial_columns_yesgoal, 'trial0')
+
 for (t in 1:ntrialsafter){
   newt = paste0('trialplus', t, sep = "")
   trial_columns_yesgoal = c(trial_columns_yesgoal, newt)
 }
-trial_columns_yesgoal[ntrialsprior] = 'trial0'
 
 
 other_columns = c('subjectnumber',
@@ -1254,14 +1272,158 @@ colnames(yesgoal_finalchoices) = c(other_columns, trial_columns_yesgoal)
 yesgoal_finalchoices$subjectnumber = rep(keep_participants, each = 4)
 yesgoal_finalchoices$roundnum = rep(1:4)
 
+mean_yesgoal_finalchoices = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects, length(trial_columns_yesgoal) + 1)))
+colnames(mean_yesgoal_finalchoices) = c('subjectnumber', trial_columns_yesgoal)
+
+mean_yesgoal_finalchoices$subjectnumber = keep_participants
+
+
 for (s in 1:number_of_clean_subjects){
   subj_id = keep_participants[s]
   tmpdata = clean_data_dm[clean_data_dm$subjectnumber == subj_id,]
   
   for (b in 1:4){
-    # in here we extract the information we need on a per-block basis!
+    # Make the indices we'll use
+    yesgoalInd = (yesgoal_finalchoices$subjectnumber == subj_id) & (yesgoal_finalchoices$roundnum == b)
+    cleanlongInd = (clean_data_subjlevel_long$subjectnumber == subj_id) & (clean_data_subjlevel_long$roundnum == b)
+    
+    # If they received the bonus on this round (i.e. attained the goal)
+    if(clean_data_subjlevel_long$bonusreceived01[cleanlongInd]){
+      # extract that block's data
+      tmpblkdata = tmpdata[tmpdata$roundnumber == b,];
+      
+      # identify trial number where they met/exceeded the goal
+      ind_goalmet = min(tmpblkdata$trialnumber_block[tmpblkdata$round_earnings >= unique(tmpblkdata$curr_goal)])
+      
+      # identify the trial numbers to extract from the data
+      trials_to_extract = (ind_goalmet - ntrialsprior):min(ind_goalmet + ntrialsafter, 50)
+      
+      # select the subset of trial column names we'll be using for this person & block
+      tmp_trial_columns_yesgoal = trial_columns_yesgoal[1:length(trials_to_extract)]
+      
+      # do the extraction
+      yesgoal_finalchoices[yesgoalInd,tmp_trial_columns_yesgoal] = tmpblkdata$choice[trials_to_extract]
+    }
+    
+    # copy over the goal & bonus info
+    yesgoal_finalchoices$bonusatstakeP1N1[yesgoalInd] = clean_data_subjlevel_long$bonusatstakeP1N1[cleanlongInd]
+    yesgoal_finalchoices$goallevelP1N1[yesgoalInd] = clean_data_subjlevel_long$goallevelP1N1[cleanlongInd]
   }
+  mean_yesgoal_finalchoices[s, trial_columns_yesgoal] = 
+    colMeans(yesgoal_finalchoices[yesgoal_finalchoices$subjectnumber == subj_id, trial_columns_yesgoal], na.rm = T)
 }
+
+m_prisky_yesgoal = colMeans(mean_yesgoal_finalchoices[,trial_columns_yesgoal], na.rm = T)
+
+# NEED TO FIX; this "number of subjects" is not correct
+sem_prisky_yesgoal = apply(mean_yesgoal_finalchoices[, trial_columns_yesgoal], 2, sd, na.rm = T)/
+  sqrt(colSums(mean_yesgoal_finalchoices[, trial_columns_yesgoal]*0+1, na.rm = T))
+
+
+
+# Plot it
+plot(x = -ntrialsprior:ntrialsafter, y = m_prisky_yesgoal,
+     type = 'l', lwd = 3, xlab = 'Trials relative to goal achievement', ylab = ('p(risky)'),
+     ylim = c(0.3, 0.7), main = 'Risky Choices by Proximity to Goal Achievement')
+abline(v = 0, col = 'black', lwd = 1, lty = 'dashed')
+abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
+# arrows(x0 = -ntrialsprior:ntrialsafter, 
+#        y0 = m_prisky_yesgoal - sem_prisky_yesgoal, 
+#        y1 = m_prisky_yesgoal + sem_prisky_yesgoal,
+#        length = 0)
+polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
+        y = c(m_prisky_yesgoal + sem_prisky_yesgoal, rev(m_prisky_yesgoal - sem_prisky_yesgoal)),
+        col = rgb(.5, .5, .5, .2))
+# NOTE: An unequal # of subjects contribute to these points after goal attainment, AND
+# an unequal # of blocks/subject. Only the former is accounted for by the SEM calculation.
+
+# If we want to use regression on this, need to reshape into LONG format, and include a
+# new variable "postGoal" that identifies choices made after meeting/exceeding the goal.
+# Could also just do that in the clean_data_dm dataframe itself! 
+
+# TAKEAWAY: 
+# Risk-taking drops immediately before reaching the goal, and dramatically increases 
+# IMMEDIATELY after reaching the goal.
+
+
+#### Decision Time by Goal Proximity ----
+
+##### No-Goal Blocks ----
+
+##### Yes-Goal Blocks ----
+# Second, look at blocks where goals WERE attained
+yesgoal_finalrts = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects*4, length(trial_columns_yesgoal) + length(other_columns))))
+colnames(yesgoal_finalrts) = c(other_columns, trial_columns_yesgoal)
+
+yesgoal_finalrts$subjectnumber = rep(keep_participants, each = 4)
+yesgoal_finalrts$roundnum = rep(1:4)
+
+mean_yesgoal_finalrts = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects, length(trial_columns_yesgoal) + 1)))
+colnames(mean_yesgoal_finalrts) = c('subjectnumber', trial_columns_yesgoal)
+
+mean_yesgoal_finalrts$subjectnumber = keep_participants
+
+
+for (s in 1:number_of_clean_subjects){
+  subj_id = keep_participants[s]
+  tmpdata = clean_data_dm[clean_data_dm$subjectnumber == subj_id,]
+  
+  for (b in 1:4){
+    # Make the indices we'll use
+    yesgoalInd = (yesgoal_finalchoices$subjectnumber == subj_id) & (yesgoal_finalchoices$roundnum == b)
+    cleanlongInd = (clean_data_subjlevel_long$subjectnumber == subj_id) & (clean_data_subjlevel_long$roundnum == b)
+    
+    # If they received the bonus on this round (i.e. attained the goal)
+    if(clean_data_subjlevel_long$bonusreceived01[cleanlongInd]){
+      # extract that block's data
+      tmpblkdata = tmpdata[tmpdata$roundnumber == b,];
+      
+      # identify trial number where they met/exceeded the goal
+      ind_goalmet = min(tmpblkdata$trialnumber_block[tmpblkdata$round_earnings >= unique(tmpblkdata$curr_goal)])
+      
+      # identify the trial numbers to extract from the data
+      trials_to_extract = (ind_goalmet - ntrialsprior):min(ind_goalmet + ntrialsafter, 50)
+      
+      # select the subset of trial column names we'll be using for this person & block
+      tmp_trial_columns_yesgoal = trial_columns_yesgoal[1:length(trials_to_extract)]
+      
+      # do the extraction
+      yesgoal_finalrts[yesgoalInd,tmp_trial_columns_yesgoal] = tmpblkdata$reactiontime[trials_to_extract]
+    }
+    
+    # copy over the goal & bonus info
+    yesgoal_finalrts$bonusatstakeP1N1[yesgoalInd] = clean_data_subjlevel_long$bonusatstakeP1N1[cleanlongInd]
+    yesgoal_finalrts$goallevelP1N1[yesgoalInd] = clean_data_subjlevel_long$goallevelP1N1[cleanlongInd]
+  }
+  mean_yesgoal_finalrts[s, trial_columns_yesgoal] = 
+    colMeans(yesgoal_finalrts[yesgoal_finalchoices$subjectnumber == subj_id, trial_columns_yesgoal], na.rm = T)
+}
+
+m_rt_yesgoal = colMeans(mean_yesgoal_finalrts[,trial_columns_yesgoal], na.rm = T)
+
+# NEED TO FIX; this "number of subjects" is not correct
+sem_rt_yesgoal = apply(mean_yesgoal_finalrts[, trial_columns_yesgoal], 2, sd, na.rm = T)/
+  sqrt(colSums(mean_yesgoal_finalrts[, trial_columns_yesgoal]*0+1, na.rm = T))
+
+
+
+# Plot it
+plot(x = -ntrialsprior:ntrialsafter, y = m_rt_yesgoal,
+     type = 'l', lwd = 3, xlab = 'Trials relative to goal achievement', ylab = ('decision time (s)'),
+     ylim = c(1, 1.3), main = 'Decision Time by Proximity to Goal Achievement')
+abline(v = 0, col = 'black', lwd = 1, lty = 'dashed')
+# arrows(x0 = -ntrialsprior:ntrialsafter, 
+#        y0 = m_prisky_yesgoal - sem_prisky_yesgoal, 
+#        y1 = m_prisky_yesgoal + sem_prisky_yesgoal,
+#        length = 0)
+polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
+        y = c(m_rt_yesgoal + sem_rt_yesgoal, rev(m_rt_yesgoal - sem_rt_yesgoal)),
+        col = rgb(.5, .5, .5, .2))
+# NOTE: An unequal # of subjects contribute to these points after goal attainment, AND
+# an unequal # of blocks/subject. Only the former is accounted for by the SEM calculation.
+
+# TAKEAWAY: 
+# Effort drops after reaching the goal and/or remains consistently low. This effect isn't huge.
 
 
 
