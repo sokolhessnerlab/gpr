@@ -1703,14 +1703,20 @@ rho_lm_influence = lm(rho ~ 1 + goallevelP1N1 * psq_goal_influence +
 summary(rho_lm_influence)
 # Bonus influence alone predicts higher rho
 
+rho_lm_round = lm(rho ~ 1 + goallevelP1N1 * bonusatstakeP1N1 * roundnum0123, 
+                      data = clean_data_subjlevel_long )
+summary(rho_lm_round)
+# Round number has a trending (!) neg. effect on rho values. 
+
 # TAKEAWAYS: No individual difference terms interact with goal or bonus levels to change rho.
+# There might be weak effects of a) round number, BIS-BAS ratio, or self-reported bonus
+# influence (though this as a main effect doesn't make sense...)
 
 # Next step options:
 # 1. Modify the model to capture changes in risk attitudes. Changes...
 #   ... within round
 #   ... across rounds
-#   ... after goal attainment
-#   ... before goal attainment
+#   ... after goal attainment (and interactions here w/ goal level?)
 
 
 
