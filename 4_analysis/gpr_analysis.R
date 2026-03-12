@@ -1063,7 +1063,19 @@ for (sb in 1:nsubblocks){
   mean_rt_bonus_x_subblock[sb,2] = mean(subblocks_long$sqrtrt[(subblocks_long$subblocknum == sb) & (subblocks_long$bonusatstakeP1N1 == -1)])
   sem_rt_bonus_x_subblock[sb,2] = sd(subblocks_long$sqrtrt[(subblocks_long$subblocknum == sb) & (subblocks_long$bonusatstakeP1N1 == -1)])/sqrt(number_of_clean_subjects)
   
-  for (b in 1:4){
+  # Summary Data for rt
+  mean_rt_subblock
+  sem_rt_subblock
+  
+  # Summary rt by GOAL (1 is HIGH and 2 is LOW)
+  mean_rt_goal_x_subblock
+  sem_rt_goal_x_subblock
+  
+  #Summary rt by BONUS (1 is HIGH and 2 is LOW)
+  mean_rt_bonus_x_subblock
+  sem_rt_bonus_x_subblock
+  
+   for (b in 1:4){
     # P(risky)
     mean_prisky_round_x_subblock[sb,b] = mean(subblocks_long$prisky[(subblocks_long$subblocknum == sb) & (subblocks_long$roundnum == b)])
     sem_prisky_round_x_subblock[sb,b] = sd(subblocks_long$prisky[(subblocks_long$subblocknum == sb) & (subblocks_long$roundnum == b)])/sqrt(number_of_clean_subjects)
