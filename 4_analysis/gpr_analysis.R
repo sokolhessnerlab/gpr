@@ -1268,12 +1268,13 @@ for (s in 1:number_of_clean_subjects){
     # Storing choices
     nogoal_finalchoices[nogoalInd, trial_columns_nogoal] = final_trials
     
+    # stores out the goal and bonus level data for each participant
     nogoal_finalchoices$bonusatstakeP1N1[nogoalInd] = clean_data_subjlevel_long$bonusatstakeP1N1[cleanlongInd]
     nogoal_finalchoices$goallevelP1N1[nogoalInd] = clean_data_subjlevel_long$goallevelP1N1[cleanlongInd]
   }
   
-  person_rows = which(nogoal_finalchoices$subjectnumber == subj_id)
-  person_mean = mean(unlist(nogoal_finalchoices[person_rows, trial_columns_nogoal]), na.rm = TRUE)
+  #Storing the mean choices of the final 20 trials 
+  person_mean = mean(nogoal_finalchoices[nogoal_finalchoices$subjectnumber == subj_id, trial_columns_nogoal], na.rm = TRUE)
 }
 
 ##### Yes-Goal Blocks ----
