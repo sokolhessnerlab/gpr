@@ -1013,6 +1013,18 @@ for (sb in 1:nsubblocks){
   mean_prisky_bonus_x_subblock[sb,2] = mean(subblocks_long$prisky[(subblocks_long$subblocknum == sb) & (subblocks_long$bonusatstakeP1N1 == -1)])
   sem_prisky_bonus_x_subblock[sb,2] = sd(subblocks_long$prisky[(subblocks_long$subblocknum == sb) & (subblocks_long$bonusatstakeP1N1 == -1)])/sqrt(number_of_clean_subjects)
   
+  # Summary Data for prisky
+  mean_prisky_subblock
+  sem_prisky_subblock
+  
+  # Summary prisky by GOAL (1 is HIGH and 2 is LOW)
+  mean_prisky_goal_x_subblock
+  sem_prisky_goal_x_subblock
+  
+  #Summary prisky by BONUS (1 is HIGH and 2 is LOW)
+  mean_prisky_bonus_x_subblock
+  sem_prisky_bonus_x_subblock
+  
   
   # Decision Time
   # Overall
