@@ -1257,24 +1257,24 @@ for (s in 1:number_of_clean_subjects){
   subj_id = keep_participants[s]
   tmpdata = clean_data_dm[clean_data_dm$subjectnumber == subj_id,]
   
+  # I tried following the structure of what you put below for the yesgoal loop
   for (b in 1:4){
-    # in here we extract the information we need on a per-block basis!
-    # JUSTIN DOES! 
+    nogoalInd = (nogoal_finalchoices$subjectnumber == subj_id) & (nogoal_finalchoices$roundnum == b)
+    cleanlongInd = (clean_data_subjlevel_long$subjectnumber == subj_id) & (clean_data_subjlevel_long$roundnum == b)
     
-    # extract goal level info and bonus level info
-    # (this one is about moving this info from one place to another)
+    # getting nfinaltrials defined as the last 20
+    final_trials = tail(tmpdata$choice[tmpdata$roundnum == b], nfinaltrials)
     
-    # conditional - if the goal was NOT met...
-    # if(conditionalstatement){
-    #   actionstobetaken (... then put in the last however many trials' worth of choices)
-    # }
+    # Storing choices
+    nogoal_finalchoices[nogoalInd, trial_columns_nogoal] = final_trials
+    
+    nogoal_finalchoices$bonusatstakeP1N1[nogoalInd] = clean_data_subjlevel_long$bonusatstakeP1N1[cleanlongInd]
+    nogoal_finalchoices$goallevelP1N1[nogoalInd] = clean_data_subjlevel_long$goallevelP1N1[cleanlongInd]
   }
   
-  # insert per-person means here? 
-  
+  person_rows = which(nogoal_finalchoices$subjectnumber == subj_id)
+  person_mean = mean(unlist(nogoal_finalchoices[person_rows, trial_columns_nogoal]), na.rm = TRUE)
 }
-
-
 
 ##### Yes-Goal Blocks ----
 # Second, look at blocks where goals WERE attained
