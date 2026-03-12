@@ -1562,7 +1562,7 @@ negLLprospect_gpr_basic <- function(parameters,choiceset,choices) {
 }
 
 
-## Optimization ############################################
+### Optimization ----
 eps = .Machine$double.eps;
 lower_bounds = c(eps, 0); # R, M
 upper_bounds = c(2,80);
