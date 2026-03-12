@@ -1274,7 +1274,7 @@ for (s in 1:number_of_clean_subjects){
   }
   
   #Storing the mean choices of the final 20 trials 
-  person_mean = mean(nogoal_finalchoices[nogoal_finalchoices$subjectnumber == subj_id, trial_columns_nogoal], na.rm = TRUE)
+  #person_mean = mean(nogoal_finalchoices[nogoal_finalchoices$subjectnumber == subj_id, trial_columns_nogoal], na.rm = TRUE)
 }
 
 ##### Yes-Goal Blocks ----
