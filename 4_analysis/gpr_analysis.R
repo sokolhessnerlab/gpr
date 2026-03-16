@@ -1342,6 +1342,12 @@ colnames(meanbyGL_yesgoal_finalchoices) = c('subjectnumber', 'goallevelP1N1', tr
 meanbyGL_yesgoal_finalchoices$subjectnumber = rep(keep_participants, each = 2)
 meanbyGL_yesgoal_finalchoices$goallevelP1N1 = rep(c(1,-1), number_of_clean_subjects)
 
+meanbyBL_yesgoal_finalchoices = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects*2, length(trial_columns_yesgoal) + 2)))
+colnames(meanbyBL_yesgoal_finalchoices) = c('subjectnumber', 'bonusatstakeP1N1', trial_columns_yesgoal)
+meanbyBL_yesgoal_finalchoices$subjectnumber = rep(keep_participants, each = 2)
+meanbyBL_yesgoal_finalchoices$bonusatstakeP1N1 = rep(c(1,-1), number_of_clean_subjects)
+
+
 for (s in 1:number_of_clean_subjects){
   subj_id = keep_participants[s]
   tmpdata = clean_data_dm[clean_data_dm$subjectnumber == subj_id,]
@@ -1389,12 +1395,26 @@ for (s in 1:number_of_clean_subjects){
                                   (meanbyGL_yesgoal_finalchoices$goallevelP1N1 == -1), trial_columns_yesgoal] = 
     colMeans(yesgoal_finalchoices[(yesgoal_finalchoices$subjectnumber == subj_id) & 
                                     (yesgoal_finalchoices$goallevelP1N1 == -1), trial_columns_yesgoal], na.rm = T)
+  
+  # High bonus
+  meanbyBL_yesgoal_finalchoices[(meanbyBL_yesgoal_finalchoices$subjectnumber == subj_id) & 
+                                  (meanbyBL_yesgoal_finalchoices$bonusatstakeP1N1 == 1), trial_columns_yesgoal] = 
+    colMeans(yesgoal_finalchoices[(yesgoal_finalchoices$subjectnumber == subj_id) & 
+                                    (yesgoal_finalchoices$bonusatstakeP1N1 == 1), trial_columns_yesgoal], na.rm = T)
+  
+  # Low bonus
+  meanbyBL_yesgoal_finalchoices[(meanbyBL_yesgoal_finalchoices$subjectnumber == subj_id) & 
+                                  (meanbyBL_yesgoal_finalchoices$bonusatstakeP1N1 == -1), trial_columns_yesgoal] = 
+    colMeans(yesgoal_finalchoices[(yesgoal_finalchoices$subjectnumber == subj_id) & 
+                                    (yesgoal_finalchoices$bonusatstakeP1N1 == -1), trial_columns_yesgoal], na.rm = T)
+  
 }
 
 m_prisky_yesgoal = colMeans(mean_yesgoal_finalchoices[,trial_columns_yesgoal], na.rm = T)
 sem_prisky_yesgoal = apply(mean_yesgoal_finalchoices[, trial_columns_yesgoal], 2, sd, na.rm = T)/
   sqrt(colSums(mean_yesgoal_finalchoices[, trial_columns_yesgoal]*0+1, na.rm = T))
 
+# Goal Levels
 m_prisky_yesgoal_highGL = colMeans(meanbyGL_yesgoal_finalchoices[meanbyGL_yesgoal_finalchoices$goallevelP1N1 == 1,trial_columns_yesgoal], na.rm = T)
 sem_prisky_yesgoal_highGL = apply(meanbyGL_yesgoal_finalchoices[meanbyGL_yesgoal_finalchoices$goallevelP1N1 == 1, trial_columns_yesgoal], 2, sd, na.rm = T)/
   sqrt(colSums(meanbyGL_yesgoal_finalchoices[meanbyGL_yesgoal_finalchoices$goallevelP1N1 == 1, trial_columns_yesgoal]*0+1, na.rm = T))
@@ -1402,6 +1422,17 @@ sem_prisky_yesgoal_highGL = apply(meanbyGL_yesgoal_finalchoices[meanbyGL_yesgoal
 m_prisky_yesgoal_lowGL = colMeans(meanbyGL_yesgoal_finalchoices[meanbyGL_yesgoal_finalchoices$goallevelP1N1 == -1,trial_columns_yesgoal], na.rm = T)
 sem_prisky_yesgoal_lowGL = apply(meanbyGL_yesgoal_finalchoices[meanbyGL_yesgoal_finalchoices$goallevelP1N1 == -1, trial_columns_yesgoal], 2, sd, na.rm = T)/
   sqrt(colSums(meanbyGL_yesgoal_finalchoices[meanbyGL_yesgoal_finalchoices$goallevelP1N1 == -1, trial_columns_yesgoal]*0+1, na.rm = T))
+
+# Bonus Levels
+m_prisky_yesgoal_highBL = colMeans(meanbyBL_yesgoal_finalchoices[meanbyBL_yesgoal_finalchoices$bonusatstakeP1N1 == 1,trial_columns_yesgoal], na.rm = T)
+sem_prisky_yesgoal_highBL = apply(meanbyBL_yesgoal_finalchoices[meanbyBL_yesgoal_finalchoices$bonusatstakeP1N1 == 1, trial_columns_yesgoal], 2, sd, na.rm = T)/
+  sqrt(colSums(meanbyBL_yesgoal_finalchoices[meanbyBL_yesgoal_finalchoices$bonusatstakeP1N1 == 1, trial_columns_yesgoal]*0+1, na.rm = T))
+
+m_prisky_yesgoal_lowBL = colMeans(meanbyBL_yesgoal_finalchoices[meanbyBL_yesgoal_finalchoices$bonusatstakeP1N1 == -1,trial_columns_yesgoal], na.rm = T)
+sem_prisky_yesgoal_lowBL = apply(meanbyBL_yesgoal_finalchoices[meanbyBL_yesgoal_finalchoices$bonusatstakeP1N1 == -1, trial_columns_yesgoal], 2, sd, na.rm = T)/
+  sqrt(colSums(meanbyBL_yesgoal_finalchoices[meanbyBL_yesgoal_finalchoices$bonusatstakeP1N1 == -1, trial_columns_yesgoal]*0+1, na.rm = T))
+
+
 
 # Plot it: OVERALL
 plot(x = -ntrialsprior:ntrialsafter, y = m_prisky_yesgoal,
@@ -1438,6 +1469,28 @@ abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
 legend("bottomleft",
        legend = c('High Goal','Low Goal'),
        col = c('darkorchid4','darkorchid2'),
+       lty = 1, lwd = 4)
+
+
+
+# HIGH & LOW BONUS:
+plot(x = -ntrialsprior:ntrialsafter, y = m_prisky_yesgoal_highBL,
+     type = 'l', lwd = 3, xlab = 'Trials relative to goal achievement', ylab = ('p(risky)'),
+     ylim = c(0.3, 0.8), main = 'Risky Choices by Proximity to Goal Achievement',
+     col = 'blue4')
+polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
+        y = c(m_prisky_yesgoal_highBL + sem_prisky_yesgoal_highBL, rev(m_prisky_yesgoal_highBL - sem_prisky_yesgoal_highBL)),
+        col = rgb(t(col2rgb('blue4')), alpha = 51, maxColorValue = 255))
+lines(x = -ntrialsprior:ntrialsafter, y = m_prisky_yesgoal_lowBL,
+      lwd = 3, col = 'blue2')
+polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
+        y = c(m_prisky_yesgoal_lowBL + sem_prisky_yesgoal_lowBL, rev(m_prisky_yesgoal_lowBL - sem_prisky_yesgoal_lowBL)),
+        col = rgb(t(col2rgb('blue2')), alpha = 51, maxColorValue = 255))
+abline(v = 0, col = 'black', lwd = 1, lty = 'dashed')
+abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
+legend("bottomleft",
+       legend = c('High Bonus','Low Bonus'),
+       col = c('blue4','blue2'),
        lty = 1, lwd = 4)
 
 # If we want to use regression on this, need to reshape into LONG format, and include a
