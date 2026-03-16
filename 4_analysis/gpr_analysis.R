@@ -1253,6 +1253,12 @@ colnames(nogoal_finalchoices) = c(other_columns, trial_columns_nogoal)
 nogoal_finalchoices$subjectnumber = rep(keep_participants, each = 4)
 nogoal_finalchoices$roundnum = rep(1:4)
 
+mean_nogoal_finalchoices = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects, length(trial_columns_nogoal) + 1)))
+colnames(mean_nogoal_finalchoices) = c('subjectnumber', trial_columns_nogoal)
+
+mean_nogoal_finalchoices$subjectnumber = keep_participants
+
+
 for (s in 1:number_of_clean_subjects){
   subj_id = keep_participants[s]
   tmpdata = clean_data_dm[clean_data_dm$subjectnumber == subj_id,]
@@ -1274,8 +1280,24 @@ for (s in 1:number_of_clean_subjects){
   }
   
   #Storing the mean choices of the final 20 trials 
-  #person_mean = mean(nogoal_finalchoices[nogoal_finalchoices$subjectnumber == subj_id, trial_columns_nogoal], na.rm = TRUE)
+  mean_nogoal_finalchoices[s,trial_columns_nogoal] = colMeans(nogoal_finalchoices[nogoal_finalchoices$subjectnumber == subj_id, trial_columns_nogoal], na.rm = TRUE)
 }
+
+m_prisky_nogoal = colMeans(mean_nogoal_finalchoices[,trial_columns_nogoal], na.rm = T)
+sem_prisky_nogoal = apply(mean_nogoal_finalchoices[, trial_columns_nogoal], 2, sd, na.rm = T)/
+  sqrt(colSums(mean_nogoal_finalchoices[, trial_columns_nogoal]*0+1, na.rm = T))
+
+# Plot it: OVERALL
+plot(x = -nfinaltrials:-1, y = m_prisky_nogoal,
+     type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('p(risky)'),
+     ylim = c(0.3, 0.7), main = 'Final risky choices in rounds without goal achievement')
+abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
+polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
+        y = c(m_prisky_nogoal + sem_prisky_nogoal, rev(m_prisky_nogoal - sem_prisky_nogoal)),
+        col = rgb(.5, .5, .5, .2))
+
+
+
 
 ##### Yes-Goal Blocks ----
 # Second, look at blocks where goals WERE attained
@@ -1357,10 +1379,14 @@ for (s in 1:number_of_clean_subjects){
   }
   mean_yesgoal_finalchoices[s, trial_columns_yesgoal] = 
     colMeans(yesgoal_finalchoices[yesgoal_finalchoices$subjectnumber == subj_id, trial_columns_yesgoal], na.rm = T)
+  
+  # High goal
   meanbyGL_yesgoal_finalchoices[(meanbyGL_yesgoal_finalchoices$subjectnumber == subj_id) & 
                                 (meanbyGL_yesgoal_finalchoices$goallevelP1N1 == 1), trial_columns_yesgoal] = 
     colMeans(yesgoal_finalchoices[(yesgoal_finalchoices$subjectnumber == subj_id) & 
                                   (yesgoal_finalchoices$goallevelP1N1 == 1), trial_columns_yesgoal], na.rm = T)
+  
+  # Low goal
   meanbyGL_yesgoal_finalchoices[(meanbyGL_yesgoal_finalchoices$subjectnumber == subj_id) & 
                                   (meanbyGL_yesgoal_finalchoices$goallevelP1N1 == -1), trial_columns_yesgoal] = 
     colMeans(yesgoal_finalchoices[(yesgoal_finalchoices$subjectnumber == subj_id) & 
@@ -1396,7 +1422,7 @@ polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
 # an unequal # of blocks/subject. Only the former is accounted for by the SEM calculation.
 
 
-# HIGH GOAL:
+# HIGH & LOW GOAL:
 plot(x = -ntrialsprior:ntrialsafter, y = m_prisky_yesgoal_highGL,
      type = 'l', lwd = 3, xlab = 'Trials relative to goal achievement', ylab = ('p(risky)'),
      ylim = c(0.2, 1), main = 'Risky Choices by Proximity to Goal Achievement',
@@ -1428,11 +1454,17 @@ legend("bottomleft",
 
 ###### Supplemental Analysis ----
 # looking at trialgoalmet
+
+
 sum(is.finite(clean_data_subjlevel_long$trialgoalmet[clean_data_subjlevel_long$goallevelP1N1 == 1]))
 sum(is.finite(clean_data_subjlevel_long$trialgoalmet[clean_data_subjlevel_long$goallevelP1N1 == -1]))
 
 mean(clean_data_subjlevel_long$trialgoalmet[clean_data_subjlevel_long$goallevelP1N1 == 1], na.rm = T)
 mean(clean_data_subjlevel_long$trialgoalmet[clean_data_subjlevel_long$goallevelP1N1 == -1], na.rm = T)
+
+median(clean_data_subjlevel_long$trialgoalmet[clean_data_subjlevel_long$goallevelP1N1 == 1], na.rm = T)
+median(clean_data_subjlevel_long$trialgoalmet[clean_data_subjlevel_long$goallevelP1N1 == -1], na.rm = T)
+
 
 var(clean_data_subjlevel_long$trialgoalmet[clean_data_subjlevel_long$goallevelP1N1 == 1], na.rm = T)
 var(clean_data_subjlevel_long$trialgoalmet[clean_data_subjlevel_long$goallevelP1N1 == -1], na.rm = T)
