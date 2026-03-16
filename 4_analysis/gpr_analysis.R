@@ -1342,8 +1342,6 @@ colnames(meanbyGL_yesgoal_finalchoices) = c('subjectnumber', 'goallevelP1N1', tr
 meanbyGL_yesgoal_finalchoices$subjectnumber = rep(keep_participants, each = 2)
 meanbyGL_yesgoal_finalchoices$goallevelP1N1 = rep(c(1,-1), number_of_clean_subjects)
 
-mean_yesgoal_finalchoices$subjectnumber = keep_participants
-
 for (s in 1:number_of_clean_subjects){
   subj_id = keep_participants[s]
   tmpdata = clean_data_dm[clean_data_dm$subjectnumber == subj_id,]
