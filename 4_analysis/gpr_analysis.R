@@ -10,7 +10,7 @@ rm(list = ls())
 
 # STEP 1: SET YOUR WORKING DIRECTORY! ----
 # On PSH's computers...
-#setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
+# setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
 # On JB's computers...
 setwd('/Users/justinblake/Documents/GitHub/gpr/');
 
@@ -1384,29 +1384,21 @@ for (s in 1:number_of_clean_subjects){
   mean_yesgoal_finalchoices[s, trial_columns_yesgoal] = 
     colMeans(yesgoal_finalchoices[yesgoal_finalchoices$subjectnumber == subj_id, trial_columns_yesgoal], na.rm = T)
   
-  # High goal
-  meanbyGL_yesgoal_finalchoices[(meanbyGL_yesgoal_finalchoices$subjectnumber == subj_id) & 
-                                (meanbyGL_yesgoal_finalchoices$goallevelP1N1 == 1), trial_columns_yesgoal] = 
-    colMeans(yesgoal_finalchoices[(yesgoal_finalchoices$subjectnumber == subj_id) & 
-                                  (yesgoal_finalchoices$goallevelP1N1 == 1), trial_columns_yesgoal], na.rm = T)
+  # Goals
+  for (glevel in c(1,-1)){
+    meanbyGL_yesgoal_finalchoices[(meanbyGL_yesgoal_finalchoices$subjectnumber == subj_id) & 
+                                    (meanbyGL_yesgoal_finalchoices$goallevelP1N1 == glevel), trial_columns_yesgoal] = 
+      colMeans(yesgoal_finalchoices[(yesgoal_finalchoices$subjectnumber == subj_id) & 
+                                      (yesgoal_finalchoices$goallevelP1N1 == glevel), trial_columns_yesgoal], na.rm = T)
+  }
   
-  # Low goal
-  meanbyGL_yesgoal_finalchoices[(meanbyGL_yesgoal_finalchoices$subjectnumber == subj_id) & 
-                                  (meanbyGL_yesgoal_finalchoices$goallevelP1N1 == -1), trial_columns_yesgoal] = 
-    colMeans(yesgoal_finalchoices[(yesgoal_finalchoices$subjectnumber == subj_id) & 
-                                    (yesgoal_finalchoices$goallevelP1N1 == -1), trial_columns_yesgoal], na.rm = T)
-  
-  # High bonus
-  meanbyBL_yesgoal_finalchoices[(meanbyBL_yesgoal_finalchoices$subjectnumber == subj_id) & 
-                                  (meanbyBL_yesgoal_finalchoices$bonusatstakeP1N1 == 1), trial_columns_yesgoal] = 
-    colMeans(yesgoal_finalchoices[(yesgoal_finalchoices$subjectnumber == subj_id) & 
-                                    (yesgoal_finalchoices$bonusatstakeP1N1 == 1), trial_columns_yesgoal], na.rm = T)
-  
-  # Low bonus
-  meanbyBL_yesgoal_finalchoices[(meanbyBL_yesgoal_finalchoices$subjectnumber == subj_id) & 
-                                  (meanbyBL_yesgoal_finalchoices$bonusatstakeP1N1 == -1), trial_columns_yesgoal] = 
-    colMeans(yesgoal_finalchoices[(yesgoal_finalchoices$subjectnumber == subj_id) & 
-                                    (yesgoal_finalchoices$bonusatstakeP1N1 == -1), trial_columns_yesgoal], na.rm = T)
+  # Bonuses
+  for (blevel in c(1,-1)){
+    meanbyBL_yesgoal_finalchoices[(meanbyBL_yesgoal_finalchoices$subjectnumber == subj_id) & 
+                                    (meanbyBL_yesgoal_finalchoices$bonusatstakeP1N1 == blevel), trial_columns_yesgoal] = 
+      colMeans(yesgoal_finalchoices[(yesgoal_finalchoices$subjectnumber == subj_id) & 
+                                      (yesgoal_finalchoices$bonusatstakeP1N1 == blevel), trial_columns_yesgoal], na.rm = T)
+  }
   
 }
 
@@ -1544,6 +1536,16 @@ mean_yesgoal_finalrts = as.data.frame(array(data = NA, dim = c(number_of_clean_s
 colnames(mean_yesgoal_finalrts) = c('subjectnumber', trial_columns_yesgoal)
 
 mean_yesgoal_finalrts$subjectnumber = keep_participants
+
+meanbyGL_yesgoal_finalrts = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects*2, length(trial_columns_yesgoal) + 2)))
+colnames(meanbyGL_yesgoal_finalrts) = c('subjectnumber', 'goallevelP1N1', trial_columns_yesgoal)
+meanbyGL_yesgoal_finalrts$subjectnumber = rep(keep_participants, each = 2)
+meanbyGL_yesgoal_finalrts$goallevelP1N1 = rep(c(1,-1), number_of_clean_subjects)
+
+meanbyBL_yesgoal_finalrts = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects*2, length(trial_columns_yesgoal) + 2)))
+colnames(meanbyBL_yesgoal_finalrts) = c('subjectnumber', 'bonusatstakeP1N1', trial_columns_yesgoal)
+meanbyBL_yesgoal_finalrts$subjectnumber = rep(keep_participants, each = 2)
+meanbyBL_yesgoal_finalrts$bonusatstakeP1N1 = rep(c(1,-1), number_of_clean_subjects)
 
 
 for (s in 1:number_of_clean_subjects){
