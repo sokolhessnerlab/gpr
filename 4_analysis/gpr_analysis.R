@@ -1399,7 +1399,6 @@ for (s in 1:number_of_clean_subjects){
       colMeans(yesgoal_finalchoices[(yesgoal_finalchoices$subjectnumber == subj_id) & 
                                       (yesgoal_finalchoices$bonusatstakeP1N1 == blevel), trial_columns_yesgoal], na.rm = T)
   }
-  
 }
 
 m_prisky_yesgoal = colMeans(mean_yesgoal_finalchoices[,trial_columns_yesgoal], na.rm = T)
@@ -1581,14 +1580,46 @@ for (s in 1:number_of_clean_subjects){
   }
   mean_yesgoal_finalrts[s, trial_columns_yesgoal] = 
     colMeans(yesgoal_finalrts[yesgoal_finalchoices$subjectnumber == subj_id, trial_columns_yesgoal], na.rm = T)
+  
+  # Goals
+  for (glevel in c(1,-1)){
+    meanbyGL_yesgoal_finalrts[(meanbyGL_yesgoal_finalrts$subjectnumber == subj_id) & 
+                                    (meanbyGL_yesgoal_finalrts$goallevelP1N1 == glevel), trial_columns_yesgoal] = 
+      colMeans(yesgoal_finalrts[(yesgoal_finalrts$subjectnumber == subj_id) & 
+                                      (yesgoal_finalrts$goallevelP1N1 == glevel), trial_columns_yesgoal], na.rm = T)
+  }
+  
+  # Bonuses
+  for (blevel in c(1,-1)){
+    meanbyBL_yesgoal_finalrts[(meanbyBL_yesgoal_finalrts$subjectnumber == subj_id) & 
+                                    (meanbyBL_yesgoal_finalrts$bonusatstakeP1N1 == blevel), trial_columns_yesgoal] = 
+      colMeans(yesgoal_finalrts[(yesgoal_finalrts$subjectnumber == subj_id) & 
+                                      (yesgoal_finalrts$bonusatstakeP1N1 == blevel), trial_columns_yesgoal], na.rm = T)
+  }
 }
 
 m_rt_yesgoal = colMeans(mean_yesgoal_finalrts[,trial_columns_yesgoal], na.rm = T)
 
-# NEED TO FIX; this "number of subjects" is not correct
 sem_rt_yesgoal = apply(mean_yesgoal_finalrts[, trial_columns_yesgoal], 2, sd, na.rm = T)/
   sqrt(colSums(mean_yesgoal_finalrts[, trial_columns_yesgoal]*0+1, na.rm = T))
 
+# Goal Levels
+m_rt_yesgoal_highGL = colMeans(meanbyGL_yesgoal_finalrts[meanbyGL_yesgoal_finalrts$goallevelP1N1 == 1,trial_columns_yesgoal], na.rm = T)
+sem_rt_yesgoal_highGL = apply(meanbyGL_yesgoal_finalrts[meanbyGL_yesgoal_finalchoices$goallevelP1N1 == 1, trial_columns_yesgoal], 2, sd, na.rm = T)/
+  sqrt(colSums(meanbyGL_yesgoal_finalrts[meanbyGL_yesgoal_finalrts$goallevelP1N1 == 1, trial_columns_yesgoal]*0+1, na.rm = T))
+
+m_rt_yesgoal_lowGL = colMeans(meanbyGL_yesgoal_finalrts[meanbyGL_yesgoal_finalrts$goallevelP1N1 == -1,trial_columns_yesgoal], na.rm = T)
+sem_rt_yesgoal_lowGL = apply(meanbyGL_yesgoal_finalrts[meanbyGL_yesgoal_finalrts$goallevelP1N1 == -1, trial_columns_yesgoal], 2, sd, na.rm = T)/
+  sqrt(colSums(meanbyGL_yesgoal_finalrts[meanbyGL_yesgoal_finalrts$goallevelP1N1 == -1, trial_columns_yesgoal]*0+1, na.rm = T))
+
+# Bonus Levels
+m_rt_yesgoal_highBL = colMeans(meanbyBL_yesgoal_finalrts[meanbyBL_yesgoal_finalrts$bonusatstakeP1N1 == 1,trial_columns_yesgoal], na.rm = T)
+sem_rt_yesgoal_highBL = apply(meanbyBL_yesgoal_finalrts[meanbyBL_yesgoal_finalrts$bonusatstakeP1N1 == 1, trial_columns_yesgoal], 2, sd, na.rm = T)/
+  sqrt(colSums(meanbyBL_yesgoal_finalrts[meanbyBL_yesgoal_finalrts$bonusatstakeP1N1 == 1, trial_columns_yesgoal]*0+1, na.rm = T))
+
+m_rt_yesgoal_lowBL = colMeans(meanbyBL_yesgoal_finalrts[meanbyBL_yesgoal_finalrts$bonusatstakeP1N1 == -1,trial_columns_yesgoal], na.rm = T)
+sem_rt_yesgoal_lowBL = apply(meanbyBL_yesgoal_finalrts[meanbyBL_yesgoal_finalrts$bonusatstakeP1N1 == -1, trial_columns_yesgoal], 2, sd, na.rm = T)/
+  sqrt(colSums(meanbyBL_yesgoal_finalrts[meanbyBL_yesgoal_finalrts$bonusatstakeP1N1 == -1, trial_columns_yesgoal]*0+1, na.rm = T))
 
 
 # Plot it
@@ -1596,15 +1627,57 @@ plot(x = -ntrialsprior:ntrialsafter, y = m_rt_yesgoal,
      type = 'l', lwd = 3, xlab = 'Trials relative to goal achievement', ylab = ('decision time (s)'),
      ylim = c(1, 1.3), main = 'Decision Time by Proximity to Goal Achievement')
 abline(v = 0, col = 'black', lwd = 1, lty = 'dashed')
-# arrows(x0 = -ntrialsprior:ntrialsafter, 
-#        y0 = m_prisky_yesgoal - sem_prisky_yesgoal, 
-#        y1 = m_prisky_yesgoal + sem_prisky_yesgoal,
-#        length = 0)
 polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
         y = c(m_rt_yesgoal + sem_rt_yesgoal, rev(m_rt_yesgoal - sem_rt_yesgoal)),
         col = rgb(.5, .5, .5, .2))
 # NOTE: An unequal # of subjects contribute to these points after goal attainment, AND
 # an unequal # of blocks/subject. Only the former is accounted for by the SEM calculation.
+
+
+
+# HIGH & LOW GOAL:
+plot(x = -ntrialsprior:ntrialsafter, y = m_rt_yesgoal_highGL,
+     type = 'l', lwd = 3, xlab = 'Trials relative to goal achievement', ylab = ('decision time (s)'),
+     ylim = c(0.8,1.4), main = 'Decision Time by Proximity to Goal Achievement',
+     col = 'darkorchid4')
+polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
+        y = c(m_rt_yesgoal_highGL + sem_rt_yesgoal_highGL, rev(m_rt_yesgoal_highGL - sem_rt_yesgoal_highGL)),
+        col = rgb(t(col2rgb('darkorchid4')), alpha = 51, maxColorValue = 255))
+lines(x = -ntrialsprior:ntrialsafter, y = m_rt_yesgoal_lowGL,
+      lwd = 3, col = 'darkorchid2')
+polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
+        y = c(m_rt_yesgoal_lowGL + sem_rt_yesgoal_lowGL, rev(m_rt_yesgoal_lowGL - sem_rt_yesgoal_lowGL)),
+        col = rgb(t(col2rgb('darkorchid2')), alpha = 51, maxColorValue = 255))
+abline(v = 0, col = 'black', lwd = 1, lty = 'dashed')
+abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
+legend("bottomleft",
+       legend = c('High Goal','Low Goal'),
+       col = c('darkorchid4','darkorchid2'),
+       lty = 1, lwd = 4)
+# Effect of speeding post-goal might be stronger in high goal conditions? Hard to tell. 
+
+
+
+# HIGH & LOW BONUS:
+plot(x = -ntrialsprior:ntrialsafter, y = m_rt_yesgoal_highBL,
+     type = 'l', lwd = 3, xlab = 'Trials relative to goal achievement', ylab = ('decision time (s)'),
+     ylim = c(1.0,1.35), main = 'Decision Time by Proximity to Goal Achievement',
+     col = 'blue4')
+polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
+        y = c(m_rt_yesgoal_highBL + sem_rt_yesgoal_highBL, rev(m_rt_yesgoal_highBL - sem_rt_yesgoal_highBL)),
+        col = rgb(t(col2rgb('blue4')), alpha = 51, maxColorValue = 255))
+lines(x = -ntrialsprior:ntrialsafter, y = m_rt_yesgoal_lowBL,
+      lwd = 3, col = 'blue2')
+polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
+        y = c(m_rt_yesgoal_lowBL + sem_rt_yesgoal_lowBL, rev(m_rt_yesgoal_lowBL - sem_rt_yesgoal_lowBL)),
+        col = rgb(t(col2rgb('blue2')), alpha = 51, maxColorValue = 255))
+abline(v = 0, col = 'black', lwd = 1, lty = 'dashed')
+abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
+legend("bottomleft",
+       legend = c('High Bonus','Low Bonus'),
+       col = c('blue4','blue2'),
+       lty = 1, lwd = 4)
+
 
 # TAKEAWAY: 
 # Effort drops after reaching the goal and/or remains consistently low. This effect isn't huge.
