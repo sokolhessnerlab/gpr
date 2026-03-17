@@ -1291,27 +1291,27 @@ for (s in 1:number_of_clean_subjects){
   
   #Storing the mean choices of the final 20 trials 
   mean_nogoal_finalchoices[s,trial_columns_nogoal] = colMeans(nogoal_finalchoices[nogoal_finalchoices$subjectnumber == subj_id, trial_columns_nogoal], na.rm = TRUE)
-}
-
-m_prisky_nogoal = colMeans(mean_nogoal_finalchoices[,trial_columns_nogoal], na.rm = T)
-sem_prisky_nogoal = apply(mean_nogoal_finalchoices[, trial_columns_nogoal], 2, sd, na.rm = T)/
-  sqrt(colSums(mean_nogoal_finalchoices[, trial_columns_nogoal]*0+1, na.rm = T))
-
-# Goals
-for (glevel in c(1,-1)){
-  meanbyGL_nogoal_finalchoices[(meanbyGL_nogoal_finalchoices$subjectnumber == subj_id) & 
-                                  (meanbyGL_nogoal_finalchoices$goallevelP1N1 == glevel), trial_columns_nogoal] = 
-    colMeans(nogoal_finalchoices[(nogoal_finalchoices$subjectnumber == subj_id) & 
-                                    (nogoal_finalchoices$goallevelP1N1 == glevel), trial_columns_nogoal], na.rm = T)
-}
-
-# Bonuses
-for (blevel in c(1,-1)){
-  meanbyBL_nogoal_finalchoices[(meanbyBL_nogoal_finalchoices$subjectnumber == subj_id) & 
-                                  (meanbyBL_nogoal_finalchoices$bonusatstakeP1N1 == blevel), trial_columns_nogoal] = 
-    colMeans(nogoal_finalchoices[(nogoal_finalchoices$subjectnumber == subj_id) & 
-                                    (nogoal_finalchoices$bonusatstakeP1N1 == blevel), trial_columns_nogoal], na.rm = T)
-}
+  }
+  
+  m_prisky_nogoal = colMeans(mean_nogoal_finalchoices[,trial_columns_nogoal], na.rm = T)
+  sem_prisky_nogoal = apply(mean_nogoal_finalchoices[, trial_columns_nogoal], 2, sd, na.rm = T)/
+    sqrt(colSums(mean_nogoal_finalchoices[, trial_columns_nogoal]*0+1, na.rm = T))
+  
+    # Goals
+    for (glevel in c(1,-1)){
+      meanbyGL_nogoal_finalchoices[(meanbyGL_nogoal_finalchoices$subjectnumber == subj_id) & 
+                                      (meanbyGL_nogoal_finalchoices$goallevelP1N1 == glevel), trial_columns_nogoal] = 
+        colMeans(nogoal_finalchoices[(nogoal_finalchoices$subjectnumber == subj_id) & 
+                                        (nogoal_finalchoices$goallevelP1N1 == glevel), trial_columns_nogoal], na.rm = T)
+    }
+    
+    # Bonuses
+    for (blevel in c(1,-1)){
+      meanbyBL_nogoal_finalchoices[(meanbyBL_nogoal_finalchoices$subjectnumber == subj_id) & 
+                                      (meanbyBL_nogoal_finalchoices$bonusatstakeP1N1 == blevel), trial_columns_nogoal] = 
+        colMeans(nogoal_finalchoices[(nogoal_finalchoices$subjectnumber == subj_id) & 
+                                        (nogoal_finalchoices$bonusatstakeP1N1 == blevel), trial_columns_nogoal], na.rm = T)
+    }
 
 m_prisky_nogoal = colMeans(mean_nogoal_finalchoices[,trial_columns_nogoal], na.rm = T)
 sem_prisky_nogoal = apply(mean_nogoal_finalchoices[, trial_columns_nogoal], 2, sd, na.rm = T)/
