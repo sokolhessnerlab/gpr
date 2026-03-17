@@ -1350,14 +1350,14 @@ plot(x = -nfinaltrials:-1, y = m_prisky_nogoal_highGL,
      type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('p(risky)'),
      ylim = c(0, 1), main = 'Risky Choices in Unsuccessful Rounds by Goal Level',
      col = 'darkorchid4')
-polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
-        y = c(m_prisky_nogoal_highGL + sem_prisky_nogoal_highGL, rev(m_prisky_nogoal_highGL - sem_prisky_nogoal_highGL)),
-        col = rgb(t(col2rgb('darkorchid4')), alpha = 51, maxColorValue = 255))
+# polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
+#         y = c(m_prisky_nogoal_highGL + sem_prisky_nogoal_highGL, rev(m_prisky_nogoal_highGL - sem_prisky_nogoal_highGL)),
+#         col = rgb(t(col2rgb('darkorchid4')), alpha = 51, maxColorValue = 255))
 lines(x = -nfinaltrials:-1, y = m_prisky_nogoal_lowGL,
       lwd = 3, col = 'darkorchid2')
-polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
-        y = c(m_prisky_nogoal_lowGL + sem_prisky_nogoal_lowGL, rev(m_prisky_nogoal_lowGL - sem_prisky_nogoal_lowGL)),
-        col = rgb(t(col2rgb('darkorchid2')), alpha = 51, maxColorValue = 255))
+# polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
+#         y = c(m_prisky_nogoal_lowGL + sem_prisky_nogoal_lowGL, rev(m_prisky_nogoal_lowGL - sem_prisky_nogoal_lowGL)),
+#         col = rgb(t(col2rgb('darkorchid2')), alpha = 51, maxColorValue = 255))
 abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
 legend("bottomleft",
        legend = c('High Goal','Low Goal'),
@@ -1370,14 +1370,14 @@ plot(x = -nfinaltrials:-1, y = m_prisky_nogoal_highBL,
      type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('p(risky)'),
      ylim = c(0, 1), main = 'Risky Choices in Unsuccessful Rounds by Bonus Level',
      col = 'blue4')
-polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
-        y = c(m_prisky_nogoal_highBL + sem_prisky_nogoal_highBL, rev(m_prisky_nogoal_highBL - sem_prisky_nogoal_highBL)),
-        col = rgb(t(col2rgb('blue4')), alpha = 51, maxColorValue = 255))
+# polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
+#         y = c(m_prisky_nogoal_highBL + sem_prisky_nogoal_highBL, rev(m_prisky_nogoal_highBL - sem_prisky_nogoal_highBL)),
+#         col = rgb(t(col2rgb('blue4')), alpha = 51, maxColorValue = 255))
 lines(x = -nfinaltrials:-1, y = m_prisky_nogoal_lowBL,
       lwd = 3, col = 'blue2')
-polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
-        y = c(m_prisky_nogoal_lowBL + sem_prisky_nogoal_lowBL, rev(m_prisky_nogoal_lowBL - sem_prisky_nogoal_lowBL)),
-        col = rgb(t(col2rgb('blue2')), alpha = 51, maxColorValue = 255))
+# polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
+#         y = c(m_prisky_nogoal_lowBL + sem_prisky_nogoal_lowBL, rev(m_prisky_nogoal_lowBL - sem_prisky_nogoal_lowBL)),
+#         col = rgb(t(col2rgb('blue2')), alpha = 51, maxColorValue = 255))
 abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
 legend("bottomleft",
        legend = c('High Bonus','Low Bonus'),
