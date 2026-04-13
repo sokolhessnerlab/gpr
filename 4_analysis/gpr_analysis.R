@@ -1292,31 +1292,29 @@ for (s in 1:number_of_clean_subjects){
   
   #Storing the mean choices of the final 20 trials when the goal was NOT reached
   mean_nogoal_finalchoices[s,trial_columns_nogoal] = colMeans(nogoal_finalchoices[nogoal_finalchoices$subjectnumber == subj_id, trial_columns_nogoal], na.rm = TRUE)
+  
+  # Calculate per-subject averages for final choices on blocks by goal or bonus level
+  # Goals
+  for (glevel in c(1,-1)){
+    meanbyGL_nogoal_finalchoices[(meanbyGL_nogoal_finalchoices$subjectnumber == subj_id) & 
+                                   (meanbyGL_nogoal_finalchoices$goallevelP1N1 == glevel), trial_columns_nogoal] = 
+      colMeans(nogoal_finalchoices[(nogoal_finalchoices$subjectnumber == subj_id) & 
+                                     (nogoal_finalchoices$goallevelP1N1 == glevel), trial_columns_nogoal], na.rm = T)
+  }
+  
+  # Bonuses
+  for (blevel in c(1,-1)){
+    meanbyBL_nogoal_finalchoices[(meanbyBL_nogoal_finalchoices$subjectnumber == subj_id) & 
+                                   (meanbyBL_nogoal_finalchoices$bonusatstakeP1N1 == blevel), trial_columns_nogoal] = 
+      colMeans(nogoal_finalchoices[(nogoal_finalchoices$subjectnumber == subj_id) & 
+                                     (nogoal_finalchoices$bonusatstakeP1N1 == blevel), trial_columns_nogoal], na.rm = T)
+  }
 }
 
 m_prisky_nogoal = colMeans(mean_nogoal_finalchoices[,trial_columns_nogoal], na.rm = T)
 sem_prisky_nogoal = apply(mean_nogoal_finalchoices[, trial_columns_nogoal], 2, sd, na.rm = T)/
   sqrt(colSums(mean_nogoal_finalchoices[, trial_columns_nogoal]*0+1, na.rm = T))
 
-# Goals
-for (glevel in c(1,-1)){
-  meanbyGL_nogoal_finalchoices[(meanbyGL_nogoal_finalchoices$subjectnumber == subj_id) & 
-                                 (meanbyGL_nogoal_finalchoices$goallevelP1N1 == glevel), trial_columns_nogoal] = 
-    colMeans(nogoal_finalchoices[(nogoal_finalchoices$subjectnumber == subj_id) & 
-                                   (nogoal_finalchoices$goallevelP1N1 == glevel), trial_columns_nogoal], na.rm = T)
-}
-
-# Bonuses
-for (blevel in c(1,-1)){
-  meanbyBL_nogoal_finalchoices[(meanbyBL_nogoal_finalchoices$subjectnumber == subj_id) & 
-                                 (meanbyBL_nogoal_finalchoices$bonusatstakeP1N1 == blevel), trial_columns_nogoal] = 
-    colMeans(nogoal_finalchoices[(nogoal_finalchoices$subjectnumber == subj_id) & 
-                                   (nogoal_finalchoices$bonusatstakeP1N1 == blevel), trial_columns_nogoal], na.rm = T)
-}
-
-m_prisky_nogoal = colMeans(mean_nogoal_finalchoices[,trial_columns_nogoal], na.rm = T)
-sem_prisky_nogoal = apply(mean_nogoal_finalchoices[, trial_columns_nogoal], 2, sd, na.rm = T)/
-  sqrt(colSums(mean_nogoal_finalchoices[, trial_columns_nogoal]*0+1, na.rm = T))
 
 # Goal Levels
 m_prisky_nogoal_highGL = colMeans(meanbyGL_nogoal_finalchoices[meanbyGL_nogoal_finalchoices$goallevelP1N1 == 1,trial_columns_nogoal], na.rm = T)
@@ -1339,7 +1337,7 @@ sem_prisky_nogoal_lowBL = apply(meanbyBL_nogoal_finalchoices[meanbyBL_nogoal_fin
 # Plot it: OVERALL
 plot(x = -nfinaltrials:-1, y = m_prisky_nogoal,
      type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('p(risky)'),
-     ylim = c(0.3, 0.7), main = 'Final risky choices in rounds without goal achievement')
+     ylim = c(0.3, 0.8), main = 'Final risky choices in rounds without goal achievement')
 abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
 polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
         y = c(m_prisky_nogoal + sem_prisky_nogoal, rev(m_prisky_nogoal - sem_prisky_nogoal)),
@@ -1351,14 +1349,14 @@ plot(x = -nfinaltrials:-1, y = m_prisky_nogoal_highGL,
      type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('p(risky)'),
      ylim = c(0, 1), main = 'Risky Choices in Unsuccessful Rounds by Goal Level',
      col = 'darkorchid4')
-# polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
-#         y = c(m_prisky_nogoal_highGL + sem_prisky_nogoal_highGL, rev(m_prisky_nogoal_highGL - sem_prisky_nogoal_highGL)),
-#         col = rgb(t(col2rgb('darkorchid4')), alpha = 51, maxColorValue = 255))
+polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
+        y = c(m_prisky_nogoal_highGL + sem_prisky_nogoal_highGL, rev(m_prisky_nogoal_highGL - sem_prisky_nogoal_highGL)),
+        col = rgb(t(col2rgb('darkorchid4')), alpha = 51, maxColorValue = 255))
 lines(x = -nfinaltrials:-1, y = m_prisky_nogoal_lowGL,
       lwd = 3, col = 'darkorchid2')
-# polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
-#         y = c(m_prisky_nogoal_lowGL + sem_prisky_nogoal_lowGL, rev(m_prisky_nogoal_lowGL - sem_prisky_nogoal_lowGL)),
-#         col = rgb(t(col2rgb('darkorchid2')), alpha = 51, maxColorValue = 255))
+polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
+        y = c(m_prisky_nogoal_lowGL + sem_prisky_nogoal_lowGL, rev(m_prisky_nogoal_lowGL - sem_prisky_nogoal_lowGL)),
+        col = rgb(t(col2rgb('darkorchid2')), alpha = 51, maxColorValue = 255))
 abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
 legend("bottomleft",
        legend = c('High Goal','Low Goal'),
@@ -1371,21 +1369,21 @@ plot(x = -nfinaltrials:-1, y = m_prisky_nogoal_highBL,
      type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('p(risky)'),
      ylim = c(0, 1), main = 'Risky Choices in Unsuccessful Rounds by Bonus Level',
      col = 'blue4')
-# polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
-#         y = c(m_prisky_nogoal_highBL + sem_prisky_nogoal_highBL, rev(m_prisky_nogoal_highBL - sem_prisky_nogoal_highBL)),
-#         col = rgb(t(col2rgb('blue4')), alpha = 51, maxColorValue = 255))
+polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
+        y = c(m_prisky_nogoal_highBL + sem_prisky_nogoal_highBL, rev(m_prisky_nogoal_highBL - sem_prisky_nogoal_highBL)),
+        col = rgb(t(col2rgb('blue4')), alpha = 51, maxColorValue = 255))
 lines(x = -nfinaltrials:-1, y = m_prisky_nogoal_lowBL,
       lwd = 3, col = 'blue2')
-# polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
-#         y = c(m_prisky_nogoal_lowBL + sem_prisky_nogoal_lowBL, rev(m_prisky_nogoal_lowBL - sem_prisky_nogoal_lowBL)),
-#         col = rgb(t(col2rgb('blue2')), alpha = 51, maxColorValue = 255))
+polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
+        y = c(m_prisky_nogoal_lowBL + sem_prisky_nogoal_lowBL, rev(m_prisky_nogoal_lowBL - sem_prisky_nogoal_lowBL)),
+        col = rgb(t(col2rgb('blue2')), alpha = 51, maxColorValue = 255))
 abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
 legend("bottomleft",
        legend = c('High Bonus','Low Bonus'),
        col = c('blue4','blue2'),
        lty = 1, lwd = 4)
 
-
+# risky decision-making increases as the end of the block approaches, starting around 5-10 trials before the end.
 
 
 ##### Yes-Goal Blocks ----
@@ -1527,9 +1525,6 @@ abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
 polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
         y = c(m_prisky_yesgoal + sem_prisky_yesgoal, rev(m_prisky_yesgoal - sem_prisky_yesgoal)),
         col = rgb(.5, .5, .5, .2))
-# NOTE: An unequal # of subjects contribute to these points after goal attainment, AND
-# an unequal # of blocks/subject. Only the former is accounted for by the SEM calculation.
-
 
 # HIGH & LOW GOAL:
 plot(x = -ntrialsprior:ntrialsafter, y = m_prisky_yesgoal_highGL,
@@ -1586,13 +1581,15 @@ legend("bottomleft",
 ###### Supplemental Analysis ----
 # looking at trialgoalmet
 
+# Number of goals met
+sum(is.finite(clean_data_subjlevel_long$trialgoalmet[clean_data_subjlevel_long$goallevelP1N1 == 1])) # high goal
+sum(is.finite(clean_data_subjlevel_long$trialgoalmet[clean_data_subjlevel_long$goallevelP1N1 == -1])) # low goal
 
-sum(is.finite(clean_data_subjlevel_long$trialgoalmet[clean_data_subjlevel_long$goallevelP1N1 == 1]))
-sum(is.finite(clean_data_subjlevel_long$trialgoalmet[clean_data_subjlevel_long$goallevelP1N1 == -1]))
-
+# On which trial was the goal met when it was met
 mean(clean_data_subjlevel_long$trialgoalmet[clean_data_subjlevel_long$goallevelP1N1 == 1], na.rm = T)
 mean(clean_data_subjlevel_long$trialgoalmet[clean_data_subjlevel_long$goallevelP1N1 == -1], na.rm = T)
 
+# On which trial was the goal met when it was met (median)
 median(clean_data_subjlevel_long$trialgoalmet[clean_data_subjlevel_long$goallevelP1N1 == 1], na.rm = T)
 median(clean_data_subjlevel_long$trialgoalmet[clean_data_subjlevel_long$goallevelP1N1 == -1], na.rm = T)
 
@@ -1611,6 +1608,7 @@ var(clean_data_subjlevel_long$trialgoalmet[clean_data_subjlevel_long$goallevelP1
 #### Decision Time by Goal Proximity ----
 
 ##### No-Goal Blocks ----
+
 
 ##### Yes-Goal Blocks ----
 # Second, look at blocks where goals WERE attained
