@@ -1273,45 +1273,46 @@ for (s in 1:number_of_clean_subjects){
   subj_id = keep_participants[s]
   tmpdata = clean_data_dm[clean_data_dm$subjectnumber == subj_id,]
   
-  # I tried following the structure of what you put below for the yesgoal loop
   for (b in 1:4){
     nogoalInd = (nogoal_finalchoices$subjectnumber == subj_id) & (nogoal_finalchoices$roundnum == b)
     cleanlongInd = (clean_data_subjlevel_long$subjectnumber == subj_id) & (clean_data_subjlevel_long$roundnum == b)
     
-    # getting nfinaltrials defined as the last 20
-    final_trials = tail(tmpdata$choice[tmpdata$roundnum == b], nfinaltrials)
-    
-    # Storing choices
-    nogoal_finalchoices[nogoalInd, trial_columns_nogoal] = final_trials
-    
     # stores out the goal and bonus level data for each participant
     nogoal_finalchoices$bonusatstakeP1N1[nogoalInd] = clean_data_subjlevel_long$bonusatstakeP1N1[cleanlongInd]
     nogoal_finalchoices$goallevelP1N1[nogoalInd] = clean_data_subjlevel_long$goallevelP1N1[cleanlongInd]
-  }
-  
-  #Storing the mean choices of the final 20 trials 
-  mean_nogoal_finalchoices[s,trial_columns_nogoal] = colMeans(nogoal_finalchoices[nogoal_finalchoices$subjectnumber == subj_id, trial_columns_nogoal], na.rm = TRUE)
-  }
-  
-  m_prisky_nogoal = colMeans(mean_nogoal_finalchoices[,trial_columns_nogoal], na.rm = T)
-  sem_prisky_nogoal = apply(mean_nogoal_finalchoices[, trial_columns_nogoal], 2, sd, na.rm = T)/
-    sqrt(colSums(mean_nogoal_finalchoices[, trial_columns_nogoal]*0+1, na.rm = T))
-  
-    # Goals
-    for (glevel in c(1,-1)){
-      meanbyGL_nogoal_finalchoices[(meanbyGL_nogoal_finalchoices$subjectnumber == subj_id) & 
-                                      (meanbyGL_nogoal_finalchoices$goallevelP1N1 == glevel), trial_columns_nogoal] = 
-        colMeans(nogoal_finalchoices[(nogoal_finalchoices$subjectnumber == subj_id) & 
-                                        (nogoal_finalchoices$goallevelP1N1 == glevel), trial_columns_nogoal], na.rm = T)
-    }
     
-    # Bonuses
-    for (blevel in c(1,-1)){
-      meanbyBL_nogoal_finalchoices[(meanbyBL_nogoal_finalchoices$subjectnumber == subj_id) & 
-                                      (meanbyBL_nogoal_finalchoices$bonusatstakeP1N1 == blevel), trial_columns_nogoal] = 
-        colMeans(nogoal_finalchoices[(nogoal_finalchoices$subjectnumber == subj_id) & 
-                                        (nogoal_finalchoices$bonusatstakeP1N1 == blevel), trial_columns_nogoal], na.rm = T)
+    if(clean_data_subjlevel_long$bonusreceived01[cleanlongInd] == 0) { # if they did NOT reach the goal on this round
+      # getting nfinaltrials defined as the last 20
+      final_trials = tail(tmpdata$choice[tmpdata$roundnum == b], nfinaltrials)
+      
+      # Storing choices
+      nogoal_finalchoices[nogoalInd, trial_columns_nogoal] = final_trials
     }
+  }
+  
+  #Storing the mean choices of the final 20 trials when the goal was NOT reached
+  mean_nogoal_finalchoices[s,trial_columns_nogoal] = colMeans(nogoal_finalchoices[nogoal_finalchoices$subjectnumber == subj_id, trial_columns_nogoal], na.rm = TRUE)
+}
+
+m_prisky_nogoal = colMeans(mean_nogoal_finalchoices[,trial_columns_nogoal], na.rm = T)
+sem_prisky_nogoal = apply(mean_nogoal_finalchoices[, trial_columns_nogoal], 2, sd, na.rm = T)/
+  sqrt(colSums(mean_nogoal_finalchoices[, trial_columns_nogoal]*0+1, na.rm = T))
+
+# Goals
+for (glevel in c(1,-1)){
+  meanbyGL_nogoal_finalchoices[(meanbyGL_nogoal_finalchoices$subjectnumber == subj_id) & 
+                                 (meanbyGL_nogoal_finalchoices$goallevelP1N1 == glevel), trial_columns_nogoal] = 
+    colMeans(nogoal_finalchoices[(nogoal_finalchoices$subjectnumber == subj_id) & 
+                                   (nogoal_finalchoices$goallevelP1N1 == glevel), trial_columns_nogoal], na.rm = T)
+}
+
+# Bonuses
+for (blevel in c(1,-1)){
+  meanbyBL_nogoal_finalchoices[(meanbyBL_nogoal_finalchoices$subjectnumber == subj_id) & 
+                                 (meanbyBL_nogoal_finalchoices$bonusatstakeP1N1 == blevel), trial_columns_nogoal] = 
+    colMeans(nogoal_finalchoices[(nogoal_finalchoices$subjectnumber == subj_id) & 
+                                   (nogoal_finalchoices$bonusatstakeP1N1 == blevel), trial_columns_nogoal], na.rm = T)
+}
 
 m_prisky_nogoal = colMeans(mean_nogoal_finalchoices[,trial_columns_nogoal], na.rm = T)
 sem_prisky_nogoal = apply(mean_nogoal_finalchoices[, trial_columns_nogoal], 2, sd, na.rm = T)/
