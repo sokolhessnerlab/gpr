@@ -1608,7 +1608,155 @@ var(clean_data_subjlevel_long$trialgoalmet[clean_data_subjlevel_long$goallevelP1
 #### Decision Time by Goal Proximity ----
 
 ##### No-Goal Blocks ----
+# First, look at blocks where goals were NOT attained
+nfinaltrials = 20 # number of trials at the end of the block to look at
 
+trial_columns_nogoal = c()
+for (t in 1:nfinaltrials){
+  newt = paste0('trial', t, sep = "")
+  trial_columns_nogoal = c(trial_columns_nogoal, newt)
+}
+
+other_columns = c('subjectnumber',
+                  'roundnum',
+                  'bonusatstakeP1N1',
+                  'goallevelP1N1')
+
+nogoal_finalchoices = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects*4, length(trial_columns_nogoal) + length(other_columns))))
+colnames(nogoal_finalchoices) = c(other_columns, trial_columns_nogoal)
+
+nogoal_finalchoices$subjectnumber = rep(keep_participants, each = 4)
+nogoal_finalchoices$roundnum = rep(1:4)
+
+mean_nogoal_finalchoices = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects, length(trial_columns_nogoal) + 1)))
+colnames(mean_nogoal_finalchoices) = c('subjectnumber', trial_columns_nogoal)
+
+mean_nogoal_finalchoices$subjectnumber = keep_participants
+
+meanbyGL_nogoal_finalchoices = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects*2, length(trial_columns_nogoal) + 2)))
+colnames(meanbyGL_nogoal_finalchoices) = c('subjectnumber', 'goallevelP1N1', trial_columns_nogoal)
+meanbyGL_nogoal_finalchoices$subjectnumber = rep(keep_participants, each = 2)
+meanbyGL_nogoal_finalchoices$goallevelP1N1 = rep(c(1,-1), number_of_clean_subjects)
+
+meanbyBL_nogoal_finalchoices = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects*2, length(trial_columns_nogoal) + 2)))
+colnames(meanbyBL_nogoal_finalchoices) = c('subjectnumber', 'bonusatstakeP1N1', trial_columns_nogoal)
+meanbyBL_nogoal_finalchoices$subjectnumber = rep(keep_participants, each = 2)
+meanbyBL_nogoal_finalchoices$bonusatstakeP1N1 = rep(c(1,-1), number_of_clean_subjects)
+
+
+for (s in 1:number_of_clean_subjects){
+  subj_id = keep_participants[s]
+  tmpdata = clean_data_dm[clean_data_dm$subjectnumber == subj_id,]
+  
+  for (b in 1:4){
+    nogoalInd = (nogoal_finalchoices$subjectnumber == subj_id) & (nogoal_finalchoices$roundnum == b)
+    cleanlongInd = (clean_data_subjlevel_long$subjectnumber == subj_id) & (clean_data_subjlevel_long$roundnum == b)
+    
+    # stores out the goal and bonus level data for each participant
+    nogoal_finalchoices$bonusatstakeP1N1[nogoalInd] = clean_data_subjlevel_long$bonusatstakeP1N1[cleanlongInd]
+    nogoal_finalchoices$goallevelP1N1[nogoalInd] = clean_data_subjlevel_long$goallevelP1N1[cleanlongInd]
+    
+    if(clean_data_subjlevel_long$bonusreceived01[cleanlongInd] == 0) { # if they did NOT reach the goal on this round
+      # getting nfinaltrials defined as the last 20
+      final_trials = tail(tmpdata$decisiontime_overall[tmpdata$roundnum == b], nfinaltrials)
+      
+      # Storing choices
+      nogoal_finalchoices[nogoalInd, trial_columns_nogoal] = final_trials
+    }
+  }
+  
+  #Storing the mean choices of the final 20 trials when the goal was NOT reached
+  mean_nogoal_finalchoices[s,trial_columns_nogoal] = colMeans(nogoal_finalchoices[nogoal_finalchoices$subjectnumber == subj_id, trial_columns_nogoal], na.rm = TRUE)
+  
+  # Calculate per-subject averages for final choices on blocks by goal or bonus level
+  # Goals
+  for (glevel in c(1,-1)){
+    meanbyGL_nogoal_finalchoices[(meanbyGL_nogoal_finalchoices$subjectnumber == subj_id) & 
+                                   (meanbyGL_nogoal_finalchoices$goallevelP1N1 == glevel), trial_columns_nogoal] = 
+      colMeans(nogoal_finalchoices[(nogoal_finalchoices$subjectnumber == subj_id) & 
+                                     (nogoal_finalchoices$goallevelP1N1 == glevel), trial_columns_nogoal], na.rm = T)
+  }
+  
+  # Bonuses
+  for (blevel in c(1,-1)){
+    meanbyBL_nogoal_finalchoices[(meanbyBL_nogoal_finalchoices$subjectnumber == subj_id) & 
+                                   (meanbyBL_nogoal_finalchoices$bonusatstakeP1N1 == blevel), trial_columns_nogoal] = 
+      colMeans(nogoal_finalchoices[(nogoal_finalchoices$subjectnumber == subj_id) & 
+                                     (nogoal_finalchoices$bonusatstakeP1N1 == blevel), trial_columns_nogoal], na.rm = T)
+  }
+}
+
+m_rt_nogoal = colMeans(mean_nogoal_finalchoices[,trial_columns_nogoal], na.rm = T)
+sem_rt_nogoal = apply(mean_nogoal_finalchoices[, trial_columns_nogoal], 2, sd, na.rm = T)/
+  sqrt(colSums(mean_nogoal_finalchoices[, trial_columns_nogoal]*0+1, na.rm = T))
+
+
+# Goal Levels
+m_rt_nogoal_highGL = colMeans(meanbyGL_nogoal_finalchoices[meanbyGL_nogoal_finalchoices$goallevelP1N1 == 1,trial_columns_nogoal], na.rm = T)
+sem_rt_nogoal_highGL = apply(meanbyGL_nogoal_finalchoices[meanbyGL_nogoal_finalchoices$goallevelP1N1 == 1, trial_columns_nogoal], 2, sd, na.rm = T)/
+  sqrt(colSums(meanbyGL_nogoal_finalchoices[meanbyGL_nogoal_finalchoices$goallevelP1N1 == 1, trial_columns_nogoal]*0+1, na.rm = T))
+
+m_rt_nogoal_lowGL = colMeans(meanbyGL_nogoal_finalchoices[meanbyGL_nogoal_finalchoices$goallevelP1N1 == -1,trial_columns_nogoal], na.rm = T)
+sem_rt_nogoal_lowGL = apply(meanbyGL_nogoal_finalchoices[meanbyGL_nogoal_finalchoices$goallevelP1N1 == -1, trial_columns_nogoal], 2, sd, na.rm = T)/
+  sqrt(colSums(meanbyGL_nogoal_finalchoices[meanbyGL_nogoal_finalchoices$goallevelP1N1 == -1, trial_columns_nogoal]*0+1, na.rm = T))
+
+# Bonus Levels
+m_rt_nogoal_highBL = colMeans(meanbyBL_nogoal_finalchoices[meanbyBL_nogoal_finalchoices$bonusatstakeP1N1 == 1,trial_columns_nogoal], na.rm = T)
+sem_rt_nogoal_highBL = apply(meanbyBL_nogoal_finalchoices[meanbyBL_nogoal_finalchoices$bonusatstakeP1N1 == 1, trial_columns_nogoal], 2, sd, na.rm = T)/
+  sqrt(colSums(meanbyBL_nogoal_finalchoices[meanbyBL_nogoal_finalchoices$bonusatstakeP1N1 == 1, trial_columns_nogoal]*0+1, na.rm = T))
+
+m_rt_nogoal_lowBL = colMeans(meanbyBL_nogoal_finalchoices[meanbyBL_nogoal_finalchoices$bonusatstakeP1N1 == -1,trial_columns_nogoal], na.rm = T)
+sem_rt_nogoal_lowBL = apply(meanbyBL_nogoal_finalchoices[meanbyBL_nogoal_finalchoices$bonusatstakeP1N1 == -1, trial_columns_nogoal], 2, sd, na.rm = T)/
+  sqrt(colSums(meanbyBL_nogoal_finalchoices[meanbyBL_nogoal_finalchoices$bonusatstakeP1N1 == -1, trial_columns_nogoal]*0+1, na.rm = T))
+
+# Plot it: OVERALL
+plot(x = -nfinaltrials:-1, y = m_rt_nogoal,
+     type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('p(risky)'),
+     ylim = c(0.3, 0.8), main = 'Final risky choices in rounds without goal achievement')
+abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
+polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
+        y = c(m_rt_nogoal + sem_rt_nogoal, rev(m_rt_nogoal - sem_rt_nogoal)),
+        col = rgb(.5, .5, .5, .2))
+
+
+# HIGH & LOW GOAL:
+plot(x = -nfinaltrials:-1, y = m_rt_nogoal_highGL,
+     type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('p(risky)'),
+     ylim = c(0, 1), main = 'Risky Choices in Unsuccessful Rounds by Goal Level',
+     col = 'darkorchid4')
+polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
+        y = c(m_rt_nogoal_highGL + sem_rt_nogoal_highGL, rev(m_rt_nogoal_highGL - sem_rt_nogoal_highGL)),
+        col = rgb(t(col2rgb('darkorchid4')), alpha = 51, maxColorValue = 255))
+lines(x = -nfinaltrials:-1, y = m_rt_nogoal_lowGL,
+      lwd = 3, col = 'darkorchid2')
+polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
+        y = c(m_rt_nogoal_lowGL + sem_rt_nogoal_lowGL, rev(m_rt_nogoal_lowGL - sem_rt_nogoal_lowGL)),
+        col = rgb(t(col2rgb('darkorchid2')), alpha = 51, maxColorValue = 255))
+abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
+legend("bottomleft",
+       legend = c('High Goal','Low Goal'),
+       col = c('darkorchid4','darkorchid2'),
+       lty = 1, lwd = 4)
+
+
+# HIGH & LOW BONUS:
+plot(x = -nfinaltrials:-1, y = m_rt_nogoal_highBL,
+     type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('p(risky)'),
+     ylim = c(0, 1), main = 'Risky Choices in Unsuccessful Rounds by Bonus Level',
+     col = 'blue4')
+polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
+        y = c(m_rt_nogoal_highBL + sem_rt_nogoal_highBL, rev(m_rt_nogoal_highBL - sem_rt_nogoal_highBL)),
+        col = rgb(t(col2rgb('blue4')), alpha = 51, maxColorValue = 255))
+lines(x = -nfinaltrials:-1, y = m_rt_nogoal_lowBL,
+      lwd = 3, col = 'blue2')
+polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
+        y = c(m_rt_nogoal_lowBL + sem_rt_nogoal_lowBL, rev(m_rt_nogoal_lowBL - sem_rt_nogoal_lowBL)),
+        col = rgb(t(col2rgb('blue2')), alpha = 51, maxColorValue = 255))
+abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
+legend("bottomleft",
+       legend = c('High Bonus','Low Bonus'),
+       col = c('blue4','blue2'),
+       lty = 1, lwd = 4)
 
 ##### Yes-Goal Blocks ----
 # Second, look at blocks where goals WERE attained
