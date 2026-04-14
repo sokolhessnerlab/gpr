@@ -1711,8 +1711,8 @@ sem_rt_nogoal_lowBL = apply(meanbyBL_nogoal_finalrts[meanbyBL_nogoal_finalrts$bo
 
 # Plot it: OVERALL
 plot(x = -nfinaltrials:-1, y = m_rt_nogoal,
-     type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('p(risky)'),
-     ylim = c(0.3, 0.8), main = 'Final risky choices in rounds without goal achievement')
+     type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('decision time (s)'),
+     ylim = c(0.3, 0.8), main = 'Decision times in rounds without goal achievement')
 abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
 polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
         y = c(m_rt_nogoal + sem_rt_nogoal, rev(m_rt_nogoal - sem_rt_nogoal)),
@@ -1720,9 +1720,9 @@ polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
 
 
 # HIGH & LOW GOAL:
-plot(x = -nfinaltrials:-1, y = m_rt_nogoal_highGL,
-     type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('p(risky)'),
-     ylim = c(0, 1), main = 'Risky Choices in Unsuccessful Rounds by Goal Level',
+plot(x = -nfinaltrials:-1, y = m_rt_nogoal,
+     type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('decision time (s)'),
+     ylim = c(0.3, 0.8), main = 'Decision times in rounds without goal achievement',
      col = 'darkorchid4')
 polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
         y = c(m_rt_nogoal_highGL + sem_rt_nogoal_highGL, rev(m_rt_nogoal_highGL - sem_rt_nogoal_highGL)),
@@ -1740,9 +1740,9 @@ legend("bottomleft",
 
 
 # HIGH & LOW BONUS:
-plot(x = -nfinaltrials:-1, y = m_rt_nogoal_highBL,
-     type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('p(risky)'),
-     ylim = c(0, 1), main = 'Risky Choices in Unsuccessful Rounds by Bonus Level',
+plot(x = -nfinaltrials:-1, y = m_rt_nogoal,
+     type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('decision time (s)'),
+     ylim = c(0.3, 0.8), main = 'Decision times in rounds without goal achievement',
      col = 'blue4')
 polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
         y = c(m_rt_nogoal_highBL + sem_rt_nogoal_highBL, rev(m_rt_nogoal_highBL - sem_rt_nogoal_highBL)),
