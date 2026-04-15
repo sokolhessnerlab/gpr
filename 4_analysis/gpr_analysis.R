@@ -1622,6 +1622,11 @@ other_columns = c('subjectnumber',
                   'bonusatstakeP1N1',
                   'goallevelP1N1')
 
+nogoal_finalrts = as.data.frame(matrix(NA_real_, nrow = number_of_clean_subjects * 4,
+  ncol = length(trial_columns_nogoal) + length(other_columns)
+))
+
+
 nogoal_finalrts = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects*4, length(trial_columns_nogoal) + length(other_columns))))
 colnames(nogoal_finalrts) = c(other_columns, trial_columns_nogoal)
 
@@ -1647,41 +1652,42 @@ meanbyBL_nogoal_finalrts$bonusatstakeP1N1 = rep(c(1,-1), number_of_clean_subject
 for (s in 1:number_of_clean_subjects){
   subj_id = keep_participants[s]
   tmpdata = clean_data_dm[clean_data_dm$subjectnumber == subj_id,]
-  
+
   for (b in 1:4){
     nogoalInd = (nogoal_finalrts$subjectnumber == subj_id) & (nogoal_finalrts$roundnum == b)
     cleanlongInd = (clean_data_subjlevel_long$subjectnumber == subj_id) & (clean_data_subjlevel_long$roundnum == b)
-    
+
     # stores out the goal and bonus level data for each participant
     nogoal_finalrts$bonusatstakeP1N1[nogoalInd] = clean_data_subjlevel_long$bonusatstakeP1N1[cleanlongInd]
     nogoal_finalrts$goallevelP1N1[nogoalInd] = clean_data_subjlevel_long$goallevelP1N1[cleanlongInd]
-    
+
+
     if(all(clean_data_subjlevel_long$bonusreceived01[cleanlongInd] == 0)) { # if they did NOT reach the goal on this round
       # getting nfinaltrials defined as the last 20
       final_trials = tail(tmpdata$decisiontime_overall[tmpdata$roundnum == b], nfinaltrials)
-      
+
       # Storing choices
       nogoal_finalrts[nogoalInd, trial_columns_nogoal] = final_trials
     }
   }
-  
+
   #Storing the mean choices of the final 20 trials when the goal was NOT reached
   mean_nogoal_finalrts[s,trial_columns_nogoal] = colMeans(nogoal_finalrts[nogoal_finalrts$subjectnumber == subj_id, trial_columns_nogoal], na.rm = TRUE)
-  
+
   # Calculate per-subject averages for final choices on blocks by goal or bonus level
   # Goals
   for (glevel in c(1,-1)){
-    meanbyGL_nogoal_finalrts[(meanbyGL_nogoal_finalrts$subjectnumber == subj_id) & 
-                                   (meanbyGL_nogoal_finalrts$goallevelP1N1 == glevel), trial_columns_nogoal] = 
-      colMeans(nogoal_finalrts[(nogoal_finalrts$subjectnumber == subj_id) & 
+    meanbyGL_nogoal_finalrts[(meanbyGL_nogoal_finalrts$subjectnumber == subj_id) &
+                                   (meanbyGL_nogoal_finalrts$goallevelP1N1 == glevel), trial_columns_nogoal] =
+      colMeans(nogoal_finalrts[(nogoal_finalrts$subjectnumber == subj_id) &
                                      (nogoal_finalrts$goallevelP1N1 == glevel), trial_columns_nogoal], na.rm = T)
   }
-  
+
   # Bonuses
   for (blevel in c(1,-1)){
-    meanbyBL_nogoal_finalrts[(meanbyBL_nogoal_finalrts$subjectnumber == subj_id) & 
-                                   (meanbyBL_nogoal_finalrts$bonusatstakeP1N1 == blevel), trial_columns_nogoal] = 
-      colMeans(nogoal_finalrts[(nogoal_finalrts$subjectnumber == subj_id) & 
+    meanbyBL_nogoal_finalrts[(meanbyBL_nogoal_finalrts$subjectnumber == subj_id) &
+                                   (meanbyBL_nogoal_finalrts$bonusatstakeP1N1 == blevel), trial_columns_nogoal] =
+      colMeans(nogoal_finalrts[(nogoal_finalrts$subjectnumber == subj_id) &
                                      (nogoal_finalrts$bonusatstakeP1N1 == blevel), trial_columns_nogoal], na.rm = T)
   }
 }
@@ -1709,11 +1715,17 @@ m_rt_nogoal_lowBL = colMeans(meanbyBL_nogoal_finalrts[meanbyBL_nogoal_finalrts$b
 sem_rt_nogoal_lowBL = apply(meanbyBL_nogoal_finalrts[meanbyBL_nogoal_finalrts$bonusatstakeP1N1 == -1, trial_columns_nogoal], 2, sd, na.rm = T)/
   sqrt(colSums(meanbyBL_nogoal_finalrts[meanbyBL_nogoal_finalrts$bonusatstakeP1N1 == -1, trial_columns_nogoal]*0+1, na.rm = T))
 
+print(head(m_rt_nogoal))
+print(sum(is.na(m_rt_nogoal)))
+
+print(head(m_rt_nogoal_highGL))
+print(head(m_rt_nogoal_lowGL))
+
 # Plot it: OVERALL
 plot(x = -nfinaltrials:-1, y = m_rt_nogoal,
-     type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('decision time (s)'),
-     ylim = c(0, 1), main = 'Decision times in rounds without goal achievement')
-abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
+     type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('decision time (ms)'),
+     ylim = c(0, 2000), main = 'Decision times in rounds without goal achievement')
+#abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
 polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
         y = c(m_rt_nogoal + sem_rt_nogoal, rev(m_rt_nogoal - sem_rt_nogoal)),
         col = rgb(.5, .5, .5, .2))
@@ -1721,8 +1733,8 @@ polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
 
 # HIGH & LOW GOAL:
 plot(x = -nfinaltrials:-1, y = m_rt_nogoal,
-     type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('decision time (s)'),
-     ylim = c(0, 1), main = 'Decision times in rounds without goal achievement',
+     type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('decision time (ms)'),
+     ylim = c(0, 2000), main = 'Decision times in rounds without goal achievement',
      col = 'darkorchid4')
 polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
         y = c(m_rt_nogoal_highGL + sem_rt_nogoal_highGL, rev(m_rt_nogoal_highGL - sem_rt_nogoal_highGL)),
@@ -1732,7 +1744,7 @@ lines(x = -nfinaltrials:-1, y = m_rt_nogoal_lowGL,
 polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
         y = c(m_rt_nogoal_lowGL + sem_rt_nogoal_lowGL, rev(m_rt_nogoal_lowGL - sem_rt_nogoal_lowGL)),
         col = rgb(t(col2rgb('darkorchid2')), alpha = 51, maxColorValue = 255))
-abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
+#abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
 legend("bottomleft",
        legend = c('High Goal','Low Goal'),
        col = c('darkorchid4','darkorchid2'),
@@ -1741,8 +1753,8 @@ legend("bottomleft",
 
 # HIGH & LOW BONUS:
 plot(x = -nfinaltrials:-1, y = m_rt_nogoal,
-     type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('decision time (s)'),
-     ylim = c(0, 1), main = 'Decision times in rounds without goal achievement',
+     type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('decision time (ms)'),
+     ylim = c(0, 2000), main = 'Decision times in rounds without goal achievement',
      col = 'blue4')
 polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
         y = c(m_rt_nogoal_highBL + sem_rt_nogoal_highBL, rev(m_rt_nogoal_highBL - sem_rt_nogoal_highBL)),
@@ -1752,7 +1764,7 @@ lines(x = -nfinaltrials:-1, y = m_rt_nogoal_lowBL,
 polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
         y = c(m_rt_nogoal_lowBL + sem_rt_nogoal_lowBL, rev(m_rt_nogoal_lowBL - sem_rt_nogoal_lowBL)),
         col = rgb(t(col2rgb('blue2')), alpha = 51, maxColorValue = 255))
-abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
+#abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
 legend("bottomleft",
        legend = c('High Bonus','Low Bonus'),
        col = c('blue4','blue2'),
