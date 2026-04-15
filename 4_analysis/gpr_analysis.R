@@ -1656,7 +1656,7 @@ for (s in 1:number_of_clean_subjects){
     nogoal_finalrts$bonusatstakeP1N1[nogoalInd] = clean_data_subjlevel_long$bonusatstakeP1N1[cleanlongInd]
     nogoal_finalrts$goallevelP1N1[nogoalInd] = clean_data_subjlevel_long$goallevelP1N1[cleanlongInd]
     
-    if(clean_data_subjlevel_long$bonusreceived01[cleanlongInd] == 0) { # if they did NOT reach the goal on this round
+    if(all(clean_data_subjlevel_long$bonusreceived01[cleanlongInd] == 0)) { # if they did NOT reach the goal on this round
       # getting nfinaltrials defined as the last 20
       final_trials = tail(tmpdata$decisiontime_overall[tmpdata$roundnum == b], nfinaltrials)
       
