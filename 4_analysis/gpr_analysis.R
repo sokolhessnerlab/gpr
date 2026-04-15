@@ -1603,8 +1603,6 @@ var(clean_data_subjlevel_long$trialgoalmet[clean_data_subjlevel_long$goallevelP1
 #   ... this variance calc. might be problematic: closer to boundary (50) might = low var
 
 
-
-
 #### Decision Time by Goal Proximity ----
 
 ##### No-Goal Blocks ----
@@ -1626,7 +1624,6 @@ nogoal_finalrts = as.data.frame(matrix(NA_real_, nrow = number_of_clean_subjects
   ncol = length(trial_columns_nogoal) + length(other_columns)
 ))
 
-
 nogoal_finalrts = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects*4, length(trial_columns_nogoal) + length(other_columns))))
 colnames(nogoal_finalrts) = c(other_columns, trial_columns_nogoal)
 
@@ -1647,7 +1644,6 @@ meanbyBL_nogoal_finalrts = as.data.frame(array(data = NA, dim = c(number_of_clea
 colnames(meanbyBL_nogoal_finalrts) = c('subjectnumber', 'bonusatstakeP1N1', trial_columns_nogoal)
 meanbyBL_nogoal_finalrts$subjectnumber = rep(keep_participants, each = 2)
 meanbyBL_nogoal_finalrts$bonusatstakeP1N1 = rep(c(1,-1), number_of_clean_subjects)
-
 
 for (s in 1:number_of_clean_subjects){
   subj_id = keep_participants[s]
