@@ -1725,7 +1725,6 @@ print(head(m_rt_nogoal_lowGL))
 plot(x = -nfinaltrials:-1, y = m_rt_nogoal,
      type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('decision time (ms)'),
      ylim = c(0, 2000), main = 'Decision times in rounds without goal achievement')
-#abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
 polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
         y = c(m_rt_nogoal + sem_rt_nogoal, rev(m_rt_nogoal - sem_rt_nogoal)),
         col = rgb(.5, .5, .5, .2))
@@ -1744,7 +1743,6 @@ lines(x = -nfinaltrials:-1, y = m_rt_nogoal_lowGL,
 polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
         y = c(m_rt_nogoal_lowGL + sem_rt_nogoal_lowGL, rev(m_rt_nogoal_lowGL - sem_rt_nogoal_lowGL)),
         col = rgb(t(col2rgb('darkorchid2')), alpha = 51, maxColorValue = 255))
-#abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
 legend("bottomleft",
        legend = c('High Goal','Low Goal'),
        col = c('darkorchid4','darkorchid2'),
@@ -1764,7 +1762,6 @@ lines(x = -nfinaltrials:-1, y = m_rt_nogoal_lowBL,
 polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
         y = c(m_rt_nogoal_lowBL + sem_rt_nogoal_lowBL, rev(m_rt_nogoal_lowBL - sem_rt_nogoal_lowBL)),
         col = rgb(t(col2rgb('blue2')), alpha = 51, maxColorValue = 255))
-#abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
 legend("bottomleft",
        legend = c('High Bonus','Low Bonus'),
        col = c('blue4','blue2'),
