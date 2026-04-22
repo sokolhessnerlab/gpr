@@ -739,6 +739,82 @@ mean(clean_data_subjlevel_long$bonusreceived01[(clean_data_subjlevel_long$goalle
 #
 # THEN, do it all over again for low goal
 
+# Average Earnings High Goals
+
+avgearnings_highgoal = aggregate(clean_data_dm$round_earnings[clean_data_dm$curr_goal > 400], by = list(clean_data_dm$trialnumber_block[clean_data_dm$curr_goal > 400]), mean)
+
+colnames(avgearnings_highgoal) = c("trial", "mean_earnings")
+
+plot(avgearnings_highgoal$trial,
+     avgearnings_highgoal$mean_earnings,
+     type = "l",
+     lwd = 3,
+     ylim = c(0,520),
+     xlab = "Trial Number",
+     ylab = "Average Earnings",
+     main = "Average Earnings (High Goal)")
+
+for (s in 1:number_of_clean_subjects){
+  subj_id = keep_participants[s]
+  tmpdata = clean_data_dm[clean_data_dm$subjectnumber == subj_id,]
+  
+  rounds = unique(tmpdata$roundnumber)
+  
+  for (b in rounds){
+    
+    round_data = tmpdata[tmpdata$roundnumber == b, ]
+  
+    if (mean(round_data$curr_goal, na.rm = TRUE) > 400) {
+      
+      round_data = round_data[order(round_data$trialnumber_block), ]
+      
+      lines(round_data$trialnumber_block,
+            round_data$round_earnings,
+            col = rgb(0,0,0,.2))
+    }
+  }
+}
+
+abline(h = 420.79, lty = 2, col = 'red', lwd = 3)
+
+# Average Earnings Low Goals
+
+avgearnings_lowgoal = aggregate(clean_data_dm$round_earnings[clean_data_dm$curr_goal < 400], by = list(clean_data_dm$trialnumber_block[clean_data_dm$curr_goal > 400]), mean)
+
+colnames(avgearnings_lowgoal) = c("trial", "mean_earnings")
+
+plot(avgearnings_highgoal$trial,
+     avgearnings_highgoal$mean_earnings,
+     type = "l",
+     lwd = 3,
+     ylim = c(0,520),
+     xlab = "Trial Number",
+     ylab = "Average Earnings",
+     main = "Average Earnings (Low Goal)")
+
+for (s in 1:number_of_clean_subjects){
+  subj_id = keep_participants[s]
+  tmpdata = clean_data_dm[clean_data_dm$subjectnumber == subj_id,]
+  
+  rounds = unique(tmpdata$roundnumber)
+  
+  for (b in rounds){
+    
+    round_data = tmpdata[tmpdata$roundnumber == b, ]
+    
+    if (mean(round_data$curr_goal, na.rm = TRUE) < 400) {
+      
+      round_data = round_data[order(round_data$trialnumber_block), ]
+      
+      lines(round_data$trialnumber_block,
+            round_data$round_earnings,
+            col = rgb(0,0,0,.2))
+    }
+  }
+}
+
+abline(h = 349.85, lty = 2, col = 'red', lwd = 3)
+
 
 # TODO:
 # 1. Calculate model-free, data-derived mean earnings
