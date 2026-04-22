@@ -723,7 +723,21 @@ mean(clean_data_subjlevel_long$bonusreceived01[(clean_data_subjlevel_long$goalle
 # Easy goals are met more often with time; hard goals are not affected. Bonuses
 # have no effect on goal attainment.
 
+# Plot Earnings as a function of trial
 
+# Approach:
+# FIRST, plot the average earnings for high goals
+# aggregate(clean_data_dm$round_earnings[clean_data_dm$curr_goal > 400], by = list(clean_data_dm$trialnumber_block[clean_data_dm$curr_goal > 400]), mean)
+# Two SETS of nested loops.
+# Loop 1: subjects, person by person
+# Loop 2 (inside loop 1): round
+# - If high goal, then plot earnings for this person & round on the plot
+#   use the command lines() and just make it black to start
+# OUTSIDE of loop...
+# add horizontal line using abline() at the high goal level
+# Add that group average again
+#
+# THEN, do it all over again for low goal
 
 
 # TODO:
