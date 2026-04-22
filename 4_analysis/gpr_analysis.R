@@ -1156,6 +1156,7 @@ for (sb in 1:nsubblocks){
 }
 
 #### plotting ----
+##### P(risky) ----
 plot(mean_prisky_subblock, type = 'l', ylim = c(0.45, 0.6), lwd = 4,
      xlab = 'Sub-block (10 trials)', ylab = 'mean p(risky) +/- SEM',
      main = 'Risky choices as a function of sub-block portion')
@@ -1223,7 +1224,7 @@ legend("bottomleft",
        lty = 1, lwd = 4)
 
 
-# Decision Time
+##### Decision Time ----
 plot(mean_rt_subblock, type = 'l', ylim = c(1.05, 1.15), lwd = 4,
      xlab = 'Sub-block (10 trials)', ylab = 'mean sqrt(RT) +/- SEM',
      main = 'Decision Times as a function of sub-block portion')
@@ -1292,7 +1293,7 @@ legend("bottomleft",
 
 
 
-# SCL
+##### SCL ----
 plot(mean_scl_subblock, type = 'l', ylim = c(15, 20), lwd = 4,
      xlab = 'Sub-block (10 trials)', ylab = 'mean SCL +/- SEM',
      main = 'Arousal as a function of sub-block portion')
@@ -2024,7 +2025,6 @@ polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
         y = c(m_rt_yesgoal_lowGL + sem_rt_yesgoal_lowGL, rev(m_rt_yesgoal_lowGL - sem_rt_yesgoal_lowGL)),
         col = rgb(t(col2rgb('darkorchid2')), alpha = 51, maxColorValue = 255))
 abline(v = 0, col = 'black', lwd = 1, lty = 'dashed')
-abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
 legend("bottomleft",
        legend = c('High Goal','Low Goal'),
        col = c('darkorchid4','darkorchid2'),
@@ -2047,7 +2047,6 @@ polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
         y = c(m_rt_yesgoal_lowBL + sem_rt_yesgoal_lowBL, rev(m_rt_yesgoal_lowBL - sem_rt_yesgoal_lowBL)),
         col = rgb(t(col2rgb('blue2')), alpha = 51, maxColorValue = 255))
 abline(v = 0, col = 'black', lwd = 1, lty = 'dashed')
-abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
 legend("bottomleft",
        legend = c('High Bonus','Low Bonus'),
        col = c('blue4','blue2'),
@@ -2056,6 +2055,318 @@ legend("bottomleft",
 
 # TAKEAWAY: 
 # Effort drops after reaching the goal and/or remains consistently low. This effect isn't huge.
+
+
+#### Arousal by Goal Proximity ----
+
+##### No-Goal Blocks ----
+# First, look at blocks where goals were NOT attained
+nfinaltrials = 20 # number of trials at the end of the block to look at
+
+trial_columns_nogoal = c()
+for (t in 1:nfinaltrials){
+  newt = paste0('trial', t, sep = "")
+  trial_columns_nogoal = c(trial_columns_nogoal, newt)
+}
+
+other_columns = c('subjectnumber',
+                  'roundnum',
+                  'bonusatstakeP1N1',
+                  'goallevelP1N1')
+
+nogoal_finalscl = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects*4, length(trial_columns_nogoal) + length(other_columns))))
+colnames(nogoal_finalscl) = c(other_columns, trial_columns_nogoal)
+
+nogoal_finalscl$subjectnumber = rep(keep_participants, each = 4)
+nogoal_finalscl$roundnum = rep(1:4)
+
+mean_nogoal_finalscl = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects, length(trial_columns_nogoal) + 1)))
+colnames(mean_nogoal_finalscl) = c('subjectnumber', trial_columns_nogoal)
+
+mean_nogoal_finalscl$subjectnumber = keep_participants
+
+meanbyGL_nogoal_finalscl = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects*2, length(trial_columns_nogoal) + 2)))
+colnames(meanbyGL_nogoal_finalscl) = c('subjectnumber', 'goallevelP1N1', trial_columns_nogoal)
+meanbyGL_nogoal_finalscl$subjectnumber = rep(keep_participants, each = 2)
+meanbyGL_nogoal_finalscl$goallevelP1N1 = rep(c(1,-1), number_of_clean_subjects)
+
+meanbyBL_nogoal_finalscl = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects*2, length(trial_columns_nogoal) + 2)))
+colnames(meanbyBL_nogoal_finalscl) = c('subjectnumber', 'bonusatstakeP1N1', trial_columns_nogoal)
+meanbyBL_nogoal_finalscl$subjectnumber = rep(keep_participants, each = 2)
+meanbyBL_nogoal_finalscl$bonusatstakeP1N1 = rep(c(1,-1), number_of_clean_subjects)
+
+for (s in 1:number_of_clean_subjects){
+  subj_id = keep_participants[s]
+  tmpdata = clean_data_dm[clean_data_dm$subjectnumber == subj_id,]
+  
+  for (b in 1:4){
+    nogoalInd = (nogoal_finalscl$subjectnumber == subj_id) & (nogoal_finalscl$roundnum == b)
+    cleanlongInd = (clean_data_subjlevel_long$subjectnumber == subj_id) & (clean_data_subjlevel_long$roundnum == b)
+    
+    # stores out the goal and bonus level data for each participant
+    nogoal_finalscl$bonusatstakeP1N1[nogoalInd] = clean_data_subjlevel_long$bonusatstakeP1N1[cleanlongInd]
+    nogoal_finalscl$goallevelP1N1[nogoalInd] = clean_data_subjlevel_long$goallevelP1N1[cleanlongInd]
+    
+    
+    if(clean_data_subjlevel_long$bonusreceived01[cleanlongInd] == 0) { # if they did NOT reach the goal on this round
+      # getting nfinaltrials defined as the last 20
+      final_trials = tail(tmpdata$tmeanscl[tmpdata$roundnum == b], nfinaltrials)
+      
+      # Storing choices
+      nogoal_finalscl[nogoalInd, trial_columns_nogoal] = final_trials
+    }
+  }
+  
+  #Storing the mean choices of the final 20 trials when the goal was NOT reached
+  mean_nogoal_finalscl[s,trial_columns_nogoal] = colMeans(nogoal_finalscl[nogoal_finalscl$subjectnumber == subj_id, trial_columns_nogoal], na.rm = TRUE)
+  
+  # Calculate per-subject averages for final choices on blocks by goal or bonus level
+  # Goals
+  for (glevel in c(1,-1)){
+    meanbyGL_nogoal_finalscl[(meanbyGL_nogoal_finalscl$subjectnumber == subj_id) &
+                               (meanbyGL_nogoal_finalscl$goallevelP1N1 == glevel), trial_columns_nogoal] =
+      colMeans(nogoal_finalscl[(nogoal_finalscl$subjectnumber == subj_id) &
+                                 (nogoal_finalscl$goallevelP1N1 == glevel), trial_columns_nogoal], na.rm = T)
+  }
+  
+  # Bonuses
+  for (blevel in c(1,-1)){
+    meanbyBL_nogoal_finalscl[(meanbyBL_nogoal_finalscl$subjectnumber == subj_id) &
+                               (meanbyBL_nogoal_finalscl$bonusatstakeP1N1 == blevel), trial_columns_nogoal] =
+      colMeans(nogoal_finalscl[(nogoal_finalscl$subjectnumber == subj_id) &
+                                 (nogoal_finalscl$bonusatstakeP1N1 == blevel), trial_columns_nogoal], na.rm = T)
+  }
+}
+
+m_scl_nogoal = colMeans(mean_nogoal_finalscl[,trial_columns_nogoal], na.rm = T)
+sem_scl_nogoal = apply(mean_nogoal_finalscl[, trial_columns_nogoal], 2, sd, na.rm = T)/
+  sqrt(colSums(mean_nogoal_finalscl[, trial_columns_nogoal]*0+1, na.rm = T))
+
+
+# Goal Levels
+m_scl_nogoal_highGL = colMeans(meanbyGL_nogoal_finalscl[meanbyGL_nogoal_finalscl$goallevelP1N1 == 1,trial_columns_nogoal], na.rm = T)
+sem_scl_nogoal_highGL = apply(meanbyGL_nogoal_finalscl[meanbyGL_nogoal_finalscl$goallevelP1N1 == 1, trial_columns_nogoal], 2, sd, na.rm = T)/
+  sqrt(colSums(meanbyGL_nogoal_finalscl[meanbyGL_nogoal_finalscl$goallevelP1N1 == 1, trial_columns_nogoal]*0+1, na.rm = T))
+
+m_scl_nogoal_lowGL = colMeans(meanbyGL_nogoal_finalscl[meanbyGL_nogoal_finalscl$goallevelP1N1 == -1,trial_columns_nogoal], na.rm = T)
+sem_scl_nogoal_lowGL = apply(meanbyGL_nogoal_finalscl[meanbyGL_nogoal_finalscl$goallevelP1N1 == -1, trial_columns_nogoal], 2, sd, na.rm = T)/
+  sqrt(colSums(meanbyGL_nogoal_finalscl[meanbyGL_nogoal_finalscl$goallevelP1N1 == -1, trial_columns_nogoal]*0+1, na.rm = T))
+
+# Bonus Levels
+m_scl_nogoal_highBL = colMeans(meanbyBL_nogoal_finalscl[meanbyBL_nogoal_finalscl$bonusatstakeP1N1 == 1,trial_columns_nogoal], na.rm = T)
+sem_scl_nogoal_highBL = apply(meanbyBL_nogoal_finalscl[meanbyBL_nogoal_finalscl$bonusatstakeP1N1 == 1, trial_columns_nogoal], 2, sd, na.rm = T)/
+  sqrt(colSums(meanbyBL_nogoal_finalscl[meanbyBL_nogoal_finalscl$bonusatstakeP1N1 == 1, trial_columns_nogoal]*0+1, na.rm = T))
+
+m_scl_nogoal_lowBL = colMeans(meanbyBL_nogoal_finalscl[meanbyBL_nogoal_finalscl$bonusatstakeP1N1 == -1,trial_columns_nogoal], na.rm = T)
+sem_scl_nogoal_lowBL = apply(meanbyBL_nogoal_finalscl[meanbyBL_nogoal_finalscl$bonusatstakeP1N1 == -1, trial_columns_nogoal], 2, sd, na.rm = T)/
+  sqrt(colSums(meanbyBL_nogoal_finalscl[meanbyBL_nogoal_finalscl$bonusatstakeP1N1 == -1, trial_columns_nogoal]*0+1, na.rm = T))
+
+print(head(m_scl_nogoal))
+print(sum(is.na(m_scl_nogoal)))
+
+print(head(m_scl_nogoal_highGL))
+print(head(m_scl_nogoal_lowGL))
+
+# Plot it: OVERALL
+plot(x = -nfinaltrials:-1, y = m_scl_nogoal,
+     type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('SCL (uS)'),
+     ylim = c(13,19), main = 'Arousal in rounds without goal achievement')
+polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
+        y = c(m_scl_nogoal + sem_scl_nogoal, rev(m_scl_nogoal - sem_scl_nogoal)),
+        col = rgb(.5, .5, .5, .2))
+
+
+# HIGH & LOW GOAL:
+plot(x = -nfinaltrials:-1, y = m_scl_nogoal_highGL,
+     type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('SCL (uS)'),
+     ylim = c(13, 19), main = 'Arousal in rounds without goal achievement',
+     col = 'darkorchid4')
+polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
+        y = c(m_scl_nogoal_highGL + sem_scl_nogoal_highGL, rev(m_scl_nogoal_highGL - sem_scl_nogoal_highGL)),
+        col = rgb(t(col2rgb('darkorchid4')), alpha = 51, maxColorValue = 255))
+lines(x = -nfinaltrials:-1, y = m_scl_nogoal_lowGL,
+      lwd = 3, col = 'darkorchid2')
+polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
+        y = c(m_scl_nogoal_lowGL + sem_scl_nogoal_lowGL, rev(m_scl_nogoal_lowGL - sem_scl_nogoal_lowGL)),
+        col = rgb(t(col2rgb('darkorchid2')), alpha = 51, maxColorValue = 255))
+legend("bottomleft",
+       legend = c('High Goal','Low Goal'),
+       col = c('darkorchid4','darkorchid2'),
+       lty = 1, lwd = 4)
+
+
+# HIGH & LOW BONUS:
+plot(x = -nfinaltrials:-1, y = m_scl_nogoal_highBL,
+     type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('SCL (uS)'),
+     ylim = c(13, 19), main = 'Arousal in rounds without goal achievement',
+     col = 'blue4')
+polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
+        y = c(m_scl_nogoal_highBL + sem_scl_nogoal_highBL, rev(m_scl_nogoal_highBL - sem_scl_nogoal_highBL)),
+        col = rgb(t(col2rgb('blue4')), alpha = 51, maxColorValue = 255))
+lines(x = -nfinaltrials:-1, y = m_scl_nogoal_lowBL,
+      lwd = 3, col = 'blue2')
+polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
+        y = c(m_scl_nogoal_lowBL + sem_scl_nogoal_lowBL, rev(m_scl_nogoal_lowBL - sem_scl_nogoal_lowBL)),
+        col = rgb(t(col2rgb('blue2')), alpha = 51, maxColorValue = 255))
+legend("bottomleft",
+       legend = c('High Bonus','Low Bonus'),
+       col = c('blue4','blue2'),
+       lty = 1, lwd = 4)
+
+
+##### Yes-Goal Blocks ----
+# Second, look at blocks where goals WERE attained
+yesgoal_finalscl = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects*4, length(trial_columns_yesgoal) + length(other_columns))))
+colnames(yesgoal_finalscl) = c(other_columns, trial_columns_yesgoal)
+
+yesgoal_finalscl$subjectnumber = rep(keep_participants, each = 4)
+yesgoal_finalscl$roundnum = rep(1:4)
+
+mean_yesgoal_finalscl = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects, length(trial_columns_yesgoal) + 1)))
+colnames(mean_yesgoal_finalscl) = c('subjectnumber', trial_columns_yesgoal)
+
+mean_yesgoal_finalscl$subjectnumber = keep_participants
+
+meanbyGL_yesgoal_finalscl = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects*2, length(trial_columns_yesgoal) + 2)))
+colnames(meanbyGL_yesgoal_finalscl) = c('subjectnumber', 'goallevelP1N1', trial_columns_yesgoal)
+meanbyGL_yesgoal_finalscl$subjectnumber = rep(keep_participants, each = 2)
+meanbyGL_yesgoal_finalscl$goallevelP1N1 = rep(c(1,-1), number_of_clean_subjects)
+
+meanbyBL_yesgoal_finalscl = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects*2, length(trial_columns_yesgoal) + 2)))
+colnames(meanbyBL_yesgoal_finalscl) = c('subjectnumber', 'bonusatstakeP1N1', trial_columns_yesgoal)
+meanbyBL_yesgoal_finalscl$subjectnumber = rep(keep_participants, each = 2)
+meanbyBL_yesgoal_finalscl$bonusatstakeP1N1 = rep(c(1,-1), number_of_clean_subjects)
+
+
+for (s in 1:number_of_clean_subjects){
+  subj_id = keep_participants[s]
+  tmpdata = clean_data_dm[clean_data_dm$subjectnumber == subj_id,]
+  
+  for (b in 1:4){
+    # Make the indices we'll use
+    yesgoalInd = (yesgoal_finalchoices$subjectnumber == subj_id) & (yesgoal_finalchoices$roundnum == b)
+    cleanlongInd = (clean_data_subjlevel_long$subjectnumber == subj_id) & (clean_data_subjlevel_long$roundnum == b)
+    
+    # If they received the bonus on this round (i.e. attained the goal)
+    if(clean_data_subjlevel_long$bonusreceived01[cleanlongInd]){
+      # extract that block's data
+      tmpblkdata = tmpdata[tmpdata$roundnumber == b,];
+      
+      # identify trial number where they met/exceeded the goal
+      ind_goalmet = min(tmpblkdata$trialnumber_block[tmpblkdata$round_earnings >= unique(tmpblkdata$curr_goal)])
+      
+      # identify the trial numbers to extract from the data
+      trials_to_extract = (ind_goalmet - ntrialsprior):min(ind_goalmet + ntrialsafter, 50)
+      
+      # select the subset of trial column names we'll be using for this person & block
+      tmp_trial_columns_yesgoal = trial_columns_yesgoal[1:length(trials_to_extract)]
+      
+      # do the extraction
+      yesgoal_finalscl[yesgoalInd,tmp_trial_columns_yesgoal] = tmpblkdata$tmeanscl[trials_to_extract]
+    }
+    
+    # copy over the goal & bonus info
+    yesgoal_finalscl$bonusatstakeP1N1[yesgoalInd] = clean_data_subjlevel_long$bonusatstakeP1N1[cleanlongInd]
+    yesgoal_finalscl$goallevelP1N1[yesgoalInd] = clean_data_subjlevel_long$goallevelP1N1[cleanlongInd]
+  }
+  mean_yesgoal_finalscl[s, trial_columns_yesgoal] = 
+    colMeans(yesgoal_finalscl[yesgoal_finalchoices$subjectnumber == subj_id, trial_columns_yesgoal], na.rm = T)
+  
+  # Goals
+  for (glevel in c(1,-1)){
+    meanbyGL_yesgoal_finalscl[(meanbyGL_yesgoal_finalscl$subjectnumber == subj_id) & 
+                                (meanbyGL_yesgoal_finalscl$goallevelP1N1 == glevel), trial_columns_yesgoal] = 
+      colMeans(yesgoal_finalscl[(yesgoal_finalscl$subjectnumber == subj_id) & 
+                                  (yesgoal_finalscl$goallevelP1N1 == glevel), trial_columns_yesgoal], na.rm = T)
+  }
+  
+  # Bonuses
+  for (blevel in c(1,-1)){
+    meanbyBL_yesgoal_finalscl[(meanbyBL_yesgoal_finalscl$subjectnumber == subj_id) & 
+                                (meanbyBL_yesgoal_finalscl$bonusatstakeP1N1 == blevel), trial_columns_yesgoal] = 
+      colMeans(yesgoal_finalscl[(yesgoal_finalscl$subjectnumber == subj_id) & 
+                                  (yesgoal_finalscl$bonusatstakeP1N1 == blevel), trial_columns_yesgoal], na.rm = T)
+  }
+}
+
+m_scl_yesgoal = colMeans(mean_yesgoal_finalscl[,trial_columns_yesgoal], na.rm = T)
+
+sem_scl_yesgoal = apply(mean_yesgoal_finalscl[, trial_columns_yesgoal], 2, sd, na.rm = T)/
+  sqrt(colSums(mean_yesgoal_finalscl[, trial_columns_yesgoal]*0+1, na.rm = T))
+
+# Goal Levels
+m_scl_yesgoal_highGL = colMeans(meanbyGL_yesgoal_finalscl[meanbyGL_yesgoal_finalscl$goallevelP1N1 == 1,trial_columns_yesgoal], na.rm = T)
+sem_scl_yesgoal_highGL = apply(meanbyGL_yesgoal_finalscl[meanbyGL_yesgoal_finalchoices$goallevelP1N1 == 1, trial_columns_yesgoal], 2, sd, na.rm = T)/
+  sqrt(colSums(meanbyGL_yesgoal_finalscl[meanbyGL_yesgoal_finalscl$goallevelP1N1 == 1, trial_columns_yesgoal]*0+1, na.rm = T))
+
+m_scl_yesgoal_lowGL = colMeans(meanbyGL_yesgoal_finalscl[meanbyGL_yesgoal_finalscl$goallevelP1N1 == -1,trial_columns_yesgoal], na.rm = T)
+sem_scl_yesgoal_lowGL = apply(meanbyGL_yesgoal_finalscl[meanbyGL_yesgoal_finalscl$goallevelP1N1 == -1, trial_columns_yesgoal], 2, sd, na.rm = T)/
+  sqrt(colSums(meanbyGL_yesgoal_finalscl[meanbyGL_yesgoal_finalscl$goallevelP1N1 == -1, trial_columns_yesgoal]*0+1, na.rm = T))
+
+# Bonus Levels
+m_scl_yesgoal_highBL = colMeans(meanbyBL_yesgoal_finalscl[meanbyBL_yesgoal_finalscl$bonusatstakeP1N1 == 1,trial_columns_yesgoal], na.rm = T)
+sem_scl_yesgoal_highBL = apply(meanbyBL_yesgoal_finalscl[meanbyBL_yesgoal_finalscl$bonusatstakeP1N1 == 1, trial_columns_yesgoal], 2, sd, na.rm = T)/
+  sqrt(colSums(meanbyBL_yesgoal_finalscl[meanbyBL_yesgoal_finalscl$bonusatstakeP1N1 == 1, trial_columns_yesgoal]*0+1, na.rm = T))
+
+m_scl_yesgoal_lowBL = colMeans(meanbyBL_yesgoal_finalscl[meanbyBL_yesgoal_finalscl$bonusatstakeP1N1 == -1,trial_columns_yesgoal], na.rm = T)
+sem_scl_yesgoal_lowBL = apply(meanbyBL_yesgoal_finalscl[meanbyBL_yesgoal_finalscl$bonusatstakeP1N1 == -1, trial_columns_yesgoal], 2, sd, na.rm = T)/
+  sqrt(colSums(meanbyBL_yesgoal_finalscl[meanbyBL_yesgoal_finalscl$bonusatstakeP1N1 == -1, trial_columns_yesgoal]*0+1, na.rm = T))
+
+
+# Plot it
+# OVERALL
+plot(x = -ntrialsprior:ntrialsafter, y = m_scl_yesgoal,
+     type = 'l', lwd = 3, xlab = 'Trials relative to goal achievement', ylab = ('SCL (uS)'),
+     ylim = c(12, 19), main = 'Arousal by Proximity to Goal Achievement')
+abline(v = 0, col = 'black', lwd = 1, lty = 'dashed')
+polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
+        y = c(m_scl_yesgoal + sem_scl_yesgoal, rev(m_scl_yesgoal - sem_scl_yesgoal)),
+        col = rgb(.5, .5, .5, .2))
+
+
+# HIGH & LOW GOAL:
+plot(x = -ntrialsprior:ntrialsafter, y = m_scl_yesgoal_highGL,
+     type = 'l', lwd = 3, xlab = 'Trials relative to goal achievement', ylab = ('SCL (uS)'),
+     ylim = c(9, 21), main = 'Arousal by Proximity to Goal Achievement',
+     col = 'darkorchid4')
+polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
+        y = c(m_scl_yesgoal_highGL + sem_scl_yesgoal_highGL, rev(m_scl_yesgoal_highGL - sem_scl_yesgoal_highGL)),
+        col = rgb(t(col2rgb('darkorchid4')), alpha = 51, maxColorValue = 255))
+lines(x = -ntrialsprior:ntrialsafter, y = m_scl_yesgoal_lowGL,
+      lwd = 3, col = 'darkorchid2')
+polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
+        y = c(m_scl_yesgoal_lowGL + sem_scl_yesgoal_lowGL, rev(m_scl_yesgoal_lowGL - sem_scl_yesgoal_lowGL)),
+        col = rgb(t(col2rgb('darkorchid2')), alpha = 51, maxColorValue = 255))
+abline(v = 0, col = 'black', lwd = 1, lty = 'dashed')
+legend("bottomleft",
+       legend = c('High Goal','Low Goal'),
+       col = c('darkorchid4','darkorchid2'),
+       lty = 1, lwd = 4)
+# Effect of speeding post-goal might be stronger in high goal conditions? Hard to tell. 
+
+
+
+# HIGH & LOW BONUS:
+plot(x = -ntrialsprior:ntrialsafter, y = m_scl_yesgoal_highBL,
+     type = 'l', lwd = 3, xlab = 'Trials relative to goal achievement', ylab = ('SCL (uS)'),
+     ylim = c(9, 21), main = 'Arousal by Proximity to Goal Achievement',
+     col = 'blue4')
+polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
+        y = c(m_scl_yesgoal_highBL + sem_scl_yesgoal_highBL, rev(m_scl_yesgoal_highBL - sem_scl_yesgoal_highBL)),
+        col = rgb(t(col2rgb('blue4')), alpha = 51, maxColorValue = 255))
+lines(x = -ntrialsprior:ntrialsafter, y = m_scl_yesgoal_lowBL,
+      lwd = 3, col = 'blue2')
+polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
+        y = c(m_scl_yesgoal_lowBL + sem_scl_yesgoal_lowBL, rev(m_scl_yesgoal_lowBL - sem_scl_yesgoal_lowBL)),
+        col = rgb(t(col2rgb('blue2')), alpha = 51, maxColorValue = 255))
+abline(v = 0, col = 'black', lwd = 1, lty = 'dashed')
+abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
+legend("bottomleft",
+       legend = c('High Bonus','Low Bonus'),
+       col = c('blue4','blue2'),
+       lty = 1, lwd = 4)
+
+
 
 
 
