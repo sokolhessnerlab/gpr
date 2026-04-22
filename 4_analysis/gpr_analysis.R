@@ -1620,10 +1620,6 @@ other_columns = c('subjectnumber',
                   'bonusatstakeP1N1',
                   'goallevelP1N1')
 
-nogoal_finalrts = as.data.frame(matrix(NA_real_, nrow = number_of_clean_subjects * 4,
-  ncol = length(trial_columns_nogoal) + length(other_columns)
-))
-
 nogoal_finalrts = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects*4, length(trial_columns_nogoal) + length(other_columns))))
 colnames(nogoal_finalrts) = c(other_columns, trial_columns_nogoal)
 
@@ -1658,9 +1654,9 @@ for (s in 1:number_of_clean_subjects){
     nogoal_finalrts$goallevelP1N1[nogoalInd] = clean_data_subjlevel_long$goallevelP1N1[cleanlongInd]
 
 
-    if(all(clean_data_subjlevel_long$bonusreceived01[cleanlongInd] == 0)) { # if they did NOT reach the goal on this round
+    if(clean_data_subjlevel_long$bonusreceived01[cleanlongInd] == 0) { # if they did NOT reach the goal on this round
       # getting nfinaltrials defined as the last 20
-      final_trials = tail(tmpdata$decisiontime_overall[tmpdata$roundnum == b], nfinaltrials)
+      final_trials = tail(tmpdata$reactiontime[tmpdata$roundnum == b], nfinaltrials)
 
       # Storing choices
       nogoal_finalrts[nogoalInd, trial_columns_nogoal] = final_trials
@@ -1720,16 +1716,16 @@ print(head(m_rt_nogoal_lowGL))
 # Plot it: OVERALL
 plot(x = -nfinaltrials:-1, y = m_rt_nogoal,
      type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('decision time (ms)'),
-     ylim = c(0, 2000), main = 'Decision times in rounds without goal achievement')
+     ylim = c(0.5, 1.6), main = 'Decision times in rounds without goal achievement')
 polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
         y = c(m_rt_nogoal + sem_rt_nogoal, rev(m_rt_nogoal - sem_rt_nogoal)),
         col = rgb(.5, .5, .5, .2))
 
 
 # HIGH & LOW GOAL:
-plot(x = -nfinaltrials:-1, y = m_rt_nogoal,
+plot(x = -nfinaltrials:-1, y = m_rt_nogoal_highGL,
      type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('decision time (ms)'),
-     ylim = c(0, 2000), main = 'Decision times in rounds without goal achievement',
+     ylim = c(0.5, 1.6), main = 'Decision times in rounds without goal achievement',
      col = 'darkorchid4')
 polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
         y = c(m_rt_nogoal_highGL + sem_rt_nogoal_highGL, rev(m_rt_nogoal_highGL - sem_rt_nogoal_highGL)),
@@ -1746,9 +1742,9 @@ legend("bottomleft",
 
 
 # HIGH & LOW BONUS:
-plot(x = -nfinaltrials:-1, y = m_rt_nogoal,
+plot(x = -nfinaltrials:-1, y = m_rt_nogoal_highBL,
      type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('decision time (ms)'),
-     ylim = c(0, 2000), main = 'Decision times in rounds without goal achievement',
+     ylim = c(0.5, 1.6), main = 'Decision times in rounds without goal achievement',
      col = 'blue4')
 polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
         y = c(m_rt_nogoal_highBL + sem_rt_nogoal_highBL, rev(m_rt_nogoal_highBL - sem_rt_nogoal_highBL)),
@@ -1762,6 +1758,7 @@ legend("bottomleft",
        legend = c('High Bonus','Low Bonus'),
        col = c('blue4','blue2'),
        lty = 1, lwd = 4)
+
 
 ##### Yes-Goal Blocks ----
 # Second, look at blocks where goals WERE attained
