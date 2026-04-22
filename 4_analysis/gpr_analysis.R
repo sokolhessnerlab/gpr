@@ -775,7 +775,7 @@ for (s in 1:number_of_clean_subjects){
   }
 }
 
-abline(h = 420.79, lty = 2, col = 'red', lwd = 3)
+abline(h = 420.79, lty = 2, col = 'darkorchid4', lwd = 3)
 
 # Average Earnings Low Goals
 
@@ -813,7 +813,7 @@ for (s in 1:number_of_clean_subjects){
   }
 }
 
-abline(h = 349.85, lty = 2, col = 'red', lwd = 3)
+abline(h = 349.85, lty = 2, col = 'darkorchid2', lwd = 3)
 
 
 # TODO:
