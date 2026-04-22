@@ -940,7 +940,7 @@ clean_data_dm$postpostgoal = c(0, clean_data_dm$postgoal[1:(length(clean_data_dm
 clean_data_dm$postpostgoal[clean_data_dm$trialnumber_block == 1] = 0
 # NOTE: THIS ONLY INCLUDES TRIALS AFTER THAT ON WHICH THEY MET THE GOAL
 
-### Sub-block analysis (prisky + rt) ----
+### Sub-block analysis (prisky + rt + scl) ----
 #### calculation ----
 clean_data_subjlevel_long$prisky_overall = NA;
 clean_data_subjlevel_long$decisiontime_overall = NA;
@@ -951,6 +951,7 @@ subblocks_colnames = c('subjectnumber',
                        'subblocknum',
                        'prisky',
                        'rt',
+                       'scl',
                        'bonusatstakeP1N1',
                        'goallevelP1N1')
 subblocks_long = as.data.frame(array(data = NA, dim = c(number_of_clean_subjects*4*nsubblocks, length(subblocks_colnames)))); # no. of subj x no. of blocks x subblock
@@ -983,6 +984,8 @@ for (s in 1:number_of_clean_subjects){
                                                             tmpdata$trialnumber_block == ((sb-1)*nsub_divfactor+1):(sb*nsub_divfactor)], na.rm = T)
       subblocks_long$rt[tmp_ind] = mean(tmpdata$reactiontime[(tmpdata$roundnumber == b) & 
                                                              tmpdata$trialnumber_block == ((sb-1)*nsub_divfactor+1):(sb*nsub_divfactor)], na.rm = T)
+      subblocks_long$scl[tmp_ind] = mean(tmpdata$tmeanscl[(tmpdata$roundnumber == b) & 
+                                                               tmpdata$trialnumber_block == ((sb-1)*nsub_divfactor+1):(sb*nsub_divfactor)], na.rm = T)
     }
   }
 }
@@ -1023,6 +1026,23 @@ sem_rt_goal_x_subblock = array(data = NA, dim = c(nsubblocks,2))
 mean_rt_bonus_x_subblock = array(data = NA, dim = c(nsubblocks,2))
 sem_rt_bonus_x_subblock = array(data = NA, dim = c(nsubblocks,2))
 
+
+# For SCL
+# for overall sub-block rt
+mean_scl_subblock = array(data = NA, dim = c(nsubblocks,1))
+sem_scl_subblock = array(data = NA, dim = c(nsubblocks,1))
+
+# subblock rt by round number
+mean_scl_round_x_subblock = array(data = NA, dim = c(nsubblocks,4))
+sem_scl_round_x_subblock = array(data = NA, dim = c(nsubblocks,4))
+
+# subblock rt by GOAL LEVEL
+mean_scl_goal_x_subblock = array(data = NA, dim = c(nsubblocks,2))
+sem_scl_goal_x_subblock = array(data = NA, dim = c(nsubblocks,2))
+
+# subblock rt by BONUS
+mean_scl_bonus_x_subblock = array(data = NA, dim = c(nsubblocks,2))
+sem_scl_bonus_x_subblock = array(data = NA, dim = c(nsubblocks,2))
 
 
 for (sb in 1:nsubblocks){
@@ -1089,6 +1109,39 @@ for (sb in 1:nsubblocks){
   mean_rt_bonus_x_subblock
   sem_rt_bonus_x_subblock
   
+  
+  # SCL
+  # Overall
+  mean_scl_subblock[sb] = mean(subblocks_long$scl[subblocks_long$subblocknum == sb])
+  sem_scl_subblock[sb] = sd(subblocks_long$scl[subblocks_long$subblocknum == sb])/sqrt(number_of_clean_subjects)
+  
+  # High goal
+  mean_scl_goal_x_subblock[sb,1] = mean(subblocks_long$scl[(subblocks_long$subblocknum == sb) & (subblocks_long$goallevelP1N1 == 1)])
+  sem_scl_goal_x_subblock[sb,1] = sd(subblocks_long$scl[(subblocks_long$subblocknum == sb) & (subblocks_long$goallevelP1N1 == 1)])/sqrt(number_of_clean_subjects)
+  # Low goal
+  mean_scl_goal_x_subblock[sb,2] = mean(subblocks_long$scl[(subblocks_long$subblocknum == sb) & (subblocks_long$goallevelP1N1 == -1)])
+  sem_scl_goal_x_subblock[sb,2] = sd(subblocks_long$scl[(subblocks_long$subblocknum == sb) & (subblocks_long$goallevelP1N1 == -1)])/sqrt(number_of_clean_subjects)
+  
+  # High Bonus
+  mean_scl_bonus_x_subblock[sb,1] = mean(subblocks_long$scl[(subblocks_long$subblocknum == sb) & (subblocks_long$bonusatstakeP1N1 == 1)])
+  sem_scl_bonus_x_subblock[sb,1] = sd(subblocks_long$scl[(subblocks_long$subblocknum == sb) & (subblocks_long$bonusatstakeP1N1 == 1)])/sqrt(number_of_clean_subjects)
+  # Low Bonus
+  mean_scl_bonus_x_subblock[sb,2] = mean(subblocks_long$scl[(subblocks_long$subblocknum == sb) & (subblocks_long$bonusatstakeP1N1 == -1)])
+  sem_scl_bonus_x_subblock[sb,2] = sd(subblocks_long$scl[(subblocks_long$subblocknum == sb) & (subblocks_long$bonusatstakeP1N1 == -1)])/sqrt(number_of_clean_subjects)
+  
+  # Summary Data for rt
+  mean_scl_subblock
+  sem_scl_subblock
+  
+  # Summary rt by GOAL (1 is HIGH and 2 is LOW)
+  mean_scl_goal_x_subblock
+  sem_scl_goal_x_subblock
+  
+  #Summary rt by BONUS (1 is HIGH and 2 is LOW)
+  mean_scl_bonus_x_subblock
+  sem_scl_bonus_x_subblock
+  
+  
    for (b in 1:4){
     # P(risky)
     mean_prisky_round_x_subblock[sb,b] = mean(subblocks_long$prisky[(subblocks_long$subblocknum == sb) & (subblocks_long$roundnum == b)])
@@ -1096,7 +1149,10 @@ for (sb in 1:nsubblocks){
     # Decision Time
     mean_rt_round_x_subblock[sb,b] = mean(subblocks_long$sqrtrt[(subblocks_long$subblocknum == sb) & (subblocks_long$roundnum == b)])
     sem_rt_round_x_subblock[sb,b] = sd(subblocks_long$sqrtrt[(subblocks_long$subblocknum == sb) & (subblocks_long$roundnum == b)])/sqrt(number_of_clean_subjects)
-  }
+    # SCL
+    mean_scl_round_x_subblock[sb,b] = mean(subblocks_long$scl[(subblocks_long$subblocknum == sb) & (subblocks_long$roundnum == b)])
+    sem_scl_round_x_subblock[sb,b] = sd(subblocks_long$scl[(subblocks_long$subblocknum == sb) & (subblocks_long$roundnum == b)])/sqrt(number_of_clean_subjects)
+   }
 }
 
 #### plotting ----
@@ -1234,6 +1290,74 @@ legend("bottomleft",
        col = c('blue4','blue2'),
        lty = 1, lwd = 4)
 
+
+
+# SCL
+plot(mean_scl_subblock, type = 'l', ylim = c(15, 20), lwd = 4,
+     xlab = 'Sub-block (10 trials)', ylab = 'mean SCL +/- SEM',
+     main = 'Arousal as a function of sub-block portion')
+arrows(x0 = 1:5, 
+       y0 = mean_scl_subblock - sem_scl_subblock, 
+       y1 = mean_scl_subblock + sem_scl_subblock,
+       length = 0)
+
+blk_col_vect = c('red','orange','yellow','green')
+
+plot(mean_scl_round_x_subblock[,1], type = 'l', 
+     ylim = c(14.5,20.5), xlim = c(1,20), lwd = 4, col = blk_col_vect[1],
+     xlab = 'block (color) x subblock', ylab = 'mean SCL +/- SEM', main = 'Arousal as a function of block & sub-block portion')
+arrows(x0 = 1:5, 
+       y0 = mean_scl_round_x_subblock[,1] - sem_scl_round_x_subblock[,1], 
+       y1 = mean_scl_round_x_subblock[,1] + sem_scl_round_x_subblock[,1],
+       length = 0)
+
+for (b in 2:4){
+  lines(x = (1:5)+(b-1)*5, y = mean_scl_round_x_subblock[,b], lwd = 4, col = blk_col_vect[b])
+  arrows(x0 = (1:5)+(b-1)*5, 
+         y0 = mean_scl_round_x_subblock[,b] - sem_scl_round_x_subblock[,b], 
+         y1 = mean_scl_round_x_subblock[,b] + sem_scl_round_x_subblock[,b],
+         length = 0)
+}
+legend("topleft",
+       legend = c('Block 1','Block 2', 'Block 3', 'Block 4'),
+       col = blk_col_vect,
+       lty = 1, lwd = 4)
+
+
+plot(x = (1:5) - 0.05, y = mean_scl_goal_x_subblock[,1], type = 'l', 
+     ylim = c(15, 19.5), lwd = 4, col = 'darkorchid4',
+     xlab = 'subblock', ylab = 'mean SCL +/- SEM', main = 'Arousal as a function of GOAL level')
+arrows(x0 = (1:5) - 0.05, 
+       y0 = mean_scl_goal_x_subblock[,1] - sem_scl_goal_x_subblock[,1], 
+       y1 = mean_scl_goal_x_subblock[,1] + sem_scl_goal_x_subblock[,1],
+       length = 0)
+lines(x = (1:5) + .05, y = mean_scl_goal_x_subblock[,2], lwd = 4, col = 'darkorchid2')
+arrows(x0 = (1:5) + .05, 
+       y0 = mean_scl_goal_x_subblock[,2] - sem_scl_goal_x_subblock[,2], 
+       y1 = mean_scl_goal_x_subblock[,2] + sem_scl_goal_x_subblock[,2],
+       length = 0)
+legend("bottomleft",
+       legend = c('High Goal','Low Goal'),
+       col = c('darkorchid4','darkorchid2'),
+       lty = 1, lwd = 4)
+
+
+plot(x = (1:5) - 0.05, y = mean_scl_bonus_x_subblock[,1], type = 'l', 
+     ylim = c(15, 20), lwd = 4, col = 'blue4',
+     xlab = 'subblock', ylab = 'mean SCL +/- SEM', main = 'Arousal as a function of BONUS level')
+arrows(x0 = (1:5) - 0.05, 
+       y0 = mean_scl_bonus_x_subblock[,1] - sem_scl_bonus_x_subblock[,1], 
+       y1 = mean_scl_bonus_x_subblock[,1] + sem_scl_bonus_x_subblock[,1],
+       length = 0)
+lines(x = (1:5) + .05, y = mean_scl_bonus_x_subblock[,2], lwd = 4, col = 'blue2')
+arrows(x0 = (1:5) + .05, 
+       y0 = mean_scl_bonus_x_subblock[,2] - sem_scl_bonus_x_subblock[,2], 
+       y1 = mean_scl_bonus_x_subblock[,2] + sem_scl_bonus_x_subblock[,2],
+       length = 0)
+legend("bottomleft",
+       legend = c('High Bonus','Low Bonus'),
+       col = c('blue4','blue2'),
+       lty = 1, lwd = 4)
 
 # INTERPRETATION NOTES HERE
 
