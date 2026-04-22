@@ -748,7 +748,7 @@ colnames(avgearnings_highgoal) = c("trial", "mean_earnings")
 plot(avgearnings_highgoal$trial,
      avgearnings_highgoal$mean_earnings,
      type = "l",
-     lwd = 3,
+     lwd = 5,
      ylim = c(0,520),
      xlab = "Trial Number",
      ylab = "Average Earnings",
@@ -775,7 +775,7 @@ for (s in 1:number_of_clean_subjects){
   }
 }
 
-abline(h = 420.79, lty = 2, col = 'darkorchid4', lwd = 3)
+abline(h = 420.79, lty = 2, col = 'darkorchid4', lwd = 5)
 
 # Average Earnings Low Goals
 
@@ -786,7 +786,7 @@ colnames(avgearnings_lowgoal) = c("trial", "mean_earnings")
 plot(avgearnings_highgoal$trial,
      avgearnings_highgoal$mean_earnings,
      type = "l",
-     lwd = 3,
+     lwd = 5,
      ylim = c(0,520),
      xlab = "Trial Number",
      ylab = "Average Earnings",
@@ -813,7 +813,7 @@ for (s in 1:number_of_clean_subjects){
   }
 }
 
-abline(h = 349.85, lty = 2, col = 'darkorchid2', lwd = 3)
+abline(h = 349.85, lty = 2, col = 'darkorchid2', lwd = 5)
 
 
 # TODO:
