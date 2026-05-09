@@ -10,9 +10,9 @@ rm(list = ls())
 
 # STEP 1: SET YOUR WORKING DIRECTORY! ----
 # On PSH's computers...
-# setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
+setwd('/Users/sokolhessner/Documents/gitrepos/gpr/');
 # On JB's computers...
-setwd('/Users/justinblake/Documents/GitHub/gpr/');
+# setwd('/Users/justinblake/Documents/GitHub/gpr/');
 
 # STEP 2: Load pre-processed data files ----
 config = config::get();
@@ -1265,13 +1265,13 @@ legend("bottomleft",
 
 
 plot(x = (1:5) - 0.05, y = mean_prisky_goal_x_subblock[,1], type = 'l', 
-     ylim = c(0.45, 0.6), lwd = 4, col = 'darkorchid4',
+     ylim = c(0.45, 0.6), lwd = 9, col = 'darkorchid4',
      xlab = 'subblock', ylab = 'mean p(risky) +/- SEM', main = 'Risky choices as a function of GOAL level')
 arrows(x0 = (1:5) - 0.05, 
        y0 = mean_prisky_goal_x_subblock[,1] - sem_prisky_goal_x_subblock[,1], 
        y1 = mean_prisky_goal_x_subblock[,1] + sem_prisky_goal_x_subblock[,1],
        length = 0)
-lines(x = (1:5) + .05, y = mean_prisky_goal_x_subblock[,2], lwd = 4, col = 'darkorchid2')
+lines(x = (1:5) + .05, y = mean_prisky_goal_x_subblock[,2], lwd = 9, col = 'darkorchid2')
 arrows(x0 = (1:5) + .05, 
        y0 = mean_prisky_goal_x_subblock[,2] - sem_prisky_goal_x_subblock[,2], 
        y1 = mean_prisky_goal_x_subblock[,2] + sem_prisky_goal_x_subblock[,2],
@@ -1420,13 +1420,13 @@ legend("bottomleft",
 
 
 plot(x = (1:5) - 0.05, y = mean_scl_bonus_x_subblock[,1], type = 'l', 
-     ylim = c(15, 20), lwd = 4, col = 'blue4',
+     ylim = c(15, 20), lwd = 9, col = 'blue4',
      xlab = 'subblock', ylab = 'mean SCL +/- SEM', main = 'Arousal as a function of BONUS level')
 arrows(x0 = (1:5) - 0.05, 
        y0 = mean_scl_bonus_x_subblock[,1] - sem_scl_bonus_x_subblock[,1], 
        y1 = mean_scl_bonus_x_subblock[,1] + sem_scl_bonus_x_subblock[,1],
        length = 0)
-lines(x = (1:5) + .05, y = mean_scl_bonus_x_subblock[,2], lwd = 4, col = 'blue2')
+lines(x = (1:5) + .05, y = mean_scl_bonus_x_subblock[,2], lwd = 9, col = 'blue2')
 arrows(x0 = (1:5) + .05, 
        y0 = mean_scl_bonus_x_subblock[,2] - sem_scl_bonus_x_subblock[,2], 
        y1 = mean_scl_bonus_x_subblock[,2] + sem_scl_bonus_x_subblock[,2],
@@ -1729,7 +1729,7 @@ sem_prisky_yesgoal_lowBL = apply(meanbyBL_yesgoal_finalchoices[meanbyBL_yesgoal_
 
 # Plot it: OVERALL
 plot(x = -ntrialsprior:ntrialsafter, y = m_prisky_yesgoal,
-     type = 'l', lwd = 3, xlab = 'Trials relative to goal achievement', ylab = ('p(risky)'),
+     type = 'l', lwd = 9, xlab = 'Trials relative to goal achievement', ylab = ('p(risky)'),
      ylim = c(0.3, 0.7), main = 'Risky Choices by Proximity to Goal Achievement')
 abline(v = 0, col = 'black', lwd = 1, lty = 'dashed')
 abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
@@ -1739,7 +1739,7 @@ abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
 #        length = 0)
 polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
         y = c(m_prisky_yesgoal + sem_prisky_yesgoal, rev(m_prisky_yesgoal - sem_prisky_yesgoal)),
-        col = rgb(.5, .5, .5, .2))
+        col = rgb(.5, .5, .5, .3), border = NA)
 
 # HIGH & LOW GOAL:
 plot(x = -ntrialsprior:ntrialsafter, y = m_prisky_yesgoal_highGL,
@@ -2076,12 +2076,12 @@ sem_rt_yesgoal_lowBL = apply(meanbyBL_yesgoal_finalrts[meanbyBL_yesgoal_finalrts
 
 # Plot it
 plot(x = -ntrialsprior:ntrialsafter, y = m_rt_yesgoal,
-     type = 'l', lwd = 3, xlab = 'Trials relative to goal achievement', ylab = ('decision time (s)'),
+     type = 'l', lwd = 9, xlab = 'Trials relative to goal achievement', ylab = ('decision time (s)'),
      ylim = c(1, 1.3), main = 'Decision Time by Proximity to Goal Achievement')
 abline(v = 0, col = 'black', lwd = 1, lty = 'dashed')
 polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
         y = c(m_rt_yesgoal + sem_rt_yesgoal, rev(m_rt_yesgoal - sem_rt_yesgoal)),
-        col = rgb(.5, .5, .5, .2))
+        col = rgb(.5, .5, .5, .2), border = NA)
 # NOTE: An unequal # of subjects contribute to these points after goal attainment, AND
 # an unequal # of blocks/subject. Only the former is accounted for by the SEM calculation.
 
@@ -2392,12 +2392,12 @@ sem_scl_yesgoal_lowBL = apply(meanbyBL_yesgoal_finalscl[meanbyBL_yesgoal_finalsc
 # Plot it
 # OVERALL
 plot(x = -ntrialsprior:ntrialsafter, y = m_scl_yesgoal,
-     type = 'l', lwd = 3, xlab = 'Trials relative to goal achievement', ylab = ('SCL (uS)'),
+     type = 'l', lwd = 9, xlab = 'Trials relative to goal achievement', ylab = ('SCL (uS)'),
      ylim = c(12, 19), main = 'Arousal by Proximity to Goal Achievement')
 abline(v = 0, col = 'black', lwd = 1, lty = 'dashed')
 polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
         y = c(m_scl_yesgoal + sem_scl_yesgoal, rev(m_scl_yesgoal - sem_scl_yesgoal)),
-        col = rgb(.5, .5, .5, .2))
+        col = rgb(.5, .5, .5, .2), border = NA)
 
 
 # HIGH & LOW GOAL:
