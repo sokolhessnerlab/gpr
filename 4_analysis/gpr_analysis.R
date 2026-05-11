@@ -128,6 +128,16 @@ clean_data_dm$trialnumber_blockRS = clean_data_dm$trialnumber_block/max(clean_da
 
 # STEP 4: ANALYZE ----
 
+# Set up colors for plotting:
+clr_highgoal = rgb(194,32,51, maxColorValue = 255) # dark red
+clr_lowgoal = rgb(222,153,139, maxColorValue = 255) # light red
+clr_highbonus = rgb(0,155,73, maxColorValue = 255) # dark green
+clr_lowbonus = rgb(150,194,150, maxColorValue = 255) # light green
+
+# Previously, we used 'darkorchid4' and 'darkorchid2' (purples; for goals) and 
+# 'blue4' and 'blue2' (blues; for bonuses).
+
+
 ## 1. PERSON-LEVEL ----
 # Who are our subjects? 
 
@@ -775,7 +785,7 @@ for (s in 1:number_of_clean_subjects){
   }
 }
 
-abline(h = 420.79, lty = 2, col = 'darkorchid4', lwd = 5)
+abline(h = 420.79, lty = 2, col = clr_highgoal, lwd = 5)
 
 # Average Earnings Low Goals
 
@@ -813,7 +823,7 @@ for (s in 1:number_of_clean_subjects){
   }
 }
 
-abline(h = 349.85, lty = 2, col = 'darkorchid2', lwd = 5)
+abline(h = 349.85, lty = 2, col = clr_lowgoal, lwd = 5)
 
 
 # TODO:
@@ -1217,6 +1227,13 @@ for (sb in 1:nsubblocks){
   mean_scl_bonus_x_subblock
   sem_scl_bonus_x_subblock
   
+  # Regression:
+  lm_subblock_scl = lmer(scl ~ 1 + bonusatstakeP1N1*goallevelP1N1 + 
+                           (1 | subjectnumber) + 
+                           (1 | roundnum) + 
+                           (1 | subblocknum), data = subblocks_long)
+  summary(lm_subblock_scl)
+  
   
    for (b in 1:4){
     # P(risky)
@@ -1265,38 +1282,38 @@ legend("bottomleft",
 
 
 plot(x = (1:5) - 0.05, y = mean_prisky_goal_x_subblock[,1], type = 'l', 
-     ylim = c(0.45, 0.6), lwd = 9, col = 'darkorchid4',
+     ylim = c(0.45, 0.6), lwd = 9, col = clr_highgoal,
      xlab = 'subblock', ylab = 'mean p(risky) +/- SEM', main = 'Risky choices as a function of GOAL level')
 arrows(x0 = (1:5) - 0.05, 
        y0 = mean_prisky_goal_x_subblock[,1] - sem_prisky_goal_x_subblock[,1], 
        y1 = mean_prisky_goal_x_subblock[,1] + sem_prisky_goal_x_subblock[,1],
        length = 0)
-lines(x = (1:5) + .05, y = mean_prisky_goal_x_subblock[,2], lwd = 9, col = 'darkorchid2')
+lines(x = (1:5) + .05, y = mean_prisky_goal_x_subblock[,2], lwd = 9, col = clr_lowgoal)
 arrows(x0 = (1:5) + .05, 
        y0 = mean_prisky_goal_x_subblock[,2] - sem_prisky_goal_x_subblock[,2], 
        y1 = mean_prisky_goal_x_subblock[,2] + sem_prisky_goal_x_subblock[,2],
        length = 0)
 legend("bottomleft",
        legend = c('High Goal','Low Goal'),
-       col = c('darkorchid4','darkorchid2'),
+       col = c(clr_highgoal,clr_lowgoal),
        lty = 1, lwd = 4)
 
 
 plot(x = (1:5) - 0.05, mean_prisky_bonus_x_subblock[,1], type = 'l', 
-     ylim = c(0.45, 0.6), lwd = 4, col = 'blue4',
+     ylim = c(0.45, 0.6), lwd = 4, col = clr_highbonus,
      xlab = 'subblock', ylab = 'mean p(risky) +/- SEM', main = 'Risky choices as a function of BONUS level')
 arrows(x0 = (1:5) - 0.05, 
        y0 = mean_prisky_bonus_x_subblock[,1] - sem_prisky_bonus_x_subblock[,1], 
        y1 = mean_prisky_bonus_x_subblock[,1] + sem_prisky_bonus_x_subblock[,1],
        length = 0)
-lines(x = (1:5) + .05, y = mean_prisky_bonus_x_subblock[,2], lwd = 4, col = 'blue2')
+lines(x = (1:5) + .05, y = mean_prisky_bonus_x_subblock[,2], lwd = 4, col = clr_lowbonus)
 arrows(x0 = (1:5) + .05, 
        y0 = mean_prisky_bonus_x_subblock[,2] - sem_prisky_bonus_x_subblock[,2], 
        y1 = mean_prisky_bonus_x_subblock[,2] + sem_prisky_bonus_x_subblock[,2],
        length = 0)
 legend("bottomleft",
        legend = c('High Bonus','Low Bonus'),
-       col = c('blue4','blue2'),
+       col = c(clr_highbonus,clr_lowbonus),
        lty = 1, lwd = 4)
 
 
@@ -1333,38 +1350,38 @@ legend("bottomleft",
 
 
 plot(x = (1:5) - 0.05, y = mean_rt_goal_x_subblock[,1], type = 'l', 
-     ylim = c(1, 1.2), lwd = 4, col = 'darkorchid4',
+     ylim = c(1, 1.2), lwd = 4, col = clr_highgoal,
      xlab = 'subblock', ylab = 'mean sqrt(RT) +/- SEM', main = 'Decision Times as a function of GOAL level')
 arrows(x0 = (1:5) - 0.05, 
        y0 = mean_rt_goal_x_subblock[,1] - sem_rt_goal_x_subblock[,1], 
        y1 = mean_rt_goal_x_subblock[,1] + sem_rt_goal_x_subblock[,1],
        length = 0)
-lines(x = (1:5) + .05, y = mean_rt_goal_x_subblock[,2], lwd = 4, col = 'darkorchid2')
+lines(x = (1:5) + .05, y = mean_rt_goal_x_subblock[,2], lwd = 4, col = clr_lowgoal)
 arrows(x0 = (1:5) + .05, 
        y0 = mean_rt_goal_x_subblock[,2] - sem_rt_goal_x_subblock[,2], 
        y1 = mean_rt_goal_x_subblock[,2] + sem_rt_goal_x_subblock[,2],
        length = 0)
 legend("bottomleft",
        legend = c('High Goal','Low Goal'),
-       col = c('darkorchid4','darkorchid2'),
+       col = c(clr_highgoal,clr_lowgoal),
        lty = 1, lwd = 4)
 
 
 plot(x = (1:5) - 0.05, y = mean_rt_bonus_x_subblock[,1], type = 'l', 
-     ylim = c(1, 1.2), lwd = 4, col = 'blue4',
+     ylim = c(1, 1.2), lwd = 4, col = clr_highbonus,
      xlab = 'subblock', ylab = 'mean sqrt(RT) +/- SEM', main = 'Decision Times as a function of BONUS level')
 arrows(x0 = (1:5) - 0.05, 
        y0 = mean_rt_bonus_x_subblock[,1] - sem_rt_bonus_x_subblock[,1], 
        y1 = mean_rt_bonus_x_subblock[,1] + sem_rt_bonus_x_subblock[,1],
        length = 0)
-lines(x = (1:5) + .05, y = mean_rt_bonus_x_subblock[,2], lwd = 4, col = 'blue2')
+lines(x = (1:5) + .05, y = mean_rt_bonus_x_subblock[,2], lwd = 4, col = clr_lowbonus)
 arrows(x0 = (1:5) + .05, 
        y0 = mean_rt_bonus_x_subblock[,2] - sem_rt_bonus_x_subblock[,2], 
        y1 = mean_rt_bonus_x_subblock[,2] + sem_rt_bonus_x_subblock[,2],
        length = 0)
 legend("bottomleft",
        legend = c('High Bonus','Low Bonus'),
-       col = c('blue4','blue2'),
+       col = c(clr_highbonus,clr_lowbonus),
        lty = 1, lwd = 4)
 
 
@@ -1402,38 +1419,38 @@ legend("topleft",
 
 
 plot(x = (1:5) - 0.05, y = mean_scl_goal_x_subblock[,1], type = 'l', 
-     ylim = c(15, 19.5), lwd = 4, col = 'darkorchid4',
+     ylim = c(15, 19.5), lwd = 4, col = clr_highgoal,
      xlab = 'subblock', ylab = 'mean SCL +/- SEM', main = 'Arousal as a function of GOAL level')
 arrows(x0 = (1:5) - 0.05, 
        y0 = mean_scl_goal_x_subblock[,1] - sem_scl_goal_x_subblock[,1], 
        y1 = mean_scl_goal_x_subblock[,1] + sem_scl_goal_x_subblock[,1],
        length = 0)
-lines(x = (1:5) + .05, y = mean_scl_goal_x_subblock[,2], lwd = 4, col = 'darkorchid2')
+lines(x = (1:5) + .05, y = mean_scl_goal_x_subblock[,2], lwd = 4, col = clr_lowgoal)
 arrows(x0 = (1:5) + .05, 
        y0 = mean_scl_goal_x_subblock[,2] - sem_scl_goal_x_subblock[,2], 
        y1 = mean_scl_goal_x_subblock[,2] + sem_scl_goal_x_subblock[,2],
        length = 0)
 legend("bottomleft",
        legend = c('High Goal','Low Goal'),
-       col = c('darkorchid4','darkorchid2'),
+       col = c(clr_highgoal,clr_lowgoal),
        lty = 1, lwd = 4)
 
 
 plot(x = (1:5) - 0.05, y = mean_scl_bonus_x_subblock[,1], type = 'l', 
-     ylim = c(15, 20), lwd = 9, col = 'blue4',
+     ylim = c(15, 20), lwd = 9, col = clr_highbonus,
      xlab = 'subblock', ylab = 'mean SCL +/- SEM', main = 'Arousal as a function of BONUS level')
 arrows(x0 = (1:5) - 0.05, 
        y0 = mean_scl_bonus_x_subblock[,1] - sem_scl_bonus_x_subblock[,1], 
        y1 = mean_scl_bonus_x_subblock[,1] + sem_scl_bonus_x_subblock[,1],
        length = 0)
-lines(x = (1:5) + .05, y = mean_scl_bonus_x_subblock[,2], lwd = 9, col = 'blue2')
+lines(x = (1:5) + .05, y = mean_scl_bonus_x_subblock[,2], lwd = 9, col = clr_lowbonus)
 arrows(x0 = (1:5) + .05, 
        y0 = mean_scl_bonus_x_subblock[,2] - sem_scl_bonus_x_subblock[,2], 
        y1 = mean_scl_bonus_x_subblock[,2] + sem_scl_bonus_x_subblock[,2],
        length = 0)
 legend("bottomleft",
        legend = c('High Bonus','Low Bonus'),
-       col = c('blue4','blue2'),
+       col = c(clr_highbonus,clr_lowbonus),
        lty = 1, lwd = 4)
 
 # INTERPRETATION NOTES HERE
@@ -1563,19 +1580,19 @@ polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
 plot(x = -nfinaltrials:-1, y = m_prisky_nogoal_highGL,
      type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('p(risky)'),
      ylim = c(0, 1), main = 'Risky Choices in Unsuccessful Rounds by Goal Level',
-     col = 'darkorchid4')
+     col = clr_highgoal)
 polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
         y = c(m_prisky_nogoal_highGL + sem_prisky_nogoal_highGL, rev(m_prisky_nogoal_highGL - sem_prisky_nogoal_highGL)),
-        col = rgb(t(col2rgb('darkorchid4')), alpha = 51, maxColorValue = 255))
+        col = rgb(t(col2rgb(clr_highgoal)), alpha = 51, maxColorValue = 255), border = NA)
 lines(x = -nfinaltrials:-1, y = m_prisky_nogoal_lowGL,
-      lwd = 3, col = 'darkorchid2')
+      lwd = 3, col = clr_lowgoal)
 polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
         y = c(m_prisky_nogoal_lowGL + sem_prisky_nogoal_lowGL, rev(m_prisky_nogoal_lowGL - sem_prisky_nogoal_lowGL)),
-        col = rgb(t(col2rgb('darkorchid2')), alpha = 51, maxColorValue = 255))
+        col = rgb(t(col2rgb(clr_lowgoal)), alpha = 51, maxColorValue = 255), border = NA)
 abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
 legend("bottomleft",
        legend = c('High Goal','Low Goal'),
-       col = c('darkorchid4','darkorchid2'),
+       col = c(clr_highgoal,clr_lowgoal),
        lty = 1, lwd = 4)
 
 
@@ -1583,19 +1600,19 @@ legend("bottomleft",
 plot(x = -nfinaltrials:-1, y = m_prisky_nogoal_highBL,
      type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('p(risky)'),
      ylim = c(0, 1), main = 'Risky Choices in Unsuccessful Rounds by Bonus Level',
-     col = 'blue4')
+     col = clr_highbonus)
 polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
         y = c(m_prisky_nogoal_highBL + sem_prisky_nogoal_highBL, rev(m_prisky_nogoal_highBL - sem_prisky_nogoal_highBL)),
-        col = rgb(t(col2rgb('blue4')), alpha = 51, maxColorValue = 255))
+        col = rgb(t(col2rgb(clr_highbonus)), alpha = 51, maxColorValue = 255), border = NA)
 lines(x = -nfinaltrials:-1, y = m_prisky_nogoal_lowBL,
-      lwd = 3, col = 'blue2')
+      lwd = 3, col = clr_lowbonus)
 polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
         y = c(m_prisky_nogoal_lowBL + sem_prisky_nogoal_lowBL, rev(m_prisky_nogoal_lowBL - sem_prisky_nogoal_lowBL)),
-        col = rgb(t(col2rgb('blue2')), alpha = 51, maxColorValue = 255))
+        col = rgb(t(col2rgb(clr_lowbonus)), alpha = 51, maxColorValue = 255), border = NA)
 abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
 legend("bottomleft",
        legend = c('High Bonus','Low Bonus'),
-       col = c('blue4','blue2'),
+       col = c(clr_highbonus,clr_lowbonus),
        lty = 1, lwd = 4)
 
 # risky decision-making increases as the end of the block approaches, starting around 5-10 trials before the end.
@@ -1745,20 +1762,20 @@ polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
 plot(x = -ntrialsprior:ntrialsafter, y = m_prisky_yesgoal_highGL,
      type = 'l', lwd = 3, xlab = 'Trials relative to goal achievement', ylab = ('p(risky)'),
      ylim = c(0.2, 1), main = 'Risky Choices by Proximity to Goal Achievement',
-     col = 'darkorchid4')
+     col = clr_highgoal)
 polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
         y = c(m_prisky_yesgoal_highGL + sem_prisky_yesgoal_highGL, rev(m_prisky_yesgoal_highGL - sem_prisky_yesgoal_highGL)),
-        col = rgb(t(col2rgb('darkorchid4')), alpha = 51, maxColorValue = 255))
+        col = rgb(t(col2rgb(clr_highgoal)), alpha = 51, maxColorValue = 255), border = NA)
 lines(x = -ntrialsprior:ntrialsafter, y = m_prisky_yesgoal_lowGL,
-      lwd = 3, col = 'darkorchid2')
+      lwd = 3, col = clr_lowgoal)
 polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
         y = c(m_prisky_yesgoal_lowGL + sem_prisky_yesgoal_lowGL, rev(m_prisky_yesgoal_lowGL - sem_prisky_yesgoal_lowGL)),
-        col = rgb(t(col2rgb('darkorchid2')), alpha = 51, maxColorValue = 255))
+        col = rgb(t(col2rgb(clr_lowgoal)), alpha = 51, maxColorValue = 255), border = NA)
 abline(v = 0, col = 'black', lwd = 1, lty = 'dashed')
 abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
 legend("bottomleft",
        legend = c('High Goal','Low Goal'),
-       col = c('darkorchid4','darkorchid2'),
+       col = c(clr_highgoal,clr_lowgoal),
        lty = 1, lwd = 4)
 
 
@@ -1767,20 +1784,20 @@ legend("bottomleft",
 plot(x = -ntrialsprior:ntrialsafter, y = m_prisky_yesgoal_highBL,
      type = 'l', lwd = 3, xlab = 'Trials relative to goal achievement', ylab = ('p(risky)'),
      ylim = c(0.3, 0.8), main = 'Risky Choices by Proximity to Goal Achievement',
-     col = 'blue4')
+     col = clr_highbonus)
 polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
         y = c(m_prisky_yesgoal_highBL + sem_prisky_yesgoal_highBL, rev(m_prisky_yesgoal_highBL - sem_prisky_yesgoal_highBL)),
-        col = rgb(t(col2rgb('blue4')), alpha = 51, maxColorValue = 255))
+        col = rgb(t(col2rgb(clr_highbonus)), alpha = 51, maxColorValue = 255), border = NA)
 lines(x = -ntrialsprior:ntrialsafter, y = m_prisky_yesgoal_lowBL,
-      lwd = 3, col = 'blue2')
+      lwd = 3, col = clr_lowbonus)
 polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
         y = c(m_prisky_yesgoal_lowBL + sem_prisky_yesgoal_lowBL, rev(m_prisky_yesgoal_lowBL - sem_prisky_yesgoal_lowBL)),
-        col = rgb(t(col2rgb('blue2')), alpha = 51, maxColorValue = 255))
+        col = rgb(t(col2rgb(clr_lowbonus)), alpha = 51, maxColorValue = 255), border = NA)
 abline(v = 0, col = 'black', lwd = 1, lty = 'dashed')
 abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
 legend("bottomleft",
        legend = c('High Bonus','Low Bonus'),
-       col = c('blue4','blue2'),
+       col = c(clr_highbonus,clr_lowbonus),
        lty = 1, lwd = 4)
 
 # If we want to use regression on this, need to reshape into LONG format, and include a
@@ -1941,18 +1958,18 @@ polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
 plot(x = -nfinaltrials:-1, y = m_rt_nogoal_highGL,
      type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('decision time (ms)'),
      ylim = c(0.5, 1.6), main = 'Decision times in rounds without goal achievement',
-     col = 'darkorchid4')
+     col = clr_highgoal)
 polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
         y = c(m_rt_nogoal_highGL + sem_rt_nogoal_highGL, rev(m_rt_nogoal_highGL - sem_rt_nogoal_highGL)),
-        col = rgb(t(col2rgb('darkorchid4')), alpha = 51, maxColorValue = 255))
+        col = rgb(t(col2rgb(clr_highgoal)), alpha = 51, maxColorValue = 255), border = NA)
 lines(x = -nfinaltrials:-1, y = m_rt_nogoal_lowGL,
-      lwd = 3, col = 'darkorchid2')
+      lwd = 3, col = clr_lowgoal)
 polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
         y = c(m_rt_nogoal_lowGL + sem_rt_nogoal_lowGL, rev(m_rt_nogoal_lowGL - sem_rt_nogoal_lowGL)),
-        col = rgb(t(col2rgb('darkorchid2')), alpha = 51, maxColorValue = 255))
+        col = rgb(t(col2rgb(clr_lowgoal)), alpha = 51, maxColorValue = 255), border = NA)
 legend("bottomleft",
        legend = c('High Goal','Low Goal'),
-       col = c('darkorchid4','darkorchid2'),
+       col = c(clr_highgoal,clr_lowgoal),
        lty = 1, lwd = 4)
 
 
@@ -1960,18 +1977,18 @@ legend("bottomleft",
 plot(x = -nfinaltrials:-1, y = m_rt_nogoal_highBL,
      type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('decision time (ms)'),
      ylim = c(0.5, 1.6), main = 'Decision times in rounds without goal achievement',
-     col = 'blue4')
+     col = clr_highbonus)
 polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
         y = c(m_rt_nogoal_highBL + sem_rt_nogoal_highBL, rev(m_rt_nogoal_highBL - sem_rt_nogoal_highBL)),
-        col = rgb(t(col2rgb('blue4')), alpha = 51, maxColorValue = 255))
+        col = rgb(t(col2rgb(clr_highbonus)), alpha = 51, maxColorValue = 255), border = NA)
 lines(x = -nfinaltrials:-1, y = m_rt_nogoal_lowBL,
-      lwd = 3, col = 'blue2')
+      lwd = 3, col = clr_lowbonus)
 polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
         y = c(m_rt_nogoal_lowBL + sem_rt_nogoal_lowBL, rev(m_rt_nogoal_lowBL - sem_rt_nogoal_lowBL)),
-        col = rgb(t(col2rgb('blue2')), alpha = 51, maxColorValue = 255))
+        col = rgb(t(col2rgb(clr_lowbonus)), alpha = 51, maxColorValue = 255), border = NA)
 legend("bottomleft",
        legend = c('High Bonus','Low Bonus'),
-       col = c('blue4','blue2'),
+       col = c(clr_highbonus,clr_lowbonus),
        lty = 1, lwd = 4)
 
 
@@ -2091,19 +2108,19 @@ polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
 plot(x = -ntrialsprior:ntrialsafter, y = m_rt_yesgoal_highGL,
      type = 'l', lwd = 3, xlab = 'Trials relative to goal achievement', ylab = ('decision time (s)'),
      ylim = c(0.8,1.4), main = 'Decision Time by Proximity to Goal Achievement',
-     col = 'darkorchid4')
+     col = clr_highgoal)
 polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
         y = c(m_rt_yesgoal_highGL + sem_rt_yesgoal_highGL, rev(m_rt_yesgoal_highGL - sem_rt_yesgoal_highGL)),
-        col = rgb(t(col2rgb('darkorchid4')), alpha = 51, maxColorValue = 255))
+        col = rgb(t(col2rgb(clr_highgoal)), alpha = 51, maxColorValue = 255), border = NA)
 lines(x = -ntrialsprior:ntrialsafter, y = m_rt_yesgoal_lowGL,
-      lwd = 3, col = 'darkorchid2')
+      lwd = 3, col = clr_lowgoal)
 polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
         y = c(m_rt_yesgoal_lowGL + sem_rt_yesgoal_lowGL, rev(m_rt_yesgoal_lowGL - sem_rt_yesgoal_lowGL)),
-        col = rgb(t(col2rgb('darkorchid2')), alpha = 51, maxColorValue = 255))
+        col = rgb(t(col2rgb(clr_lowgoal)), alpha = 51, maxColorValue = 255), border = NA)
 abline(v = 0, col = 'black', lwd = 1, lty = 'dashed')
 legend("bottomleft",
        legend = c('High Goal','Low Goal'),
-       col = c('darkorchid4','darkorchid2'),
+       col = c(clr_highgoal,clr_lowgoal),
        lty = 1, lwd = 4)
 # Effect of speeding post-goal might be stronger in high goal conditions? Hard to tell. 
 
@@ -2113,19 +2130,19 @@ legend("bottomleft",
 plot(x = -ntrialsprior:ntrialsafter, y = m_rt_yesgoal_highBL,
      type = 'l', lwd = 3, xlab = 'Trials relative to goal achievement', ylab = ('decision time (s)'),
      ylim = c(1.0,1.35), main = 'Decision Time by Proximity to Goal Achievement',
-     col = 'blue4')
+     col = clr_highbonus)
 polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
         y = c(m_rt_yesgoal_highBL + sem_rt_yesgoal_highBL, rev(m_rt_yesgoal_highBL - sem_rt_yesgoal_highBL)),
-        col = rgb(t(col2rgb('blue4')), alpha = 51, maxColorValue = 255))
+        col = rgb(t(col2rgb(clr_highbonus)), alpha = 51, maxColorValue = 255), border = NA)
 lines(x = -ntrialsprior:ntrialsafter, y = m_rt_yesgoal_lowBL,
-      lwd = 3, col = 'blue2')
+      lwd = 3, col = clr_lowbonus)
 polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
         y = c(m_rt_yesgoal_lowBL + sem_rt_yesgoal_lowBL, rev(m_rt_yesgoal_lowBL - sem_rt_yesgoal_lowBL)),
-        col = rgb(t(col2rgb('blue2')), alpha = 51, maxColorValue = 255))
+        col = rgb(t(col2rgb(clr_lowbonus)), alpha = 51, maxColorValue = 255), border = NA)
 abline(v = 0, col = 'black', lwd = 1, lty = 'dashed')
 legend("bottomleft",
        legend = c('High Bonus','Low Bonus'),
-       col = c('blue4','blue2'),
+       col = c(clr_highbonus,clr_lowbonus),
        lty = 1, lwd = 4)
 
 
@@ -2256,18 +2273,18 @@ polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
 plot(x = -nfinaltrials:-1, y = m_scl_nogoal_highGL,
      type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('SCL (uS)'),
      ylim = c(13, 19), main = 'Arousal in rounds without goal achievement',
-     col = 'darkorchid4')
+     col = clr_highgoal)
 polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
         y = c(m_scl_nogoal_highGL + sem_scl_nogoal_highGL, rev(m_scl_nogoal_highGL - sem_scl_nogoal_highGL)),
-        col = rgb(t(col2rgb('darkorchid4')), alpha = 51, maxColorValue = 255))
+        col = rgb(t(col2rgb(clr_highgoal)), alpha = 51, maxColorValue = 255), border = NA)
 lines(x = -nfinaltrials:-1, y = m_scl_nogoal_lowGL,
-      lwd = 3, col = 'darkorchid2')
+      lwd = 3, col = clr_lowgoal)
 polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
         y = c(m_scl_nogoal_lowGL + sem_scl_nogoal_lowGL, rev(m_scl_nogoal_lowGL - sem_scl_nogoal_lowGL)),
-        col = rgb(t(col2rgb('darkorchid2')), alpha = 51, maxColorValue = 255))
+        col = rgb(t(col2rgb(clr_lowgoal)), alpha = 51, maxColorValue = 255), border = NA)
 legend("bottomleft",
        legend = c('High Goal','Low Goal'),
-       col = c('darkorchid4','darkorchid2'),
+       col = c(clr_highgoal,clr_lowgoal),
        lty = 1, lwd = 4)
 
 
@@ -2275,18 +2292,18 @@ legend("bottomleft",
 plot(x = -nfinaltrials:-1, y = m_scl_nogoal_highBL,
      type = 'l', lwd = 3, xlab = 'Trials relative to end of round', ylab = ('SCL (uS)'),
      ylim = c(13, 19), main = 'Arousal in rounds without goal achievement',
-     col = 'blue4')
+     col = clr_highbonus)
 polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
         y = c(m_scl_nogoal_highBL + sem_scl_nogoal_highBL, rev(m_scl_nogoal_highBL - sem_scl_nogoal_highBL)),
-        col = rgb(t(col2rgb('blue4')), alpha = 51, maxColorValue = 255))
+        col = rgb(t(col2rgb(clr_highbonus)), alpha = 51, maxColorValue = 255), border = NA)
 lines(x = -nfinaltrials:-1, y = m_scl_nogoal_lowBL,
-      lwd = 3, col = 'blue2')
+      lwd = 3, col = clr_lowbonus)
 polygon(x = c(-nfinaltrials:-1, -1:-nfinaltrials),
         y = c(m_scl_nogoal_lowBL + sem_scl_nogoal_lowBL, rev(m_scl_nogoal_lowBL - sem_scl_nogoal_lowBL)),
-        col = rgb(t(col2rgb('blue2')), alpha = 51, maxColorValue = 255))
+        col = rgb(t(col2rgb(clr_lowbonus)), alpha = 51, maxColorValue = 255), border = NA)
 legend("bottomleft",
        legend = c('High Bonus','Low Bonus'),
-       col = c('blue4','blue2'),
+       col = c(clr_highbonus,clr_lowbonus),
        lty = 1, lwd = 4)
 
 
@@ -2404,19 +2421,19 @@ polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
 plot(x = -ntrialsprior:ntrialsafter, y = m_scl_yesgoal_highGL,
      type = 'l', lwd = 3, xlab = 'Trials relative to goal achievement', ylab = ('SCL (uS)'),
      ylim = c(9, 21), main = 'Arousal by Proximity to Goal Achievement',
-     col = 'darkorchid4')
+     col = clr_highgoal)
 polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
         y = c(m_scl_yesgoal_highGL + sem_scl_yesgoal_highGL, rev(m_scl_yesgoal_highGL - sem_scl_yesgoal_highGL)),
-        col = rgb(t(col2rgb('darkorchid4')), alpha = 51, maxColorValue = 255))
+        col = rgb(t(col2rgb(clr_highgoal)), alpha = 51, maxColorValue = 255), border = NA)
 lines(x = -ntrialsprior:ntrialsafter, y = m_scl_yesgoal_lowGL,
-      lwd = 3, col = 'darkorchid2')
+      lwd = 3, col = clr_lowgoal)
 polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
         y = c(m_scl_yesgoal_lowGL + sem_scl_yesgoal_lowGL, rev(m_scl_yesgoal_lowGL - sem_scl_yesgoal_lowGL)),
-        col = rgb(t(col2rgb('darkorchid2')), alpha = 51, maxColorValue = 255))
+        col = rgb(t(col2rgb(clr_lowgoal)), alpha = 51, maxColorValue = 255), border = NA)
 abline(v = 0, col = 'black', lwd = 1, lty = 'dashed')
 legend("bottomleft",
        legend = c('High Goal','Low Goal'),
-       col = c('darkorchid4','darkorchid2'),
+       col = c(clr_highgoal,clr_lowgoal),
        lty = 1, lwd = 4)
 # Effect of speeding post-goal might be stronger in high goal conditions? Hard to tell. 
 
@@ -2426,20 +2443,20 @@ legend("bottomleft",
 plot(x = -ntrialsprior:ntrialsafter, y = m_scl_yesgoal_highBL,
      type = 'l', lwd = 3, xlab = 'Trials relative to goal achievement', ylab = ('SCL (uS)'),
      ylim = c(9, 21), main = 'Arousal by Proximity to Goal Achievement',
-     col = 'blue4')
+     col = clr_highbonus)
 polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
         y = c(m_scl_yesgoal_highBL + sem_scl_yesgoal_highBL, rev(m_scl_yesgoal_highBL - sem_scl_yesgoal_highBL)),
-        col = rgb(t(col2rgb('blue4')), alpha = 51, maxColorValue = 255))
+        col = rgb(t(col2rgb(clr_highbonus)), alpha = 51, maxColorValue = 255), border = NA)
 lines(x = -ntrialsprior:ntrialsafter, y = m_scl_yesgoal_lowBL,
-      lwd = 3, col = 'blue2')
+      lwd = 3, col = clr_lowbonus)
 polygon(x = c(-ntrialsprior:ntrialsafter, ntrialsafter:-ntrialsprior),
         y = c(m_scl_yesgoal_lowBL + sem_scl_yesgoal_lowBL, rev(m_scl_yesgoal_lowBL - sem_scl_yesgoal_lowBL)),
-        col = rgb(t(col2rgb('blue2')), alpha = 51, maxColorValue = 255))
+        col = rgb(t(col2rgb(clr_lowbonus)), alpha = 51, maxColorValue = 255), border = NA)
 abline(v = 0, col = 'black', lwd = 1, lty = 'dashed')
 abline(h = 0.5, col = 'black', lwd = 1, lty = 'dashed')
 legend("bottomleft",
        legend = c('High Bonus','Low Bonus'),
-       col = c('blue4','blue2'),
+       col = c(clr_highbonus,clr_lowbonus),
        lty = 1, lwd = 4)
 
 
