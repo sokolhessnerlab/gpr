@@ -1227,14 +1227,6 @@ for (sb in 1:nsubblocks){
   mean_scl_bonus_x_subblock
   sem_scl_bonus_x_subblock
   
-  # Regression:
-  lm_subblock_scl = lmer(scl ~ 1 + bonusatstakeP1N1*goallevelP1N1 + 
-                           (1 | subjectnumber) + 
-                           (1 | roundnum) + 
-                           (1 | subblocknum), data = subblocks_long)
-  summary(lm_subblock_scl)
-  
-  
    for (b in 1:4){
     # P(risky)
     mean_prisky_round_x_subblock[sb,b] = mean(subblocks_long$prisky[(subblocks_long$subblocknum == sb) & (subblocks_long$roundnum == b)])
@@ -1247,6 +1239,69 @@ for (sb in 1:nsubblocks){
     sem_scl_round_x_subblock[sb,b] = sd(subblocks_long$scl[(subblocks_long$subblocknum == sb) & (subblocks_long$roundnum == b)])/sqrt(number_of_clean_subjects)
    }
 }
+
+# Regressions:
+lm_subblock_prisky = lmer(prisky ~ 1 + bonusatstakeP1N1*goallevelP1N1 + subblocknum + roundnum + 
+                         (1 | subjectnumber), data = subblocks_long)
+summary(lm_subblock_prisky)
+
+# Fixed effects:
+#                                    Estimate Std. Error         df t value Pr(>|t|)    
+#   (Intercept)                     5.610e-01  1.918e-02  2.313e+02  29.253  < 2e-16 ***
+#   bonusatstakeP1N1               -6.111e-03  4.315e-03  1.249e+03  -1.416   0.1570    
+#   goallevelP1N1                   9.343e-03  4.315e-03  1.249e+03   2.165   0.0306 *  
+#   subblocknum                     3.093e-03  3.051e-03  1.249e+03   1.014   0.3109    
+#   roundnum                       -1.778e-02  3.862e-03  1.249e+03  -4.604 4.57e-06 ***
+#   bonusatstakeP1N1:goallevelP1N1  8.889e-03  4.318e-03  1.249e+03   2.059   0.0397 *  
+#
+# Goals raise risk-taking overall (p = 0.03), though risk-taking generally drops with
+# round (p = 5e-6). Bonus & goal lightly interact, such that risk-taking is greatest
+# when bonuses & goals are high, drops *slightly* when bonuses are low, and is 
+# lowest (by far) when bonuses are high but goals are low. 
+#   --> People go super conservative when goals are low and bonuses are high
+
+
+t.test(aggregate(prisky ~ subjectnumber,data = subblocks_long[(subblocks_long$subblocknum == 1) & (subblocks_long$goallevelP1N1 == 1),],FUN = mean)$prisky,
+       aggregate(prisky ~ subjectnumber,data = subblocks_long[(subblocks_long$subblocknum == 1) & (subblocks_long$goallevelP1N1 == -1),],FUN = mean)$prisky,
+       paired = T) # n.s. (p = 0.35)
+t.test(aggregate(prisky ~ subjectnumber,data = subblocks_long[(subblocks_long$subblocknum == 2) & (subblocks_long$goallevelP1N1 == 1),],FUN = mean)$prisky,
+       aggregate(prisky ~ subjectnumber,data = subblocks_long[(subblocks_long$subblocknum == 2) & (subblocks_long$goallevelP1N1 == -1),],FUN = mean)$prisky,
+       paired = T) # n.s. (p = 0.70)
+t.test(aggregate(prisky ~ subjectnumber,data = subblocks_long[(subblocks_long$subblocknum == 3) & (subblocks_long$goallevelP1N1 == 1),],FUN = mean)$prisky,
+       aggregate(prisky ~ subjectnumber,data = subblocks_long[(subblocks_long$subblocknum == 3) & (subblocks_long$goallevelP1N1 == -1),],FUN = mean)$prisky,
+       paired = T) # n.s. (p = 0.62)
+
+t.test(aggregate(prisky ~ subjectnumber,data = subblocks_long[(subblocks_long$subblocknum == 4) & (subblocks_long$goallevelP1N1 == 1),],FUN = mean)$prisky,
+       aggregate(prisky ~ subjectnumber,data = subblocks_long[(subblocks_long$subblocknum == 4) & (subblocks_long$goallevelP1N1 == -1),],FUN = mean)$prisky,
+       paired = T) # p = 0.04
+
+t.test(aggregate(prisky ~ subjectnumber,data = subblocks_long[(subblocks_long$subblocknum == 5) & (subblocks_long$goallevelP1N1 == 1),],FUN = mean)$prisky,
+       aggregate(prisky ~ subjectnumber,data = subblocks_long[(subblocks_long$subblocknum == 5) & (subblocks_long$goallevelP1N1 == -1),],FUN = mean)$prisky,
+       paired = T) # p = 0.004
+
+
+lm_subblock_scl = lmer(scl ~ 1 + bonusatstakeP1N1*goallevelP1N1 + subblocknum + roundnum + 
+                         (1 | subjectnumber), data = subblocks_long)
+summary(lm_subblock_scl)
+# Fixed effects:
+#                                    Estimate Std. Error         df t value Pr(>|t|)    
+#   (Intercept)                      15.92966    1.10550   70.34178  14.410  < 2e-16 ***
+#   bonusatstakeP1N1                  0.43802    0.07059 1249.00000   6.205 7.44e-10 ***
+#   goallevelP1N1                    -0.18677    0.07059 1249.00000  -2.646  0.00825 ** 
+#   subblocknum                      -0.24888    0.04992 1249.00000  -4.986 7.03e-07 ***
+#   roundnum                          0.72895    0.06318 1249.00000  11.538  < 2e-16 ***
+#   bonusatstakeP1N1:goallevelP1N1    0.15487    0.07063 1249.00000   2.193  0.02852 *    
+#
+# SCL is...
+# - Higher on High Bonus
+# - Higher on Low Goal
+# - Dropping within a subblock
+# - Rising across rounds
+#
+# - Bonus & goal interact (+ve) =
+#     arousal is high for high bonus rounds whether high (.4) or low (.44) goal
+#     arousal is low for low bonus rounds, but lowest on high (-.78) vs. low (-0.1) goals
+#     --> GOAL EFFECT ONLY REALLY PRESENT IF BONUS IS LOW
 
 #### plotting ----
 ##### P(risky) ----
