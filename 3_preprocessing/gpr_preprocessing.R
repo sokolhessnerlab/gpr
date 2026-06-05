@@ -18,6 +18,8 @@ config = config::get();
 
 setwd(config$path$data$raw);
 
+library(psych)
+
 # STEP 3: Get the file names & set variables ----
 cat('Identifying data file locations.\n');
 rdmfn = dir(pattern = glob2rx('rdmDatasub*_gprRDM_*.csv'),full.names = T, recursive = T);
@@ -609,6 +611,79 @@ for(s in 1:number_of_subjects){
   
   cat('. Done.\n')
 }
+
+# Cronbach's Alpha calculations:
+# STAI-S
+rev_key_stais = 1:20
+rev_key_stais[c(1, 2, 5, 8, 10, 11, 15, 16, 19, 20)] = 
+  -1 * rev_key_stais[c(1, 2, 5, 8, 10, 11, 15, 16, 19, 20)]
+alpha(num_qualtrics_data[,27:46], 
+      keys = rev_key_stais,
+      max = 4, cumulative = T)
+
+# STAI-T
+rev_key_stait = 1:20
+rev_key_stait[c(1, 3, 6, 7, 10, 13, 14, 16, 19)] = 
+  -1 * rev_key_stait[c(1, 3, 6, 7, 10, 13, 14, 16, 19)]
+
+alpha(num_qualtrics_data[,47:66], 
+      keys = rev_key_stait, 
+      max = 4, cumulative = T)
+
+# RRS-10
+alpha(num_qualtrics_data[,67:76], 
+      max = 4, cumulative = T)
+
+# BIS
+bis_col_names = c('GPR.BIS.BAS_2',
+                  'GPR.BIS.BAS_8',
+                  'GPR.BIS.BAS_13',
+                  'GPR.BIS.BAS_16',
+                  'GPR.BIS.BAS_19',
+                  'GPR.BIS.BAS_22',
+                  'GPR.BIS.BAS_24')
+bis_rev_score_col_names = c('GPR.BIS.BAS_2',
+                            '-GPR.BIS.BAS_8',
+                            '-GPR.BIS.BAS_13',
+                            '-GPR.BIS.BAS_16',
+                            '-GPR.BIS.BAS_19',
+                            'GPR.BIS.BAS_22',
+                            '-GPR.BIS.BAS_24')
+
+alpha(num_qualtrics_data[,bis_col_names],
+      key = bis_rev_score_col_names,
+      max = 4, cumulative = T)
+
+# BAS
+bas_col_names = c('GPR.BIS.BAS_3',
+                  'GPR.BIS.BAS_9',
+                  'GPR.BIS.BAS_12',
+                  'GPR.BIS.BAS_21',
+                  'GPR.BIS.BAS_5',
+                  'GPR.BIS.BAS_10',
+                  'GPR.BIS.BAS_15',
+                  'GPR.BIS.BAS_20',
+                  'GPR.BIS.BAS_4',
+                  'GPR.BIS.BAS_7',
+                  'GPR.BIS.BAS_14',
+                  'GPR.BIS.BAS_18',
+                  'GPR.BIS.BAS_23')
+bas_rev_score_col_names= c('-GPR.BIS.BAS_3',
+                           '-GPR.BIS.BAS_9',
+                           '-GPR.BIS.BAS_12',
+                           '-GPR.BIS.BAS_21',
+                           '-GPR.BIS.BAS_5',
+                           '-GPR.BIS.BAS_10',
+                           '-GPR.BIS.BAS_15',
+                           '-GPR.BIS.BAS_20',
+                           '-GPR.BIS.BAS_4',
+                           '-GPR.BIS.BAS_7',
+                           '-GPR.BIS.BAS_14',
+                           '-GPR.BIS.BAS_18',
+                           '-GPR.BIS.BAS_23')
+alpha(num_qualtrics_data[,bas_col_names],
+      key = bas_rev_score_col_names,
+      max = 4, cumulative = T)
 
 # STEP 5: SAVE OUT PROCESSED DATA FILES ----
 cat('Saving data.\n');
