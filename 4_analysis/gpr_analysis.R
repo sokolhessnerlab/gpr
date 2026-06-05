@@ -2207,6 +2207,8 @@ legend("bottomleft",
 
 #### Arousal by Goal Proximity ----
 
+clean_data_dm$trials_post_goal_achievement = 0
+
 ##### No-Goal Blocks ----
 # First, look at blocks where goals were NOT attained
 nfinaltrials = 20 # number of trials at the end of the block to look at
@@ -2406,6 +2408,11 @@ for (s in 1:number_of_clean_subjects){
       # identify the trial numbers to extract from the data
       trials_to_extract = (ind_goalmet - ntrialsprior):min(ind_goalmet + ntrialsafter, 50)
       
+      clean_data_dm$trials_post_goal_achievement[(clean_data_dm$subjectnumber == subj_id) & 
+                                                   (clean_data_dm$roundnumber == b) & 
+                                                   (clean_data_dm$trialnumber_block >= ind_goalmet)] = 
+        1:(50-ind_goalmet + 1);
+      
       # select the subset of trial column names we'll be using for this person & block
       tmp_trial_columns_yesgoal = trial_columns_yesgoal[1:length(trials_to_extract)]
       
@@ -2514,8 +2521,35 @@ legend("bottomleft",
        col = c(clr_highbonus,clr_lowbonus),
        lty = 1, lwd = 4)
 
+clean_data_dm$bonusatstakeP1N1 = as.numeric(clean_data_dm$curr_bonus == 100) - 
+  as.numeric(clean_data_dm$curr_bonus == 25)
 
+clean_data_dm$goallevelP1N1 = as.numeric(clean_data_dm$curr_goal == 420.79) - 
+  as.numeric(clean_data_dm$curr_goal == 349.85)
 
+clean_data_dm$roundnum0123 = clean_data_dm$roundnum - 1
+
+fit_SCL_trial_level = lmer(tmeanscl ~ 1 + trialnumber_block + roundnum0123 + 
+                             bonusatstakeP1N1 * goallevelP1N1 + 
+                             trials_post_goal_achievement*goallevelP1N1 + postgoal*goallevelP1N1 + 
+                             trials_post_goal_achievement*bonusatstakeP1N1 + postgoal*bonusatstakeP1N1 + (1 | subjectnumber), 
+                            data = clean_data_dm)
+summary(fit_SCL_trial_level)
+
+# Fixed effects:
+#                                                   Estimate Std. Error         df t value Pr(>|t|)    
+#   (Intercept)                                    1.658e+01  1.085e+00  6.532e+01  15.284  < 2e-16 ***
+#   trialnumber_block                             -2.668e-02  1.840e-03  1.312e+04 -14.503  < 2e-16 ***
+#   roundnum0123                                   7.288e-01  2.104e-02  1.312e+04  34.646  < 2e-16 ***
+#   bonusatstakeP1N1                               4.624e-01  2.472e-02  1.312e+04  18.702  < 2e-16 ***
+#   goallevelP1N1                                 -1.979e-01  2.487e-02  1.312e+04  -7.958 1.89e-15 ***
+#   trials_post_goal_achievement                  -1.166e-01  3.633e-02  1.312e+04  -3.209 0.001335 ** 
+#   postgoal                                       7.843e-01  1.771e-01  1.312e+04   4.428 9.57e-06 ***
+#   bonusatstakeP1N1:goallevelP1N1                 1.354e-01  2.404e-02  1.312e+04   5.633 1.81e-08 ***
+#   goallevelP1N1:trials_post_goal_achievement    -8.525e-02  3.628e-02  1.312e+04  -2.350 0.018794 *  
+#   goallevelP1N1:postgoal                         6.101e-01  1.725e-01  1.312e+04   3.537 0.000406 ***
+#   bonusatstakeP1N1:trials_post_goal_achievement -5.154e-02  2.150e-02  1.312e+04  -2.397 0.016551 *  
+#   bonusatstakeP1N1:postgoal                     -2.060e-03  1.387e-01  1.312e+04  -0.015 0.988148    
 
 
 ## 4. RHO ESTIMATES ----
